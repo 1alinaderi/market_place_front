@@ -33,4 +33,4 @@ export const API_ENDPOINTS = {
   WISHLIST: '/wishlist.json',
 };
 
-export const CDN_BASE_URL = 'http://localhost:3001';
+export const CDN_BASE_URL = 'https://api.wimehr.com/';
