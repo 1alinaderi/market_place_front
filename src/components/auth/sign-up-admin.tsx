@@ -61,7 +61,7 @@ const AdminLoginForm: React.FC<LoginFormProps> = ({
           id: e.data.data._id,
           token: e.data.data.token,
         });
-        router.push(`${window.location.origin}/admin/dashboard`);
+        router.reload();
       })
       .catch((e) => {
         toast.error('email or password is wrong');
