@@ -45,7 +45,7 @@
 
 #siteHeader.header-four.is-scrolling .innerSticky {
   @apply lg:pb-1.5;
-  background-color: white !important;
+  background-color: #961010 !important;
 }
 .subMenu {
   top: calc(100% + 21px);

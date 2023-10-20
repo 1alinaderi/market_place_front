@@ -11,6 +11,7 @@ import { Drawer } from '@components/common/drawer/drawer';
 import { getDirection } from '@utils/get-direction';
 import { useModalAction } from '@components/common/modal/modal.context';
 import { useTranslation } from 'next-i18next';
+import { FaStoreAlt } from 'react-icons/fa';
 const CartButton = dynamic(() => import('@components/cart/cart-button'), {
   ssr: false,
 });
@@ -51,14 +52,10 @@ const BottomNavigation: React.FC = () => {
         >
           <MenuIcon />
         </button>
-        <button
-          className="relative flex items-center justify-center h-auto shrink-0 focus:outline-none"
-          onClick={toggleMobileSearch}
-          aria-label="Search Button"
-        >
-          <SearchIcon />
-        </button>
-        <Link href={ROUTES.HOME} className="shrink-0">
+        <Link href={ROUTES.HOME} className=" shrink-0 ">
+          <FaStoreAlt size={23}/>
+        </Link>
+        <Link href={'/'} className="shrink-0">
           <span className="sr-only">{t('breadcrumb-home')}</span>
           <HomeIcon />
         </Link>

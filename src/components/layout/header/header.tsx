@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { useTranslation } from 'next-i18next';
 import cn from 'classnames';
 import { ROUTES } from '@utils/routes';
-import { useUI } from '@contexts/ui.context';
 import { siteSettings } from '@settings/site-settings';
 import { addActiveScroll } from '@utils/add-active-scroll';
 import Container from '@components/ui/container';
@@ -16,6 +15,10 @@ import SearchIcon from '@components/icons/search-icon';
 import { useModalAction } from '@components/common/modal/modal.context';
 import useOnClickOutside from '@utils/use-click-outside';
 import Delivery from '@components/layout/header/delivery';
+import { useUI } from '@contexts/ui.context';
+import MenuIcon from '@components/icons/menu-icon';
+
+
 import Link from 'next/link';
 const AuthMenu = dynamic(() => import('./auth-menu'), { ssr: false });
 const CartButton = dynamic(() => import('@components/cart/cart-button'), {
@@ -43,6 +46,17 @@ const Header: React.FC = () => {
     openModal('LOGIN_VIEW');
   }
 
+  const {
+    openSidebar,
+    closeSidebar,
+    displaySidebar,
+    toggleMobileSearch,
+  } = useUI();
+
+  function handleMobileMenu() {
+    return openSidebar();
+  }
+
   return (
     <header
       id="siteHeader"
@@ -55,17 +69,26 @@ const Header: React.FC = () => {
       <div className="z-20 bg-1d3557 w-screen transition-all duration-200 ease-in-out innerSticky lg:w-full body-font bg-fill-secondary">
         <Search
           searchId="mobile-search"
-          className="top-bar-search hidden lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-1"
+          className="top-bar-search  lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-1"
         />
         {/* End of Mobile search */}
-        <Container className="flex items-center justify-center md:justify-between h-16 py-3 top-bar lg:h-auto">
+        <Container className="flex items-center gap-5 justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
           <Logo className="logo -mt-1.5 md:-mt-1" />
           {/* End of logo */}
 
           <Search
             searchId="top-bar-search"
-            className="hidden lg:flex lg:max-w-[650px] 2xl:max-w-[800px] lg:ltr:ml-7 lg:rtl:mr-7 lg:ltr:mr-5 lg:rtl:ml-5"
+            className=" lg:flex lg:max-w-[650px] px-6 2xl:max-w-[800px] lg:ltr:ml-7 lg:rtl:mr-7 lg:ltr:mr-5 lg:rtl:ml-5"
           />
+
+          <button
+            aria-label="Menu"
+            onClick={handleMobileMenu}
+            className="flex text-white flex-col items-center justify-center outline-none shrink-0 focus:outline-none lg:hidden"
+          >
+            <MenuIcon />
+          </button>
+          <div></div>
           {/* End of search */}
 
           <div className="flex shrink-0 -mx-2.5 xl:-mx-3.5">
@@ -118,7 +141,7 @@ const Header: React.FC = () => {
             <div className="flex items-center ltr:ml-auto rtl:mr-auto shrink-0">
               {/* <Delivery /> */}
               <div className="flex items-center w-0 py-4 overflow-hidden transition-all duration-200 ease-in-out opacity-0 navbar-right">
-                <button
+                {/* <button
                   type="button"
                   aria-label="Search Toggle"
                   onClick={() => openSearch()}
@@ -126,7 +149,7 @@ const Header: React.FC = () => {
                   className="flex items-center justify-center w-12 h-full transition duration-200 ease-in-out outline-none ltr:mr-0 rtl:ml-6 md:w-14 hover:text-heading focus:outline-none"
                 >
                   <SearchIcon className="w-[22px] h-[22px] text-white " />
-                </button>
+                </button> */}
 
                 {/* 
                 <CartButton /> */}
