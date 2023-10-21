@@ -96,18 +96,18 @@ export default function Home() {
           <div className="w-full h-2/4 overflow-hidden md:h-1/4 grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-20">
             <span className="  col-span-12 md:col-span-4 relative ">
               <span className="absolute text-yellow-500 right-1/2 bottom-1/2 text-center translate-x-2/4 translate-y-2/4 text-3xl font-bold">
-                Luxury retail
+                LUXURY RETAIL
               </span>
               <img src="/assets/home/luxury.png" className="w-full h-full" />
             </span>
             <span className="bg-red-500 col-span-12 md:col-span-3 relative h-full rounded min-h-[120px] ">
               <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-3xl font-bold whitespace-nowrap">
-                Subscribe
+                FREE MARKET
               </span>
             </span>
             <span className=" col-span-12 md:col-span-5 relative h-full">
               <span className="absolute text-slate-700 right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-3xl font-bold whitespace-nowrap">
-                Eco-friendly brands
+                ECO-FRIENDLY BRANDS
               </span>
               <img src="/assets/home/eco.png" className="w-full h-full" />
             </span>
@@ -115,7 +115,7 @@ export default function Home() {
           <div className="w-full h-full md:h-2/4 grid grid-cols-1 gap-4 py-2 md:grid-cols-12">
             <span className=" col-span-12 md:col-span-3  relative h-full opacity-20 ">
               <span className="absolute text-red-500 right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-3xl font-bold whitespace-nowrap">
-                Discounted retail
+                DISCOUNTED RETAIL
               </span>
               <img src="/assets/home/discount.png" className="w-full h-full" />
             </span>
@@ -123,10 +123,10 @@ export default function Home() {
               <div className="text-6xl font-serif text-center font-bold tracking-wider py-4">
                 PROJECT I
               </div>
-              <div className=" grid h-52 mt-7 grid-cols-12 gap-3 opacity-20">
-                <span className="bg-yellow-400 col-span-9 relative">
+              <div className=" grid h-52 mt-7 grid-cols-12 gap-3 ">
+                <span className="bg-yellow-400 col-span-9 relative opacity-20">
                   <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-3xl font-bold text-center">
-                    Commercial brands
+                    COMMERCIAL BRANDS
                   </span>
                   <img
                     src="/assets/home/commerial.png"
@@ -134,8 +134,15 @@ export default function Home() {
                   />
                 </span>
                 <span className="col-span-3 flex justify-center items-center flex-col gap-4">
-                  <div className="rounded-full bg-blue-400 p-10"></div>
-                  <div className="rounded-full bg-orange-400 p-10"></div>
+                  <Link href={'/'}>
+                    <div className="rounded-full relative has-tooltip cursor-pointer bg-blue-400  md:w-[90px] w-[80px] shadow-2xl md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl font-serif">
+                      M<span className="tooltip bg-slate-700 px-3 text-white rounded">MEMBERSHIP</span>
+                    </div>
+                  </Link>
+
+                  <div className="rounded-full cursor-pointer bg-orange-500  md:w-[90px] w-[80px]  md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl text-white font-serif opacity-20">
+                    F
+                  </div>
                 </span>
               </div>
             </span>
@@ -157,15 +164,15 @@ export default function Home() {
           <div className="w-full  h-3/4 md:h-1/4 grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-20">
             <span className="col-span-12 md:col-span-3  relative">
               <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-2xl font-bold whitespace-nowrap">
-                Low value products
+                LOW VALUE PRODUCTS
               </span>
               <img src="/assets/home/low.png" className="w-full h-full" />
             </span>
-            <span className=" col-span-12 md:col-span-5">
+            <span className=" col-span-12 md:col-span-5 ">
               <div className=" grid grid-cols-12 gap-3">
                 <span className="col-span-9 relative">
                   <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-3xl font-bold whitespace-nowrap">
-                    Gaming
+                    GAMING
                   </span>
                   <img
                     src="/assets/home/gaming.png"
@@ -173,14 +180,18 @@ export default function Home() {
                   />
                 </span>
                 <span className="col-span-3 flex justify-center items-center flex-col gap-2">
-                  <div className="rounded-full bg-gray-400 p-10"></div>
-                  <div className="rounded-full bg-slate-700 p-10"></div>
+                  <div className="rounded-full cursor-pointer bg-gray-400  md:w-[90px] w-[80px]  md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl font-serif">
+                    L
+                  </div>
+                  <div className="rounded-full cursor-pointer bg-slate-700  md:w-[90px] w-[80px]  md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl text-white font-serif">
+                    I
+                  </div>
                 </span>
               </div>
             </span>
             <span className=" col-span-12 md:col-span-4  relative">
               <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-3xl font-bold whitespace-nowrap">
-                Organic Food
+                ORGANIC FOOD
               </span>
               <img src="/assets/home/food.png" className="w-full h-full" />
             </span>
