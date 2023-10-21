@@ -11,6 +11,7 @@
   position: absolute;
   font-size: 14px;
   transition: 500ms;
+
   @apply visible z-50;
 }
 
