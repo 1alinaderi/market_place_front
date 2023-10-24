@@ -49,6 +49,19 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
 
   const [audio] = useState(typeof Audio !== 'undefined' && new Audio('/1.mp3'));
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (!isPlaying) {
+        audio.play();
+        if (!audio.paused) {
+          setIsPlaying(true)
+        }
+      }
+    }, 5000);
+  }, []);
+
+  console.log();
+
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <PayPalScriptProvider
@@ -57,6 +70,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             'AaHw48SxjwQ5fd_vnuRY4AsibkBn0qWx-7Usnp4yglQ3UGN7ISqP698t0-llTGnyidB0eqeAJVaIJDYa',
         }}
       >
+        <audio playsInline />
         <Hydrate state={pageProps.dehydratedState}>
           {' '}
           <GoogleOAuthProvider clientId="74472575659-u08deub6ejrgjqied21q0ucikd0qjrgh.apps.googleusercontent.com">

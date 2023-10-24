@@ -1,6 +1,6 @@
 import Layout from '@components/layout/layout';
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Particles from 'react-particles';
 import { loadSlim } from 'tsparticles-slim';
 import Sound from 'react-sound';
@@ -18,12 +18,10 @@ export default function Home() {
     await console.log(container);
   }, []);
 
- 
+  
 
   return (
     <>
-     
-
       <Particles
         style={{ zIndex: 1 }}
         id="tsparticles"
@@ -102,28 +100,52 @@ export default function Home() {
 
       <div className="w-full  m-0 p-2 overflow-hidden relative md:h-[100vh]">
         <div className="w-full h-full p-0 m-0">
-          <div className="w-full h-full overflow-hidden md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-40">
-            <span className="  col-span-12 md:col-span-4 relative ">
-              <span className="absolute text-yellow-500 right-1/2 bottom-1/2 w-full text-center translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold">
+          <div className="w-full h-full overflow-hidden md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-50">
+            <span className="col-span-12 md:col-span-4 relative ">
+              <span
+                style={{
+                  textShadow:
+                    '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
+                }}
+                className="absolute text-yellow-500 right-1/2 bottom-1/2 w-full text-center translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold"
+              >
                 LUXURY RETAIL
               </span>
               <img src="/assets/home/luxury.png" className="w-full h-full" />
             </span>
             <span className="bg-red-500 col-span-12 md:col-span-3 relative h-full rounded min-h-[120px] ">
-              <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center">
+              <span
+                style={{
+                  textShadow:
+                    '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
+                }}
+                className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center"
+              >
                 FREE MARKET
               </span>
             </span>
             <span className=" col-span-12 md:col-span-5 relative h-full">
-              <span className="absolute text-slate-700 right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center">
+              <span
+                style={{
+                  textShadow:
+                    '-2px 0 orange, 0 2px orange, 2px 0 orange, 0 -2px orange',
+                }}
+                className="absolute text-slate-700 pt-4 right-1/2 bottom-2/3 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center"
+              >
                 ECO-FRIENDLY BRANDS
               </span>
               <img src="/assets/home/eco.png" className="w-full h-full" />
             </span>
           </div>
           <div className="w-full h-full md:h-[39vh] grid grid-cols-1 gap-4 py-2 md:grid-cols-12">
-            <span className=" col-span-12 md:col-span-3  relative h-full opacity-40 ">
-              <span className="absolute text-red-500 right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center">
+            <span className=" col-span-12 md:col-span-3  relative h-full opacity-50 ">
+              <span
+                style={{
+                  textShadow:
+                    '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
+                }}
+                className="absolute text-red-500 right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center"
+              >
                 DISCOUNTED RETAIL
               </span>
               <img
@@ -132,12 +154,33 @@ export default function Home() {
               />
             </span>
             <span className="col-span-12 md:col-span-5 h-full">
-              <div className="text-4xl md:text-6xl font-serif text-center font-bold tracking-wider m-0 pr-0 md:pr-14 whitespace-nowrap">
-                PROJECT I
+              <div className=" text-3xl sm:text-4xl md:py-0 py-2 md:text-3xl xl:text-5xl 2xl:text-6xl h-auto md:h-1/4  font-serif font-bold grid grid-cols-12  items-center justify-between">
+                <span className=" col-span-9 text-center">
+                  PROJECT I{' '}
+                  <small className="text-[20px] font-sans whitespace-nowrap">
+                    2020-2030
+                  </small>
+                </span>
+                <span className="whitespace-nowrap col-span-3 flex justify-center pl-2">
+                  <Link href={'/'}>
+                    <div className="rounded-full relative col-span-2 has-tooltip cursor-pointer bg-blue-400  md:w-[70px] w-[70px] shadow-2xl md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
+                      P
+                      <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
+                        MEMBERSHIP
+                      </span>
+                    </div>
+                  </Link>
+                </span>
               </div>
-              <div className=" grid    mt-4 grid-cols-12 gap-3 ">
-                <span className=" col-span-9 relative opacity-40 h-full">
-                  <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold text-center">
+              <div className=" grid  h-auto md:h-3/4   grid-cols-12 gap-3 ">
+                <span className=" col-span-9 relative opacity-50 h-full">
+                  <span
+                    style={{
+                      textShadow:
+                        '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
+                    }}
+                    className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold text-center"
+                  >
                     COMMERCIAL BRANDS
                   </span>
                   <img
@@ -147,7 +190,7 @@ export default function Home() {
                 </span>
                 <span className="col-span-3 flex justify-center items-center flex-col gap-4">
                   <Link href={'/'}>
-                    <div className="rounded-full relative has-tooltip cursor-pointer bg-blue-400  md:w-[90px] w-[80px] shadow-2xl md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl font-serif">
+                    <div className="rounded-full relative has-tooltip cursor-pointer bg-blue-400  md:w-[70px] w-[70px] shadow-2xl md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
                       M
                       <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
                         MEMBERSHIP
@@ -155,7 +198,7 @@ export default function Home() {
                     </div>
                   </Link>
 
-                  <div className="rounded-full cursor-pointer bg-orange-500  md:w-[90px] w-[80px]  md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl text-white font-serif opacity-40">
+                  <div className="rounded-full cursor-pointer bg-orange-500  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl text-white font-serif opacity-50">
                     F
                   </div>
                 </span>
@@ -176,7 +219,7 @@ export default function Home() {
               </span>
             </Link>
           </div>
-          <div className="w-full  h-full md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-40">
+          <div className="w-full  h-full md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-50">
             <span className="col-span-12 md:col-span-3  relative">
               <span className="absolute font-bold text-white right-1/3 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xlfont-bold ">
                 LOW VALUE <br /> PRODUCTS
@@ -195,10 +238,10 @@ export default function Home() {
                   />
                 </span>
                 <span className="col-span-3 flex justify-center items-center flex-col gap-2">
-                  <div className="rounded-full cursor-pointer bg-gray-400  md:w-[90px] w-[80px]  md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl font-serif">
+                  <div className="rounded-full cursor-pointer bg-gray-400  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
                     L
                   </div>
-                  <div className="rounded-full cursor-pointer bg-slate-700  md:w-[90px] w-[80px]  md:h-[90px] h-[80px]  text-center flex justify-center items-center text-3xl text-white font-serif">
+                  <div className="rounded-full cursor-pointer bg-slate-700  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl text-white font-serif">
                     I
                   </div>
                 </span>
