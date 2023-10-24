@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { ManagedUIContext } from '@contexts/ui.context';
 import ManagedModal from '@components/common/modal/managed-modal';
 import ManagedDrawer from '@components/common/drawer/managed-drawer';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ToastContainer } from 'react-toastify';
@@ -24,6 +24,7 @@ import '@assets/css/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { getDirection } from '@utils/get-direction';
+import { MdMusicNote, MdMusicOff } from 'react-icons/md';
 
 const Noop: React.FC = ({ children }) => <>{children}</>;
 
@@ -44,6 +45,10 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
     setCookie('user', user, { path: '/' });
   }
 
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const [audio] = useState(typeof Audio !== 'undefined' && new Audio('/1.mp3'));
+
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <PayPalScriptProvider
@@ -60,13 +65,49 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                 <>
                   <DefaultSeo />
                   {router.pathname === '/' ? (
-                    <Component
-                      {...pageProps}
-                      key={router.route}
-                      baseData={{ handleLogin, cookies }}
-                    />
+                    <>
+                      {isPlaying ? (
+                        <MdMusicOff
+                          onClick={() => {
+                            audio.pause();
+                            setIsPlaying(false);
+                          }}
+                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[5%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
+                        />
+                      ) : (
+                        <MdMusicNote
+                          onClick={() => {
+                            audio.play();
+                            setIsPlaying(true);
+                          }}
+                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[5%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
+                        />
+                      )}
+                      <Component
+                        {...pageProps}
+                        key={router.route}
+                        baseData={{ handleLogin, cookies }}
+                      />
+                    </>
                   ) : (
                     <Layout pageProps={pageProps}>
+                      {isPlaying ? (
+                        <MdMusicOff
+                          onClick={() => {
+                            audio.pause();
+                            setIsPlaying(false);
+                          }}
+                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
+                        />
+                      ) : (
+                        <MdMusicNote
+                          onClick={() => {
+                            audio.play();
+                            setIsPlaying(true);
+                          }}
+                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
+                        />
+                      )}
                       <Component
                         {...pageProps}
                         key={router.route}

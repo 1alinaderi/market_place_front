@@ -18,29 +18,11 @@ export default function Home() {
     await console.log(container);
   }, []);
 
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const [audio] = useState(typeof Audio !== 'undefined' && new Audio('/1.mp3'));
+ 
 
   return (
     <>
-      {isPlaying ? (
-        <MdMusicOff
-          onClick={() => {
-            audio.pause();
-            setIsPlaying(false);
-          }}
-          className="fixed text-black p-2 border-black border-2 shadow-xl rounded-full bottom-[3%] md:bottom-[5%] right-[3%] text-5xl z-50 cursor-pointer"
-        />
-      ) : (
-        <MdMusicNote
-          onClick={() => {
-            audio.play();
-            setIsPlaying(true);
-          }}
-          className="fixed text-black p-2 border-black border-2 shadow-xl rounded-full bottom-[3%] md:bottom-[5%] right-[3%] text-5xl z-50 cursor-pointer"
-        />
-      )}
+     
 
       <Particles
         style={{ zIndex: 1 }}
