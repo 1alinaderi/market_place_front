@@ -18,8 +18,6 @@ export default function Home() {
     await console.log(container);
   }, []);
 
-  
-
   return (
     <>
       <Particles
@@ -107,11 +105,11 @@ export default function Home() {
                   textShadow:
                     '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
                 }}
-                className="absolute text-yellow-500 right-1/2 bottom-1/2 w-full text-center translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold"
+                className="absolute text-yellow-500 right-1/2 bottom-1/2 w-full text-center translate-x-2/4 translate-y-2/4  text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold"
               >
                 LUXURY RETAIL
               </span>
-              <img src="/assets/home/luxury.png" className="w-full h-full" />
+              <img src="/assets/home/luxury (1).png" className="w-full h-full" />
             </span>
             <span className="bg-red-500 col-span-12 md:col-span-3 relative h-full rounded min-h-[120px] ">
               <span
@@ -119,7 +117,7 @@ export default function Home() {
                   textShadow:
                     '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
                 }}
-                className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center"
+                className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center"
               >
                 FREE MARKET
               </span>
@@ -130,11 +128,11 @@ export default function Home() {
                   textShadow:
                     '-2px 0 orange, 0 2px orange, 2px 0 orange, 0 -2px orange',
                 }}
-                className="absolute text-slate-700 pt-4 right-1/2 bottom-2/3 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center"
+                className="absolute text-slate-700 pt-4 right-1/2 bottom-2/3 translate-x-2/4 translate-y-2/4  text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center"
               >
                 ECO-FRIENDLY BRANDS
               </span>
-              <img src="/assets/home/eco.png" className="w-full h-full" />
+              <img src="/assets/home/eco (1).png" className="w-full h-full" />
             </span>
           </div>
           <div className="w-full h-full md:h-[39vh] grid grid-cols-1 gap-4 py-2 md:grid-cols-12">
@@ -144,17 +142,17 @@ export default function Home() {
                   textShadow:
                     '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
                 }}
-                className="absolute text-red-500 right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold w-full text-center"
+                className="absolute text-red-500 right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center"
               >
                 DISCOUNTED RETAIL
               </span>
               <img
-                src="/assets/home/discount.png"
+                src="/assets/home/discount (1).png"
                 className="w-full h-full object-cover rounded-lg"
               />
             </span>
             <span className="col-span-12 md:col-span-5 h-full">
-              <div className=" text-3xl sm:text-4xl md:py-0 py-2 md:text-3xl xl:text-5xl 2xl:text-6xl h-auto md:h-1/4  font-serif font-bold grid grid-cols-12  items-center justify-between">
+              <div className=" text-3xl sm:text-4xl md:py-0 py-2 md:text-3xl xl:text-4xl 2xl:text-5xl 2xl:text-6xl h-auto md:h-1/4  font-serif font-bold grid grid-cols-12  items-center justify-between">
                 <span className=" col-span-9 text-center">
                   PROJECT I{' '}
                   <small className="text-[20px] font-sans whitespace-nowrap">
@@ -164,7 +162,7 @@ export default function Home() {
                 <span className="whitespace-nowrap col-span-3 flex justify-center pl-2">
                   <Link href={'/'}>
                     <div className="rounded-full relative col-span-2 has-tooltip cursor-pointer bg-blue-400  md:w-[70px] w-[70px] shadow-2xl md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
-                      P
+                      M
                       <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
                         MEMBERSHIP
                       </span>
@@ -179,79 +177,93 @@ export default function Home() {
                       textShadow:
                         '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
                     }}
-                    className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold text-center"
+                    className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-center"
                   >
                     COMMERCIAL BRANDS
                   </span>
                   <img
-                    src="/assets/home/commerial.png"
+                    src="/assets/home/commerial (1).png"
                     className="w-full h-full"
                   />
                 </span>
                 <span className="col-span-3 flex justify-center items-center flex-col gap-4">
                   <Link href={'/'}>
                     <div className="rounded-full relative has-tooltip cursor-pointer bg-blue-400  md:w-[70px] w-[70px] shadow-2xl md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
-                      M
+                      P
                       <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
-                        MEMBERSHIP
+                        PREMIUM
                       </span>
                     </div>
                   </Link>
-
-                  <div className="rounded-full cursor-pointer bg-orange-500  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl text-white font-serif opacity-50">
-                    F
-                  </div>
+                  <Link href={'/'}>
+                    <div className="rounded-full relative has-tooltip cursor-pointer bg-orange-500  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl text-white font-serif ">
+                      F
+                      <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
+                        FREEMIUM
+                      </span>
+                    </div>
+                  </Link>
                 </span>
               </div>
             </span>
             <Link href={'/marketplace'}>
-              <span className="duration-200 cursor-pointer hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-md h-full">
+              <span className="duration-200 bg-gray-400 min-h-[200px] cursor-pointer hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-md h-full">
                 <span
                   style={{
                     textShadow:
                       '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
                   }}
-                  className="absolute  text-center text-amber-600 w-full drop-shadow-md right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-2xl md:text-4xl font-bold "
+                  className="absolute px-3 text-center text-amber-600 w-full drop-shadow-md right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold "
                 >
                   SUSTAINABLE ART AND ARCHITECTURE
                 </span>
-                <img src="/assets/home/sus.png" className="w-full h-full" />
+                {/* <img src="/assets/home/sus (1).png" className="w-full h-full" /> */}
               </span>
             </Link>
           </div>
-          <div className="w-full  h-full md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-50">
-            <span className="col-span-12 md:col-span-3  relative">
-              <span className="absolute font-bold text-white right-1/3 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xlfont-bold ">
+          <div className="w-full  h-full md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2">
+            <span className="col-span-12 md:col-span-3  relative  opacity-50">
+              <span className="absolute font-bold text-white right-1/3 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-3xl xl:text-4xl 2xl:text-5xlfont-bold ">
                 LOW VALUE <br /> PRODUCTS
               </span>
-              <img src="/assets/home/low.png" className="w-full h-full" />
+              <img src="/assets/home/low (1).png" className="w-full h-full" />
             </span>
             <span className=" col-span-12 md:col-span-5 ">
-              <div className=" grid grid-cols-12 gap-3 h-full">
-                <span className="col-span-9 relative h-full">
-                  <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-4xl font-bold ">
+              <div className=" grid grid-cols-12 gap-3 h-full ">
+                <span className="col-span-9 relative h-full  opacity-50">
+                  <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4  text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold ">
                     GAMING
                   </span>
                   <img
-                    src="/assets/home/gaming.png"
+                    src="/assets/home/gaming (1).png"
                     className="w-full h-full"
                   />
                 </span>
-                <span className="col-span-3 flex justify-center items-center flex-col gap-2">
-                  <div className="rounded-full cursor-pointer bg-gray-400  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
-                    L
-                  </div>
-                  <div className="rounded-full cursor-pointer bg-slate-700  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl text-white font-serif">
-                    I
-                  </div>
+                <span className="col-span-3 flex justify-center items-center flex-col gap-4">
+                  <Link href={'/'}>
+                    <div className="rounded-full relative has-tooltip cursor-pointer bg-gray-400  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
+                      L
+                      <span className="tooltip  bg-slate-700 px-3 text-white rounded absolute">
+                        LOGISTICS
+                      </span>
+                    </div>
+                  </Link>
+                  <Link href={'/'}>
+                    <div className="rounded-full relative has-tooltip cursor-pointer bg-slate-700  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl text-white font-serif">
+                      I
+                      <span className="tooltip  bg-slate-700 px-3 text-white rounded absolute">
+                        INSURANCE
+                      </span>
+                    </div>
+                  </Link>
                 </span>
               </div>
             </span>
-            <span className=" col-span-12 md:col-span-4  relative">
-              <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-2xl md:text-4xl font-bold w-full text-center">
+            <span className=" col-span-12 md:col-span-4  relative  opacity-50">
+              <span className="absolute text-white right-1/2 bottom-1/2 translate-x-2/4 translate-y-2/4 text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center">
                 ORGANIC FOOD
               </span>
-              <img src="/assets/home/food.png" className="w-full h-full" />
+              <img src="/assets/home/food (1).png" className="w-full h-full" />
             </span>
           </div>
         </div>

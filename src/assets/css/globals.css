@@ -10,7 +10,7 @@
   bottom: 95%;
   position: absolute;
   font-size: 14px;
-  transition: 500ms;
+  transition: 300ms;
 
   @apply visible z-50;
 }
