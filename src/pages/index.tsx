@@ -160,7 +160,7 @@ export default function Home() {
                   </small>
                 </span>
                 <span className="whitespace-nowrap col-span-3 flex justify-center pl-2">
-                  <Link href={'/'}>
+                  <Link href={'/supplier/signup'}>
                     <div className="rounded-full relative col-span-2 has-tooltip cursor-pointer bg-blue-400  md:w-[70px] w-[70px] shadow-2xl md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
                       M
                       <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
@@ -187,7 +187,7 @@ export default function Home() {
                   />
                 </span>
                 <span className="col-span-3 flex justify-center items-center flex-col gap-4">
-                  <Link href={'/'}>
+                  <Link href={'/supplier/signup'}>
                     <div className="rounded-full relative has-tooltip cursor-pointer bg-blue-400  md:w-[70px] w-[70px] shadow-2xl md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl font-serif">
                       P
                       <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
@@ -195,7 +195,7 @@ export default function Home() {
                       </span>
                     </div>
                   </Link>
-                  <Link href={'/'}>
+                  <Link href={'/supplier/signup'}>
                     <div className="rounded-full relative has-tooltip cursor-pointer bg-orange-500  md:w-[70px] w-[70px]  md:h-[70px] h-[70px]  text-center flex justify-center items-center text-3xl text-white font-serif ">
                       F
                       <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">

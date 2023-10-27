@@ -40,27 +40,33 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   }, [dir]);
   const Layout = (Component as any).Layout || Noop;
 
-  const [cookies, setCookie] = useCookies(['user']);
+  const [cookies, setCookie] = useCookies(['user', 'seller']);
+
   function handleLogin(user: any) {
     setCookie('user', user, { path: '/' });
+  }
+  function handleLoginSeller(user: any) {
+    setCookie('seller', user, { path: '/' });
   }
 
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const [audio] = useState(typeof Audio !== 'undefined' && new Audio('/1.mp3'));
+  const audio = useRef();
+
+  // const [audio] = useState(typeof Audio !== 'undefined' && new Audio('/1.mp3'));
 
   useEffect(() => {
     setTimeout(() => {
-      if (!isPlaying) {
-        audio.play();
-        if (!audio.paused) {
-          setIsPlaying(true)
+      if (router.pathname === '/') {
+        if (!isPlaying) {
+          audio.current.play();
+          if (!audio.current.paused) {
+            setIsPlaying(true);
+          }
         }
       }
-    }, 5000);
+    }, 3000);
   }, []);
-
-  console.log();
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
@@ -70,7 +76,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             'AaHw48SxjwQ5fd_vnuRY4AsibkBn0qWx-7Usnp4yglQ3UGN7ISqP698t0-llTGnyidB0eqeAJVaIJDYa',
         }}
       >
-        <audio playsInline />
+        <audio ref={audio} src="/1.mp3" width="180" height="90" hidden />
         <Hydrate state={pageProps.dehydratedState}>
           {' '}
           <GoogleOAuthProvider clientId="74472575659-u08deub6ejrgjqied21q0ucikd0qjrgh.apps.googleusercontent.com">
@@ -83,7 +89,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                       {isPlaying ? (
                         <MdMusicOff
                           onClick={() => {
-                            audio.pause();
+                            audio.current.pause();
                             setIsPlaying(false);
                           }}
                           className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[5%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
@@ -91,7 +97,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                       ) : (
                         <MdMusicNote
                           onClick={() => {
-                            audio.play();
+                            audio.current.play();
                             setIsPlaying(true);
                           }}
                           className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[5%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
@@ -100,7 +106,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                       <Component
                         {...pageProps}
                         key={router.route}
-                        baseData={{ handleLogin, cookies }}
+                        baseData={{ handleLogin, cookies, handleLoginSeller }}
                       />
                     </>
                   ) : (
@@ -108,16 +114,26 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                       {isPlaying ? (
                         <MdMusicOff
                           onClick={() => {
-                            audio.pause();
-                            setIsPlaying(false);
+                            if (audio.current.paused) {
+                              audio.current.play();
+                              setIsPlaying(true);
+                            } else {
+                              audio.current.pause();
+                              setIsPlaying(false);
+                            }
                           }}
                           className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
                         />
                       ) : (
                         <MdMusicNote
                           onClick={() => {
-                            audio.play();
-                            setIsPlaying(true);
+                            if (audio.current.paused) {
+                              audio.current.play();
+                              setIsPlaying(true);
+                            } else {
+                              audio.current.pause();
+                              setIsPlaying(false);
+                            }
                           }}
                           className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
                         />
@@ -125,7 +141,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                       <Component
                         {...pageProps}
                         key={router.route}
-                        baseData={{ handleLogin, cookies }}
+                        baseData={{ handleLogin, cookies, handleLoginSeller }}
                       />
                     </Layout>
                   )}

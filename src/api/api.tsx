@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.wimehr.com/api';
+// const BASE_URL = 'https://api.wimehr.com/api';
+const BASE_URL = 'http://localhost:3001/api';
 
 export const httpReauest = async (
   method: any,

@@ -20,26 +20,26 @@ const accountMenu = [
   },
   {
     slug: '/my-account/vip',
-    name: 'VIP',
+    name: 'Membership',
     icon: (
       <RiVipCrown2Line className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
     ),
   },
-  {
-    slug: ROUTES.ORDERS,
-    name: 'text-orders',
-    icon: <OrdersIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
-  },
+  // {
+  //   slug: ROUTES.ORDERS,
+  //   name: 'text-orders',
+  //   icon: <OrdersIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
+  // },
   // {
   //   slug: ROUTES.WISHLIST,
   //   name: 'text-wishlist',
   //   icon: <WishlistIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
   // },
-  {
-    slug: ROUTES.ADDRESS,
-    name: 'text-address',
-    icon: <MapIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
-  },
+  // {
+  //   slug: ROUTES.ADDRESS,
+  //   name: 'text-address',
+  //   icon: <MapIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
+  // },
   // {
   //   slug: ROUTES.NOTIFICATION,
   //   name: 'text-notifications',
@@ -57,10 +57,10 @@ const accountMenu = [
   },
 ];
 
-const AccountLayout: React.FunctionComponent<{ baseData: any }> = ({
-  children,
-  baseData,
-}) => {
+const AccountLayout: React.FunctionComponent<{
+  baseData: any;
+  isSeller: boolean;
+}> = ({ children, baseData , isSeller}) => {
   return (
     <div className="border-t border-b border-border-base">
       <Container>

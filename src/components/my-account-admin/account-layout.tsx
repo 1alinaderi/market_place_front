@@ -14,6 +14,7 @@ import {
   FaCreativeCommons,
   FaShoppingBag,
   FaUser,
+  FaUserCheck,
   FaUserFriends,
 } from 'react-icons/fa';
 import { GrFormAdd } from 'react-icons/gr';
@@ -25,10 +26,16 @@ const accountMenu = [
     icon: <FaUser className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
   },
   {
+    slug: '/admin/verify',
+    name: 'Verify Users',
+    icon: <FaUserCheck className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
+  },
+  {
     slug: '/admin/orders',
     name: 'text-orders',
     icon: <FaShoppingBag className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
   },
+
   {
     slug: '/admin/suppliers',
     name: 'All Suppliers',
