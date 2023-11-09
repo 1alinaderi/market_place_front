@@ -26,6 +26,10 @@ import VerifyCardBank from '@components/forms/verify-bank-card';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import Alert from '@components/ui/alert';
 import Link from 'next/link';
+import Modal from '@components/common/modal/modal';
+import LoginForm from '@components/auth/login-form';
+import CloseButton from '@components/ui/close-button';
+import MembershipCard from '@components/cards/membership-card';
 
 const defaultValues = {};
 
@@ -41,6 +45,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
   const { mutate: updateUser, isLoading } = useUpdateUserMutation();
   const { t } = useTranslation();
   const [data, setData] = useState([]);
+  const [open, setopen] = useState<boolean>(false);
   const [orders, setorders] = useState();
   const {
     register,
@@ -72,26 +77,64 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
     // const data2 = await httpReauest('GET', '/order/' + id, {}, {});
 
     // setorders(data2.data.data);
+
     setData(data.data);
   }
 
   async function getSellerData(id: any) {
     const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
 
+    if (data?.data?.membership == 'Freemium') {
+      setopen(true);
+    }
     setData(data.data);
   }
   function onSubmit(input: UpdateUserType) {
     updateUser(input);
   }
+
+  function onClose() {
+    setopen(false);
+  }
+
+  function gotovip() {
+    router.push(`${window.location.origin}/my-account/vip`);
+  }
   return (
     <div className="flex flex-col w-full">
-      <Link href={'/my-account/vip'}>
+      <Modal open={open} onClose={onClose}>
         <div
-          className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 rounded `}
+          className={
+            'w-full md:w-[720px] lg:w-[920px] xl:w-[1000px] 2xl:w-[1000px] relative '
+          }
         >
-          Upgrade your membership level to get the best services
-          <FaAngleRight size={23} className="ml-1" />
+          {' '}
+          <CloseButton onClick={onClose} />
+          <div className="flex mx-auto overflow-hidden rounded-lg bg-brand-light py-5 gap-4 justify-center flex-wrap">
+            <h1 className="w-full text-3xl py-3 text-center text-black font-semibold">
+              Choose Your membership to Countinue
+            </h1>
+            <MembershipCard gotovip={gotovip} onClose={onClose} free />
+            <MembershipCard gotovip={gotovip} onClose={onClose} free={false} />
+          </div>
         </div>
+      </Modal>
+      <Link href={'/my-account/vip'}>
+        {data.membership === 'Premium' ? (
+          <div
+            className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-black items-center  font-semibold flex  border-2 border-green-500 mb-8  rounded `}
+          >
+            <FaCheckCircle className="text-green-600 mr-2 text-3xl" />
+            Congratulations, your membership is premium
+          </div>
+        ) : (
+          <div
+            className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 rounded `}
+          >
+            Upgrade your membership level to get the best services
+            <FaAngleRight size={23} className="ml-1" />
+          </div>
+        )}
       </Link>
 
       {isSeller ? (

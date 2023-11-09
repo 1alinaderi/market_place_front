@@ -11,8 +11,10 @@ import Heading from '@components/ui/heading';
 import PaypalCheckouButton from '@components/paypal/paypalButton';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
-import { FaPlus } from 'react-icons/fa';
+import { FaCheckCircle, FaPlus } from 'react-icons/fa';
 import Button from '@components/ui/button';
+import { RiLoader3Line } from 'react-icons/ri';
+import { GrFormClock } from 'react-icons/gr';
 
 export default function AccountDetailsPage({ baseData }) {
   const [data, setData] = useState([]);
@@ -65,18 +67,22 @@ export default function AccountDetailsPage({ baseData }) {
   }
 
   async function handleApprove(id: any) {
-    await httpReauest(
-      'POST',
-      '/user/VIP',
-      { userId: baseData.cookies.user.id },
-      { 'x-access-token': baseData.cookies.user.token }
-    )
-      .then((dataaaa) => {
-        toast.success(dataaaa.data.message);
+    const formdata = new FormData();
+    if (image) {
+      formdata.append('payMembershipDoc', image);
+      await httpReauest('POST', '/supplier/membership', formdata, {
+        'x-access-token': baseData.cookies.seller.token,
       })
-      .catch((error) => {
-        toast.success(error.message);
-      });
+        .then((dataaaa) => {
+          toast.success(dataaaa.data.message);
+          router.reload();
+        })
+        .catch((error) => {
+          toast.success(error.message);
+        });
+    } else {
+      toast.success('upload your photo');
+    }
   }
   return (
     <>
@@ -102,47 +108,71 @@ export default function AccountDetailsPage({ baseData }) {
               <li>Soem Test TExt </li>
               <li>Soem Test TExt </li>
             </ul>
-            <Heading
-              variant="title"
-              className="pt-8 flex justify-between flex-wrap items-center gap-4"
-            >
-              <span>Membership Price : $800</span>
-              <span>
-                Refreal code :{' '}
-                <input
-                  type={'text'}
-                  className="rounded-md border-slate-400 w-[170px] h-[32px]"
-                />
-              </span>
-            </Heading>
-            <p className="mt-4">
-              Send 111,111,111 IRR To This card And Upload photo: <br />
-              <span>IR-1111111122222222222444444</span>{' '}
-            </p>
-            <div className=" sm:w-1/2 my-7">
-              <label className="cursor-pointer relative" htmlFor="addImage">
-                {preview ? (
-                  <img
-                    src={preview ? preview : null}
-                    className="w-full h-[160px] rounded object-contain"
+            {data?.membership === 'Premium' ? (
+              <>
+                <Heading
+                  variant="titleLarge"
+                  className="pt-8 flex items-center"
+                >
+                  <FaCheckCircle className="text-green-600 mr-2 text-3xl" />
+                  Congratulations, your membership is premium
+                </Heading>
+              </>
+            ) : data?.checkPay ? (
+              <>
+                <Heading variant="title" className="pt-8 flex items-center">
+                  <GrFormClock className="text-green-600 mr-2 text-4xl" />
+                  We are checking the document you uploaded, if it is correct,
+                  your membership will be upgraded
+                </Heading>
+              </>
+            ) : (
+              <>
+                <Heading
+                  variant="title"
+                  className="pt-8 flex justify-between flex-wrap items-center gap-4"
+                >
+                  <span>Membership Price : $800</span>
+                  <span>
+                    Refreal code :{' '}
+                    <input
+                      type={'text'}
+                      className="rounded-md border-slate-400 w-[170px] h-[32px]"
+                    />
+                  </span>
+                </Heading>
+                <p className="mt-4">
+                  Send 111,111,111 IRR To This card And Upload photo: <br />
+                  <span>IR-1111111122222222222444444</span>{' '}
+                </p>
+                <div className=" sm:w-1/2 my-7">
+                  <label className="cursor-pointer relative" htmlFor="addImage">
+                    {preview ? (
+                      <img
+                        src={preview ? preview : null}
+                        className="w-full h-[160px] rounded object-contain"
+                      />
+                    ) : (
+                      <div className="w-full h-[160px] rounded relative border">
+                        <FaPlus size={25} className="inset-0 absolute m-auto" />
+                      </div>
+                    )}
+                  </label>
+                  <input
+                    onChange={(e) => {
+                      setimage(e.target.files[0]);
+                    }}
+                    id="addImage"
+                    className="hidden"
+                    type={'file'}
+                    accept="image/png, image/jpg, image/jpeg"
                   />
-                ) : (
-                  <div className="w-full h-[160px] rounded relative border">
-                    <FaPlus size={25} className="inset-0 absolute m-auto" />
-                  </div>
-                )}
-              </label>
-              <input
-                onChange={(e) => {
-                  setimage(e.target.files[0]);
-                }}
-                id="addImage"
-                className="hidden"
-                type={'file'}
-                accept="image/png, image/jpg, image/jpeg"
-              />
-            </div>
-            <Button variant="formButton">Submit</Button>
+                </div>
+                <Button onClick={handleApprove} variant="formButton">
+                  Submit
+                </Button>
+              </>
+            )}
           </>
         ) : (
           <Heading variant="title" className="pb-8">

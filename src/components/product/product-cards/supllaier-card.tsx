@@ -12,6 +12,7 @@ import { productPlaceholder } from '@assets/placeholders';
 import dynamic from 'next/dynamic';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import Link from 'next/link';
+import { BsShieldCheck, BsShieldFillCheck } from 'react-icons/bs';
 const AddToCart = dynamic(() => import('@components/product/add-to-cart'), {
   ssr: false,
 });
@@ -52,12 +53,12 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
   return <AddToCart data={data} />;
 }
 const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
-  const { name, image, bio, product_type, _id } = product ?? {};
+  const { name, logo, bio, product_type, _id, membership } = product ?? {};
 
-  const imageSrc = CDN_BASE_URL + '/' + image;
+  const imageSrc = CDN_BASE_URL + '/' + logo;
 
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${image}`;
+    return `${CDN_BASE_URL}/${logo}`;
   };
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
@@ -90,16 +91,22 @@ const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
       >
         <>
           <div className="relative shrink-0">
-            <div className="flex overflow-hidden max-w-[230px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
+            <div className="flex  overflow-hidden w-full pt-4  justify-center transition duration-200 ease-in-out transform group-hover:scale-105 relative">
               <Image
                 loader={myLoader}
                 src={imageSrc ?? productPlaceholder}
                 alt={name || 'Product Image'}
-                width={230}
-                height={200}
+                width={150}
+                height={150}
                 quality={100}
-                className="object-cover bg-fill-thumbnail"
+                className="object-fill rounded-full "
               />
+              {membership === 'Premium' && (
+                <BsShieldFillCheck
+                  className="text-green-500 absolute top-[12%] left-[5%]"
+                  size={35}
+                />
+              )}
             </div>
             <div className="w-full h-full absolute top-0 pt-2.5 md:pt-3.5 px-3 md:px-4 lg:px-[18px] z-10 -mx-0.5 sm:-mx-1">
               {discount && (
@@ -126,7 +133,9 @@ const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
             <h2 className="text-brand-dark text-13px sm:text-sm lg:text-15px leading-5 sm:leading-6 mb-1.5">
               {name}
             </h2>
-            <div className="mt-auto text-13px sm:text-sm">{bio}</div>
+            <div className="mt-auto text-13px sm:text-sm">
+              {bio?.slice(0, 110)}...
+            </div>
           </div>
         </>
       </article>

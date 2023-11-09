@@ -13,6 +13,7 @@ import { useTranslation } from 'next-i18next';
 import useWindowSize from '@utils/use-window-size';
 import { useSupplierQuery } from '@framework/product/get-supplier';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
+import { BsShieldFillCheck } from 'react-icons/bs';
 
 const ShopsSingleDetails: React.FC = () => {
   const {
@@ -28,9 +29,9 @@ const ShopsSingleDetails: React.FC = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  const imageSrc = `${CDN_BASE_URL}/${data?.image}`;
+  const imageSrc = `${CDN_BASE_URL}/${data?.logo}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${data?.image}`;
+    return `${CDN_BASE_URL}/${data?.logo}`;
   };
 
   return (
@@ -61,6 +62,9 @@ const ShopsSingleDetails: React.FC = () => {
           />
         </div>
         <div className="ltr:pl-4 rtl:pr-4">
+          {data?.membership === 'Premium' && (
+            <BsShieldFillCheck className="text-green-500 mr-2 " size={20} />
+          )}
           <h2 className="font-semibold text-brand-dark text-15px">
             {data?.name}
           </h2>

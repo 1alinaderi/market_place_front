@@ -96,7 +96,7 @@ const CompleteProfileFormSellerCompany = ({ baseData }) => {
               id="addImage"
               className="hidden"
               type={'file'}
-              accept="image/png, image/jpg, image/jpeg"
+            
             />
           </span>
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">

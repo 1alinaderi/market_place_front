@@ -19,6 +19,7 @@ import {
   IoGlobeOutline,
 } from 'react-icons/io5';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
+import { BsShieldCheck, BsShieldFillCheck } from 'react-icons/bs';
 
 interface ShopSidebarProps {
   data: any;
@@ -34,9 +35,9 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
   const descriptionHandel = () => {
     return setDescriptionState(true);
   };
-  const imageSrc = `${CDN_BASE_URL}/${data?.image}`;
+  const imageSrc = `${CDN_BASE_URL}/${data?.logo}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${data?.image}`;
+    return `${CDN_BASE_URL}/${data?.logo}`;
   };
   return (
     <div className="flex flex-col px-6 pt-10 lg:pt-14">
@@ -73,29 +74,14 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             data?.bio
           )}
         </Text>
-        {/* <div className="flex items-center flex-wrap justify-center -mx-1 pt-4 mt-0.5">
-          <FacebookShareButton url={shareUrl} className="mx-1">
-            <FacebookIcon
-              size={25}
-              round
-              className="transition-all hover:opacity-90"
-            />
-          </FacebookShareButton>
-          <TwitterShareButton url={shareUrl} className="mx-1">
-            <TwitterIcon
-              size={25}
-              round
-              className="transition-all hover:opacity-90"
-            />
-          </TwitterShareButton>
-          <LinkedinShareButton url={shareUrl} className="mx-1">
-            <LinkedinIcon
-              size={25}
-              round
-              className="transition-all hover:opacity-90"
-            />
-          </LinkedinShareButton>
-        </div> */}
+        <div className="flex items-center flex-wrap justify-center text-md -mx-1 pt-4 mt-0.5">
+          {data?.membership === 'Premium' && (
+            <div className="flex text-sm items-center text-green-500 font-bold">
+              <BsShieldFillCheck className="text-green-500 mr-2 " size={25} /> This
+              Supplier Verifyed By Website
+            </div>
+          )}
+        </div>
       </div>
       <div className="space-y-6 py-7">
         <div className="flex items-start">

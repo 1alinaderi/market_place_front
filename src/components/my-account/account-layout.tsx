@@ -3,14 +3,10 @@ import AccountNav from '@components/my-account/account-nav';
 import AccountNavMobile from './account-nav-mobile';
 import { ROUTES } from '@utils/routes';
 import SettingsIcon from '@components/icons/account-settings';
-import OrdersIcon from '@components/icons/account-order';
-import WishlistIcon from '@components/icons/account-wishlist';
-import MapIcon from '@components/icons/account-address';
-import NotificationIcon from '@components/icons/account-notification';
 import HelpIcon from '@components/icons/account-help';
 import NoticeIcon from '@components/icons/account-notice';
-import { IoSettingsOutline } from 'react-icons/io5';
 import { RiVipCrown2Line } from 'react-icons/ri';
+import { FaBoxes, FaPlus } from 'react-icons/fa';
 
 const accountMenu = [
   {
@@ -23,6 +19,18 @@ const accountMenu = [
     name: 'Membership',
     icon: (
       <RiVipCrown2Line className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
+    ),
+  },
+  {
+    slug: '/my-account/create-product',
+    name: 'Add Product',
+    icon: <FaPlus className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
+  },
+  {
+    slug: '/my-account/all-product',
+    name: 'Your Products',
+    icon: (
+      <FaBoxes className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
     ),
   },
   // {
@@ -60,7 +68,7 @@ const accountMenu = [
 const AccountLayout: React.FunctionComponent<{
   baseData: any;
   isSeller: boolean;
-}> = ({ children, baseData , isSeller}) => {
+}> = ({ children, baseData, isSeller }) => {
   return (
     <div className="border-t border-b border-border-base">
       <Container>

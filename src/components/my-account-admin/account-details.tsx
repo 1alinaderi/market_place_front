@@ -97,13 +97,6 @@ const AccountDetailsAdmin: React.FC<AccountDetailsProps> = ({ baseData }) => {
 
                 <span>{data?.orderCount}</span>
               </span>
-              <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                <Heading className="mr-2 whitespace-nowrap" variant="base">
-                  Sold Value :
-                </Heading>
-
-                <span>${data?.soldValue}</span>
-              </span>
             </div>
           </div>
         </div>

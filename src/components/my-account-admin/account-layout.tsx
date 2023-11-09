@@ -12,6 +12,7 @@ import NoticeIcon from '@components/icons/account-notice';
 import { IoSettingsOutline } from 'react-icons/io5';
 import {
   FaCreativeCommons,
+  FaMoneyBill,
   FaShoppingBag,
   FaUser,
   FaUserCheck,
@@ -29,6 +30,11 @@ const accountMenu = [
     slug: '/admin/verify',
     name: 'Verify Users',
     icon: <FaUserCheck className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
+  },
+  {
+    slug: '/admin/verifypay',
+    name: 'Verify Pay',
+    icon: <FaMoneyBill className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
   },
   {
     slug: '/admin/orders',

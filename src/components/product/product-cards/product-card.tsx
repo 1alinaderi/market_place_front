@@ -12,6 +12,10 @@ import { productPlaceholder } from '@assets/placeholders';
 import dynamic from 'next/dynamic';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import Link from 'next/link';
+import { FaTrash } from 'react-icons/fa';
+import { httpReauest } from 'src/api/api';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 const AddToCart = dynamic(() => import('@components/product/add-to-cart'), {
   ssr: false,
 });
@@ -19,6 +23,7 @@ const AddToCart = dynamic(() => import('@components/product/add-to-cart'), {
 interface ProductProps {
   product: Product;
   className?: string;
+  adminId?: any;
 }
 function RenderPopupOrAddToCart({ data }: { data: Product }) {
   const { t } = useTranslation('common');
@@ -51,8 +56,12 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
   }
   return <AddToCart data={data} />;
 }
-const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
-  const { name, image, bio, specialPrice } = product ?? {};
+const ProductCard: React.FC<ProductProps> = ({
+  product,
+  className,
+  adminId,
+}) => {
+  const { name, image, desc, specialPrice, _id } = product ?? {};
   const imageSrc = `${CDN_BASE_URL}/${image}`;
   const myLoader = () => {
     return `${CDN_BASE_URL}/${image}`;
@@ -64,6 +73,25 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
     baseAmount: product?.price,
     currencyCode: 'USD',
   });
+
+  const router = useRouter();
+
+  async function handleDelete(e: any, id: any) {
+    await e.stopPropagation();
+    await httpReauest(
+      'DELETE',
+      '/prouduct/' + id,
+      {},
+      { 'x-access-token': adminId }
+    )
+      .then((data) => {
+        toast.success(data.message);
+        router.reload();
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  }
 
   function handlePopupView() {
     openModal('PRODUCT_VIEW', product);
@@ -118,7 +146,18 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
           <h2 className="text-brand-dark text-13px sm:text-sm lg:text-15px leading-5 sm:leading-6 mb-1.5">
             {name}
           </h2>
-          <div className="mt-auto text-13px sm:text-sm">{bio}</div>
+          <div className="mt-2 text-13px sm:text-sm">
+            {desc?.slice(0, 50)}...
+          </div>
+          {adminId && (
+            <div className="w-full flex justify-end pt-2">
+              <FaTrash
+                onClick={(e) => handleDelete(e, _id)}
+                color="red"
+                size={20}
+              />
+            </div>
+          )}
         </div>
       </article>
     </Link>
