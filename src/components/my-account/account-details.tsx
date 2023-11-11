@@ -102,146 +102,153 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
   }
   return (
     <div className="flex flex-col w-full">
-      <Modal open={open} onClose={onClose}>
-        <div
-          className={
-            'w-full md:w-[720px] lg:w-[920px] xl:w-[1000px] 2xl:w-[1000px] relative '
-          }
-        >
-          {' '}
-          <CloseButton onClick={onClose} />
-          <div className="flex mx-auto overflow-hidden rounded-lg bg-brand-light py-5 gap-4 justify-center flex-wrap">
-            <h1 className="w-full text-3xl py-3 text-center text-black font-semibold">
-              Choose Your membership to Countinue
-            </h1>
-            <MembershipCard gotovip={gotovip} onClose={onClose} free />
-            <MembershipCard gotovip={gotovip} onClose={onClose} free={false} />
-          </div>
-        </div>
-      </Modal>
-      <Link href={'/my-account/vip'}>
-        {data.membership === 'Premium' ? (
-          <div
-            className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-black items-center  font-semibold flex  border-2 border-green-500 mb-8  rounded `}
-          >
-            <FaCheckCircle className="text-green-600 mr-2 text-3xl" />
-            Congratulations, your membership is premium
-          </div>
-        ) : (
-          <div
-            className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 rounded `}
-          >
-            Upgrade your membership level to get the best services
-            <FaAngleRight size={23} className="ml-1" />
-          </div>
-        )}
-      </Link>
-
       {isSeller ? (
-        <div className="flex flex-col justify-center w-full mx-auto" noValidate>
-          <Heading
-            variant="titleLarge"
-            className="mb-5 md:mb-6 lg:mb-7 lg:-mt-1"
-          >
-            {t('common:text-account-details-personal')}
-          </Heading>
-          <div className="border-b border-border-base pb-7 md:pb-8 lg:pb-10">
-            <div className="flex flex-col space-y-4 sm:space-y-5">
-              <div className="grid px-1 grid-cols-12   ">
-                <span className="col-span-12 sm:col-span-12 flex my-1 sm:mb-6 justify-center ">
-                  <span className="border p-2 rounded-full flex justify-center items-center">
-                    <img
-                      className="h-[80px] w-[80px] p-2"
-                      src={
-                        data.logo
-                          ? CDN_BASE_URL + '/' + data.logo
-                          : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'
-                      }
-                    />
-                  </span>
-                </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    Name :
-                  </Heading>
-                  <span>{data?.name}</span>
-                </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    Email :
-                  </Heading>
-                  <span>{data?.email}</span>
-                </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    Email :
-                  </Heading>
-                  <span>{data?.email}</span>
-                </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    Membership :
-                  </Heading>
-                  <span>{data?.membership}</span>
-                </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    Signing Date :
-                  </Heading>
-
-                  <span>
-                    {moment(data?.createdAt).format('MM/DD/YYYY hh:mm')}
-                  </span>
-                </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    phone :
-                  </Heading>
-
-                  <span>{data?.phone ? data.phone : 'Not Verfiyed'}</span>
-                </span>
-
-                <span className="col-span-12 sm:col-span-12 flex my-1 sm:my-3 ">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    bio :
-                  </Heading>
-
-                  <span>{data?.bio}</span>
-                </span>
+        <>
+          <Modal open={open} onClose={onClose}>
+            <div
+              className={
+                'w-full md:w-[720px] lg:w-[920px] xl:w-[1000px] 2xl:w-[1000px] relative '
+              }
+            >
+              {' '}
+              <CloseButton onClick={onClose} />
+              <div className="flex mx-auto overflow-hidden rounded-lg bg-brand-light py-5 gap-4 justify-center flex-wrap">
+                <h1 className="w-full text-3xl py-3 text-center text-black font-semibold">
+                  Choose Your membership to Countinue
+                </h1>
+                <MembershipCard gotovip={gotovip} onClose={onClose} free />
+                <MembershipCard
+                  gotovip={gotovip}
+                  onClose={onClose}
+                  free={false}
+                />
               </div>
             </div>
-          </div>
-
-          {!data?.inProggress && !data?.completeProfile && (
-            <div className="border-b border-border-base pb-7">
-              <Heading
-                variant="titleLarge"
-                className="pt-6 mb-5  md:pt-7 lg:pt-8"
+          </Modal>
+          <Link href={'/my-account/vip'}>
+            {data.membership === 'Premium' ? (
+              <div
+                className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-black items-center  font-semibold flex  border-2 border-green-500 mb-8  rounded `}
               >
-                <div className="flex items-center gap-3">
-                  Complete Your Profile
-                </div>
-              </Heading>
-              <CompleteProfileFormSellerPersonal baseData={baseData} />
-            </div>
-          )}
-
-          {data?.inProggress && (
-            <div className="border-b border-border-base pb-7">
-              <Heading
-                variant="titleLarge"
-                className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                <FaCheckCircle className="text-green-600 mr-2 text-3xl" />
+                Congratulations, your membership is premium
+              </div>
+            ) : (
+              <div
+                className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 rounded `}
               >
-                <div className="flex items-center gap-3">
-                  <MdPendingActions size={35} />
-                  Your information has been sent, you must wait for it to be
-                  confirmed by the site's support
-                </div>
-              </Heading>
-            </div>
-          )}
+                Upgrade your membership level to get the best services
+                <FaAngleRight size={23} className="ml-1" />
+              </div>
+            )}
+          </Link>
+          <div
+            className="flex flex-col justify-center w-full mx-auto"
+            noValidate
+          >
+            <Heading
+              variant="titleLarge"
+              className="mb-5 md:mb-6 lg:mb-7 lg:-mt-1"
+            >
+              {t('common:text-account-details-personal')}
+            </Heading>
+            <div className="border-b border-border-base pb-7 md:pb-8 lg:pb-10">
+              <div className="flex flex-col space-y-4 sm:space-y-5">
+                <div className="grid px-1 grid-cols-12   ">
+                  <span className="col-span-12 sm:col-span-12 flex my-1 sm:mb-6 justify-center ">
+                    <span className="border p-2 rounded-full flex justify-center items-center">
+                      <img
+                        className="h-[80px] w-[80px] p-2"
+                        src={
+                          data.logo
+                            ? CDN_BASE_URL + data.logo
+                            : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'
+                        }
+                      />
+                    </span>
+                  </span>
+                  <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
+                    <Heading className="mr-2 whitespace-nowrap" variant="base">
+                      Name :
+                    </Heading>
+                    <span>{data?.name}</span>
+                  </span>
+                  <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
+                    <Heading className="mr-2 whitespace-nowrap" variant="base">
+                      Email :
+                    </Heading>
+                    <span>{data?.email}</span>
+                  </span>
+                  <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
+                    <Heading className="mr-2 whitespace-nowrap" variant="base">
+                      Email :
+                    </Heading>
+                    <span>{data?.email}</span>
+                  </span>
+                  <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
+                    <Heading className="mr-2 whitespace-nowrap" variant="base">
+                      Membership :
+                    </Heading>
+                    <span>{data?.membership}</span>
+                  </span>
+                  <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
+                    <Heading className="mr-2 whitespace-nowrap" variant="base">
+                      Signing Date :
+                    </Heading>
 
-          {/* {data?.bankCards?.length == 0 && (
+                    <span>
+                      {moment(data?.createdAt).format('MM/DD/YYYY hh:mm')}
+                    </span>
+                  </span>
+                  <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
+                    <Heading className="mr-2 whitespace-nowrap" variant="base">
+                      phone :
+                    </Heading>
+
+                    <span>{data?.phone ? data.phone : 'Not Verfiyed'}</span>
+                  </span>
+
+                  <span className="col-span-12 sm:col-span-12 flex my-1 sm:my-3 ">
+                    <Heading className="mr-2 whitespace-nowrap" variant="base">
+                      bio :
+                    </Heading>
+
+                    <span>{data?.bio}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {!data?.inProggress && !data?.completeProfile && (
+              <div className="border-b border-border-base pb-7">
+                <Heading
+                  variant="titleLarge"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  <div className="flex items-center gap-3">
+                    Complete Your Profile
+                  </div>
+                </Heading>
+                <CompleteProfileFormSellerPersonal baseData={baseData} />
+              </div>
+            )}
+
+            {data?.inProggress && (
+              <div className="border-b border-border-base pb-7">
+                <Heading
+                  variant="titleLarge"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  <div className="flex items-center gap-3">
+                    <MdPendingActions size={35} />
+                    Your information has been sent, you must wait for it to be
+                    confirmed by the site's support
+                  </div>
+                </Heading>
+              </div>
+            )}
+
+            {/* {data?.bankCards?.length == 0 && (
           <div id="orders">
             <Heading
               variant="titleLarge"
@@ -253,30 +260,31 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
           </div>
         )} */}
 
-          {!data?.phone && (
-            <div id="orders">
+            {!data?.phone && (
+              <div id="orders">
+                <Heading
+                  variant="titleLarge"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  Verify Your Phone
+                </Heading>
+                <VerifyPhoneBuyer baseData={baseData} />
+              </div>
+            )}
+
+            {data?.completeProfile && (
               <Heading
                 variant="titleLarge"
                 className="pt-6 mb-5  md:pt-7 lg:pt-8"
               >
-                Verify Your Phone
+                <div className="flex items-center gap-3">
+                  <FaCheckCircle className="text-green-500" />
+                  Your Profile is Complete
+                </div>
               </Heading>
-              <VerifyPhoneBuyer baseData={baseData} />
-            </div>
-          )}
-
-          {data?.completeProfile && (
-            <Heading
-              variant="titleLarge"
-              className="pt-6 mb-5  md:pt-7 lg:pt-8"
-            >
-              <div className="flex items-center gap-3">
-                <FaCheckCircle className="text-green-500" />
-                Your Profile is Complete
-              </div>
-            </Heading>
-          )}
-        </div>
+            )}
+          </div>
+        </>
       ) : (
         <div className="flex flex-col justify-center w-full mx-auto" noValidate>
           <Heading
@@ -312,13 +320,6 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
 
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
                   <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    Type :
-                  </Heading>
-
-                  <span>{data?.type}</span>
-                </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
                     Address :
                   </Heading>
 
@@ -345,13 +346,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
 
                   <span>{data?.city ? data.city : 'No City'}</span>
                 </span>
-                <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
-                    Certifed Id :
-                  </Heading>
 
-                  <span>{data?.passId ? data.passId : 'No Id'}</span>
-                </span>
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
                   <Heading className="mr-2 whitespace-nowrap" variant="base">
                     Postal Code :
@@ -360,24 +355,6 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                   <span>
                     {data?.postalCode ? data.postalCode : 'No Postal Code'}
                   </span>
-                </span>
-
-                <span className="col-span-12 sm:col-span-12 flex my-1 sm:my-3 flex-wrap">
-                  <Heading
-                    className="mr-2 pb-4 whitespace-nowrap"
-                    variant="base"
-                  >
-                    Bank Cards :
-                  </Heading>
-
-                  {data?.bankCards &&
-                    data?.bankCards.map((card) => {
-                      return (
-                        <div className="w-full">
-                          {card.name} - {card.cardNumber}
-                        </div>
-                      );
-                    })}
                 </span>
               </div>
             </div>
@@ -393,7 +370,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </Heading>
           )}
-          {!data?.address && !data?.country && (
+          {!data?.address || !data?.country && (
             <div className="border-b border-border-base pb-7">
               <Heading
                 variant="titleLarge"
@@ -403,23 +380,10 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                   Complete Your Profile
                 </div>
               </Heading>
-              {data?.type === 'COMPANY' ? (
-                <CompleteProfileFormBuyerCompany baseData={baseData} />
-              ) : (
-                <CompleteProfileFormBuyerPersonal baseData={baseData} />
-              )}
+
+              <CompleteProfileFormBuyerPersonal baseData={baseData} />
             </div>
           )}
-
-          <div id="orders">
-            <Heading
-              variant="titleLarge"
-              className="pt-6 mb-5  md:pt-7 lg:pt-8"
-            >
-              Add Your Bank Cards
-            </Heading>
-            <VerifyCardBank baseData={baseData} />
-          </div>
 
           {!data?.phone && (
             <div id="orders">

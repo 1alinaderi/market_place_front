@@ -25,8 +25,11 @@ import ProductDetailsTab from '@components/product/product-details/product-tab';
 import VariationPrice from './variation-price';
 import isEqual from 'lodash/isEqual';
 import { API_ENDPOINTS, CDN_BASE_URL } from '@framework/utils/api-endpoints';
+import StarRatingComponent from 'react-star-rating-component';
+import StarIcon from '@components/icons/star-icon';
+import { BsStarHalf } from 'react-icons/bs';
 
-const ProductSingleDetails: React.FC = () => {
+const ProductSingleDetails: React.FC = ({ baseData }) => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const {
@@ -111,9 +114,9 @@ const ProductSingleDetails: React.FC = () => {
     });
   }
 
-  const imageSrc = `${CDN_BASE_URL}/${data?.image}`;
+  const imageSrc = `${CDN_BASE_URL}${data?.image}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${data?.image}`;
+    return `${CDN_BASE_URL}${data?.image}`;
   };
 
   return (
@@ -149,6 +152,32 @@ const ProductSingleDetails: React.FC = () => {
               </h2>
             </div>
             <div className="pt-2">Owner : {data?.owner}</div>
+            {data?.rate ? (
+              <StarRatingComponent
+                name="app"
+                starCount={5}
+                value={data?.rate}
+                starColor="#F3B81F"
+                emptyStarColor="#DFE6ED"
+                renderStarIconHalf={() => (
+                  <BsStarHalf
+                    color="#F3B81F"
+                    className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3"
+                  />
+                )}
+                renderStarIcon={() => (
+                  <StarIcon className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3" />
+                )}
+              />
+            ) : (
+              <div className="pt-2">No Rate yet</div>
+            )}
+
+            {data?.reviews?.length == 0 ? (
+              <div className="pt-2">No Reviews yet</div>
+            ) : (
+              <div className="pt-2">{data?.reviews?.length} Reviews</div>
+            )}
 
             {isEmpty(variations) && (
               <div className="flex items-center mt-4">
@@ -235,7 +264,7 @@ const ProductSingleDetails: React.FC = () => {
           )}
         </div>
       </div>
-      <ProductDetailsTab data={data} />
+      <ProductDetailsTab baseData={baseData} data={data} />
     </div>
   );
 };

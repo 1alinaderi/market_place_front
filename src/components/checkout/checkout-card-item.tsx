@@ -25,7 +25,7 @@ export const CheckoutItem: React.FC<{ item: Item }> = ({ item }) => {
           className="rounded-md ltr:mr-5 rtl:ml-5"
           src={
             item?.image
-              ? CDN_BASE_URL + '/' + item.image
+              ? CDN_BASE_URL + item.image
               : '/assets/placeholder/order-product.svg'
           }
           alt={'item image'}

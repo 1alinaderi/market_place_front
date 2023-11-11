@@ -27,9 +27,9 @@ const CollectionCard: React.FC<Props> = ({
   const { image, name: title, description } = collection;
   const { t } = useTranslation('common');
 
-  const imageSrc = `${CDN_BASE_URL}/${image}`;
+  const imageSrc = `${CDN_BASE_URL}${image}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${image}`;
+    return `${CDN_BASE_URL}${image}`;
   };
   return (
     <Link

@@ -7,11 +7,12 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ProductDetailsTab({ data }) {
+export default function ProductDetailsTab({ data  , baseData}) {
   let [tabHeading] = useState({
     Product_Details: '',
-    // Review_Rating: '',
+    Review_Rating: '',
   });
+
 
   return (
     <div className="w-full xl:px-2 py-11 lg:py-14 xl:py-16 sm:px-0">
@@ -66,7 +67,7 @@ export default function ProductDetailsTab({ data }) {
                     <tr className="font-normal border-b border-border-four last:border-b-0">
                       <td className="px-4 py-3 lg:px-5 xl:px-6">Category</td>
                       <td className="w-24 px-4 py-3 border-s border-border-four lg:px-5 xl:px-6 ltr:text-right rtl:text-left lg:w-28 xl:w-36">
-                        {data?.category}
+                        {data?.category?.name}
                       </td>
                     </tr>
                     <tr className="font-normal border-b border-border-four last:border-b-0">
@@ -86,7 +87,9 @@ export default function ProductDetailsTab({ data }) {
               </div>
             </div>
           </Tab.Panel>
-          <Tab.Panel>{/* <ProductReviewRating /> */}</Tab.Panel>
+          <Tab.Panel>
+            <ProductReviewRating baseData={baseData} data={data?.reviews}/>
+          </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </div>

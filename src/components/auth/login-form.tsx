@@ -53,9 +53,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
       { email: profile.email, name: profile.given_name },
       {}
     )
-      .then((e) => {
+      .then(async(e) => {
         toast.success(e.data.message);
-        baseData.handleLogin({
+        await baseData.handleLoginSeller(null);
+        await baseData.handleLogin({
           email: profile.email,
           id: e.data.data._id,
           token: e.data.data.token,
@@ -85,9 +86,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
     // });
 
     await httpReauest('POST', '/user/login', { email, password }, {})
-      .then((e) => {
+      .then(async(e) => {
         toast.success(e.data.message);
-        baseData.handleLogin({
+        await baseData.handleLoginSeller(null);
+        await baseData.handleLogin({
           email: email,
           id: e.data.data._id,
           token: e.data.data.token,

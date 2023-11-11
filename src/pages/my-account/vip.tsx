@@ -11,7 +11,7 @@ import Heading from '@components/ui/heading';
 import PaypalCheckouButton from '@components/paypal/paypalButton';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
-import { FaCheckCircle, FaPlus } from 'react-icons/fa';
+import { FaCheck, FaCheckCircle, FaPlus } from 'react-icons/fa';
 import Button from '@components/ui/button';
 import { RiLoader3Line } from 'react-icons/ri';
 import { GrFormClock } from 'react-icons/gr';
@@ -20,6 +20,8 @@ export default function AccountDetailsPage({ baseData }) {
   const [data, setData] = useState([]);
   const [image, setimage] = useState(null);
   const [preview, setpreview] = useState(null);
+  const [refralcode, setrefralcode] = useState(null);
+  const [discount, setdiscount] = useState(null);
 
   const router = useRouter();
 
@@ -66,6 +68,24 @@ export default function AccountDetailsPage({ baseData }) {
     setData(data.data);
   }
 
+  async function checkCode() {
+    await httpReauest(
+      'POST',
+      '/supplier/refreal',
+      { code: refralcode },
+      {
+        'x-access-token': baseData.cookies.seller.token,
+      }
+    )
+      .then(() => {
+        toast.success('price is Update');
+        setdiscount(true);
+      })
+      .catch(() => {
+        toast.error('refreal Code is wrong');
+      });
+  }
+
   async function handleApprove(id: any) {
     const formdata = new FormData();
     if (image) {
@@ -84,6 +104,17 @@ export default function AccountDetailsPage({ baseData }) {
       toast.success('upload your photo');
     }
   }
+
+  const [isSeller, setIsSeller] = useState(false);
+  useEffect(() => {
+    if (baseData.cookies.user?.id) {
+      setIsSeller(false);
+    }
+    if (baseData.cookies.seller?.id) {
+      setIsSeller(true);
+    }
+  }, [router.pathname]);
+
   return (
     <>
       <Seo
@@ -91,7 +122,7 @@ export default function AccountDetailsPage({ baseData }) {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/account-settings"
       />
-      <AccountLayout baseData={baseData}>
+      <AccountLayout isSeller={isSeller} baseData={baseData}>
         {data?.completeProfile ? (
           <>
             <Heading variant="title" className="pb-8">
@@ -132,13 +163,24 @@ export default function AccountDetailsPage({ baseData }) {
                   variant="title"
                   className="pt-8 flex justify-between flex-wrap items-center gap-4"
                 >
-                  <span>Membership Price : $800</span>
+                  <span>Membership Price : {discount ? '$400' : '$800'}</span>
                   <span>
                     Refreal code :{' '}
                     <input
+                      onChange={(e) => {
+                        setrefralcode(e.target.value);
+                      }}
                       type={'text'}
                       className="rounded-md border-slate-400 w-[170px] h-[32px]"
                     />
+                    {refralcode && (
+                      <button
+                        onClick={checkCode}
+                        className="bg-red-500 text-[12px] px-2 mb-1 ml-1 rounded text-white"
+                      >
+                        Check
+                      </button>
+                    )}
                   </span>
                 </Heading>
                 <p className="mt-4">

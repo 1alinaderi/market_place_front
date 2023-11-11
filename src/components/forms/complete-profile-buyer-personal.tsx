@@ -21,41 +21,25 @@ const CompleteProfileFormBuyerPersonal = ({ baseData }) => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    if (image) {
-      if (image.size > 1031517) {
-        toast.error('The file size is more than 1mb');
-        setimage(null);
-      } else {
-        setPreviwImage();
-      }
-    }
-  }, [image]);
-
-  function setPreviwImage() {
-    const reader = new FileReader();
-    reader.onloadend = function () {
-      setpreview(reader.result);
-    };
-    reader.readAsDataURL(image);
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
-    if (country && image && city && postalCode && passId && address) {
+    if (country && city && address && postalCode) {
       const formData = new FormData();
 
-      formData.append('passPhoto', image, image?.name);
       formData.append('country', country);
-      formData.append('city', city);
       formData.append('postalCode', postalCode);
-      formData.append('passId', passId);
+      formData.append('city', city);
       formData.append('address', address);
       // formData.append('id', baseData?.cookies?.user?.id);
 
-      await httpReauest('POST', '/user/profile/personal', formData, {
-        'x-access-token': baseData?.cookies?.user?.token,
-      })
+      await httpReauest(
+        'POST',
+        '/user/profile',
+        { country, postalCode, city, address },
+        {
+          'x-access-token': baseData?.cookies?.user?.token,
+        }
+      )
         .then((e) => {
           toast.success(e.data.message);
           router.reload();
@@ -118,44 +102,6 @@ const CompleteProfileFormBuyerPersonal = ({ baseData }) => {
                 setPostalCode(e.target.value);
               }}
               className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </span>
-          <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              Passport Id or National Id :
-            </Heading>
-            <input
-              onChange={(e) => {
-                setPassId(e.target.value);
-              }}
-              className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </span>
-
-          <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              Passport or Birth certificate :
-            </Heading>
-            <label className="cursor-pointer relative" htmlFor="addImage">
-              {preview ? (
-                <img
-                  src={preview ? preview : null}
-                  className="w-full h-[160px] rounded object-contain"
-                />
-              ) : (
-                <div className="w-full h-[160px] rounded relative border">
-                  <FaPlus size={25} className="inset-0 absolute m-auto" />
-                </div>
-              )}
-            </label>
-            <input
-              onChange={(e) => {
-                setimage(e.target.files[0]);
-              }}
-              id="addImage"
-              className="hidden"
-              type={'file'}
-              accept="image/png, image/jpg, image/jpeg"
             />
           </span>
         </div>

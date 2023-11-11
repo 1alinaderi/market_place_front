@@ -63,7 +63,7 @@ export default function AccountDetailsPage({ baseData }) {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/address"
       />
-      <AccountLayout baseData={baseData}>
+      <AccountLayout isSeller={baseData?.cookies?.seller?.id ? true : false} baseData={baseData}>
         <Heading variant="titleLarge">Address :</Heading>
         {editing ? (
           <Input

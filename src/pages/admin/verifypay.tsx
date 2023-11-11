@@ -76,24 +76,29 @@ export default function AccountDetailsPage({ baseData }) {
           {data?.map((user) => {
             return (
               <div className="w-full md:col-span-6 col-span-12 flex-col  p-3 border-2 rounded flex justify-center ">
-                <span className="flex gap-4">
+                <span className="flex gap-4 flex-wrap ">
                   <img
-                    src={CDN_BASE_URL + '/' + user.logo}
+                    src={CDN_BASE_URL + user.logo}
                     className="w-[80px] h-[80px] my-1"
                   />
                   <span className="flex flex-col">
                     <span className="py-1 font-bold text-2xl">{user.name}</span>
-                    <span className="py-1 text-md">{user.email}</span>
+                    <span className="py-1 text-sm">{user.email}</span>
                   </span>
                 </span>
+                {user?.refrealCode && (
+                  <p className="bg-green-500 text-white p-2 mt-2 rounded">
+                    Have Refreal Code price is $400
+                  </p>
+                )}
                 <a
-                  href={CDN_BASE_URL + '/' + user?.payMembershipDoc}
+                  href={CDN_BASE_URL + user?.payMembershipDoc}
                   target="_blank"
                   className="my-3"
                 >
                   <img
                     className="w-full p-2"
-                    src={CDN_BASE_URL + '/' + user?.payMembershipDoc}
+                    src={CDN_BASE_URL + user?.payMembershipDoc}
                   />
                 </a>
 

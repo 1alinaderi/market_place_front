@@ -62,9 +62,9 @@ const ProductCard: React.FC<ProductProps> = ({
   adminId,
 }) => {
   const { name, image, desc, specialPrice, _id } = product ?? {};
-  const imageSrc = `${CDN_BASE_URL}/${image}`;
+  const imageSrc = `${CDN_BASE_URL}${image}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${image}`;
+    return `${CDN_BASE_URL}${image}`;
   };
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');

@@ -56,14 +56,19 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
     // });
 
     await httpReauest('POST', '/supplier/login', { email, password }, {})
-      .then((e) => {
-        toast.success(e.data.message);
-        baseData.handleLoginSeller({
-          email: email,
-          id: e.data.data._id,
-          token: e.data.data.token,
-        });
-        router.push(`${window.location.origin}/my-account`);
+      .then(async(e) => {
+        if (e.data.message == 'succesfull') {
+          toast.success(e.data.message);
+          await baseData.handleLogin(null);
+          await baseData.handleLoginSeller({
+            email: email,
+            id: e.data.data._id,
+            token: e.data.data.token,
+          });
+          router.push(`${window.location.origin}/my-account`);
+        } else {
+          toast.warning(e.data.message);
+        }
       })
       .catch((e) => {
         toast.error('email or password is wrong');

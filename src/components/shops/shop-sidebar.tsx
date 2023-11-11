@@ -35,9 +35,9 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
   const descriptionHandel = () => {
     return setDescriptionState(true);
   };
-  const imageSrc = `${CDN_BASE_URL}/${data?.logo}`;
+  const imageSrc = `${CDN_BASE_URL}${data?.logo}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${data?.logo}`;
+    return `${CDN_BASE_URL}${data?.logo}`;
   };
   return (
     <div className="flex flex-col px-6 pt-10 lg:pt-14">
@@ -58,9 +58,9 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
         <Text variant="small">
           {descriptionState === true ? (
             data?.bio
-          ) : data?.bio.split(' ').length >= 13 ? (
+          ) : data?.bio?.split(' ').length >= 13 ? (
             <>
-              {data?.bio.split(' ').slice(0, 13).join(' ')}
+              {data?.bio?.split(' ').slice(0, 13).join(' ')}
               {'..'}
               <span
                 role="button"
@@ -77,8 +77,8 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
         <div className="flex items-center flex-wrap justify-center text-md -mx-1 pt-4 mt-0.5">
           {data?.membership === 'Premium' && (
             <div className="flex text-sm items-center text-green-500 font-bold">
-              <BsShieldFillCheck className="text-green-500 mr-2 " size={25} /> This
-              Supplier Verifyed By Website
+              <BsShieldFillCheck className="text-green-500 mr-2 " size={25} />{' '}
+              This Supplier Verifyed By Website
             </div>
           )}
         </div>

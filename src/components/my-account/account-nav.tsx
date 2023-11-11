@@ -20,9 +20,12 @@ export default function AccountNav({
   const { t } = useTranslation('common');
   // const { mutate: logout } = useLogoutMutation(baseData.handleLogin);
 
+  console.log(baseData)
+
   const { pathname, push } = useRouter();
-  function logout() {
-    baseData.handleLogin(null);
+  async function logout() {
+    await baseData.handleLogin(null);
+    await baseData.handleLoginSeller(null);
     push('/signin');
   }
   const newPathname = pathname.split('/').slice(2, 3);

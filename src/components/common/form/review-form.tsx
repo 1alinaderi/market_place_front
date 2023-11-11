@@ -9,9 +9,13 @@ import Text from '@components/ui/text';
 import cn from 'classnames';
 import StarRatingComponent from 'react-star-rating-component';
 import StarIcon from '@components/icons/star-icon';
+import { httpReauest } from 'src/api/api';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 interface ReviewFormProps {
   className?: string;
+  baseData?: any;
 }
 interface ReviewFormValues {
   name: string;
@@ -20,16 +24,35 @@ interface ReviewFormValues {
   message: string;
 }
 
-const ReviewForm: React.FC<ReviewFormProps> = ({ className = '' }) => {
+const ReviewForm: React.FC<ReviewFormProps> = ({
+  className = '',
+  baseData,
+}) => {
   const { t } = useTranslation();
+  const { query , reload } = useRouter();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ReviewFormValues>();
   const [rating_custom_icon, set_rating_custom_icon] = useState(1);
-  function onSubmit(values: ReviewFormValues) {
-    console.log(values, 'review');
+  async function onSubmit(values: ReviewFormValues) {
+    console.log(values, rating_custom_icon, 'review');
+
+    await httpReauest(
+      'POST',
+      '/prouduct/review/' + query.slug,
+      { content: values.message, rate: rating_custom_icon },
+      { 'x-access-token': baseData.cookies.user.token }
+    )
+      .then(() => {
+        toast.success('SuccessFull');
+        reload()
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
   }
   const onStarClickCustomIcon = (
     nextValue: number,
@@ -47,9 +70,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ className = '' }) => {
   return (
     <div className={cn(className)}>
       <Heading className="mb-2">Write your review</Heading>
-      <Text>
-        Your email address will not be published. Required fields are marked*
-      </Text>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col justify-center w-full mx-auto mt-5 lg:mt-7 xl:mt-9"
@@ -72,42 +93,14 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ className = '' }) => {
               )}
             />
           </div>
-          <Input
-            label={t('forms:label-name-star')}
-            {...register('name', { required: 'Name is required' })}
-            error={errors.name?.message}
-            variant="solid"
-          />
+
           <TextArea
             variant="solid"
             label="forms:label-message-star"
             {...register('message', { required: 'Message is required' })}
             error={errors.message?.message}
           />
-          <div className="flex flex-col space-y-5 md:flex-row md:space-y-0">
-            <Input
-              label={t('forms:label-name-star')}
-              {...register('name', { required: 'Name is required' })}
-              className="w-full md:w-1/2 "
-              error={errors.name?.message}
-              variant="solid"
-            />
-            <Input
-              label={t('forms:label-email-star')}
-              type="email"
-              {...register('email', {
-                required: 'forms:email-required',
-                pattern: {
-                  value:
-                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: 'forms:email-error',
-                },
-              })}
-              className="w-full md:w-1/2 md:ltr:ml-2.5 md:rtl:mr-2.5 lg:ltr:ml-5 lg:rtl:mr-5 mt-2 md:mt-0"
-              error={errors.email?.message}
-              variant="solid"
-            />
-          </div>
+
           <div className="pt-1">
             <Button
               type="submit"

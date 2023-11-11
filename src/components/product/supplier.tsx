@@ -124,9 +124,9 @@ const SupplierSingleDetails: React.FC = () => {
     });
   }
 
-  const imageSrc = `${CDN_BASE_URL}/${data?.image}`;
+  const imageSrc = `${CDN_BASE_URL}${data?.image}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${data?.image}`;
+    return `${CDN_BASE_URL}${data?.image}`;
   };
 
   return (

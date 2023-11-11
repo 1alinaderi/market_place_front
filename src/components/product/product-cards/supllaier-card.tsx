@@ -55,10 +55,10 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
 const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
   const { name, logo, bio, product_type, _id, membership } = product ?? {};
 
-  const imageSrc = CDN_BASE_URL + '/' + logo;
+  const imageSrc = CDN_BASE_URL + logo;
 
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${logo}`;
+    return `${CDN_BASE_URL}${logo}`;
   };
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
@@ -94,12 +94,12 @@ const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
             <div className="flex  overflow-hidden w-full pt-4  justify-center transition duration-200 ease-in-out transform group-hover:scale-105 relative">
               <Image
                 loader={myLoader}
-                src={imageSrc ?? productPlaceholder}
+                src={imageSrc}
                 alt={name || 'Product Image'}
                 width={150}
                 height={150}
                 quality={100}
-                className="object-fill rounded-full "
+                className="object-fill "
               />
               {membership === 'Premium' && (
                 <BsShieldFillCheck

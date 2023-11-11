@@ -10,14 +10,15 @@ import { GetServerSideProps } from 'next';
 import Divider from '@components/ui/divider';
 import FreshVegetablesProductFeed from '@components/product/feeds/fresh-vegetables-product-feed';
 
-export default function ProductPage() {
+export default function ProductPage({ baseData }) {
+
   return (
     <>
       <Divider />
       <div className="pt-6 lg:pt-7">
         <Container>
           <Breadcrumb />
-          <ProductSingleDetails />
+          <ProductSingleDetails baseData={baseData} />
         </Container>
       </div>
 

@@ -48,9 +48,9 @@ const ProductFlashSellCard: React.FC<ProductProps> = ({
 }) => {
   const { name, image, quantity, sold, product_type } = product ?? {};
 
-  const imageSrc = `${CDN_BASE_URL}/${image}`;
+  const imageSrc = `${CDN_BASE_URL}${image}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${image}`;
+    return `${CDN_BASE_URL}${image}`;
   };
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');

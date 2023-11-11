@@ -73,7 +73,7 @@ export default function AccountDetailsPage({ baseData }) {
               <div className="w-full md:col-span-6 col-span-12 flex-col  p-3 border-2 rounded flex justify-center ">
                 <span className="flex gap-4">
                   <img
-                    src={CDN_BASE_URL + '/' + user.logo}
+                    src={CDN_BASE_URL + user.logo}
                     className="w-[80px] h-[80px] my-1"
                   />
                   <span className="flex flex-col">
@@ -86,8 +86,10 @@ export default function AccountDetailsPage({ baseData }) {
                   </span>
                 </span>
 
+                <p className="mt-3 text-[14px]">{user?.bio}</p>
+
                 <a
-                  href={CDN_BASE_URL + '/' + user.siteResume}
+                  href={CDN_BASE_URL + user.siteResume}
                   className="py-4 flex items-center text-3xl font-bold justify-center"
                 >
                   See resume:

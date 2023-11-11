@@ -29,9 +29,9 @@ const ShopsSingleDetails: React.FC = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  const imageSrc = `${CDN_BASE_URL}/${data?.logo}`;
+  const imageSrc = `${CDN_BASE_URL}${data?.logo}`;
   const myLoader = () => {
-    return `${CDN_BASE_URL}/${data?.logo}`;
+    return `${CDN_BASE_URL}${data?.logo}`;
   };
 
   return (
