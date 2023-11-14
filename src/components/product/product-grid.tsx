@@ -6,17 +6,25 @@ import Button from '@components/ui/button';
 import ProductCard from '@components/product/product-cards/product-card';
 import ProductCardLoader from '@components/ui/loaders/product-card-loader';
 import cn from 'classnames';
-import { useProductsQuery } from '@framework/product/get-all-products';
+import {
+  useProductsDiscountQuery,
+  useProductsQuery,
+} from '@framework/product/get-all-products';
 import { LIMITS } from '@framework/utils/limits';
 import { Product } from '@framework/types';
 
 interface ProductGridProps {
   className?: string;
+  discount?: boolean;
 }
 
-export const ProductGrid: FC<ProductGridProps> = ({ className = '' }) => {
+export const ProductGrid: FC<ProductGridProps> = ({
+  className = '',
+  discount,
+}) => {
   const { t } = useTranslation('common');
   const { query } = useRouter();
+
   const {
     isFetching: isLoading,
     isFetchingNextPage: loadingMore,
@@ -24,7 +32,9 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = '' }) => {
     hasNextPage,
     data,
     error,
-  } = useProductsQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query });
+  } = discount
+    ? useProductsDiscountQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query })
+    : useProductsQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query });
 
   const prouductData = data?.pages[0]?.data;
 

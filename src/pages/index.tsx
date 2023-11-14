@@ -98,13 +98,34 @@ export default function Home() {
 
       <div className="w-full  m-0 p-2 overflow-hidden relative md:h-[100vh]">
         <div className="w-full h-full p-0 m-0">
-          <div className="w-full h-full overflow-hidden md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 opacity-60">
-            <span className="col-span-12 md:col-span-4 relative shadow-2xl flex justify-center items-center flex-col bg-white rounded-lg py-5 md:py-0">
+          <div className="w-full h-full overflow-hidden md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 ">
+            <Link href={'/marketplace'}>
+              <span className="duration-200  bg-white  min-h-[200px] cursor-pointer flex md:hidden items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
+                <img className="w-20 h-20" src="/icons/design.png" />
+                <span className=" px-3 mt-3 text-center text-black w-full   text-2xl md:text-2xl xl:text-2xl 2xl:text-4xl font-bold ">
+                  SUSTAINABLE ARCH <br /> AND ART
+                </span>
+                {/* <img src="/assets/home/sus (1).png" className="w-full h-full" /> */}
+              </span>
+            </Link>
+            <Link href={'/products/discount'}>
+              <span className="shadow-2xl flex  hover:scale-95 duration-200 cursor-pointer col-span-12 md:col-span-3  relative h-full  md:hidden flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
+                <img className="w-20 h-20" src="/icons/offer.png" />
+                <span
+                  style={{
+                    textShadow: 'none',
+                  }}
+                  className=" text-black  mt-2 text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold w-full text-center"
+                >
+                  DISCOUNTED RETAIL
+                </span>
+              </span>
+            </Link>
+            <span className="col-span-12 opacity-60 md:col-span-4 relative shadow-2xl flex justify-center items-center flex-col bg-white rounded-lg py-5 md:py-0">
               <img className="w-20 h-20" src="/icons/diamond.png" />
               <span
                 style={{
-                  textShadow:
-                    'none',
+                  textShadow: 'none',
                 }}
                 className="  text-black  w-full text-center   text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold"
               >
@@ -112,41 +133,39 @@ export default function Home() {
               </span>
               {/* <img src="/assets/home/luxury (1).png" className="w-full h-full" /> */}
             </span>
-            <span className="bg-white col-span-12 md:col-span-3 relative h-full rounded-lg py-5 md:py-0 flex flex-col justify-center items-center min-h-[120px] ">
+            <span className="bg-white opacity-60 col-span-12 md:col-span-3 relative h-full rounded-lg py-5 md:py-0 flex flex-col justify-center items-center min-h-[120px] ">
               <img className="w-20 h-20" src="/icons/online-shopping.png" />
               <span
                 style={{
-                  textShadow:
-                    'none',
+                  textShadow: 'none',
                 }}
                 className="mt-2 text-black text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold w-full text-center"
               >
                 FREE MARKET
               </span>
             </span>
-            <span className=" col-span-12  md:col-span-5 relative h-full bg-white rounded-lg py-5 md:py-0 flex flex-col items-center justify-center">
+            <span className=" col-span-12 opacity-60  md:col-span-5 relative h-full bg-white rounded-lg py-5 md:py-0 flex flex-col items-center justify-center">
               <img className="w-20 h-20" src="/icons/environmentalism.png" />
-              <span
-                
-                className=" text-black pt-2  text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold w-full text-center"
-              >
+              <span className=" text-black pt-2  text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold w-full text-center">
                 ECO-FRIENDLY BRANDS
               </span>
             </span>
           </div>
           <div className="w-full h-full md:h-[39vh] grid grid-cols-1 gap-4 py-2 md:grid-cols-12">
-            <span className=" col-span-12 md:col-span-3  relative h-full opacity-60 flex flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
-              <img className="w-20 h-20" src="/icons/offer.png" />
-              <span
-                style={{
-                  textShadow:
-                    'none',
-                }}
-                className=" text-black  mt-2 text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold w-full text-center"
-              >
-                DISCOUNTED RETAIL
+            <Link href={'/products/discount'}>
+              <span className="shadow-2xl hidden  hover:scale-95 duration-200 cursor-pointer col-span-12 md:col-span-3  relative h-full  md:flex flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
+                <img className="w-20 h-20" src="/icons/offer.png" />
+                <span
+                  style={{
+                    textShadow: 'none',
+                  }}
+                  className=" text-black  mt-2 text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold w-full text-center"
+                >
+                  DISCOUNTED RETAIL
+                </span>
               </span>
-            </span>
+            </Link>
+
             <span className="col-span-12 md:col-span-5 h-full">
               <div className=" text-2xl sm:text-4xl md:py-0 py-2 md:text-2xl xl:text-4xl  2xl:text-6xl h-auto md:h-1/4  font-serif font-bold grid grid-cols-12  items-center justify-between">
                 <span className=" col-span-9 text-center">
@@ -172,8 +191,7 @@ export default function Home() {
 
                   <span
                     style={{
-                      textShadow:
-                        'none',
+                      textShadow: 'none',
                     }}
                     className=" text-black mt-1 text-2xl md:text-2xl xl:text-4xl 2xl:text-4xl font-bold text-center"
                   >
@@ -201,10 +219,10 @@ export default function Home() {
               </div>
             </span>
             <Link href={'/marketplace'}>
-              <span className="duration-200 bg-white  min-h-[200px] cursor-pointer flex items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
+              <span className="duration-200  bg-white  min-h-[200px] cursor-pointer hidden md:flex items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
                 <img className="w-20 h-20" src="/icons/design.png" />
                 <span className=" px-3 mt-3 text-center text-black w-full   text-2xl md:text-2xl xl:text-2xl 2xl:text-4xl font-bold ">
-                  SUSTAINABLE ARCH AND ART
+                  SUSTAINABLE ARCH <br /> AND ART
                 </span>
                 {/* <img src="/assets/home/sus (1).png" className="w-full h-full" /> */}
               </span>

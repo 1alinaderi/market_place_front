@@ -8,9 +8,18 @@ type PaginatedProduct = {
 };
 const fetchProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  console.log(_params);
   const { data } = await http.get(
     `${API_ENDPOINTS.PRODUCTS}?${
+      _params.category && 'category=' + _params.category
+    }`
+  );
+  return data;
+};
+
+const fetchProductsDiscount = async ({ queryKey }: any) => {
+  const [_key, _params] = queryKey;
+  const { data } = await http.get(
+    `${API_ENDPOINTS.PRODUCTSDISCOUNT}?${
       _params.category && 'category=' + _params.category
     }`
   );
@@ -24,4 +33,16 @@ const useProductsQuery = (options: QueryOptionsType) => {
   );
 };
 
-export { useProductsQuery, fetchProducts };
+const useProductsDiscountQuery = (options: QueryOptionsType) => {
+  return useInfiniteQuery<PaginatedProduct, Error>(
+    [API_ENDPOINTS.PRODUCTS, options],
+    fetchProductsDiscount
+  );
+};
+
+export {
+  useProductsQuery,
+  fetchProducts,
+  useProductsDiscountQuery,
+  fetchProductsDiscount,
+};

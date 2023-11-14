@@ -34,20 +34,20 @@ const CollectionCard: React.FC<Props> = ({
   return (
     <Link
       href={href}
-      className="flex flex-col overflow-hidden rounded-md group shadow-card "
+      className="flex flex-col overflow-hidden rounded-md group shadow-xl bg-slate-300"
     >
-      <Image
+      {/* <Image
         loader={myLoader}
         src={imageSrc ?? collectionPlaceholder}
         alt={t(title) || t('text-card-thumbnail')}
         width={imgWidth}
         height={imgHeight}
         className="object-cover transition duration-300 ease-in-out transform bg-fill-thumbnail group-hover:opacity-90 group-hover:scale-105"
-      />
+      /> */}
       <div className="flex flex-col px-4 pt-4 pb-4 lg:px-5 xl:px-6 lg:pt-5 md:pb-5 lg:pb-6 xl:pb-4">
         <Heading
-          variant="title"
-          className="mb-1 lg:mb-1.5 truncate group-hover:text-brand"
+          variant="base"
+          className="mb-1 lg:mb-1.5 truncate group-hover:text-brand text-center"
         >
           {t(title)}
         </Heading>
