@@ -31,6 +31,10 @@ export default function AccountDetailsPage({ baseData }) {
   const [balance, setbalance] = useState(null);
   const [category, setcategory] = useState(null);
   const [data, setData] = useState(null);
+  const [firstCategory, setFirstCategory] = useState(null);
+  const [subcategory, setsubcategory] = useState(null);
+  const [categoryName, setcategoryName] = useState(null);
+  const [subcategoryForm, setsubcategoryForm] = useState(null);
 
   const router = useRouter();
 
@@ -42,7 +46,12 @@ export default function AccountDetailsPage({ baseData }) {
 
   useEffect(() => {
     if (image) {
-      setPreviwImage();
+      if (image.size > 1031517) {
+        toast.error('The file size is more than 1mb');
+        setimage(null);
+      } else {
+        setPreviwImage();
+      }
     }
   }, [image]);
 
@@ -53,6 +62,19 @@ export default function AccountDetailsPage({ baseData }) {
       getSellerData(baseData.cookies.seller?.id);
     }
   }, [router.pathname]);
+
+  useEffect(() => {
+    if (firstCategory) {
+      {
+        categories?.data?.map((category) => {
+          if (category._id == firstCategory) {
+            setcategoryName(category.name);
+            setsubcategory(category?.subCategory);
+          }
+        });
+      }
+    }
+  }, [firstCategory]);
 
   function setPreviwImage() {
     const reader = new FileReader();
@@ -67,13 +89,16 @@ export default function AccountDetailsPage({ baseData }) {
     if (!category) {
       await setcategory(categories?.data[0]?._id);
     }
-    if (name && bio && image && price && balance) {
+    if (name && bio && image && price && balance && category) {
       const formData = new FormData();
 
       formData.append('image', image, image?.name);
       formData.append('name', name);
       formData.append('desc', bio);
       formData.append('price', price);
+      if (subcategoryForm) {
+        formData.append('subCategory', subcategoryForm);
+      }
       formData.append('owner', baseData?.cookies?.seller?.id);
       if (specialprice) {
         formData.append('specialPrice', specialprice);
@@ -103,7 +128,10 @@ export default function AccountDetailsPage({ baseData }) {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/account-settings"
       />
-      <AccountLayout isSeller={baseData?.cookies?.seller?.id ? true : false} baseData={baseData}>
+      <AccountLayout
+        isSeller={baseData?.cookies?.seller?.id ? true : false}
+        baseData={baseData}
+      >
         <form onSubmit={handleSubmit}>
           <div className="grid px-1 grid-cols-12   ">
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
@@ -188,6 +216,7 @@ export default function AccountDetailsPage({ baseData }) {
               <select
                 onChange={(e) => {
                   setcategory(e.target.value);
+                  setFirstCategory(e.target.value);
                 }}
                 className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               >
@@ -196,6 +225,23 @@ export default function AccountDetailsPage({ baseData }) {
                 })}
               </select>
             </span>
+
+            {firstCategory && subcategory?.length != 1 && (
+              <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                  Categories in {categoryName} :
+                </Heading>
+                <select
+                  onChange={(e) => setsubcategoryForm(e.target.value)}
+                  className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                >
+                  {subcategory?.map((sub) => {
+                    return <option value={sub}>{sub}</option>;
+                  })}
+                </select>
+              </span>
+            )}
+
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
                 Balance :

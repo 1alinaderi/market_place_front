@@ -49,6 +49,8 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
 
   const { data, isLoading } = useProductQuery(slug as string);
 
+  console.log(data);
+
   const { addItemToCart, isInCart, getItemFromCart, isInStock } = useCart();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
@@ -148,10 +150,9 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
             <div className="md:mb-2.5 block -mt-1.5">
               <h2 className="text-lg font-medium transition-colors duration-300 text-brand-dark md:text-xl xl:text-2xl">
                 {data?.name}
-                {console.log(data)}
               </h2>
             </div>
-            <div className="pt-2">Owner : {data?.owner}</div>
+            <div className="pt-2">Owner : {data?.owner?.name}</div>
             {data?.rate ? (
               <StarRatingComponent
                 name="app"
@@ -173,11 +174,11 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
               <div className="pt-2">No Rate yet</div>
             )}
 
-            {data?.reviews?.length == 0 ? (
+            {/* {data?.reviews?.length == 0 ? (
               <div className="pt-2">No Reviews yet</div>
             ) : (
               <div className="pt-2">{data?.reviews?.length} Reviews</div>
-            )}
+            )} */}
 
             {isEmpty(variations) && (
               <div className="flex items-center mt-4">
