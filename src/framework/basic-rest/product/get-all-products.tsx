@@ -11,7 +11,7 @@ const fetchProducts = async ({ queryKey }: any) => {
   const { data } = await http.get(
     `${API_ENDPOINTS.PRODUCTS}?${
       _params.category && 'category=' + _params.category
-    }`
+    }&${_params.subcategory && 'subcategory=' + _params.subcategory}`
   );
   return data;
 };
