@@ -207,7 +207,7 @@ export default function Home() {
                       </span>
                     </div>
                   </Link>
-                  <Link href={'/supplier/signup'}>
+                  <Link href={'/packing'}>
                     <div className="rounded-full relative has-tooltip cursor-pointer bg-orange-500  md:w-[60px] w-[60px]  md:h-[60px] h-[60px]  text-center flex justify-center items-center text-2xl text-white font-serif ">
                       P
                       <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">

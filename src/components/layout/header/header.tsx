@@ -66,7 +66,7 @@ const Header: React.FC = () => {
         displayMobileSearch && 'active-mobile-search'
       )}
     >
-      <div className="z-20 bg-1d3557 w-screen transition-all duration-200 ease-in-out innerSticky lg:w-full body-font bg-fill-secondary">
+      <div dir='ltr' className="z-20 bg-1d3557 w-screen transition-all duration-200 ease-in-out innerSticky lg:w-full body-font bg-fill-secondary">
         <Search
           searchId="mobile-search"
           className="top-bar-search  lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-1"

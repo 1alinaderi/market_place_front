@@ -11,7 +11,7 @@ import { FaPlus } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { httpReauest } from 'src/api/api';
 
-const CompleteProfileFormSellerPersonal = ({ baseData }) => {
+const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   const [image, setimage] = useState(null);
   const [image1, setimage1] = useState(null);
   const [imagenew, setimagenew] = useState(null);
@@ -85,7 +85,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData }) => {
         <div className="grid px-1 grid-cols-12   ">
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
             <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              logo *:
+              {t('t-logo')} *:
             </Heading>
             <label className="cursor-pointer relative" htmlFor="addImage">
               {preview ? (
@@ -111,7 +111,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData }) => {
           </span>
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
             <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              bio :
+              {t('t-bio')} :
             </Heading>
             <textarea
               onChange={(e) => {
@@ -122,19 +122,19 @@ const CompleteProfileFormSellerPersonal = ({ baseData }) => {
           </span>
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
             <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              Download This and Full it And Uploaded :
+              {t('t-download-and-full')} :
               <br />
               <br />
               <a download href={'/resume.docx'}>
                 <span className="bg-red-500 p-2 rounded cursor-pointer  text-white">
-                  Click it
+                  {t('t-click')}
                 </span>
               </a>
             </Heading>
           </span>
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
             <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              Website resume :
+              {t('t-website-resume')} :
             </Heading>
 
             <input
@@ -149,7 +149,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData }) => {
 
         <div className="px-5 mt-8">
           <Button variant="formButton" type="submit">
-            Submit
+            {t('t-submit')}
           </Button>
         </div>
       </form>

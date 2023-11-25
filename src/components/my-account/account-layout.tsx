@@ -17,19 +17,19 @@ const accountMenuSeller = [
   },
   {
     slug: '/my-account/vip',
-    name: 'Membership',
+    name: 'account-membership',
     icon: (
       <RiVipCrown2Line className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
     ),
   },
   {
     slug: '/my-account/create-product',
-    name: 'Add Product',
+    name: 'account-add-product',
     icon: <FaPlus className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
   },
   {
     slug: '/my-account/all-product',
-    name: 'Your Products',
+    name: 'account-see-product',
     icon: (
       <FaBoxes className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
     ),

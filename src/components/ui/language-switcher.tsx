@@ -5,10 +5,10 @@ import { siteSettings } from '@settings/site-settings';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ justFa }) {
   const { site_header } = siteSettings;
   const { t } = useTranslation('common');
-  const options = site_header.languageMenu;
+  const options = justFa ? site_header.languageMenu2 : site_header.languageMenu;
   const router = useRouter();
   const { asPath, locale } = router;
   const currentSelectedItem = locale

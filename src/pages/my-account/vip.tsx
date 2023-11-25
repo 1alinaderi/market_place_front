@@ -15,6 +15,7 @@ import { FaCheck, FaCheckCircle, FaPlus } from 'react-icons/fa';
 import Button from '@components/ui/button';
 import { RiLoader3Line } from 'react-icons/ri';
 import { GrFormClock } from 'react-icons/gr';
+import { useTranslation } from 'next-i18next';
 
 export default function AccountDetailsPage({ baseData }) {
   const [data, setData] = useState([]);
@@ -25,10 +26,12 @@ export default function AccountDetailsPage({ baseData }) {
 
   const router = useRouter();
 
+  const { t } = useTranslation('common');
+
   useEffect(() => {
     if (image) {
       if (image.size > 1031517) {
-        toast.error('The file size is more than 1mb');
+        toast.error(t('t-size-more-1mb'));
         setimage(null);
       } else {
         setPreviwImage();
@@ -78,11 +81,11 @@ export default function AccountDetailsPage({ baseData }) {
       }
     )
       .then(() => {
-        toast.success('price is Update');
+        toast.success(t('t-price-update'));
         setdiscount(true);
       })
       .catch(() => {
-        toast.error('refreal Code is wrong');
+        toast.error(t('t-refreal-code-wrong'));
       });
   }
 
@@ -101,7 +104,7 @@ export default function AccountDetailsPage({ baseData }) {
           toast.success(error.message);
         });
     } else {
-      toast.success('upload your photo');
+      toast.success(t('t-upload-photo'));
     }
   }
 
@@ -123,104 +126,96 @@ export default function AccountDetailsPage({ baseData }) {
         path="my-account/account-settings"
       />
       <AccountLayout isSeller={isSeller} baseData={baseData}>
-        {data?.completeProfile ? (
-          <>
-            <Heading variant="title" className="pb-8">
-              You can get all these things by buying membership
-            </Heading>
-            <ul className="grid grid-cols-1 px-4 md:px-0 md:grid-cols-3 gap-3 list-disc">
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-              <li>Soem Test TExt </li>
-            </ul>
-            {data?.membership === 'Premium' ? (
-              <>
-                <Heading
-                  variant="titleLarge"
-                  className="pt-8 flex items-center"
-                >
-                  <FaCheckCircle className="text-green-600 mr-2 text-3xl" />
-                  Congratulations, your membership is premium
-                </Heading>
-              </>
-            ) : data?.checkPay ? (
-              <>
-                <Heading variant="title" className="pt-8 flex items-center">
-                  <GrFormClock className="text-green-600 mr-2 text-4xl" />
-                  We are checking the document you uploaded, if it is correct,
-                  your membership will be upgraded
-                </Heading>
-              </>
-            ) : (
-              <>
-                <Heading
-                  variant="title"
-                  className="pt-8 flex justify-between flex-wrap items-center gap-4"
-                >
-                  <span>Membership Price : {discount ? '$400' : '$800'}</span>
-                  <span>
-                    Refreal code :{' '}
-                    <input
-                      onChange={(e) => {
-                        setrefralcode(e.target.value);
-                      }}
-                      type={'text'}
-                      className="rounded-md border-slate-400 w-[170px] h-[32px]"
-                    />
-                    {refralcode && (
-                      <button
-                        onClick={checkCode}
-                        className="bg-red-500 text-[12px] px-2 mb-1 ml-1 rounded text-white"
-                      >
-                        Check
-                      </button>
-                    )}
-                  </span>
-                </Heading>
-                <p className="mt-4">
-                  Send 111,111,111 IRR To This card And Upload photo: <br />
-                  <span>IR-1111111122222222222444444</span>{' '}
-                </p>
-                <div className=" sm:w-1/2 my-7">
-                  <label className="cursor-pointer relative" htmlFor="addImage">
-                    {preview ? (
-                      <img
-                        src={preview ? preview : null}
-                        className="w-full h-[160px] rounded object-contain"
-                      />
-                    ) : (
-                      <div className="w-full h-[160px] rounded relative border">
-                        <FaPlus size={25} className="inset-0 absolute m-auto" />
-                      </div>
-                    )}
-                  </label>
+        <>
+          <Heading variant="title" className="pb-8">
+            {t('t-get-all-things')}
+          </Heading>
+          <ul className="grid grid-cols-1 px-4 md:px-0 md:grid-cols-3 gap-3 list-disc">
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+            <li>Soem Test TExt </li>
+          </ul>
+          {data?.membership === 'Premium' ? (
+            <>
+              <Heading variant="titleLarge" className="pt-8 flex items-center">
+                <FaCheckCircle className="text-green-600 mx-2 text-3xl" />
+                {t('text-congratulations-membership')}
+              </Heading>
+            </>
+          ) : data?.checkPay ? (
+            <>
+              <Heading variant="title" className="pt-8 flex items-center">
+                <GrFormClock className="text-green-600 mx-2 text-4xl" />
+                {t('t-check-uploaded-photo')}
+              </Heading>
+            </>
+          ) : (
+            <>
+              <Heading
+                variant="title"
+                className="pt-8 flex justify-between flex-wrap items-center gap-4"
+              >
+                <span>
+                  {t('t-membership-price')} : {discount ? '$400' : '$800'}
+                </span>
+                <span>
+                  {t('t-refreal-code')} :{' '}
                   <input
                     onChange={(e) => {
-                      setimage(e.target.files[0]);
+                      setrefralcode(e.target.value);
                     }}
-                    id="addImage"
-                    className="hidden"
-                    type={'file'}
-                    accept="image/png, image/jpg, image/jpeg"
+                    type={'text'}
+                    className="rounded-md border-slate-400 w-[170px] h-[32px]"
                   />
-                </div>
-                <Button onClick={handleApprove} variant="formButton">
-                  Submit
-                </Button>
-              </>
-            )}
-          </>
-        ) : (
-          <Heading variant="title" className="pb-8">
-            You must first complete your profile
-          </Heading>
-        )}
+                  {refralcode && (
+                    <button
+                      onClick={checkCode}
+                      className="bg-red-500 text-[12px] px-2 mb-1 ml-1 rounded text-white"
+                    >
+                      {t('t-check')}
+                    </button>
+                  )}
+                </span>
+              </Heading>
+              <p className="mt-4">
+                {t('t-send-money-and-upload')}: <br />
+                <span>IR-1111111122222222222444444</span>{' '}
+              </p>
+              <div className=" sm:w-1/2 my-7">
+                <label className="cursor-pointer relative" htmlFor="addImage">
+                  {preview ? (
+                    <img
+                      src={preview ? preview : null}
+                      className="w-full h-[160px] rounded object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-[160px] rounded relative border">
+                      <FaPlus size={25} className="inset-0 absolute m-auto" />
+                    </div>
+                  )}
+                </label>
+                <input
+                  onChange={(e) => {
+                    setimage(e.target.files[0]);
+                  }}
+                  id="addImage"
+                  className="hidden"
+                  type={'file'}
+                  accept="image/png, image/jpg, image/jpeg"
+                />
+              </div>
+              <Button onClick={handleApprove} variant="formButton">
+                {t('t-submit')}
+              </Button>
+            </>
+          )}
+        </>
       </AccountLayout>
     </>
   );

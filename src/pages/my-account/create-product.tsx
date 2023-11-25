@@ -16,6 +16,7 @@ import { getCategories } from '@utils/get-categories';
 import { useCategoriesQuery } from '@framework/category/get-all-categories';
 import { useAllSupplierQuery } from '@framework/product/get-all-supplier';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function AccountDetailsPage({ baseData }) {
   const categories = useCategoriesQuery({ limit: 15 });
@@ -44,10 +45,12 @@ export default function AccountDetailsPage({ baseData }) {
     setData(data.data);
   }
 
+  const { t } = useTranslation('common');
+
   useEffect(() => {
     if (image) {
       if (image.size > 1031517) {
-        toast.error('The file size is more than 1mb');
+        toast.error(t("t-size-more-1mb"));
         setimage(null);
       } else {
         setPreviwImage();
@@ -117,7 +120,7 @@ export default function AccountDetailsPage({ baseData }) {
           toast.error(e.message);
         });
     } else {
-      toast.error('check all fild');
+      toast.error(t("t-check-all-fild"));
     }
   }
 
@@ -136,7 +139,7 @@ export default function AccountDetailsPage({ baseData }) {
           <div className="grid px-1 grid-cols-12   ">
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Name:
+                {t("t-name")}:
               </Heading>
               <input
                 onChange={(e) => {
@@ -147,7 +150,7 @@ export default function AccountDetailsPage({ baseData }) {
             </span>
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Price :
+                {t("t-price")} :
               </Heading>
               <input
                 type={'number'}
@@ -159,7 +162,7 @@ export default function AccountDetailsPage({ baseData }) {
             </span>
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Desc :
+                {t("t-desc")} :
               </Heading>
               <textarea
                 onChange={(e) => {
@@ -170,7 +173,7 @@ export default function AccountDetailsPage({ baseData }) {
             </span>
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Image :
+                {t("t-image")} :
               </Heading>
               <label className="cursor-pointer relative" htmlFor="addImage">
                 {preview ? (
@@ -197,7 +200,7 @@ export default function AccountDetailsPage({ baseData }) {
             {data?.membership === 'Premium' && (
               <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  Special Price ?:
+                  {t("t-special-price")} ?:
                 </Heading>
                 <input
                   type={'number'}
@@ -211,7 +214,7 @@ export default function AccountDetailsPage({ baseData }) {
 
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Category :
+                {t("t-category")} :
               </Heading>
               <select
                 onChange={(e) => {
@@ -229,7 +232,7 @@ export default function AccountDetailsPage({ baseData }) {
             {firstCategory && subcategory?.length != 1 && (
               <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  Categories in {categoryName} :
+                {t("t-category-in")} {categoryName} :
                 </Heading>
                 <select
                   onChange={(e) => setsubcategoryForm(e.target.value)}
@@ -244,7 +247,7 @@ export default function AccountDetailsPage({ baseData }) {
 
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Balance :
+                {t("t-balance")} :
               </Heading>
               <input
                 onChange={(e) => {
@@ -256,7 +259,7 @@ export default function AccountDetailsPage({ baseData }) {
           </div>
           <div className="px-5 mt-8">
             <Button variant="formButton" type="submit">
-              Submit
+              {t("t-submit")}
             </Button>
           </div>
         </form>

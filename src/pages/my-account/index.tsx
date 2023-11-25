@@ -18,6 +18,14 @@ export default function AccountDetailsPage({ baseData }) {
       setIsSeller(true);
     }
   }, [router.pathname]);
+
+  useEffect(() => {
+    if (router.locale == 'fa') {
+      document.documentElement.dir = 'rtl';
+    } else {
+      document.documentElement.dir = 'ltr';
+    }
+  }, [router.locale]);
   return (
     <>
       <Seo
@@ -25,7 +33,7 @@ export default function AccountDetailsPage({ baseData }) {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="my-account/account-settings"
       />
-      <AccountLayout isSeller={isSeller}  baseData={baseData}>
+      <AccountLayout isSeller={isSeller} baseData={baseData}>
         <AccountDetails isSeller={isSeller} baseData={baseData} />
       </AccountLayout>
     </>

@@ -30,6 +30,7 @@ import Modal from '@components/common/modal/modal';
 import LoginForm from '@components/auth/login-form';
 import CloseButton from '@components/ui/close-button';
 import MembershipCard from '@components/cards/membership-card';
+import LanguageSwitcher from '@components/ui/language-switcher';
 
 const defaultValues = {};
 
@@ -43,7 +44,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
   isSeller,
 }) => {
   const { mutate: updateUser, isLoading } = useUpdateUserMutation();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const [data, setData] = useState([]);
   const [open, setopen] = useState<boolean>(false);
   const [orders, setorders] = useState();
@@ -114,7 +115,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               <CloseButton onClick={onClose} />
               <div className="flex mx-auto overflow-hidden rounded-lg bg-brand-light py-5 gap-4 justify-center flex-wrap">
                 <h1 className="w-full text-3xl py-3 text-center text-black font-semibold">
-                  Choose Your membership to Countinue
+                  {t('text-choose-membership')}
                 </h1>
                 <MembershipCard gotovip={gotovip} onClose={onClose} free />
                 <MembershipCard
@@ -125,19 +126,23 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </div>
           </Modal>
+          <div className="max-w-[230px] bg-[#eee] py-1 px-5 rounded mb-4 ">
+            <LanguageSwitcher justFa />
+          </div>
+
           <Link href={'/my-account/vip'}>
             {data.membership === 'Premium' ? (
               <div
                 className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-black items-center  font-semibold flex  border-2 border-green-500 mb-8  rounded `}
               >
-                <FaCheckCircle className="text-green-600 mr-2 text-3xl" />
-                Congratulations, your membership is premium
+                <FaCheckCircle className="text-green-600 mx-2 text-3xl" />
+                {t('text-congratulations-membership')}
               </div>
             ) : (
               <div
                 className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 rounded `}
               >
-                Upgrade your membership level to get the best services
+                {t('text-upgrade-membership')}
                 <FaAngleRight size={23} className="ml-1" />
               </div>
             )}
@@ -168,32 +173,27 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                     </span>
                   </span>
                   <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                    <Heading className="mr-2 whitespace-nowrap" variant="base">
-                      Name :
+                    <Heading className="mx-2 whitespace-nowrap" variant="base">
+                      {t('t-name')} :
                     </Heading>
                     <span>{data?.name}</span>
                   </span>
                   <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                    <Heading className="mr-2 whitespace-nowrap" variant="base">
-                      Email :
+                    <Heading className="mx-2 whitespace-nowrap" variant="base">
+                      {t('t-email')} :
                     </Heading>
                     <span>{data?.email}</span>
                   </span>
+
                   <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                    <Heading className="mr-2 whitespace-nowrap" variant="base">
-                      Email :
-                    </Heading>
-                    <span>{data?.email}</span>
-                  </span>
-                  <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                    <Heading className="mr-2 whitespace-nowrap" variant="base">
-                      Membership :
+                    <Heading className="mx-2 whitespace-nowrap" variant="base">
+                      {t('account-membership')} :
                     </Heading>
                     <span>{data?.membership}</span>
                   </span>
                   <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                    <Heading className="mr-2 whitespace-nowrap" variant="base">
-                      Signing Date :
+                    <Heading className="mx-2 whitespace-nowrap" variant="base">
+                      {t('t-sign-date')} :
                     </Heading>
 
                     <span>
@@ -201,16 +201,16 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                     </span>
                   </span>
                   <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                    <Heading className="mr-2 whitespace-nowrap" variant="base">
-                      phone :
+                    <Heading className="mx-2 whitespace-nowrap" variant="base">
+                      {t('t-phone')} :
                     </Heading>
 
-                    <span>{data?.phone ? data.phone : 'Not Verfiyed'}</span>
+                    <span>{data?.phone ? data.phone : t('t-not-verify')}</span>
                   </span>
 
                   <span className="col-span-12 sm:col-span-12 flex my-1 sm:my-3 ">
-                    <Heading className="mr-2 whitespace-nowrap" variant="base">
-                      bio :
+                    <Heading className="mx-2 whitespace-nowrap" variant="base">
+                      {t('t-bio')} :
                     </Heading>
 
                     <span>{data?.bio}</span>
@@ -226,10 +226,10 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                   className="pt-6 mb-5  md:pt-7 lg:pt-8"
                 >
                   <div className="flex items-center gap-3">
-                    Complete Your Profile
+                    {t('t-compelete-profile')}
                   </div>
                 </Heading>
-                <CompleteProfileFormSellerPersonal baseData={baseData} />
+                <CompleteProfileFormSellerPersonal t={t} baseData={baseData} />
               </div>
             )}
 
@@ -241,8 +241,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                 >
                   <div className="flex items-center gap-3">
                     <MdPendingActions size={35} />
-                    Your information has been sent, you must wait for it to be
-                    confirmed by the site's support
+                    {t('t-send-information-wait')}
                   </div>
                 </Heading>
               </div>
@@ -266,9 +265,9 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                   variant="titleLarge"
                   className="pt-6 mb-5  md:pt-7 lg:pt-8"
                 >
-                  Verify Your Phone
+                  {t('t-verify-phone')}
                 </Heading>
-                <VerifyPhoneBuyer baseData={baseData} />
+                <VerifyPhoneBuyer t={t} baseData={baseData} />
               </div>
             )}
 
@@ -279,7 +278,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               >
                 <div className="flex items-center gap-3">
                   <FaCheckCircle className="text-green-500" />
-                  Your Profile is Complete
+                  {t('t-profile-us-complete')}
                 </div>
               </Heading>
             )}
@@ -297,19 +296,19 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
             <div className="flex flex-col space-y-4 sm:space-y-5">
               <div className="grid px-1 grid-cols-12   ">
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     Name :
                   </Heading>
                   <span>{data?.name}</span>
                 </span>
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     Email :
                   </Heading>
                   <span>{data?.email}</span>
                 </span>
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     Signing Date :
                   </Heading>
 
@@ -319,28 +318,28 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                 </span>
 
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     Address :
                   </Heading>
 
                   <span>{data?.address ? data.address : 'No Address'}</span>
                 </span>
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     Phone :
                   </Heading>
 
                   <span>{data?.phone ? data.phone : 'No phone'}</span>
                 </span>
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     Country :
                   </Heading>
 
                   <span>{data?.country ? data.country : 'No Country'}</span>
                 </span>
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     City :
                   </Heading>
 
@@ -348,7 +347,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                 </span>
 
                 <span className="col-span-12 sm:col-span-6 flex my-1 sm:my-3">
-                  <Heading className="mr-2 whitespace-nowrap" variant="base">
+                  <Heading className="mx-2 whitespace-nowrap" variant="base">
                     Postal Code :
                   </Heading>
 
@@ -370,20 +369,21 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </Heading>
           )}
-          {!data?.address || !data?.country && (
-            <div className="border-b border-border-base pb-7">
-              <Heading
-                variant="titleLarge"
-                className="pt-6 mb-5  md:pt-7 lg:pt-8"
-              >
-                <div className="flex items-center gap-3">
-                  Complete Your Profile
-                </div>
-              </Heading>
+          {!data?.address ||
+            (!data?.country && (
+              <div className="border-b border-border-base pb-7">
+                <Heading
+                  variant="titleLarge"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  <div className="flex items-center gap-3">
+                    Complete Your Profile
+                  </div>
+                </Heading>
 
-              <CompleteProfileFormBuyerPersonal baseData={baseData} />
-            </div>
-          )}
+                <CompleteProfileFormBuyerPersonal baseData={baseData} />
+              </div>
+            ))}
 
           {!data?.phone && (
             <div id="orders">
@@ -393,7 +393,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               >
                 Verify Your Phone
               </Heading>
-              <VerifyPhoneBuyer baseData={baseData} />
+              <VerifyPhoneBuyer t={t} baseData={baseData} />
             </div>
           )}
 

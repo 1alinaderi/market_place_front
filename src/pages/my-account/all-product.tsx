@@ -11,11 +11,14 @@ import { httpReauest } from 'src/api/api';
 import { useState, useEffect } from 'react';
 import ProductCard from '@components/product/product-cards/product-card';
 import Heading from '@components/ui/heading';
+import { useTranslation } from 'next-i18next';
 
 export default function AccountDetailsPage({ baseData }) {
   const [data, setData] = useState(null);
 
   const router = useRouter();
+
+  const {t} = useTranslation("common")
 
   async function getSellerData(id: any) {
     const { data } = await httpReauest(
@@ -50,7 +53,7 @@ export default function AccountDetailsPage({ baseData }) {
           className={`grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5 xl:gap-6`}
         >
           {data?.length == 0 ? (
-            <Heading>You Don't Have Product</Heading>
+            <Heading>{t("t-dont-product")}</Heading>
           ) : (
             data?.map((item) => {
               return (

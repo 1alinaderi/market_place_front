@@ -8,7 +8,7 @@ import { FaPlus } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { httpReauest } from 'src/api/api';
 
-const VerifyPhoneBuyer = ({ baseData }) => {
+const VerifyPhoneBuyer = ({ baseData, t }) => {
   const [phone, setPhone] = useState<string>();
   const [sendCode, setsendcode] = useState<string>();
   const [code, setcode] = useState<string>();
@@ -44,10 +44,10 @@ const VerifyPhoneBuyer = ({ baseData }) => {
           <div className="grid px-1 grid-cols-12   ">
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                We Send a Code To {phone}
+                {t('t-send-code')} {phone}
               </Heading>
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Code :
+                {t('t-code')} :
               </Heading>
               <input
                 onChange={(e) => {
@@ -59,7 +59,7 @@ const VerifyPhoneBuyer = ({ baseData }) => {
           </div>
           <div className="px-5 mt-8">
             <Button variant="formButton" type="submit">
-              Submit
+              {t('t-submit')}
             </Button>
           </div>
         </form>
@@ -68,7 +68,7 @@ const VerifyPhoneBuyer = ({ baseData }) => {
           <div className="grid px-1 grid-cols-12   ">
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                Phone :
+                {t('t-phone')} :
               </Heading>
 
               <input
@@ -81,7 +81,7 @@ const VerifyPhoneBuyer = ({ baseData }) => {
           </div>
           <div className="px-5 mt-8">
             <Button variant="formButton" type="button" onClick={setsendcode}>
-              Send Code
+              {t('t-submit')}
             </Button>
           </div>
         </div>

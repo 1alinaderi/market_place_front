@@ -20,8 +20,6 @@ export default function AccountNav({
   const { t } = useTranslation('common');
   // const { mutate: logout } = useLogoutMutation(baseData.handleLogin);
 
-  console.log(baseData)
-
   const { pathname, push } = useRouter();
   async function logout() {
     await baseData.handleLogin(null);

@@ -36,8 +36,21 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   const dir = getDirection(router.locale);
   useEffect(() => {
-    document.documentElement.dir = dir;
-  }, [dir]);
+    if (
+      router.pathname != '/my-account' &&
+      router.pathname != '/my-account/vip' &&
+      router.pathname != '/my-account/create-product' &&
+      router.pathname != '/my-account/all-product' &&
+      router.pathname != '/my-account/legal-notice' &&
+      router.pathname != '/my-account/help-center'
+    ) {
+      if (router.locale == 'fa') {
+        router.push(router.asPath, router.asPath, { locale: 'en' });
+      } else {
+        document.documentElement.dir = dir;
+      }
+    }
+  }, [dir, router]);
   const Layout = (Component as any).Layout || Noop;
 
   const [cookies, setCookie] = useCookies(['user', 'seller']);

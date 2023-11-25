@@ -1,0 +1,66 @@
+{
+  "account-information" : "اطلاعات کاربری",
+  "account-membership" : "ممبرشیپ",
+  "account-add-product" : "اضافه کردن محصول",
+  "account-see-product" : "محصولات شما",
+  "text-account-details-notice" : "اطلاع قانونی",
+  "text-account-details-help" : "پشتیبانی",
+  "text-choose-membership" : "ممبرشیپ خود را برای ادامه انتخاب کنید",
+  "text-congratulations-membership" : "تبریک ! ممبرشیپ شما پریمیوم است",
+  "text-upgrade-membership" :"ممبرشیپ خود را ارتقا دهید تا بهترین سرویس را دریافت کنید",
+  "text-account-details-personal" : "اطلاعات کاربری",
+  "t-name" : "اسم",
+  "t-email" : "ایمیل",
+  "t-sign-date" : "تاریخ ثبت نام",
+  "t-phone" : "تلفن",
+  "t-not-verify" : "ویریفای نشده است",
+  "t-bio" :"توضیح",
+  "t-compelete-profile" : "اطلاعات خود را کامل کنید",
+  "t-send-information-wait" : "اطلاعات شما ارسال شده است، باید منتظر باشید تا توسط پشتیبانی سایت تایید شود",
+  "t-verify-phone" : "تلفن خود را تأیید کنید",
+  "t-profile-us-complete" : "پروفایل شما کامل است",
+  "t-send-code" : "کد ارسال کردیم به :",
+  "t-code" : "کد",
+  "t-submit" : "تایید",
+  "t-logo" : "لوگو",
+  "t-download-and-full" : "این فایل را دانلود کنید سپس ان را پر کنید و در سایت آپلود کنید",
+  "t-click" : "کلیک کنید",
+  "t-website-resume" : "رزومه وب سایتی",
+  "text-logout" : "خروج",
+  "t-price-update" : "قیمت تغییر کرد",
+  "t-refreal-code-wrong" : "کد رفرال اشتباه است",
+  "t-size-more-1mb" : "حجم فایل بیشتر از یک مگابایت است",
+  "t-upload-photo" : "عکس را آپلود کنید",
+  "t-get-all-things" : "با خرید ممبرشیپ از تمام این سرویس ها بهره مند میشوید",
+  "t-check-uploaded-photo" : "تیم ما در حال چک کردن مدرکی است که آپلود کردید اگر درست باشد ممبرشیپ شما ارتقا میابد",
+  "t-membership-price" : "قیمت ممبرشیپ",
+  "t-refreal-code" : "کد رفرال",
+  "t-check" : "چک" ,
+  "t-send-money-and-upload" : "مبلغ 25 میلیون تومان واریز کنید و رسید ان را آپلود کنید",
+  "t-must-complete-profile" : "باید پروفایل تان کامل باشد",
+  "t-check-all-fild" : "همه فیلد ها را پر کنید",
+  "t-price" : "قیمت",
+  "t-desc" : "توضیحات",
+  "t-image" : "عکس" ,
+  "t-special-price" : "قیمت با تخفیف",
+  "t-category" : "دسته بندی",
+  "t-category-in" : "دسته بندی ها در",
+  "t-balance" : "موجودی",
+  "t-dont-product" : "شما محصولی ندارید"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

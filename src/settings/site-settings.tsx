@@ -201,5 +201,24 @@ export const siteSettings = {
         icon: <ESFlag />,
       },
     ],
+    languageMenu2: [
+      {
+        id: 'fa',
+        name: 'فارسی - FA',
+        value: 'fa',
+        icon: (
+          <img
+            className="w-full h-full"
+            src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_Iran.svg"
+          />
+        ),
+      },
+      {
+        id: 'en',
+        name: 'English - EN',
+        value: 'en',
+        icon: <USFlag />,
+      },
+    ],
   },
 };
