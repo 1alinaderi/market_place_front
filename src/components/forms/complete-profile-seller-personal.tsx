@@ -121,7 +121,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
             />
           </span>
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+            <Heading className="mr-2 pb-2 " variant="base">
               {t('t-download-and-full')} :
               <br />
               <br />
