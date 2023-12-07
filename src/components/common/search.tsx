@@ -105,7 +105,7 @@ const Search = React.forwardRef<HTMLDivElement, Props>(
                           />
                         </div>
                       ))
-                    : data?.map((item, index) => (
+                    : data?.data?.map((item, index) => (
                         <div
                           key={`search-result-key-${index}`}
                           className="py-2.5 ltr:pl-5 rtl:pr-5 ltr:pr-10 rtl:pl-10 scroll-snap-align-start transition-colors duration-200 hover:bg-fill-base"

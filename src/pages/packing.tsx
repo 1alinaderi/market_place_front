@@ -127,6 +127,26 @@ export default function Packing() {
               src="/image/packing/1 (19).jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
+            <img
+              src="/image/packing/1 (32).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (33).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (34).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (35).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (36).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
           </div>
           <div className="flex flex-wrap justify-start gap-4">
             <Heading variant="heading" className="w-full py-3">
@@ -146,6 +166,63 @@ export default function Packing() {
             />
             <img
               src="/image/packing/1 (23).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+          </div>
+
+          <div className="flex flex-wrap justify-start gap-4">
+            <Heading variant="heading" className="w-full py-3">
+              Olive Oil packing
+            </Heading>
+            <img
+              src="/image/packing/1 (25).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (26).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (27).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+          </div>
+
+          <div className="flex flex-wrap justify-start gap-4">
+            <Heading variant="heading" className="w-full py-3">
+              Flower packing
+            </Heading>
+            <img
+              src="/image/packing/1 (28).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (29).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (30).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (31).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+          </div>
+          <div className="flex flex-wrap justify-start gap-4">
+            <Heading variant="heading" className="w-full py-3">
+              Jewelry packing
+            </Heading>
+            <img
+              src="/image/packing/1 (37).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (38).jpg"
+              className="md:w-[32%] w-[100%] rounded-2xl"
+            />
+            <img
+              src="/image/packing/1 (39).jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>

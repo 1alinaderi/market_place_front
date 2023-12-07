@@ -22,7 +22,7 @@ export const API_ENDPOINTS = {
   CHIPS_PRODUCTS: '/prouduct/discount',
   POPCORN_JERKY_PRODUCTS: '/products_popcorn_jerky.json',
   FRESH_VEGETABLES_PRODUCTS: '/prouduct',
-  SEARCH: '/search.json',
+  SEARCH: '/prouduct/search',
   ORDERS: '/orders.json',
   ORDER: '/order.json',
   ORDER_STATUS: '/order-status.json',

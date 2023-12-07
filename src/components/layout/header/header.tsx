@@ -78,7 +78,7 @@ const Header: React.FC = () => {
 
           <Search
             searchId="top-bar-search"
-            className=" lg:flex lg:max-w-[650px] px-6 2xl:max-w-[800px] lg:ltr:ml-7 lg:rtl:mr-7 lg:ltr:mr-5 lg:rtl:ml-5"
+            className=" lg:flex lg:max-w-[650px] px-1 md:px-6 2xl:max-w-[800px] lg:ltr:ml-7 lg:rtl:mr-7 lg:ltr:mr-5 lg:rtl:ml-5"
           />
 
           <button
