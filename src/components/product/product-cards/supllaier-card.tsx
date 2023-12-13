@@ -55,10 +55,14 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
 const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
   const { name, logo, bio, product_type, _id, membership } = product ?? {};
 
-  const imageSrc = CDN_BASE_URL + logo;
+  const imageSrc = logo
+    ? `${CDN_BASE_URL}${logo}`
+    : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png';
 
   const myLoader = () => {
-    return `${CDN_BASE_URL}${logo}`;
+    return logo
+      ? `${CDN_BASE_URL}${logo}`
+      : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png';
   };
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');

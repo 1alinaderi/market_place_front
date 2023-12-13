@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductProps> = ({
   adminId,
 }) => {
   const { name, image, desc, specialPrice, _id } = product ?? {};
-  const imageSrc = `${CDN_BASE_URL}${image}`;
+  const imageSrc = image ? `${CDN_BASE_URL}${image}` : "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png";
   const myLoader = () => {
     return `${CDN_BASE_URL}${image}`;
   };
