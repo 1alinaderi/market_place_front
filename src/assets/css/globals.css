@@ -475,3 +475,102 @@ input:checked + .slider:before {
 .bg-457bd9 {
   background-color: #457bd9;
 }
+
+
+
+
+@font-face {
+  font-family: 'Rocher';
+  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+
+.pastel_text{
+  font-family: 'Rocher';
+  base-palette: 9;
+}
+
+.grays {
+  font-palette: --Grays;
+}
+
+.purples {
+  font-palette: --Purples;
+}
+
+.mint {
+  font-palette: --Mint;
+}
+
+.reds {
+  font-palette: --Reds;
+}
+
+.oranges {
+  font-palette: --Orange;
+}
+
+.blacks {
+  font-palette: --Black;
+}
+.whites {
+  font-palette: --White;
+}
+
+.foods {
+  font-palette: --Food;
+}
+
+@font-palette-values --Grays {
+  font-family: Rocher;
+  base-palette: 9;
+}
+
+@font-palette-values --Reds {
+  font-family: Rocher;
+  base-palette: 1;
+}
+
+@font-palette-values --Orange {
+  font-family: Rocher;
+  base-palette: 2;
+}
+
+@font-palette-values --Black {
+  font-family: Rocher;
+  base-palette: 3;
+}
+
+@font-palette-values --White {
+  font-family: Rocher;
+  base-palette: 4;
+}
+
+@font-palette-values --Food {
+  font-family: Rocher;
+  base-palette: 10;
+}
+
+@font-palette-values --Purples {
+  font-family: Rocher;
+  base-palette: 6;
+}
+
+@font-palette-values --Mint {
+  font-family: Rocher;
+  base-palette: 7;
+}
+
+
+.duration-200{
+  animation: floating 3.5s infinite linear;
+}
+
+@keyframes floating {
+  from {
+    transform: rotate(-0.001deg) translate3d(3px, 0, 0) rotate(-0.001deg);
+  }
+
+  to {
+    transform: rotate(360.001deg) translate3d(3px, 0, 0) rotate(-360.001deg);
+  }
+}
