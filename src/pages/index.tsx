@@ -99,7 +99,7 @@ export default function Home() {
         <div className="w-full h-full p-0 m-0">
           <div className="w-full h-full overflow-hidden md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 ">
             <Link href={'/marketplace'}>
-              <span className="duration-200  bg-white  border-8 border-purple-400 min-h-[200px] cursor-pointer flex md:hidden items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
+              <span className="duration-200 duration_hover  bg-white  border-8 border-purple-400 min-h-[200px] cursor-pointer flex md:hidden items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
                 <img className="w-20 h-20" src="/icons/design.png" />
                 <span className=" px-3 mt-3 text-center text-black w-full purples pastel_text text-3xl md:text-2xl xl:text-2xl 2xl:text-5xl font-bold ">
                   SUSTAINABLE ARCH <br /> AND ART
@@ -108,7 +108,7 @@ export default function Home() {
               </span>
             </Link>
             <Link href={'/products/discount'}>
-              <span className="shadow-2xl flex border-8 border-yellow-300 hover:scale-95 duration-200 cursor-pointer col-span-12 md:col-span-3  relative h-full  md:hidden flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
+              <span className="shadow-2xl flex border-8 border-yellow-300 hover:scale-95 duration-200 duration_hover cursor-pointer col-span-12 md:col-span-3  relative h-full  md:hidden flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
                 <img className="w-20 h-20" src="/icons/offer.png" />
                 <span
                   style={{
@@ -133,7 +133,7 @@ export default function Home() {
               {/* <img src="/assets/home/luxury (1).png" className="w-full h-full" /> */}
             </span>
             <Link href={"/products"}>            
-            <span className="bg-white border-8 border-teal-300 shadow-2xl hover:scale-95 duration-200 cursor-pointer col-span-12 md:col-span-3 relative h-full rounded-lg py-5 md:py-0 flex flex-col justify-center items-center min-h-[120px] ">
+            <span className="bg-white border-8 border-teal-300 shadow-2xl hover:scale-95 duration-200 duration_hover cursor-pointer col-span-12 md:col-span-3 relative h-full rounded-lg py-5 md:py-0 flex flex-col justify-center items-center min-h-[120px] ">
               <img className="w-20 h-20" src="/icons/online-shopping.png" />
               <span
                 style={{
@@ -154,7 +154,7 @@ export default function Home() {
           </div>
           <div className="w-full h-full md:h-[39vh] grid grid-cols-1 gap-4 py-2 md:grid-cols-12">
             <Link href={'/products/discount'}>
-              <span className="shadow-2xl hidden border-8 border-yellow-300 hover:scale-95 duration-200 cursor-pointer col-span-12 md:col-span-3  relative h-full  md:flex flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
+              <span className="shadow-2xl hidden border-8 border-yellow-300 hover:scale-95 duration-200 duration_hover cursor-pointer col-span-12 md:col-span-3  relative h-full  md:flex flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
                 <img className="w-20 h-20" src="/icons/offer.png" />
                 <span
                   style={{
@@ -220,7 +220,7 @@ export default function Home() {
               </div>
             </span>
             <Link href={'/marketplace'}>
-              <span className="duration-200 border-8 border-purple-400 bg-white  min-h-[200px] cursor-pointer hidden md:flex items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
+              <span className="duration-200 duration_hover border-8 border-purple-400 bg-white  min-h-[200px] cursor-pointer hidden md:flex items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
                 <img className="w-20 h-20" src="/icons/design.png" />
                 <span className=" px-3 mt-4 text-center text-purple-600 purples w-full  pastel_text text-2xl md:text-4xl xl:text-4xl 2xl:text-5xl font-semibold ">
                   SUSTAINABLE ARCH <br /> AND ART
