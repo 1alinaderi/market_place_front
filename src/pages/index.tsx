@@ -1,287 +1,194 @@
 import Layout from '@components/layout/layout';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
-import Particles from 'react-particles';
-import { loadSlim } from 'tsparticles-slim';
-import { FaMusic } from 'react-icons/fa';
-import { MdMusicNote, MdMusicOff } from 'react-icons/md';
 
 export default function Home() {
-  const particlesInit = useCallback(async (engine) => {
-    console.log(engine);
-
-    await loadSlim(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container) => {
-    await console.log(container);
-  }, []);
-
   return (
     <>
-      <Particles
-        style={{ zIndex: 1 }}
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={{
-          background: {
-            color: {
-              value: '#dfdfdf',
-            },
-          },
-          fpsLimit: 120,
-          interactivity: {
-            events: {
-              onClick: {
-                enable: true,
-                mode: 'push',
-              },
-              onHover: {
-                enable: false,
-                mode: 'repulse',
-              },
-              resize: true,
-            },
-            modes: {
-              push: {
-                quantity: 4,
-              },
-              repulse: {
-                distance: 1200,
-                duration: 0.2,
-              },
-            },
-          },
-          particles: {
-            color: {
-              value: '#333',
-            },
-            links: {
-              color: '#333',
-              distance: 150,
-              enable: true,
-              opacity: 0.3,
-              width: 1,
-            },
-            move: {
-              direction: 'none',
-              enable: true,
-              outModes: {
-                default: 'bounce',
-              },
-              random: false,
-              speed: 2,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 1500,
-              },
-              value: 100,
-            },
-            opacity: {
-              value: 0.2,
-            },
-            shape: {
-              type: 'circle',
-            },
-            size: {
-              value: { min: 1, max: 5 },
-            },
-          },
-          detectRetina: true,
-        }}
-      />
+      <div className="bg-black">
+        <div className="">
+          <img
+       
+            className="w-full  object-cover "
+            src="/assets/images/home/header.png"
+            alt=""
+          />
+        </div>
+        <div className="lg:flex hidden justify-center items-center gap-[60px]  py-3 px-[150px] ">
+          <Link href={'/supplier/signup'}>
+            <button className="text-[#FFF] text-xl font-[100]">
+              Membership
+            </button>
+          </Link>
+          <Link href={'/supplier'}>
+            <button className="text-[#FFF] text-xl italic ">
+              Premium and Freemium
+            </button>
+          </Link>
+          <Link href={'/packing'}>
+            <button className="text-[#FFF] text-xl font-[100]">Packing</button>
+          </Link>
+          <button className="text-[#FFF] text-xl font-[100]">Donate</button>
+          <button className="text-[#FFF] text-xl font-[100]">Logistics</button>
+          <button className="text-[#FFF] text-xl font-[100]">Insurance</button>
+        </div>
+        <Link href={'/supplier/signup'}>
+        <div className="flex  lg:hidden items-center justify-center gap-3 lg:gap-6 mx-3 px-2 lg:px-12 py-2 lg:py-4 border border-white mt-3">
+          <img
+            className="h-[30px] lg:h-[50px]"
+            src="/assets/images/home/membership.png"
+            alt=""
+          />
+          <h2 className="text-[#FFFFFF] text-xl lg:text-4xl">Membership</h2>
+        </div>
+        </Link>
+     
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 py-3 px-3 grid-flow-row  ">
+          <Link href={'/marketplace'}>
+            <div className="relative h-full w-full">
+              <img
+                className=" w-full h-full"
+                src="/assets/images/home/1.png"
+                alt=""
+              />
+              <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+                Sustainable
+                <br />
+                arch and art
+              </p>
+            </div>
+          </Link>
 
-      <div className="w-full  m-0 p-2 overflow-hidden relative md:h-[100vh]">
-        <div className="w-full h-full p-0 m-0">
-          <div className="w-full h-full overflow-hidden md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2 ">
-            <Link href={'/marketplace'}>
-              <span className="duration-200 duration_hover  bg-white  border-8 border-purple-400 min-h-[200px] cursor-pointer flex md:hidden items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
-                <img className="w-20 h-20" src="/icons/design.png" />
-                <span className=" px-3 mt-3 text-center text-black w-full purples pastel_text text-3xl md:text-2xl xl:text-2xl 2xl:text-5xl font-bold ">
-                  SUSTAINABLE ARCH <br /> AND ART
-                </span>
-                {/* <img src="/assets/home/sus (1).png" className="w-full h-full" /> */}
-              </span>
-            </Link>
-            <Link href={'/products/discount'}>
-              <span className="shadow-2xl flex border-8 border-yellow-300 hover:scale-95 duration-200 duration_hover cursor-pointer col-span-12 md:col-span-3  relative h-full  md:hidden flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
-                <img className="w-20 h-20" src="/icons/offer.png" />
-                <span
-                  style={{
-                    textShadow: 'none',
-                  }}
-                  className=" text-black  mt-2 text-3xl md:text-2xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center pastel_text"
-                >
-                  DISCOUNTED RETAIL
-                </span>
-              </span>
-            </Link>
-            <span className="col-span-12 border-8 border-gray-300  opacity-60 md:col-span-4 relative shadow-2xl flex justify-center items-center flex-col bg-white rounded-lg py-5 md:py-0">
-              <img className="w-20 h-20" src="/icons/diamond.png" />
-              <span
-                style={{
-                  textShadow: 'none',
-                }}
-                className="  text-black  w-full text-center  pastel_text grays text-3xl md:text-2xl xl:text-4xl 2xl:text-5xl font-bold"
-              >
-                LUXURY RETAIL
-              </span>
-              {/* <img src="/assets/home/luxury (1).png" className="w-full h-full" /> */}
-            </span>
-            <Link href={"/products"}>            
-            <span className="bg-white border-8 border-teal-300 shadow-2xl hover:scale-95 duration-200 duration_hover cursor-pointer col-span-12 md:col-span-3 relative h-full rounded-lg py-5 md:py-0 flex flex-col justify-center items-center min-h-[120px] ">
-              <img className="w-20 h-20" src="/icons/online-shopping.png" />
-              <span
-                style={{
-                  textShadow: 'none',
-                }}
-                className="mt-2 text-black text-3xl pastel_text mint md:text-2xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center"
-              >
-                FREE MARKET
-              </span>
-            </span>
-            </Link>
-            <span className=" col-span-12 opacity-60 border-8 border-pink-300  md:col-span-5 relative h-full bg-white rounded-lg py-5 md:py-0 flex flex-col items-center justify-center">
-              <img className="w-20 h-20" src="/icons/environmentalism.png" />
-              <span className=" text-black pt-2  text-3xl pastel_text reds md:text-2xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center">
-                ECO-FRIENDLY BRANDS
-              </span>
-            </span>
+          <Link href={'/products'}>
+            <div className="relative h-full w-full row-span-1">
+              <img
+                className="h-full w-full"
+                src="/assets/images/home/3.png"
+                alt=""
+              />
+              <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+                Free market
+              </p>
+            </div>
+          </Link>
+          <Link href={'/products/discounted'}>
+            <div className="relative h-[25vh] lg:h-full col-span-2 lg:col-span-1 ">
+              <img className=" w-full h-full " src="/assets/images/home/2.png" alt="" />
+              <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+                discounted retail
+              </p>
+            </div>
+          </Link>
+          <div className="relative h-full w-full">
+            <img
+              className="h-full w-full"
+              src="/assets/images/home/4.png"
+              alt=""
+            />
+            <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+              ECO <br />
+              friendly brands
+            </p>
           </div>
-          <div className="w-full h-full md:h-[39vh] grid grid-cols-1 gap-4 py-2 md:grid-cols-12">
-            <Link href={'/products/discount'}>
-              <span className="shadow-2xl hidden border-8 border-yellow-300 hover:scale-95 duration-200 duration_hover cursor-pointer col-span-12 md:col-span-3  relative h-full  md:flex flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
-                <img className="w-20 h-20" src="/icons/offer.png" />
-                <span
-                  style={{
-                    textShadow: 'none',
-                  }}
-                  className=" text-black  mt-2 text-2xl pastel_text md:text-2xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center"
-                >
-                  DISCOUNTED RETAIL
-                </span>
-              </span>
-            </Link>
-
-            <span className="col-span-12 md:col-span-5 h-full">
-              <div className=" text-2xl sm:text-4xl md:py-0 py-2 md:text-2xl xl:text-4xl  2xl:text-6xl h-auto md:h-1/4  font-serif font-bold grid grid-cols-12  items-center justify-between">
-                <span className=" col-span-9 text-center">
-                  PROJECT I{' '}
-                  <small className="text-[20px] font-sans whitespace-nowrap">
-                    2020-2030
-                  </small>
-                </span>
-                <span className="whitespace-nowrap col-span-3 flex justify-center pl-2">
-                  <Link href={'/supplier/signup'}>
-                    <div className="rounded-full relative col-span-2 has-tooltip cursor-pointer bg-blue-400  md:w-[60px] w-[60px] shadow-2xl md:h-[60px] h-[60px]  text-center flex justify-center items-center text-2xl font-serif">
-                      M
-                      <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
-                        MEMBERSHIP
-                      </span>
-                    </div>
-                  </Link>
-                </span>
-              </div>
-              <div className=" grid  h-auto md:h-3/4   grid-cols-12 gap-3 ">
-                <span className=" col-span-9 border-8 border-green-300 relative opacity-60 h-full flex flex-col items-center justify-center bg-white rounded-lg py-5 md:py-0">
-                  <img className="w-20 h-20" src="/icons/brand-image.png" />
-
-                  <span
-                    style={{
-                      textShadow: 'none',
-                    }}
-                    className=" text-black mt-1 text-3xl pastel_text oranges md:text-2xl xl:text-4xl 2xl:text-5xl font-bold text-center"
-                  >
-                    COMMERCIAL BRANDS
-                  </span>
-                </span>
-                <span className="col-span-3 flex justify-center items-center flex-col gap-4">
-                  <Link href={'/supplier/signup'}>
-                    <div className="rounded-full relative has-tooltip cursor-pointer bg-green-500  md:w-[60px] w-[60px] shadow-2xl md:h-[60px] h-[60px]  text-center flex justify-center items-center text-2xl font-serif">
-                      P&F
-                      <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
-                        PREMIUM & FREEMIUM
-                      </span>
-                    </div>
-                  </Link>
-                  <Link href={'/packing'}>
-                    <div className="rounded-full relative has-tooltip cursor-pointer bg-orange-500  md:w-[60px] w-[60px]  md:h-[60px] h-[60px]  text-center flex justify-center items-center text-2xl text-white font-serif ">
-                      P
-                      <span className="tooltip bg-slate-700 px-3 text-white rounded absolute">
-                        PACKING
-                      </span>
-                    </div>
-                  </Link>
-                </span>
-              </div>
-            </span>
-            <Link href={'/marketplace'}>
-              <span className="duration-200 duration_hover border-8 border-purple-400 bg-white  min-h-[200px] cursor-pointer hidden md:flex items-center justify-center flex-col hover:scale-95 col-span-12 md:col-span-4  relative shadow-2xl rounded-lg py-5 md:py-0 h-full">
-                <img className="w-20 h-20" src="/icons/design.png" />
-                <span className=" px-3 mt-4 text-center text-purple-600 purples w-full  pastel_text text-2xl md:text-4xl xl:text-4xl 2xl:text-5xl font-semibold ">
-                  SUSTAINABLE ARCH <br /> AND ART
-                </span>
-                {/* <img src="/assets/home/sus (1).png" className="w-full h-full" /> */}
-              </span>
-            </Link>
+          <div className="relative h-full w-full">
+            <img
+              className="h-full w-full"
+              src="/assets/images/home/5.png"
+              alt=""
+            />
+            <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+              Luxury Retail
+            </p>
           </div>
-          <div className="w-full  h-full md:h-[30vh] grid grid-cols-1 md:grid-cols-12 gap-4 py-2">
-            <span className="col-span-12 border-8 border-green-300 md:col-span-3  relative flex flex-col justify-center items-center opacity-60 bg-white rounded-lg py-5 md:py-0">
-              <img className="w-20 h-20" src="/icons/reduce-cost.png" />
-
-              <span className=" text-black   text-3xl pastel_text blacks md:text-2xl xl:text-4xl 2xl:text-5xl font-bold ">
-                LOW VALUE <br /> PRODUCTS
-              </span>
-            </span>
-            <span className=" col-span-12 md:col-span-5 ">
-              <div className=" grid grid-cols-12 gap-3 h-full ">
-                <span className="col-span-9 border-8 border-sky-300 relative h-full flex flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0 opacity-60">
-                  <img className="w-20 h-20" src="/icons/game-console.png" />
-
-                  <span className=" text-black mt-2  text-3xl pastel_text whites md:text-2xl xl:text-4xl 2xl:text-5xl font-bold   ">
-                    GAMING
-                  </span>
-                </span>
-                <span className="col-span-3 flex justify-center items-center flex-col gap-3">
-                  <Link href={'/'}>
-                    <div className="rounded-full relative has-tooltip cursor-pointer bg-amber-300  md:w-[60px] w-[60px]  md:h-[60px] h-[60px]  text-center flex justify-center items-center text-2xl font-serif">
-                      D
-                      <span className="tooltip  bg-slate-700 px-3 text-white rounded absolute">
-                        DONATE
-                      </span>
-                    </div>
-                  </Link>
-                  <Link href={'/'}>
-                    <div className="rounded-full relative has-tooltip cursor-pointer bg-gray-400  md:w-[60px] w-[60px]  md:h-[60px] h-[60px]  text-center flex justify-center items-center text-2xl font-serif">
-                      L
-                      <span className="tooltip  bg-slate-700 px-3 text-white rounded absolute">
-                        LOGISTICS
-                      </span>
-                    </div>
-                  </Link>
-                  <Link href={'/'}>
-                    <div className="rounded-full relative has-tooltip cursor-pointer bg-slate-700  md:w-[60px] w-[60px]  md:h-[60px] h-[60px]  text-center flex justify-center items-center text-2xl text-white font-serif">
-                      I
-                      <span className="tooltip  bg-slate-700 px-3 text-white rounded absolute">
-                        INSURANCE
-                      </span>
-                    </div>
-                  </Link>
-                </span>
-              </div>
-            </span>
-            <span className=" col-span-12 md:col-span-4 border-8 border-blue-300 relative  opacity-60 flex flex-col justify-center items-center bg-white rounded-lg py-5 md:py-0">
-              <img className="w-20 h-20" src="/icons/diet.png" />
-
-              <span className=" text-black mt-2  text-3xl pastel_text foods md:text-2xl xl:text-4xl 2xl:text-5xl font-bold w-full text-center">
-                ORGANIC FOOD
-              </span>
-            </span>
+          <div className="relative h-full w-full">
+            <img
+              className="h-full w-full"
+              src="/assets/images/home/6.png"
+              alt=""
+            />
+            <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+              Commercial brand
+            </p>
           </div>
+          <div className="relative h-full w-full">
+            <img
+              className="h-full w-full"
+              src="/assets/images/home/7.png"
+              alt=""
+            />
+            <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+              Organic food
+            </p>
+          </div>
+          <div className="relative h-full w-full">
+            <img
+              className="h-full w-full"
+              src="/assets/images/home/8.png"
+              alt=""
+            />
+            <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+              Low value product
+            </p>
+          </div>
+          <div className="relative h-full w-full">
+            <img
+              className="h-full w-full"
+              src="/assets/images/home/9.png"
+              alt=""
+            />
+            <p className=" absolute bottom-1 lg:bottom-5 left-2 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+              Gaming
+            </p>
+          </div>
+        </div>
+        <div className="grid lg:hidden grid-cols-3 justify-items-center text-white gap-4 ">
+          <Link href={'/supplier/signup'}>
+          <div  className="flex flex-col items-center justify-center">
+            <img
+              className=" w-16"
+              src="/assets/images/home/Pre-free Image.png"
+              alt=""
+            />
+            <p>
+              Premium <br /> Freemium
+            </p>
+          </div>
+          </Link>
+          <Link href={"/packing"} >
+            <div className="flex flex-col items-center justify-center">
+            <img
+              className=" w-16"
+              src="/assets/images/home/packing Image.png"
+              alt=""
+            />
+            <p>Packing</p>
+            </div>
+        
+          </Link>
+          <div className="flex flex-col items-center justify-center">
+            <img
+              className=" w-16"
+              src="/assets/images/home/donate Image.png"
+              alt=""
+            />
+            <p>Donate</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <img
+              className=" w-16"
+              src="/assets/images/home/logistics Image.png"
+              alt=""
+            />
+            <p>Logistics</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <img
+              className=" w-16"
+              src="/assets/images/home/insurance Image.png"
+              alt=""
+            />
+            <p>Insurance</p>
+          </div>
+          
         </div>
       </div>
     </>
