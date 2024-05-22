@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { ReactHTML, HTMLAttributes } from "react";
 
-type RevealProps = {
+type RevealXProps = {
     head?: boolean;
     className?: string;
   };
 
-const Reveal:React.FunctionComponent<RevealProps> = ({  children, head }) => {
+const RevealX:React.FunctionComponent<RevealXProps> = ({  children, head }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
@@ -67,4 +67,4 @@ const Reveal:React.FunctionComponent<RevealProps> = ({  children, head }) => {
   );
 };
 
-export default Reveal;
+export default RevealX;

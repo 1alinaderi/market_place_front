@@ -1,6 +1,7 @@
 import Layout from '@components/layout/layout';
 import Reveal from '@components/motion/Reveal';
-import { Box, ClipboardText, Diamonds, Gift, Truck, TruckTime } from 'iconsax-react';
+import RevealX from '@components/motion/RevealX';
+import { ArrowRight2, Box, ClipboardText, Diamonds, Gift, Truck, TruckTime } from 'iconsax-react';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -16,33 +17,36 @@ export default function Home() {
     <>
       <div className="bg-[#11223a]">
         <div className="">
+          <Reveal head>
           <img
             className="w-full  object-cover "
             src="/assets/images/home/header.png"
             alt=""
           />
+          </Reveal>
+         
         </div>
         <div className="lg:flex hidden justify-center items-center gap-[60px]  py-4 px-[150px] bg-[#08121f]">
           <Link href={'/supplier/signup'}>
-            <button className="text-[#FFF] text-xl font-[100]">
-              Membership
+            <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">
+              Membership<ArrowRight2 size={18}/>
             </button>
           </Link>
           <Link href={'/supplier'}>
-            <button className="text-[#FFF] text-xl italic ">
-              Premium and Freemium
+            <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl italic ">
+              Premium and Freemium<ArrowRight2 size={18}/>
             </button>
           </Link>
           <Link href={'/packing'}>
-            <button className="text-[#FFF] text-xl font-[100]">Packing</button>
+            <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Packing</button>
           </Link>
-          <button className="text-[#FFF] text-xl font-[100]">Donate</button>
-          <button className="text-[#FFF] text-xl font-[100]">Logistics</button>
-          <button className="text-[#FFF] text-xl font-[100]">Insurance</button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Donate<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Logistics<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Insurance<ArrowRight2 size={18}/></button>
         </div>
       
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 py-3 px-3 grid-flow-row  ">
-          <Reveal>
+          <RevealX head>
             <Link href={'/marketplace'}>
               <div className="relative h-full w-full row-span-1 border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden ">
                 <img
@@ -57,9 +61,9 @@ export default function Home() {
                 </p>
               </div>
             </Link>
-          </Reveal>
+          </RevealX>
 
-          <Reveal>
+          <RevealX>
             <Link href={'/products'}>
               <div className="relative h-full w-full row-span-1 border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
                 <img
@@ -72,7 +76,7 @@ export default function Home() {
                 </p>
               </div>
             </Link>
-          </Reveal>
+          </RevealX>
           <span className='col-span-full lg:hidden'>
           <Reveal head={false}>
           <Link href={'/supplier/signup'}>
@@ -90,7 +94,7 @@ export default function Home() {
           <span className='col-span-full text-white flex gap-3 text-[12px] lg:col-span-1'>
             <div className='flex flex-col gap-4 lg:hidden'>
              
-              <Reveal>
+              <RevealX head>
               <Link href={"/packing"}>
             <div className="flex flex-col items-center justify-center">
           
@@ -102,10 +106,10 @@ export default function Home() {
           
           </div>
           </Link>
-          </Reveal>
+          </RevealX>
            
            
-          <Reveal>
+          <RevealX head>
           <div className="flex flex-col items-center justify-center">
           
             <span className='rounded-full p-2 overflow-hidden bg-white'>
@@ -114,8 +118,8 @@ export default function Home() {
               <p className='text-center mt-1'>Logistics</p>
         
           </div>
-          </Reveal>
-          <Reveal>
+          </RevealX>
+          <RevealX head>
           <div className="flex flex-col items-center justify-center">
          
             <span className='rounded-full p-2 overflow-hidden bg-white'>
@@ -124,7 +128,7 @@ export default function Home() {
               <p className='text-center mt-1'>Insurance</p>
           
           </div>
-          </Reveal>
+          </RevealX>
             </div>
           
            <Link href={'/products/discounted'}>
@@ -142,7 +146,7 @@ export default function Home() {
             </div>
           </Link>
           <div className='flex flex-col gap-4 lg:hidden'>
-          <Reveal>
+          <RevealX>
             <div className="flex flex-col items-center justify-center">
             
             <span className='rounded-full p-2 overflow-hidden bg-white'>
@@ -151,9 +155,9 @@ export default function Home() {
               <p className='text-center mt-1'>Donate</p>
         
           </div>
-          </Reveal>
+          </RevealX>
         
-          <Reveal>
+          <RevealX>
           <Link href={'/supplier/signup'}>
             <div className="flex flex-col items-center justify-center">
             
@@ -164,9 +168,9 @@ export default function Home() {
         
           </div>
           </Link>
-          </Reveal>
+          </RevealX>
  
-          <Reveal>
+          <RevealX>
             <div className="flex flex-col items-center justify-center">
             
             <span className='rounded-full p-2 overflow-hidden bg-white'>
@@ -175,13 +179,13 @@ export default function Home() {
               <p className='text-center mt-1'>Donate</p>
         
           </div>
-          </Reveal>
+          </RevealX>
             </div>
           </span>
          
           
 
-          <Reveal>
+          <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-cover"
@@ -193,8 +197,8 @@ export default function Home() {
                 friendly brands
               </p>
             </div>
-          </Reveal>
-          <Reveal>
+          </RevealX>
+          <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-cover"
@@ -205,8 +209,8 @@ export default function Home() {
                 Luxury Retail
               </p>
             </div>
-          </Reveal>
-          <Reveal>
+          </RevealX>
+          <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-cover"
@@ -217,8 +221,8 @@ export default function Home() {
                 Commercial brand
               </p>
             </div>
-          </Reveal>
-          <Reveal>
+          </RevealX>
+          <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-cover"
@@ -229,8 +233,8 @@ export default function Home() {
                 Organic food
               </p>
             </div>
-          </Reveal>
-          <Reveal>
+          </RevealX>
+          <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-cover"
@@ -241,8 +245,8 @@ export default function Home() {
                 Low value product
               </p>
             </div>
-          </Reveal>
-          <Reveal>
+          </RevealX>
+          <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-cover"
@@ -253,7 +257,7 @@ export default function Home() {
                 Gaming
               </p>
             </div>
-          </Reveal>
+          </RevealX>
         </div>          
       </div>
     </>
