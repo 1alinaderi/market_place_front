@@ -5494,6 +5494,13 @@ i18next@^21.5.3, "i18next@>= 19.0.0":
   dependencies:
     "@babel/runtime" "^7.12.0"
 
+iconsax-react@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.npmjs.org/iconsax-react/-/iconsax-react-0.0.8.tgz"
+  integrity sha512-l3dVk4zGtkkJHgvNYqAf0wDKqnKxXykee5/DoESGo2JvSYwaxajJUHSX2YrPRXSov8Hd8ClGFwJxCEaEjrFD1Q==
+  dependencies:
+    prop-types "^15.7.2"
+
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz"

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { ReactHTML, HTMLAttributes } from "react";
 
 type RevealProps = {
     head?: boolean;
