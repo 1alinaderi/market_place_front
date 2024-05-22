@@ -34,8 +34,8 @@ const Reveal:React.FunctionComponent<RevealProps> = ({  children, head }) => {
     >
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: head ? -75 : 75 ,x: head ? 0 :1 },
-          visible: { opacity: 1, y: 0 ,x:0},
+          hidden: { opacity: 0, x: head ? -75 : 75 ,y: head ? 0 :1 },
+          visible: { opacity: 1, x: 0 ,y:0},
         }}
         style={{
           height: "100%",
