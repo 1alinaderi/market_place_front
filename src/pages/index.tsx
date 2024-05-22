@@ -3,8 +3,15 @@ import Reveal from '@components/motion/Reveal';
 import { Box, ClipboardText, Diamonds, Gift, Truck, TruckTime } from 'iconsax-react';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    if (window.innerWidth <= 1024) {
+      setMobile(true);
+    }
+  }, []);
   return (
     <>
       <div className="bg-[#11223a]">
