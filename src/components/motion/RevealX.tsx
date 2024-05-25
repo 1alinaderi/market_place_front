@@ -26,9 +26,7 @@ const RevealX:React.FunctionComponent<RevealXProps> = ({  children, head }) => {
     <div
       ref={ref}
       style={{
-        position: "relative",
-        overflow: head ? "visible" : "hidden",
-        
+        position: "relative",        
         height: "100%",
       }}
     >
