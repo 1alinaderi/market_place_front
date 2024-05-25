@@ -476,15 +476,12 @@ input:checked + .slider:before {
   background-color: #457bd9;
 }
 
-
-
-
 @font-face {
   font-family: 'Rocher';
   src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
 }
 
-.pastel_text{
+.pastel_text {
   font-family: 'Rocher';
   base-palette: 9;
 }
@@ -560,12 +557,11 @@ input:checked + .slider:before {
   base-palette: 7;
 }
 
-
-.duration_hover{
+.duration_hover {
   animation: floating 3.5s infinite linear;
 }
 
-.animation-text{
+.animation-text {
   animation: animationtext 2s infinite linear;
 }
 
@@ -583,8 +579,8 @@ input:checked + .slider:before {
   0% {
     text-shadow: none;
   }
- 
-  50%{
+
+  50% {
     text-shadow: 1px 2px 5px #ffffff;
   }
   100% {

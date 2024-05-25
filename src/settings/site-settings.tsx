@@ -219,6 +219,12 @@ export const siteSettings = {
         value: 'en',
         icon: <USFlag />,
       },
+      {
+        id: 'ar',
+        name: 'عربى - AR',
+        value: 'ar',
+        icon: <SAFlag />,
+      },
     ],
   },
 };

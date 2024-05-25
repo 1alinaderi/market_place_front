@@ -20,7 +20,7 @@ export default function Home() {
         <div className="">
           <Reveal head>
           <img
-            className="w-full  object-cover "
+            className="w-full h-[60vh] object-cover object-center "
             src="/assets/images/home/header.png"
             alt=""
           />

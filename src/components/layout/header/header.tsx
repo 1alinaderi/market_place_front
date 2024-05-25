@@ -18,8 +18,8 @@ import Delivery from '@components/layout/header/delivery';
 import { useUI } from '@contexts/ui.context';
 import MenuIcon from '@components/icons/menu-icon';
 
-
 import Link from 'next/link';
+import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
 const AuthMenu = dynamic(() => import('./auth-menu'), { ssr: false });
 const CartButton = dynamic(() => import('@components/cart/cart-button'), {
   ssr: false,
@@ -46,12 +46,8 @@ const Header: React.FC = () => {
     openModal('LOGIN_VIEW');
   }
 
-  const {
-    openSidebar,
-    closeSidebar,
-    displaySidebar,
-    toggleMobileSearch,
-  } = useUI();
+  const { openSidebar, closeSidebar, displaySidebar, toggleMobileSearch } =
+    useUI();
 
   function handleMobileMenu() {
     return openSidebar();
@@ -66,7 +62,10 @@ const Header: React.FC = () => {
         displayMobileSearch && 'active-mobile-search'
       )}
     >
-      <div dir='ltr' className="z-20 bg-1d3557 w-screen transition-all duration-200 ease-in-out innerSticky lg:w-full body-font bg-fill-secondary">
+      <div
+        dir="ltr"
+        className="z-20 bg-1d3557 w-screen transition-all duration-200 ease-in-out innerSticky lg:w-full body-font bg-fill-secondary"
+      >
         <Search
           searchId="mobile-search"
           className="top-bar-search  lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-1"
@@ -92,9 +91,7 @@ const Header: React.FC = () => {
           {/* End of search */}
 
           <div className="flex shrink-0 -mx-2.5 xl:-mx-3.5">
-            {/* <div className="xl:mx-3.5 mx-2.5">
-              <LanguageSwitcher />
-            </div> */}
+            <div className="xl:mx-3.5 mx-2.5"></div>
             {/* <CartButton className="hidden lg:flex mx-2.5 xl:mx-3.5" /> */}
             <Link href={'/signin'}>
               <div className="items-center hidden lg:flex shrink-0 mx-2.5 xl:mx-3.5">
@@ -126,6 +123,7 @@ const Header: React.FC = () => {
               row={true}
               className="flex transition-all duration-200 ease-in-out"
             />
+            <LanguageSwitcherHeader justFa={true}/>
             {/* End of main menu */}
 
             {displaySearch && (
@@ -153,7 +151,9 @@ const Header: React.FC = () => {
 
                 {/* 
                 <CartButton /> */}
-
+              
+                
+            
                 <Link href={'/signin'}>
                   <div className="flex items-center shrink-0 ltr:ml-4 rtl:mr-7">
                     <UserIcon className="text-white" />
