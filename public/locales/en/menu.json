@@ -32,5 +32,29 @@
   "menu-terms-condition": "Terms & Condition",
   "menu-contact-us": "Contact Us",
   "menu-checkout": "Checkout",
-  "menu-404": "404"
+  "menu-404": "404",
+  "about" : "About",
+   "suppliers" : "Suppliers",
+   "about-us" : "About us",
+   "Floor-Material" : "Floor Material",
+   "Wall-Material" : "Wall Material",
+   "Roof-Material" : "Roof Material",
+   "Facade-Material" : "Facade Material",
+   "Area-Material" : "Area Material",
+   "Green-Space-Material" : "Green Space Material",
+   "Door-and-Window-Material" : "Door and Window Material",
+   "Smart-Material" : "Smart Material",
+   "Facility-Material" : "Facility Material",
+   "Construction-Material" : "Construction Material",
+   "Security-Material" : "Security Material",
+   "Lighting-Material" : "Lighting Material",
+   "Pool-Material" : "Pool Material",
+   "Sports-Material" : "Sports Material",
+   "Industrial-Material" : "Industrial Material",
+   "Accessory" : "Accessory",
+   "Handicrafts" : "Handicrafts",
+   "Fashion-Design" : "Fashion Design"
+   
+
+
 }

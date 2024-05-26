@@ -44,11 +44,12 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
       router.pathname != '/my-account/legal-notice' &&
       router.pathname != '/my-account/help-center'
     ) {
-      if (router.locale == 'fa') {
-        router.push(router.asPath, router.asPath, { locale: 'en' });
-      } else {
-        document.documentElement.dir = dir;
-      }
+      // if (router.locale == 'fa') {
+      //   router.push(router.asPath, router.asPath, { locale: 'en' });
+      // } else {
+      //   document.documentElement.dir = dir;
+      // }
+      document.documentElement.dir = dir;
     }
   }, [dir, router]);
   const Layout = (Component as any).Layout || Noop;

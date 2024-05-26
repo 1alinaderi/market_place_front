@@ -28,5 +28,8 @@
   "payment-paypal": "Paypal",
   "payment-jcb": "JCB",
   "payment-skrill": "Skrill",
-  "end": "end"
+  "end": "end",
+  "User": "User",
+  "Sign-In":"Sign In",
+  "Sign-Up":"Sign Up"
 }

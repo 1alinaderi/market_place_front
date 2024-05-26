@@ -28,6 +28,9 @@
   "payment-paypal": "PayPal",
   "payment-jcb": "JCB",
   "payment-skrill": "سكريل",
-  "end": "انتهاء"
+  "end": "انتهاء",
+  "User": "مستخدم",
+  "Sign-In":"تسجيل الدخول",
+  "Sign-Up":"اشتراك"
 
 }

@@ -1,7 +1,9 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React from 'react';
 
 const MembershipCard = ({ free, onClose, gotovip }) => {
+  const { t } = useTranslation('common');
   return (
     <div
       onClick={() => {
@@ -44,7 +46,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-              visiting and introducing the services of suppliers for free
+              {t("modal-p-1")}
             </p>
           </li>
           <li className="flex items-center gap-4">
@@ -66,7 +68,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-              Possibility of paying with PayPal
+            {t("modal-p-2")}
             </p>
           </li>
           <li className="flex items-center gap-4">
@@ -88,7 +90,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-              15% discount on Middle East exhibition tours
+            {t("modal-p-3")}
             </p>
           </li>
           <li className="flex items-center gap-4">
@@ -110,8 +112,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-              15% discount on RADAR content production and business development
-              services
+            {t("modal-p-4")}
             </p>
           </li>
           <li className="flex items-center gap-4">
@@ -133,7 +134,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-              15% discount for SECRET STRATEGY sales campaigns
+            {t("modal-p-5")}
             </p>
           </li>
           {!free && (
@@ -156,7 +157,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
                 </svg>
               </span>
               <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-                And many more options to read click on buy
+              {t("modal-p-6")}
               </p>
             </li>
           )}
@@ -170,7 +171,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
             data-ripple-dark="true"
             disabled
           >
-            Selected
+            {t("modal-p-7")}
           </button>
         ) : (
           <>
@@ -180,7 +181,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
                 type="button"
                 data-ripple-dark="true"
               >
-                Buy Now
+               {t("modal-p-8")}
               </button>
             </Link>
           </>

@@ -28,5 +28,8 @@
   "payment-paypal": "پی پال",
   "payment-jcb": "JCB",
   "payment-skrill": "اسکریل",
-  "end": "پایان"
+  "end": "پایان",
+  "User": "کاربر",
+  "Sign-In":"ورود",
+  "Sign-Up":"ثبت نام"
 }

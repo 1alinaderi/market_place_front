@@ -34,77 +34,77 @@ export const siteSettings = {
           {
             id: 1,
             path: '/products?category=Floor Material',
-            label: 'Floor Material',
+            label: 'Floor-Material',
           },
           {
             id: 2,
             path: '/products?category=Wall Material',
-            label: 'Wall Material',
+            label: 'Wall-Material',
           },
           {
             id: 3,
             path: '/products?category=Roof Material',
-            label: 'Roof Material',
+            label: 'Roof-Material',
           },
           {
             id: 4,
             path: '/products?category=Facade Material',
-            label: 'Facade Material',
+            label: 'Facade-Material',
           },
           {
             id: 5,
             path: '/products?category=Area Material',
-            label: 'Area Material',
+            label: 'Area-Material',
           },
           {
             id: 6,
             path: '/products?category=Green space material',
-            label: 'Green Space Material',
+            label: 'Green-Space-Material',
           },
           {
             id: 7,
             path: '/products?category=Door and Window Material',
-            label: 'Door and Window Material',
+            label: 'Door-and-Window-Material',
           },
           {
             id: 8,
             path: '/products?category=Smart Material',
-            label: 'Smart Material',
+            label: 'Smart-Material',
           },
           {
             id: 9,
             path: '/products?category=Facility Material',
-            label: 'Facility Material',
+            label: 'Facility-Material',
           },
           {
             id: 10,
             path: '/products?category=Construction Material',
-            label: 'Construction Material',
+            label: 'Construction-Material',
           },
           {
             id: 11,
             path: '/products?category=Security Material',
-            label: 'Security Material',
+            label: 'Security-Material',
           },
           {
             id: 12,
             path: '/products?category=Lighting  Material',
-            label: 'Lighting  Material',
+            label: 'Lighting-Material',
           },
           {
             id: 13,
             path: '/products?category=Pool Material',
-            label: 'Pool Material',
+            label: 'Pool-Material',
           },
           {
             id: 14,
             path: '/products?category=Sports Material',
-            label: 'Sports Material',
+            label: 'Sports-Material',
           },
           {
             id: 15,
             path: '/products?category=Industrial Material',
-            label: 'Industrial Material',
+            label: 'Industrial-Material',
           },
           {
             id: 16,
@@ -119,25 +119,25 @@ export const siteSettings = {
           {
             id: 18,
             path: '/products?category=Fashion Design',
-            label: 'Fashion Design',
+            label: 'Fashion-Design',
           },
         ],
       },
       {
         id: 2,
         path: '/suppliers/',
-        label: 'Suppliers',
+        label: 'suppliers',
       },
 
       {
         id: 3,
         path: '/about-us',
-        label: 'About',
+        label: 'about',
         subMenu: [
           {
             id: 1,
             path: '/about-us',
-            label: 'About Us',
+            label: 'about-us',
           },
 
           {

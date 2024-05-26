@@ -43,12 +43,12 @@ export const footer = {
       lists: [
         {
           id: 1,
-          title: 'Sign In',
+          title: 'Sign-In',
           path: '/signin',
         },
         {
           id: 2,
-          title: 'Sgin Up',
+          title: 'Sgin-Up',
           path: '/signup',
         },
       ],

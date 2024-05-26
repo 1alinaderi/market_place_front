@@ -1,7 +1,7 @@
 export const faq = [
   {
     id: 1,
-    title: 'Why Use This Site',
+    title: 'faq',
     content:
       'ds ksoa fksa fokas;fgr eopkg repq wpk foprkop gkerop kerpok perk giperikfewi nvouhn',
   },
