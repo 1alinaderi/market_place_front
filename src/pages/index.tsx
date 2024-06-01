@@ -4,20 +4,29 @@ import RevealX from '@components/motion/RevealX';
 import { ArrowRight2, Box, ClipboardText, ClipboardTick, Diamonds, Gift, Truck, TruckTime } from 'iconsax-react';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BsHandIndex } from 'react-icons/bs';
+import { FaNetworkWired, FaVirus } from 'react-icons/fa';
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
+  const ref = useRef<HTMLVideoElement>()
+
   useEffect(() => {
     if (window.innerWidth <= 1024) {
       setMobile(true);
     }
+    if (ref.current) {
+      ref.current.play()
+    }
   }, []);
+
+ 
   return (
-    <>
+    <div className='relative'>
       <div className="bg-[#11223a] overflow-hidden">
-      <div className="lg:flex hidden justify-center items-center gap-[60px]  py-4 px-[150px] bg-[#08121f]">
+      
+      <div className="lg:flex hidden justify-center items-center gap-[60px] relative z-10 py-4 px-[150px] bg-[#08121f]">
           <Link href={'/supplier/signup'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">
               Membership<ArrowRight2 size={18}/>
@@ -34,12 +43,13 @@ export default function Home() {
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Donate<ArrowRight2 size={18}/></button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Logistics<ArrowRight2 size={18}/></button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Insurance<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Referral<ArrowRight2 size={18}/></button>
         </div>
-        <div className="">
+        <div className="relative z-10 ">
           <Reveal head>
           <img
-          style={{objectPosition:"0 80%"}}
-            className="w-full h-[50vh] object-cover"
+          
+            className="w-full lg:h-[60vh] object-cover"
             src="/assets/images/home/header.png"
             alt=""
           />
@@ -48,7 +58,9 @@ export default function Home() {
         </div>
      
       
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 py-3 px-3 grid-flow-row  ">
+        <div className="grid grid-cols-2 lg:grid-cols-3  gap-3 lg:gap-10 py-4 lg:py-8 px-3 grid-flow-row  relative">
+        <video  ref={ref} loop muted src='/video/1 (1).mp4' className='absolute left-0 top-0 h-full w-full object-cover lg:opacity-90 opacity-60'/>
+
           <RevealX head>
             <Link href={'/marketplace'}>
               <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative cursor-pointer h-full w-full row-span-1 border-2 border-[#fff]/70 rounded-[14px] overflow-hidden ">
@@ -172,9 +184,9 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center">
             
             <span className='rounded-full p-2 overflow-hidden bg-white'>
-              <Gift variant='Bulk' color='#ff8a65' size={30}/>
+              <FaNetworkWired  color='#ff8a65' size={30}/>
               </span>
-              <p className='text-center mt-1'>Donate</p>
+              <p className='text-center mt-1'>referral</p>
         
           </div>
           </RevealX>
@@ -258,7 +270,7 @@ export default function Home() {
           </RevealX>
         </div>          
       </div>
-    </>
+    </div>
   );
 }
 
