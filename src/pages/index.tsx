@@ -16,18 +16,8 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="bg-[#11223a]">
-        <div className="">
-          <Reveal head>
-          <img
-            className="w-full h-[60vh] object-cover object-center "
-            src="/assets/images/home/header.png"
-            alt=""
-          />
-          </Reveal>
-         
-        </div>
-        <div className="lg:flex hidden justify-center items-center gap-[60px]  py-4 px-[150px] bg-[#08121f]">
+      <div className="bg-[#11223a] overflow-hidden">
+      <div className="lg:flex hidden justify-center items-center gap-[60px]  py-4 px-[150px] bg-[#08121f]">
           <Link href={'/supplier/signup'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">
               Membership<ArrowRight2 size={18}/>
@@ -45,6 +35,18 @@ export default function Home() {
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Logistics<ArrowRight2 size={18}/></button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Insurance<ArrowRight2 size={18}/></button>
         </div>
+        <div className="">
+          <Reveal head>
+          <img
+          style={{objectPosition:"0 80%"}}
+            className="w-full h-[50vh] object-cover"
+            src="/assets/images/home/header.png"
+            alt=""
+          />
+          </Reveal>
+         
+        </div>
+     
       
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 py-3 px-3 grid-flow-row  ">
           <RevealX head>
