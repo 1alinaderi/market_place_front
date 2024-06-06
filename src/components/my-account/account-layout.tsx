@@ -8,6 +8,7 @@ import NoticeIcon from '@components/icons/account-notice';
 import { RiVipCrown2Line } from 'react-icons/ri';
 import { FaBoxes, FaPlus } from 'react-icons/fa';
 import AccountOrderIcon from '@components/icons/account-order';
+import { AiOutlineQuestionCircle, AiOutlineShop } from 'react-icons/ai';
 
 const accountMenuSeller = [
   {
@@ -32,6 +33,13 @@ const accountMenuSeller = [
     name: 'account-see-product',
     icon: (
       <FaBoxes className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
+    ),
+  },
+  {
+    slug: '/my-account/learn',
+    name: 'account-learn-product',
+    icon: (
+      <AiOutlineQuestionCircle className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
     ),
   },
   // {

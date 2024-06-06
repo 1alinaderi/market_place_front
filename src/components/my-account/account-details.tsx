@@ -126,9 +126,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </div>
           </Modal>
-          <div className="max-w-[230px] bg-[#eee] py-1 px-5 rounded mb-4 ">
-            <LanguageSwitcher justFa />
-          </div>
+          
 
           <Link href={'/my-account/vip'}>
             {data.membership === 'Premium' ? (

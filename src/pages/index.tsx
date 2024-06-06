@@ -32,7 +32,7 @@ export default function Home() {
               Membership<ArrowRight2 size={18}/>
             </button>
           </Link>
-          <Link href={'/supplier'}>
+          <Link href={'/supplier/signup'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl italic ">
               Premium<ArrowRight2 size={18}/>
             </button>

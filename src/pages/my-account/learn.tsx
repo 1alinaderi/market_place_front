@@ -1,17 +1,16 @@
 import Layout from '@components/layout/layout';
 import AccountLayout from '@components/my-account/account-layout';
-import AccountDetails from '@components/my-account/account-details';
+import Help from '@components/my-account/help';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 import Seo from '@components/seo/seo';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Iagree from '@components/my-account/Iagree';
 
-export default function AccountDetailsPage({ baseData }) {
+export default function learn({ baseData }) {
   const [isSeller, setIsSeller] = useState(false);
   const router = useRouter();
-  const [agree, setAgree] = useState(false);
   useEffect(() => {
     if (baseData.cookies.user?.id) {
       setIsSeller(false);
@@ -20,33 +19,21 @@ export default function AccountDetailsPage({ baseData }) {
       setIsSeller(true);
     }
   }, [router.pathname]);
-
-  useEffect(() => {
-    if (router.locale == 'fa') {
-      document.documentElement.dir = 'rtl';
-    } else {
-      document.documentElement.dir = 'ltr';
-    }
-  }, [router.locale]);
   return (
     <>
       <Seo
-        title="Account Settings"
+        title="Help Center"
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
-        path="my-account/account-settings"
+        path="my-account/help-center"
       />
-      {agree ? (
-        <AccountLayout isSeller={isSeller} baseData={baseData}>
-          <AccountDetails isSeller={isSeller} baseData={baseData} />
-        </AccountLayout>
-      ) : (
-        <Iagree baseData={baseData} setAgree={setAgree} />
-      )}
+      <AccountLayout isSeller={isSeller} baseData={baseData}>
+        <Iagree baseData={baseData} mx />
+      </AccountLayout>
     </>
   );
 }
 
-AccountDetailsPage.Layout = Layout;
+learn.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -55,6 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         'common',
         'forms',
         'menu',
+        'help',
         'footer',
       ])),
     },

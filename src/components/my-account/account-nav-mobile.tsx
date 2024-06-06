@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useLogoutMutation } from '@framework/auth/use-logout';
 import LogoutIcon from '@components/icons/account-logout';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 type Option = {
   name: string;
   slug: string;
@@ -108,6 +109,17 @@ export default function AccountNavMobile({
                 </span>
                 <span className="block truncate ltr:pl-2.5 rtl:pr-2.5 md:ltr:pl-3 md:rtl:pr-3">
                   {t('text-logout')}
+                </span>
+              </button>
+              <button
+                className="flex items-center w-full px-4 py-3 text-sm cursor-pointer lg:text-15px text-brand-dark md:px-5 focus:outline-none"
+                onClick={() => router.push("/my-account/learn")}
+              >
+                <span className="flex justify-center shrink-0">
+                  <AiOutlineQuestionCircle className="w-5 md:w-[22px] h-5 md:h-[22px]" />
+                </span>
+                <span className="block truncate ltr:pl-2.5 rtl:pr-2.5 md:ltr:pl-3 md:rtl:pr-3">
+                  Learn
                 </span>
               </button>
             </Listbox.Options>
