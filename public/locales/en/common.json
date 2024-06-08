@@ -279,5 +279,18 @@
    "modal-p-5" : "15% discount for SECRET STRATEGY sales campaigns",
    "modal-p-6" : "And many more options to read click on buy",
    "modal-p-7" : "Selected",
-   "modal-p-8" : "Buy Now"
+   "modal-p-8" : "Buy Now",
+   "account-learn-product" : "Learn",
+   "back-project": "Back to Project I",
+   "hi" : "Hi Dear",
+   "active-steps" : "Activetion Steps",
+   "free-market" : "Free Market",
+   "free-market-desc" : "Add product and enter product details",
+   "premium" : "Premium",
+   "premium-desc" : "Access to all features and premium features",
+   "referral" : "Referral",
+   "referral-desc" : "Income from personal code referral in crypto",
+   "authentication" : "Authentication",
+   "authentication-desc" : "Checking the entered information of your mobile number by Project I",
+   "continue" : "Continue"
 }

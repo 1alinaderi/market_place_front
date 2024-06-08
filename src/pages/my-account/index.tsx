@@ -12,12 +12,20 @@ export default function AccountDetailsPage({ baseData }) {
   const [isSeller, setIsSeller] = useState(false);
   const router = useRouter();
   const [agree, setAgree] = useState(false);
+
   useEffect(() => {
+    const hasAcceptedContract = localStorage.getItem('hasAcceptedContract');
     if (baseData.cookies.user?.id) {
       setIsSeller(false);
+      setAgree(true);
     }
     if (baseData.cookies.seller?.id) {
       setIsSeller(true);
+      if (hasAcceptedContract) {
+        setAgree(true);
+      } else {
+        setAgree(false);
+      }
     }
   }, [router.pathname]);
 

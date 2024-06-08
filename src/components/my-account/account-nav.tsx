@@ -52,6 +52,7 @@ export default function AccountNav({
           </Link>
         );
       })}
+      
       <button
         className="flex items-center text-sm lg:text-15px text-brand-dark py-3.5 px-3.5 xl:px-4 2xl:px-5 mb-1 cursor-pointer focus:outline-none"
         onClick={() => logout()}
@@ -60,15 +61,6 @@ export default function AccountNav({
           <LogoutIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />
         </span>
         <span className="ltr:pl-1 lg:rtl:pr-1.5">{t('text-logout')}</span>
-      </button>
-      <button
-        className="flex items-center text-sm lg:text-15px text-brand-dark py-3.5 px-3.5 xl:px-4 2xl:px-5 mb-1 cursor-pointer focus:outline-none"
-        onClick={() => routher.push("/my-account/learn")}
-      >
-        <span className="w-9 xl:w-10 shrink-0 flex justify-center">
-          <AiOutlineQuestionCircle className="w-5 md:w-[22px] h-5 md:h-[22px] text-gray-400" />
-        </span>
-        <span className="ltr:pl-1 lg:rtl:pr-1.5">Learn</span>
       </button>
     </nav>
   );
