@@ -53,6 +53,7 @@ export default function referal({ baseData }) {
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 onClick={handleCopyText}
+                disabled
               />
               <div
                 onClick={handleCopyText}

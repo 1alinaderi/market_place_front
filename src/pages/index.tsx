@@ -49,7 +49,7 @@ export default function Home() {
           <Reveal head>
           <img
           
-            className="w-full lg:h-[60vh] object-cover"
+            className="w-full lg:h-[50vh] object-cover "
             src="/assets/images/home/header.png"
             alt=""
           />
