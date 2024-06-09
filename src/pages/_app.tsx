@@ -90,7 +90,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             'AaHw48SxjwQ5fd_vnuRY4AsibkBn0qWx-7Usnp4yglQ3UGN7ISqP698t0-llTGnyidB0eqeAJVaIJDYa',
         }}
       >
-        <audio ref={audio} src="/1.mp3" width="180" height="90" hidden />
+        <audio ref={audio} src="/2.mp3" width="180" height="90" hidden />
         <Hydrate state={pageProps.dehydratedState}>
           {' '}
           <GoogleOAuthProvider clientId="74472575659-u08deub6ejrgjqied21q0ucikd0qjrgh.apps.googleusercontent.com">

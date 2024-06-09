@@ -9,6 +9,7 @@ import { RiVipCrown2Line } from 'react-icons/ri';
 import { FaBoxes, FaPlus } from 'react-icons/fa';
 import AccountOrderIcon from '@components/icons/account-order';
 import { AiOutlineQuestionCircle, AiOutlineShop } from 'react-icons/ai';
+import { MdCreditScore, MdVerifiedUser } from 'react-icons/md';
 
 const accountMenuSeller = [
   {
@@ -62,6 +63,11 @@ const accountMenuSeller = [
   //   name: 'text-notifications',
   //   icon: <NotificationIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
   // },
+  {
+    slug: "/my-account/referal",
+    name: 'text-account-referal',
+    icon: <MdCreditScore className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
+  },
   {
     slug: ROUTES.LEGAL_NOTICE,
     name: 'text-account-details-notice',

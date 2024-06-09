@@ -292,5 +292,9 @@
    "referral-desc" : "Income from personal code referral in crypto",
    "authentication" : "Authentication",
    "authentication-desc" : "Checking the entered information of your mobile number by Project I",
-   "continue" : "Continue"
+   "continue" : "Continue",
+   "text-account-referal" : "Referal",
+   "t-referal": "Earn with referral code",
+   "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
+   "l-referal" : "Your Referal Code"
 }

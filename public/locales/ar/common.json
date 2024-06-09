@@ -293,5 +293,9 @@
    "t-special-price" : "سعر خاص",
    "t-category" : "فئة",
    "t-category-in" : "الفئات في",
-   "t-balance" : "توازن"
+   "t-balance" : "توازن",
+   "text-account-referal" : "الإحالة",
+   "t-referal": "الربح من خلال رمز الإحالة",
+   "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
+   "l-referal" : "رمز الإحالة الخاص بك"
 }

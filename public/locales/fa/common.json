@@ -294,6 +294,10 @@
   "referral-desc" : "درآمد حاصل از ارجاع کد شخصی در کریپتو",
   "authentication" : "احراز هویت",
   "authentication-desc" : "بررسی اطلاعات وارد شده شماره موبایل توسط Project I",
-  "continue" : "ادامه هید"
+  "continue" : "ادامه هید",
+  "text-account-referal" : "معرف",
+   "t-referal": "با کد ارجاع کسب درآمد کنید",
+   "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
+   "l-referal" : "کد ارجاع شما"
 
 }
