@@ -297,5 +297,9 @@
    "text-account-referal" : "الإحالة",
    "t-referal": "الربح من خلال رمز الإحالة",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
-   "l-referal" : "رمز الإحالة الخاص بك"
+   "l-referal" : "رمز الإحالة الخاص بك",
+   "earn" : "يكسب",
+   "type-of-sell": "ماذا سيكون نوع البيع الخاص بك؟",
+   "whole-saler":"تاجر الجملة",
+   "retail-seller": "بائع التجزئة"
 }

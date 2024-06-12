@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 const Iagree = ({ baseData, setAgree, mx }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
+  const [typeofsell, setTypeofsell] = useState('');
   const { t } = useTranslation('common');
   async function getuserData(id: any) {
     const { data } = await httpReauest('GET', '/user/' + id, {}, {});
@@ -94,14 +95,43 @@ const Iagree = ({ baseData, setAgree, mx }) => {
             </span>
           </div>
         </div>
+
+        <div className={`${mx ? 'hidden' : 'block'}`}>
+          <h5 className="mb-3 font-bold text-lg">
+            {t("type-of-sell")}
+          </h5>
+          <div className="flex items-center gap-5 px-8">
+            <button
+              onClick={() => setTypeofsell('wholesaler')}
+              className={`${typeofsell==="wholesaler" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
+            >
+              {t("whole-saler")}
+            </button>
+            <button
+              onClick={() => setTypeofsell('retailseller')}
+              className={`${typeofsell==="retailseller" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
+            >
+              {t("retail-seller")}
+            </button>
+          </div>
+        </div>
+
         <button
           onClick={() => {
-            setAgree(true);
-            localStorage.setItem('hasAcceptedContract', 'true');
+            if (typeofsell === '') {
+              return;
+            } else {
+              setAgree(true);
+              localStorage.setItem('hasAcceptedContract', 'true');
+            }
           }}
           className={`${
-            mx ? 'hidden' : 'block'
-          } w-[40%] py-2 text-lg bg-red-600 text-white rounded mx-8 mt-3`}
+            mx
+              ? 'hidden'
+              : 'block' && typeofsell === ''
+              ? 'bg-red-300'
+              : 'bg-red-600'
+          } w-[40%] py-2 text-lg  text-white rounded mx-8 mt-3`}
         >
           {t('continue')}
         </button>

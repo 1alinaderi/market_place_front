@@ -23,6 +23,7 @@ interface SignUpFormProps {
   className?: string;
   baseData?: any;
   profile: any;
+  googleLogin: any;
 }
 
 const SignUpSeller: React.FC<SignUpFormProps> = ({
@@ -30,6 +31,7 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
   className,
   baseData,
   profile,
+  googleLogin,
 }) => {
   const { t } = useTranslation();
   const { mutate: signUp, isLoading } = useSignUpMutation();
@@ -45,6 +47,33 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpInputType>();
+
+  useEffect(() => {
+    if (profile?.email) {
+      googleLoginAndSign();
+    }
+  }, [profile]);
+
+  async function googleLoginAndSign() {
+    await httpReauest(
+      'POST',
+      '/supplier/sign/google',
+      { email: profile.email, name: profile.given_name },
+      {}
+    )
+      .then((e) => {
+        toast.success(e.data.message);
+        baseData.handleLoginSeller({
+          email: e.data.data.email,
+          id: e.data.data._id,
+          token: e.data.data.token,
+        });
+        router.push(`${window.location.origin}/my-account`);
+      })
+      .catch((e) => {
+        toast.error('Eroor');
+      });
+  }
 
   function handleSignIn() {
     return openModal('LOGIN_VIEW');
@@ -258,6 +287,17 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
                       {t('common:text-privacy-and-policy')}
                     </Link>
                   </div>
+                </div>
+                <div className="relative">
+                  <Button
+                    onClick={googleLogin}
+                    loading={isLoading}
+                    disabled={isLoading}
+                    className="w-full mt-2 tracking-normal h-11 md:h-12 font-15px md:font-15px"
+                    variant="border"
+                  >
+                    <FaGoogle className="mr-3" size={23} /> Sign With Google
+                  </Button>
                 </div>
 
                 <div className="relative">

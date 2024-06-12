@@ -31,6 +31,7 @@ import LoginForm from '@components/auth/login-form';
 import CloseButton from '@components/ui/close-button';
 import MembershipCard from '@components/cards/membership-card';
 import LanguageSwitcher from '@components/ui/language-switcher';
+import Balance from './Balance';
 
 const defaultValues = {};
 
@@ -126,7 +127,6 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </div>
           </Modal>
-          
 
           <Link href={'/my-account/vip'}>
             {data.membership === 'Premium' ? (
@@ -145,6 +145,9 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             )}
           </Link>
+          <div className='mb-5'>
+            <Balance />
+          </div>
           <div
             className="flex flex-col justify-center w-full mx-auto"
             noValidate

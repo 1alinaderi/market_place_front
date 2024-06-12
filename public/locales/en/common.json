@@ -296,5 +296,10 @@
    "text-account-referal" : "Referal",
    "t-referal": "Earn with referral code",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
-   "l-referal" : "Your Referal Code"
+   "l-referal" : "Your Referal Code",
+   "earn" : "Earn",
+   "wallet" : "Wallet",
+   "type-of-sell": "What will be your type of sale?",
+   "whole-saler":"Whole Saler",
+   "retail-seller": "Retail Saler"
 }

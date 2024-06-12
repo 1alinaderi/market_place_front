@@ -298,6 +298,10 @@
   "text-account-referal" : "معرف",
    "t-referal": "با کد ارجاع کسب درآمد کنید",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
-   "l-referal" : "کد ارجاع شما"
+   "l-referal" : "کد ارجاع شما",
+   "earn" : "بدست اوردن",
+   "type-of-sell": "نوع فروش شما چه خواهد بود؟",
+   "whole-saler":"عمده فروش",
+   "retail-seller": "خرده فروشی"
 
 }

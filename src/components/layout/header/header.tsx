@@ -123,7 +123,7 @@ const Header: React.FC = () => {
               row={true}
               className="flex transition-all duration-200 ease-in-out"
             />
-            <LanguageSwitcherHeader justFa={true}/>
+            <LanguageSwitcherHeader justFa={true} />
             {/* End of main menu */}
 
             {displaySearch && (
@@ -151,9 +151,7 @@ const Header: React.FC = () => {
 
                 {/* 
                 <CartButton /> */}
-              
-                
-            
+
                 <Link href={'/signin'}>
                   <div className="flex items-center shrink-0 ltr:ml-4 rtl:mr-7">
                     <UserIcon className="text-white" />

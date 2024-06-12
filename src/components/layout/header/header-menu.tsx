@@ -12,6 +12,7 @@ interface MenuProps {
 
 const HeaderMenu: React.FC<MenuProps> = ({ data, className, row }) => {
   const { t } = useTranslation('menu');
+  
   return (
     <nav
       className={cn(

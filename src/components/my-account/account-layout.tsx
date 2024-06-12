@@ -10,6 +10,7 @@ import { FaBoxes, FaPlus } from 'react-icons/fa';
 import AccountOrderIcon from '@components/icons/account-order';
 import { AiOutlineQuestionCircle, AiOutlineShop } from 'react-icons/ai';
 import { MdCreditScore, MdVerifiedUser } from 'react-icons/md';
+import { LuWallet } from "react-icons/lu";
 
 const accountMenuSeller = [
   {
@@ -65,8 +66,13 @@ const accountMenuSeller = [
   // },
   {
     slug: "/my-account/referal",
-    name: 'text-account-referal',
+    name: 'earn',
     icon: <MdCreditScore className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
+  },
+  {
+    slug: "/my-account/wallet",
+    name: 'wallet',
+    icon: <LuWallet className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
   },
   {
     slug: ROUTES.LEGAL_NOTICE,

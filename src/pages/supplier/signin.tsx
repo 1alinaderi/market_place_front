@@ -13,10 +13,10 @@ export default function SignInPage({ baseData }) {
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState([]);
 
-  // const googleLogin = useGoogleLogin({
-  //   onSuccess: (codeResponse) => setUser(codeResponse),
-  //   onError: (error) => console.log('Login Failed:', error),
-  // });
+  const googleLogin = useGoogleLogin({
+    onSuccess: (codeResponse) => setUser(codeResponse),
+    onError: (error) => console.log('Login Failed:', error),
+  });
 
   useEffect(() => {
     if (user) {
@@ -50,6 +50,7 @@ export default function SignInPage({ baseData }) {
           <LoginFormSeller
             profile={profile}
             baseData={baseData}
+            googleLogin={googleLogin}
             isPopup={false}
             className="border rounded-lg border-border-base"
           />

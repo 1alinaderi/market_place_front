@@ -23,6 +23,7 @@ interface LoginFormProps {
   className?: string;
   baseData?: any;
   profile: any;
+  googleLogin: any;
 }
 
 const LoginFormSeller: React.FC<LoginFormProps> = ({
@@ -30,6 +31,7 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
   className,
   baseData,
   profile,
+  googleLogin,
 }) => {
   const { t } = useTranslation();
   const { closeModal, openModal } = useModalAction();
@@ -43,6 +45,32 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
     handleSubmit,
     formState: { errors },
   } = useForm<LoginInputType>();
+  useEffect(() => {
+    if (profile?.email) {
+      googleLoginAndSign();
+    }
+  }, [profile]);
+
+  async function googleLoginAndSign() {
+    await httpReauest(
+      'POST',
+      '/supplier/sign/google',
+      { email: profile.email, name: profile.given_name },
+      {}
+    )
+      .then((e) => {
+        toast.success(e.data.message);
+        baseData.handleLoginSeller({
+          email: e.data.data.email,
+          id: e.data.data._id,
+          token: e.data.data.token,
+        });
+        router.push(`${window.location.origin}/my-account`);
+      })
+      .catch((e) => {
+        toast.error('Eroor');
+      });
+  }
 
   async function onSubmit({
     email,
@@ -56,7 +84,7 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
     // });
 
     await httpReauest('POST', '/supplier/login', { email, password }, {})
-      .then(async(e) => {
+      .then(async (e) => {
         if (e.data.message == 'succesfull') {
           toast.success(e.data.message);
           await baseData.handleLogin(null);
@@ -163,6 +191,17 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
                     {t('common:text-forgot-password')}
                   </button>
                 </div>
+              </div>
+              <div className="relative">
+                <Button
+                  onClick={googleLogin}
+                  loading={isLoading}
+                  disabled={isLoading}
+                  className="w-full mt-2 tracking-normal h-11 md:h-12 font-15px md:font-15px"
+                  variant="border"
+                >
+                  <FaGoogle className="mr-3" size={23} /> Sign With Google
+                </Button>
               </div>
               <div className="relative">
                 <Button

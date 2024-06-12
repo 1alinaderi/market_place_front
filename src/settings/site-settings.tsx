@@ -127,6 +127,20 @@ export const siteSettings = {
         id: 2,
         path: '/suppliers/',
         label: 'suppliers',
+        subMenu: [
+          {
+            id: 1,
+            path: '/suppliers/',
+            label: 'all-suppliers',
+          },
+          {
+            id: 2,
+            path: '/supplier/signin',
+            label: 'menu-sign-in',
+          },
+
+         
+        ],
       },
 
       {
