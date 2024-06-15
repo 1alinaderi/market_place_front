@@ -5,13 +5,13 @@ export const dataBanner2 = [
     id: 1,
     title: 'feature-title-one',
     href: ROUTES.SEARCH,
-    src: 'https://malltina.com/_next/image?url=https%3A%2F%2Fmltp.malltina.com%2Fmltprod%2Fmedia%2Ftwin_banners%2F1688303382tIm9S8BdAKKSx8jJ.jpg%3Fwidth%3D%7Bwidth%7D%26height%3D%7Bheight%7D&w=2048&q=95',
+    src: 'https://mltp.malltina.com/mltprod/media/sliders/1717583209LisBOFjZcqt4BYGM.jpg',
   },
   {
     id: 2,
     title: 'feature-title-two',
     href: ROUTES.SEARCH,
-    src: 'https://malltina.com/_next/image?url=https%3A%2F%2Fmltp.malltina.com%2Fmltprod%2Fmedia%2Ftwin_banners%2F1688303382tIm9S8BdAKKSx8jJ.jpg%3Fwidth%3D%7Bwidth%7D%26height%3D%7Bheight%7D&w=2048&q=95',
+    src: 'https://mltp.malltina.com/mltprod/media/sliders/1717583209LisBOFjZcqt4BYGM.jpg',
   },
   // {
   //   id: 3,
@@ -44,19 +44,19 @@ export const dataBanner3 = [
     id: 1,
     title: 'feature-title-one',
     href: ROUTES.SEARCH,
-    src: 'https://malltina.com/_next/image?url=https%3A%2F%2Fmltp.malltina.com%2Fmltprod%2Fmedia%2Ftwin_banners%2F1688303382tIm9S8BdAKKSx8jJ.jpg%3Fwidth%3D%7Bwidth%7D%26height%3D%7Bheight%7D&w=2048&q=95',
+    src: 'https://mltp.malltina.com/mltprod/media/sliders/1717583209LisBOFjZcqt4BYGM.jpg',
   },
   {
     id: 2,
     title: 'feature-title-two',
     href: ROUTES.SEARCH,
-    src: 'https://malltina.com/_next/image?url=https%3A%2F%2Fmltp.malltina.com%2Fmltprod%2Fmedia%2Ftwin_banners%2F1688303382tIm9S8BdAKKSx8jJ.jpg%3Fwidth%3D%7Bwidth%7D%26height%3D%7Bheight%7D&w=2048&q=95',
+    src: 'https://mltp.malltina.com/mltprod/media/sliders/1717583209LisBOFjZcqt4BYGM.jpg',
   },
   {
     id: 3,
     title: 'feature-title-three',
     href: ROUTES.SEARCH,
-    src: 'https://malltina.com/_next/image?url=https%3A%2F%2Fmltp.malltina.com%2Fmltprod%2Fmedia%2Ftwin_banners%2F1688303382tIm9S8BdAKKSx8jJ.jpg%3Fwidth%3D%7Bwidth%7D%26height%3D%7Bheight%7D&w=2048&q=95',
+    src: 'https://mltp.malltina.com/mltprod/media/sliders/1717583209LisBOFjZcqt4BYGM.jpg',
   },
 ];
 export const homeTwoBanner = {

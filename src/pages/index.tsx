@@ -7,6 +7,10 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { BsHandIndex } from 'react-icons/bs';
 import { FaNetworkWired, FaVirus } from 'react-icons/fa';
+import { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/autoplay';
+import 'swiper/css';
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
@@ -46,19 +50,37 @@ export default function Home() {
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Referral<ArrowRight2 size={18}/></button>
         </div>
         <div className="relative z-10 ">
-          <Reveal head>
-          <img
-          
-            className="w-full lg:h-[50vh] object-cover "
-            src="/assets/images/home/header.png"
-            alt=""
-          />
-          </Reveal>
+          <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}>
+            <SwiperSlide>
+            <img
+              className="w-full lg:h-[50vh] object-cover "
+              src="/assets/images/home/header.png"
+              alt=""
+            />
+            </SwiperSlide>
+            <SwiperSlide>
+            <img
+              className="w-full lg:h-[50vh] object-cover "
+              src="/assets/images/slider2.jpg"
+              alt=""
+            />
+            </SwiperSlide>
+            <SwiperSlide>
+            <img
+              className="w-full lg:h-[50vh] object-cover "
+              src="/assets/images/slider3.jpg"
+              alt=""
+            />
+            </SwiperSlide>
+          </Swiper>
+      
+        
+       
          
         </div>
      
       
-        <div className="grid grid-cols-2 lg:grid-cols-3  gap-3 lg:gap-10 py-4 lg:py-8 px-3 grid-flow-row  relative">
+        <div className="grid grid-cols-2 lg:grid-cols-4  gap-3 lg:gap-10 py-4 lg:py-8 px-3 grid-flow-row  relative">
         <video  ref={ref} loop muted src='/video/1 (1).mp4' className='absolute left-0 top-0 h-full w-full object-cover lg:opacity-90 opacity-60'/>
 
           <RevealX head>
