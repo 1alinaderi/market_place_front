@@ -53,21 +53,21 @@ export default function Home() {
           <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}>
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] object-cover "
+              className="w-full lg:h-[50vh] h-[150px] object-cover "
               src="/assets/images/home/header.png"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] object-cover "
+              className="w-full lg:h-[50vh] h-[150px] object-cover "
               src="/assets/images/slider2.jpg"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] object-cover "
+              className="w-full lg:h-[50vh] h-[150px] object-cover "
               src="/assets/images/slider3.jpg"
               alt=""
             />
