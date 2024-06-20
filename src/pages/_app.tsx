@@ -98,7 +98,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
               <CookiesProvider>
                 <>
                   <DefaultSeo />
-                  {router.pathname === '/' ? (
+                  {(router.pathname === '/home' || router.pathname === '/') ? (
                     <>
                       {isPlaying ? (
                         <MdMusicOff
