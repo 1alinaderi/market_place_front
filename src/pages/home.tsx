@@ -30,7 +30,7 @@ export default function Home() {
     <div className='relative'>
       <div className="bg-[#11223a] overflow-hidden">
       
-      <div className="lg:flex hidden justify-center items-center gap-[60px] relative z-10 py-4 px-[150px] bg-[#08121f]">
+      <div style={{background: "linear-gradient(90deg, rgba(38,47,69,1) 0%, rgba(81,150,206,1) 20%, rgba(254,132,146,1) 40%, rgba(164,37,39,1) 60%, rgba(118,29,33,1) 80%, rgba(34,22,32,1) 100%)"}} className="lg:flex hidden justify-center items-center gap-[60px] relative z-10 py-4 px-[150px] bg-[#08121f]">
           <Link href={'/supplier/signup'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">
               Membership<ArrowRight2 size={18}/>
@@ -104,7 +104,7 @@ export default function Home() {
             <Link href={'/products'}>
               <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative cursor-pointer h-full w-full row-span-1 border-2 border-[#fff]/70 rounded-[14px] overflow-hidden ">
                 <img
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover max-h-[320px]"
                   src="/assets/images/home/3.png"
                   alt=""
                 />
@@ -220,7 +220,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover max-h-[320px]"
                 src="/assets/images/home/4.png"
                 alt=""
               />
@@ -233,7 +233,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover max-h-[320px]"
                 src="/assets/images/home/5.png"
                 alt=""
               />
@@ -245,7 +245,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover max-h-[320px]"
                 src="/assets/images/home/6.png"
                 alt=""
               />
@@ -257,7 +257,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover max-h-[320px]"
                 src="/assets/images/home/7.png"
                 alt=""
               />
@@ -269,7 +269,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover max-h-[320px]"
                 src="/assets/images/home/8.png"
                 alt=""
               />
@@ -281,7 +281,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover max-h-[320px]"
                 src="/assets/images/home/9.png"
                 alt=""
               />
@@ -290,7 +290,78 @@ export default function Home() {
               </p>
             </div>
           </RevealX>
-        </div>          
+          <RevealX>
+            <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
+              <img
+                className="h-full w-full object-cover max-h-[320px]"
+                src="/urametacover.png"
+                alt=""
+              />
+              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+                Urameta
+              </p>
+            </div>
+          </RevealX>
+          <RevealX>
+            <div className="relative h-full w-full bg-black border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
+              <img
+                className="h-full w-full object-contain max-h-[320px] p-4"
+                src="/stgs.png"
+                alt=""
+              />
+              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+                STGS
+              </p>
+            </div>
+          </RevealX>
+       <span className='col-span-full lg:col-span-1'>
+       <RevealX>
+            <Link href={"/about-us"}>
+            <div className="relative cursor-pointer h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
+              <img
+                className="h-full w-full object-cover max-h-[320px]"
+                src="/sus (1).png"
+                alt=""
+              />
+              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
+              About Us
+              </p>
+            </div>
+            </Link>
+          
+          </RevealX>
+       </span>
+        
+        </div>   
+        <div className="relative z-10 col-span-full">
+          <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}>
+            <SwiperSlide>
+            <img
+              className="w-full lg:h-[50vh] h-[150px] object-cover "
+              src="/assets/images/home/header.png"
+              alt=""
+            />
+            </SwiperSlide>
+            <SwiperSlide>
+            <img
+              className="w-full lg:h-[50vh] h-[150px] object-cover "
+              src="/assets/images/slider2.jpg"
+              alt=""
+            />
+            </SwiperSlide>
+            <SwiperSlide>
+            <img
+              className="w-full lg:h-[50vh] h-[150px] object-cover "
+              src="/assets/images/slider3.jpg"
+              alt=""
+            />
+            </SwiperSlide>
+          </Swiper>
+      
+        
+       
+         
+        </div>       
       </div>
     </div>
   );

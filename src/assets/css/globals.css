@@ -563,6 +563,7 @@ input:checked + .slider:before {
 
 .animation-text {
   animation: animationtext 2s infinite linear;
+  text-shadow: 1px 2px 5px #000000;
 }
 
 @keyframes floating {
@@ -572,18 +573,5 @@ input:checked + .slider:before {
 
   to {
     transform: rotate(360.001deg) translate3d(3px, 0, 0) rotate(-360.001deg);
-  }
-}
-
-@keyframes animationtext {
-  0% {
-    text-shadow: none;
-  }
-
-  50% {
-    text-shadow: 1px 2px 5px #ffffff;
-  }
-  100% {
-    text-shadow: none;
   }
 }
