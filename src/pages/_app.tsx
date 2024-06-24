@@ -25,6 +25,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { getDirection } from '@utils/get-direction';
 import { MdMusicNote, MdMusicOff } from 'react-icons/md';
+import Modal from '@components/common/modal/modal';
+import CloseButton from '@components/ui/close-button';
+import Button from '@components/ui/button';
+import Link from 'next/link';
 
 const Noop: React.FC = ({ children }) => <>{children}</>;
 
@@ -35,6 +39,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   }
   const router = useRouter();
   const dir = getDirection(router.locale);
+  const [show , setShow] = useState<boolean>(false)
   useEffect(() => {
     if (
       router.pathname != '/my-account' &&
@@ -63,6 +68,19 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
     setCookie('seller', user, { path: '/' });
   }
 
+  console.log()
+
+  async function getIp() {
+    if (!cookies?.seller?.token) {
+      const response = await fetch('https://geolocation-db.com/json/').catch((e)=>console.log(e))
+      const data = await response.json();
+      if (data.country_code === "IR") {
+        setShow(true)
+      }
+    }
+    
+  }
+
   const [isPlaying, setIsPlaying] = useState(false);
 
   const audio = useRef();
@@ -80,6 +98,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         }
       }
     }, 3000);
+    getIp()
   }, []);
 
   return (
@@ -98,6 +117,28 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
               <CookiesProvider>
                 <>
                   <DefaultSeo />
+                  <Modal open={show} onClose={()=>setShow(false)}>
+                  <div
+                    className={
+                      'w-full  relative '
+                    }
+                  >
+                   <CloseButton onClick={()=>setShow(false)} />
+                   <div className="mx-auto overflow-hidden rounded-lg text-center bg-brand-light md:px-16 py-6">
+                   <h4 className="w-full text-2xl   text-black font-semibold">
+                    تامین کننده هستی؟همین الان ثبت نام کن
+                    </h4>
+                    <p className='text-black/90 text-md m-0 mt-1'>داخل فری مارکت میتونی راحت محصولاتت رو بفروشی</p>
+                    <Link href="/supplier/signin">
+                    <Button className='mt-3 font-[900] scale-90'>
+                    ثبت نام / ورود
+                   </Button>
+                    </Link>
+             
+                   </div>
+                  
+                </div>
+                  </Modal>
                   {(router.pathname === '/home' || router.pathname === '/') ? (
                     <>
                       {isPlaying ? (

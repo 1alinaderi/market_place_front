@@ -23,7 +23,10 @@ export default function Home() {
     if (ref.current) {
       ref.current.play()
     }
+    
   }, []);
+
+
 
  
   return (
@@ -104,7 +107,7 @@ export default function Home() {
             <Link href={'/products'}>
               <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative cursor-pointer h-full w-full row-span-1 border-2 border-[#fff]/70 rounded-[14px] overflow-hidden ">
                 <img
-                  className="h-full w-full object-cover max-h-[320px]"
+                  className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                   src="/assets/images/home/3.png"
                   alt=""
                 />
@@ -220,7 +223,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/assets/images/home/4.png"
                 alt=""
               />
@@ -233,7 +236,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/assets/images/home/5.png"
                 alt=""
               />
@@ -245,7 +248,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/assets/images/home/6.png"
                 alt=""
               />
@@ -257,7 +260,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/assets/images/home/7.png"
                 alt=""
               />
@@ -269,7 +272,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/assets/images/home/8.png"
                 alt=""
               />
@@ -281,7 +284,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/assets/images/home/9.png"
                 alt=""
               />
@@ -291,9 +294,10 @@ export default function Home() {
             </div>
           </RevealX>
           <RevealX>
-            <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
+            <Link href={"https://urameta.net"}>
+            <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden cursor-pointer">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/urametacover.png"
                 alt=""
               />
@@ -301,25 +305,30 @@ export default function Home() {
                 Urameta
               </p>
             </div>
+            </Link>
+          
           </RevealX>
           <RevealX>
+            <Link href={'https://sdgs.un.org/goals'}>
+
             <div className="relative h-full w-full bg-black border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-contain max-h-[320px] p-4"
+                className="h-full w-full object-contain max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] p-4"
                 src="/stgs.png"
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                STGS
+                SDGS
               </p>
             </div>
+            </Link>
           </RevealX>
        <span className='col-span-full lg:col-span-1'>
        <RevealX>
             <Link href={"/about-us"}>
             <div className="relative cursor-pointer h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/sus (1).png"
                 alt=""
               />
