@@ -295,7 +295,7 @@ export default function Home() {
           </RevealX>
           <RevealX>
             <Link href={"https://urameta.net"}>
-            <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden cursor-pointer">
+            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative h-full w-full border-2 border-[#fff] rounded-[14px] overflow-hidden cursor-pointer">
               <img
                 className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/urametacover.png"
@@ -311,7 +311,7 @@ export default function Home() {
           <RevealX>
             <Link href={'https://sdgs.un.org/goals'}>
 
-            <div className="relative h-full w-full bg-black border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
+            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className=" cursor-pointer relative h-full w-full bg-black border-2 border-[#fff] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-contain max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] p-4"
                 src="/stgs.png"
@@ -326,7 +326,7 @@ export default function Home() {
        <span className='col-span-full lg:col-span-1'>
        <RevealX>
             <Link href={"/about-us"}>
-            <div className="relative cursor-pointer h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
+            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative cursor-pointer h-full w-full border-2 border-[#fff] rounded-[14px] overflow-hidden">
               <img
                 className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
                 src="/sus (1).png"
