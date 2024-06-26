@@ -481,6 +481,11 @@ input:checked + .slider:before {
   src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
 }
 
+@font-face {
+  font-family: 'Nazanin';
+  src: url("/public/B-NAZANIN.TTF");
+}
+
 .pastel_text {
   font-family: 'Rocher';
   base-palette: 9;

@@ -82,7 +82,7 @@ module.exports = {
         wiggle: 'wiggle 1s ease-in-out infinite',
       },
       fontFamily: {
-        body: ["'Inter', sans-serif"],
+        body: ["'Inter', sans-serif, 'Nazanin'"],
         manrope: ["'Manrope', sans-serif"],
       },
       boxShadow: {
