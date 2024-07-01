@@ -123,14 +123,14 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/assets/images/banner/banner-1.jpg',
+        url: '/image/banner/product 1.jpg',
         width: 450,
-        height: 222,
+        height: 90,
       },
       desktop: {
-        url: '/assets/images/banner/banner-1.jpg',
+        url: '/image/banner/product 1.jpg',
         width: 910,
-        height: 350,
+        height: 300,
       },
     },
   },
@@ -140,14 +140,48 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/assets/images/banner/banner-1.jpg',
+        url: '/image/banner/product 1v2.jpg',
         width: 450,
-        height: 222,
+        height: 90,
       },
       desktop: {
-        url: '/assets/images/banner/banner-1.jpg',
+        url: '/image/banner/product 1v2.jpg',
         width: 910,
-        height: 350,
+        height: 300,
+      },
+    },
+  },
+  {
+    id: 3,
+    title: 'Fresh Healthy Breakfast food',
+    slug: '/search',
+    image: {
+      mobile: {
+        url: '/image/banner/product 2.jpg',
+        width: 450,
+        height: 90,
+      },
+      desktop: {
+        url: '/image/banner/product 2.jpg',
+        width: 910,
+        height: 300,
+      },
+    },
+  },
+  {
+    id: 4,
+    title: 'Fresh Healthy Breakfast food',
+    slug: '/search',
+    image: {
+      mobile: {
+        url: '/image/banner/product 2v2.jpg',
+        width: 450,
+        height: 90,
+      },
+      desktop: {
+        url: '/image/banner/product 2v2.jpg',
+        width: 910,
+        height: 300,
       },
     },
   },

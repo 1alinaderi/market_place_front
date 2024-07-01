@@ -13,6 +13,10 @@ import { useRouter } from 'next/router';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { getDirection } from '@utils/get-direction';
 import cn from 'classnames';
+import { EffectFade } from 'swiper';
+
+
+import 'swiper/css/effect-fade';
 
 type CarouselPropsType = {
   className?: string;
@@ -70,7 +74,8 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({
       }`}
     >
       <Swiper
-        modules={[Navigation, Autoplay, Pagination, Grid]}
+        modules={[Navigation, Autoplay, Pagination, Grid,EffectFade]}
+        effect="fade"
         autoplay={autoplay}
         breakpoints={breakpoints}
         dir={dir}

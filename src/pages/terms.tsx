@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next';
 import DownloadApps from '@components/common/download-apps';
 import Heading from '@components/ui/heading';
 import Seo from '@components/seo/seo';
+import Link from 'next/link';
 
 export default function TermsPage() {
   const { t } = useTranslation('terms');
@@ -22,6 +23,9 @@ export default function TermsPage() {
       <div className="py-12 lg:py-16 2xl:py-20">
         <Container>
           <div className="w-full xl:max-w-[1200px] mx-auto">
+            <div className="text-brand-muted text-sm lg:text-15px leading-7 space-y-5 mb-4 lg:mb-6">
+               {t("terms-title")}
+            </div>
             {termsAndServices?.map((item) => (
               // @ts-ignore
               <div
@@ -39,6 +43,20 @@ export default function TermsPage() {
                 />
               </div>
             ))}
+            <div>
+              <span className='flex justify-start items-center gap-2 '>
+                <p className='font-bold'>{t("email")}:</p>
+                <Link href='mailto:wimehr@gmail.com'>
+                wimehr@gmail.com
+                </Link>
+              </span>
+              <span className='flex justify-start items-center gap-2 '>
+              <p className='font-bold'>{t("phone")}:</p>
+                <Link href='tel:0096893548433'>
+                0096893548433
+                </Link>
+              </span>
+            </div>
           </div>
         </Container>
       </div>

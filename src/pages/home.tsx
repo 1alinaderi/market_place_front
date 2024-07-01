@@ -11,6 +11,8 @@ import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/autoplay';
 import 'swiper/css';
+import 'swiper/css/effect-fade';
+import { EffectFade } from 'swiper';
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
@@ -53,25 +55,32 @@ export default function Home() {
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Referral<ArrowRight2 size={18}/></button>
         </div>
         <div className="relative z-10 ">
-          <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}>
+          <Swiper loop autoplay={{delay:4000}} modules={[Autoplay,EffectFade]} effect="fade" >
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] h-[150px] object-cover "
-              src="/assets/images/home/header.png"
+              className="w-full  object-cover "
+              src="/image/banner/product 4.jpg"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] h-[150px] object-cover "
-              src="/assets/images/slider2.jpg"
+              className="w-full  object-cover "
+              src="/image/banner/product 4v2.jpg"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] h-[150px] object-cover "
-              src="/assets/images/slider3.jpg"
+              className="w-full  object-cover "
+              src="/image/banner/product 1.jpg"
+              alt=""
+            />
+            </SwiperSlide>
+            <SwiperSlide>
+            <img
+              className="w-full  object-cover "
+              src="/image/banner/product 1v2.jpg"
               alt=""
             />
             </SwiperSlide>
@@ -343,25 +352,33 @@ export default function Home() {
         
         </div>   
         <div className="relative z-10 col-span-full">
-          <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}>
+        <Swiper loop autoplay={{delay:4000}} modules={[Autoplay,EffectFade]} effect="fade" >
+          
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] h-[150px] object-cover "
-              src="/assets/images/home/header.png"
+              className="w-full  object-cover "
+              src="/image/banner/product 2.jpg"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] h-[150px] object-cover "
-              src="/assets/images/slider2.jpg"
+              className="w-full  object-cover "
+              src="/image/banner/product 2v2.jpg"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full lg:h-[50vh] h-[150px] object-cover "
-              src="/assets/images/slider3.jpg"
+              className="w-full  object-cover "
+              src="/image/banner/product 3.jpg"
+              alt=""
+            />
+            </SwiperSlide>
+            <SwiperSlide>
+            <img
+              className="w-full  object-cover "
+              src="/image/banner/product 3v2.jpg"
               alt=""
             />
             </SwiperSlide>

@@ -9,11 +9,7 @@ export const privacyPolicy = [
     title: 'privacy-two-title',
     description: 'privacy-two-content',
   },
-  {
-    id: '3',
-    title: 'privacy-three-title',
-    description: 'privacy-three-content',
-  },
+ 
   {
     id: '4',
     title: 'privacy-four-title',
@@ -28,5 +24,15 @@ export const privacyPolicy = [
     id: '6',
     title: 'privacy-six-title',
     description: 'privacy-six-content',
+  },
+  {
+    id: '7',
+    title: 'privacy-seven-title',
+    description: 'privacy-seven-content',
+  },
+  {
+    id: '8',
+    title: 'privacy-eight-title',
+    description: 'privacy-eight-content',
   },
 ];
