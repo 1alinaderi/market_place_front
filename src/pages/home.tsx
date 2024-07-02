@@ -326,7 +326,7 @@ export default function Home() {
 
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder  cursor-pointer relative h-full w-full bg-black  rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-fill lg:max-h-[300px] max-h-[150px] relative p-1 rounded-[14px]"
+                className="h-full w-full object-fill lg:max-h-[300px] xl:max-h-[340px]  md:max-h-[340px] sm:max-h-[150px] relative p-1 rounded-[14px]"
                 src="/stgs.png.jpg"
                 alt=""
               />
