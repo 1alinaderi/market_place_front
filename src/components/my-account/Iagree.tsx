@@ -14,13 +14,26 @@ const Iagree = ({ baseData, setAgree, mx }) => {
   const [typeofsell, setTypeofsell] = useState('');
   const { t } = useTranslation('common');
   async function getuserData(id: any) {
-    const { data } = await httpReauest('GET', '/user/' + id, {}, {});
+    const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
     setData(data.data);
+    console.log(data)
   }
   useEffect(() => {
-    getuserData(baseData.cookies.user?.id);
-    console.log(data);
+    getuserData(baseData.cookies.seller?.id);
+    
   }, []);
+  console.log(baseData.cookies)
+ async function handleAccept() {
+    if (typeofsell === '') {
+      return;
+    } else {
+      await httpReauest("POST","/supplier/type",{type: typeofsell,sellerId: baseData.cookies.seller?.id },{ 'x-access-token': baseData?.cookies?.seller?.token }).then(()=>{
+        setAgree(true);
+        localStorage.setItem('hasAcceptedContract', 'true');
+      })
+      
+    }
+  }
   return (
     <div className="mx-2 lg:mx-0 ">
       <div
@@ -102,14 +115,14 @@ const Iagree = ({ baseData, setAgree, mx }) => {
           </h5>
           <div className="flex items-center gap-5 px-8">
             <button
-              onClick={() => setTypeofsell('wholesaler')}
-              className={`${typeofsell==="wholesaler" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
+              onClick={() => setTypeofsell('whole')}
+              className={`${typeofsell==="whole" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
             >
               {t("whole-saler")}
             </button>
             <button
-              onClick={() => setTypeofsell('retailseller')}
-              className={`${typeofsell==="retailseller" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
+              onClick={() => setTypeofsell('retail')}
+              className={`${typeofsell==="retail" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
             >
               {t("retail-seller")}
             </button>
@@ -117,14 +130,7 @@ const Iagree = ({ baseData, setAgree, mx }) => {
         </div>
 
         <button
-          onClick={() => {
-            if (typeofsell === '') {
-              return;
-            } else {
-              setAgree(true);
-              localStorage.setItem('hasAcceptedContract', 'true');
-            }
-          }}
+          onClick={handleAccept}
           className={`${
             mx
               ? 'hidden'

@@ -96,10 +96,11 @@ export default function Home() {
         <video  ref={ref} loop muted src='/video/1 (1).mp4' className='absolute left-0 top-0 h-full w-full object-cover lg:opacity-90 opacity-60'/>
 
           <RevealX head>
-            <Link href={'/marketplace'}>
-              <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative cursor-pointer h-full w-full row-span-1 border-2 border-[#fff]/70 rounded-[14px] overflow-hidden ">
+            <Link  href={'/marketplace'}>
+              <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative cursor-pointer h-full w-full row-span-1  rounded-[14px] overflow-hidden ">
+                
                 <img
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover relative p-1 rounded-[14px]"
                   src="/assets/images/home/1.png"
                   alt=""
                 />
@@ -114,9 +115,9 @@ export default function Home() {
 
           <RevealX>
             <Link href={'/products'}>
-              <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative cursor-pointer h-full w-full row-span-1 border-2 border-[#fff]/70 rounded-[14px] overflow-hidden ">
+              <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative cursor-pointer h-full w-full row-span-1  rounded-[14px] overflow-hidden ">
                 <img
-                  className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                  className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] relative p-1 rounded-[14px]"
                   src="/assets/images/home/3.png"
                   alt=""
                 />
@@ -176,10 +177,10 @@ export default function Home() {
             </div>
           
            <Link href={'/products/discount'}>
-            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="cursor-pointer relative lg:h-full col-span-2 lg:col-span-1 border-2 border-[#fff]/70 rounded-[14px] overflow-hidden">
+            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder cursor-pointer relative lg:h-full col-span-2 lg:col-span-1  rounded-[14px] overflow-hidden">
               <Reveal>
                 <img
-                  className=" w-full h-full object-cover"
+                  className=" w-full h-full object-cover relative p-1 rounded-[14px]"
                   src="/assets/images/home/2.png"
                   alt=""
                 />
@@ -304,9 +305,9 @@ export default function Home() {
           </RevealX>
           <RevealX>
             <Link href={"https://urameta.net"}>
-            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative h-full w-full border-2 border-[#fff] rounded-[14px] overflow-hidden cursor-pointer">
+            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative h-full w-full  rounded-[14px] overflow-hidden cursor-pointer">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] relative p-1 rounded-[14px]"
                 src="/urametacover.png"
                 alt=""
               />
@@ -320,10 +321,10 @@ export default function Home() {
           <RevealX>
             <Link href={'https://sdgs.un.org/goals'}>
 
-            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className=" cursor-pointer relative h-full w-full bg-black border-2 border-[#fff] rounded-[14px] overflow-hidden">
+            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder  cursor-pointer relative h-full w-full bg-black  rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-contain max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] p-4"
-                src="/stgs.png"
+                className="h-full w-full object-fill max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]  relative p-1 rounded-[14px]"
+                src="/stgs.png.jpg"
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
@@ -335,9 +336,9 @@ export default function Home() {
        <span className='col-span-full lg:col-span-1'>
        <RevealX>
             <Link href={"/about-us"}>
-            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="relative cursor-pointer h-full w-full border-2 border-[#fff] rounded-[14px] overflow-hidden">
+            <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder  relative cursor-pointer h-full w-full  rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] relative p-1 rounded-[14px]"
                 src="/sus (1).png"
                 alt=""
               />

@@ -40,33 +40,33 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
   const router = useRouter();
 
-  useEffect(() => {
-    if (profile?.email) {
-      googleLoginAndSign();
-    }
-  }, [profile]);
+  // useEffect(() => {
+  //   if (profile?.email) {
+  //     googleLoginAndSign();
+  //   }
+  // }, [profile]);
 
-  async function googleLoginAndSign() {
-    await httpReauest(
-      'POST',
-      '/user/sign/google',
-      { email: profile.email, name: profile.given_name },
-      {}
-    )
-      .then(async(e) => {
-        toast.success(e.data.message);
-        await baseData.handleLoginSeller(null);
-        await baseData.handleLogin({
-          email: profile.email,
-          id: e.data.data._id,
-          token: e.data.data.token,
-        });
-        router.push(`${window.location.origin}/my-account`);
-      })
-      .catch((e) => {
-        toast.error('Eroor');
-      });
-  }
+  // async function googleLoginAndSign() {
+  //   await httpReauest(
+  //     'POST',
+  //     '/user/sign/google',
+  //     { email: profile.email, name: profile.given_name },
+  //     {}
+  //   )
+  //     .then(async(e) => {
+  //       toast.success(e.data.message);
+  //       await baseData.handleLoginSeller(null);
+  //       await baseData.handleLogin({
+  //         email: profile.email,
+  //         id: e.data.data._id,
+  //         token: e.data.data.token,
+  //       });
+  //       router.push(`${window.location.origin}/my-account`);
+  //     })
+  //     .catch((e) => {
+  //       toast.error('Eroor');
+  //     });
+  // }
 
   const {
     register,
@@ -191,7 +191,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
                 </div>
               </div>
               <div className="relative">
-                <Button
+                {/* <Button
                   onClick={googleLogin}
                   loading={isLoading}
                   disabled={isLoading}
@@ -199,7 +199,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
                   variant="border"
                 >
                   <FaGoogle className="mr-3" size={23} /> Sign With Google
-                </Button>
+                </Button> */}
+                <div id='signInDiv'></div>
               </div>
               <div className="relative">
                 <Button

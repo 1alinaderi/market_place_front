@@ -8,12 +8,24 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { LuCopy, LuCopyCheck } from 'react-icons/lu';
 import { useTranslation } from 'next-i18next';
+import { httpReauest } from 'src/api/api';
 export default function referal({ baseData }) {
   const [isSeller, setIsSeller] = useState(false);
-  const [inputText, setInputText] = useState('avf6888ad');
+  
   const [copy, setCopy] = useState(false);
+  const [data , setData] = useState([])
   const router = useRouter();
   const { t } = useTranslation('common');
+  async function getuserData(id: any) {
+    const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
+    setData(data.data);
+    console.log(data)
+  }
+  useEffect(() => {
+    getuserData(baseData.cookies.seller?.id);
+    
+  }, []);
+  const inputText = data?.refCode
   useEffect(() => {
     if (baseData.cookies.user?.id) {
       setIsSeller(false);

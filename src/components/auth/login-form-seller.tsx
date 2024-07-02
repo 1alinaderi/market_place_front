@@ -193,7 +193,7 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
                 </div>
               </div>
               <div className="relative">
-                <Button
+                {/* <Button
                   onClick={googleLogin}
                   loading={isLoading}
                   disabled={isLoading}
@@ -201,7 +201,8 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
                   variant="border"
                 >
                   <FaGoogle className="mr-3" size={23} /> Sign With Google
-                </Button>
+                </Button> */}
+                <div id='signInDivS'></div>
               </div>
               <div className="relative">
                 <Button

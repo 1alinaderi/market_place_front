@@ -521,6 +521,38 @@ input:checked + .slider:before {
 .foods {
   font-palette: --Food;
 }
+.motionBorder{
+  
+  
+  
+  
+  
+  
+}
+.motionBorder::before{
+  content: "";
+  height: 170%;
+  width: 170%;
+  position: absolute;
+  background-image: conic-gradient(
+    #fff 20deg,
+    transparent 120deg
+  );
+  left:-35%;
+  top:-35%;
+  z-index: 0;
+  
+  animation:rotate 3s infinite linear   ;
+
+}
+@keyframes rotate {
+  100%{
+    transform: rotate(-360deg);
+  }
+}
+
+
+
 
 @font-palette-values --Grays {
   font-family: Rocher;

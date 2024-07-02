@@ -10,10 +10,12 @@ import { useGoogleLogin } from '@react-oauth/google';
 import Head from 'next/head';
 import { jwtDecode } from 'jwt-decode';
 import { useRouter } from 'next/router';
+import { httpReauest } from 'src/api/api';
+import { toast } from 'react-toastify';
 
 
 export default function SignInPage({ baseData }) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
   const [profile, setProfile] = useState([]);
   const router =  useRouter()
 
@@ -40,14 +42,32 @@ export default function SignInPage({ baseData }) {
   //       .catch((err) => console.log(err));
   //   }
   // }, [user]);
+  
 
-  function handlecallback(response) {
+ async function handlecallback(response) {
     console.log(response.credential);
     const userObject = jwtDecode(response.credential);
-    console.log(userObject)
-    setUser(response.credential)
-    if (user) {
-      router.push(`/my-account`);
+    console.log(userObject);
+    setProfile(userObject);
+    if (userObject) {
+      await httpReauest(
+        'POST',
+        '/user/sign/google',
+        { email: userObject.email, name: userObject.name  },
+        {}
+      )
+        .then((e) => {
+          toast.success(e.data.message);
+          baseData.handleLogin({
+            email: userObject.email,
+            id: e.data.data._id,
+            token: e.data.data.token,
+          });
+          router.push(`${window.location.origin}/my-account`);
+        })
+        .catch((e) => {
+          toast.error('Eroor');
+        });
     }
   }
   useEffect(()=>{
@@ -56,8 +76,8 @@ export default function SignInPage({ baseData }) {
     callback: handlecallback
    })
    google.accounts.id.renderButton(
-    document.getElementById("signInDiv"),{
-      theme:"outline" , size:"large" 
+    document.getElementById("signUpDiv"),{
+      theme:"outline" , width:380 ,text: "Sign With Google",class: "custom-google-button",
     }
   )
   },[])
