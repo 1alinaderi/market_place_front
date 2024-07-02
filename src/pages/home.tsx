@@ -117,7 +117,7 @@ export default function Home() {
             <Link href={'/products'}>
               <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative cursor-pointer h-full w-full row-span-1  rounded-[14px] overflow-hidden ">
                 <img
-                  className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] relative p-1 rounded-[14px]"
+                  className="h-full w-full object-cover  relative p-1 rounded-[14px]"
                   src="/assets/images/home/3.png"
                   alt=""
                 />
@@ -175,10 +175,11 @@ export default function Home() {
           </div>
           </RevealX>
             </div>
-          
+          <Reveal>
            <Link href={'/products/discount'}>
+
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder cursor-pointer relative lg:h-full col-span-2 lg:col-span-1  rounded-[14px] overflow-hidden">
-              <Reveal>
+              
                 <img
                   className=" w-full h-full object-cover relative p-1 rounded-[14px]"
                   src="/assets/images/home/2.png"
@@ -187,9 +188,11 @@ export default function Home() {
                 <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
                   discounted retail
                 </p>
-              </Reveal>
+              
             </div>
+            
           </Link>
+          </Reveal>
           <div className='flex flex-col gap-5 lg:hidden'>
           <RevealX>
             <div className="flex flex-col items-center justify-center">
@@ -233,7 +236,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover "
                 src="/assets/images/home/4.png"
                 alt=""
               />
@@ -246,7 +249,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover "
                 src="/assets/images/home/5.png"
                 alt=""
               />
@@ -258,7 +261,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover "
                 src="/assets/images/home/6.png"
                 alt=""
               />
@@ -270,7 +273,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover "
                 src="/assets/images/home/7.png"
                 alt=""
               />
@@ -282,7 +285,7 @@ export default function Home() {
           <RevealX head>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover "
                 src="/assets/images/home/8.png"
                 alt=""
               />
@@ -294,7 +297,7 @@ export default function Home() {
           <RevealX>
             <div className="relative h-full w-full border-2 border-[#0e1a2b] rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]"
+                className="h-full w-full object-cover "
                 src="/assets/images/home/9.png"
                 alt=""
               />
@@ -307,7 +310,7 @@ export default function Home() {
             <Link href={"https://urameta.net"}>
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative h-full w-full  rounded-[14px] overflow-hidden cursor-pointer">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] relative p-1 rounded-[14px]"
+                className="h-full w-full object-cover  relative p-1 rounded-[14px]"
                 src="/urametacover.png"
                 alt=""
               />
@@ -323,7 +326,7 @@ export default function Home() {
 
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder  cursor-pointer relative h-full w-full bg-black  rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-fill max-h-[138px] sm:max-h-[220px] lg:max-h-[320px]  relative p-1 rounded-[14px]"
+                className="h-full w-full object-fill lg:max-h-[300px] max-h-[150px] relative p-1 rounded-[14px]"
                 src="/stgs.png.jpg"
                 alt=""
               />
@@ -338,7 +341,7 @@ export default function Home() {
             <Link href={"/about-us"}>
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder  relative cursor-pointer h-full w-full  rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover max-h-[138px] sm:max-h-[220px] lg:max-h-[320px] relative p-1 rounded-[14px]"
+                className="h-full w-full object-cover  relative p-1 rounded-[14px]"
                 src="/sus (1).png"
                 alt=""
               />

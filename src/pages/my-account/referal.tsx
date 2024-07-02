@@ -16,6 +16,7 @@ export default function referal({ baseData }) {
   const [data , setData] = useState([])
   const router = useRouter();
   const { t } = useTranslation('common');
+  const [inputRef,setInputRef] = useState("");
   async function getuserData(id: any) {
     const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
     setData(data.data);
@@ -45,6 +46,11 @@ export default function referal({ baseData }) {
     navigator.clipboard.writeText(inputText);
     setCopy(true);
   };
+  async function handleRef(){
+    if (inputRef) {
+      await httpReauest("POST" , "/supplier/ref/add",{code: inputRef , sellerId: baseData.cookies.seller?.id},{'x-access-token': baseData?.cookies?.seller?.token})
+    }
+  }
   return (
     <>
       <Seo
@@ -63,7 +69,7 @@ export default function referal({ baseData }) {
                 className="lg:ml-5 shadow h-[42px] appearance-none border border-slate-300 rounded  py-2 px-3 text-gray-700  leading-tight rounded-r-none w-[200px] lg:w-[250px]"
                 type="text"
                 value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
+               
                 onClick={handleCopyText}
                 disabled
               />
@@ -73,6 +79,20 @@ export default function referal({ baseData }) {
               >
                 {copy ? <LuCopyCheck /> : <LuCopy />}
               </div>
+            </div>
+          </div>
+          <div className="flex flex-col lg:flex-row items-center my-10 mx-5">
+            <span className="font-bold mb-5 lg:mb-0">{t('l-referal')} :</span>
+            <div className="flex items-center gap-3">
+              <input
+                className="lg:ml-5 shadow h-[42px] appearance-none border border-slate-300 rounded  py-2 px-3 text-gray-700  leading-tight rounded-r-none w-[200px] lg:w-[250px]"
+                type="text"
+                value={inputRef}
+                onChange={(e) => setInputRef(e.target.value)}
+                
+                
+              />
+             <button onClick={handleRef} className='bg-red-500 text-white rounded-md px-6 py-2'>Submit</button>
             </div>
           </div>
         </div>

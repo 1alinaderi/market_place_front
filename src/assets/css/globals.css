@@ -542,7 +542,7 @@ input:checked + .slider:before {
   top:-35%;
   z-index: 0;
   
-  animation:rotate 3s infinite linear   ;
+  animation:rotate 3s infinite  linear   ;
 
 }
 @keyframes rotate {
