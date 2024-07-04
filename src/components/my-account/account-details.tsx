@@ -146,7 +146,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
             )}
           </Link>
           <div className='mb-5'>
-            <Balance />
+            <Balance data={data}/>
           </div>
           <div
             className="flex flex-col justify-center w-full mx-auto"

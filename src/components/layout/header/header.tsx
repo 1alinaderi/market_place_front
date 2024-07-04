@@ -72,7 +72,7 @@ const Header: React.FC = () => {
         />
         {/* End of Mobile search */}
         <Container className="flex items-center gap-5 justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
-          <Logo className="logo -mt-1.5 md:-mt-1" />
+          <img className='lg:w-[130px] w-[80px] object-cover' src="/assets/images/logo.jpg" alt="" />
           {/* End of logo */}
 
           <Search
@@ -114,9 +114,10 @@ const Header: React.FC = () => {
         {/* End of top part */}
 
         <div className="hidden navbar bg-1d3557 lg:block">
-          <Container className="flex items-center justify-between h-16">
-            <Logo className="w-0 transition-all duration-200 ease-in-out opacity-0 navbar-logo" />
+          <Container className="flex items-center justify-between ">
+            <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" />
             {/* End of logo */}
+            
 
             <HeaderMenu
               data={site_header.menu}

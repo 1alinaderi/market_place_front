@@ -15,6 +15,7 @@ export default function AccountDetailsPage({ baseData }) {
 
   useEffect(() => {
     const hasAcceptedContract = localStorage.getItem('hasAcceptedContract');
+
     if (baseData.cookies.user?.id) {
       setIsSeller(false);
       setAgree(true);
@@ -27,8 +28,9 @@ export default function AccountDetailsPage({ baseData }) {
         setAgree(false);
       }
     }
+    console.log(agree)
   }, [router.pathname]);
-
+  console.log(agree)
   useEffect(() => {
     if (router.locale == 'fa') {
       document.documentElement.dir = 'rtl';

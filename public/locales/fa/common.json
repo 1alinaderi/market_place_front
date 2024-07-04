@@ -302,6 +302,10 @@
    "earn" : "بدست اوردن",
    "type-of-sell": "نوع فروش شما چه خواهد بود؟",
    "whole-saler":"عمده فروش",
-   "retail-seller": "خرده فروشی"
+   "retail-seller": "خرده فروشی",
+   "forgot-password-helper-1":"ما کد را به ایمیل شما ارسال می کنیم لطفا کد را وارد کنید",
+   "send-code": " ارسال کد",
+   "t-setting": "تنظیمات",
+   "change-password": "رمز عبور را تغییر دهید"
 
 }

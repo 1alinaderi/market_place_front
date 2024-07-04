@@ -11,6 +11,7 @@ import AccountOrderIcon from '@components/icons/account-order';
 import { AiOutlineQuestionCircle, AiOutlineShop } from 'react-icons/ai';
 import { MdCreditScore, MdVerifiedUser } from 'react-icons/md';
 import { LuWallet } from "react-icons/lu";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const accountMenuSeller = [
   {
@@ -75,6 +76,11 @@ const accountMenuSeller = [
     icon: <LuWallet className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
   },
   {
+    slug: "/my-account/setting",
+    name: 'setting',
+    icon: <IoSettingsOutline className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
+  },
+  {
     slug: ROUTES.LEGAL_NOTICE,
     name: 'text-account-details-notice',
     icon: <NoticeIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
@@ -98,6 +104,11 @@ const accountMenu = [
     icon: (
       <AccountOrderIcon className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
     ),
+  },
+  {
+    slug: "/my-account/setting",
+    name: 'setting',
+    icon: <IoSettingsOutline className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />,
   },
 
   // {

@@ -112,7 +112,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
     return openModal('SIGN_UP_VIEW');
   }
   function handleForgetPassword() {
-    return openModal('FORGET_PASSWORD');
+    return openModal('FORGET_PASSWORD_USER');
   }
   return (
     <div

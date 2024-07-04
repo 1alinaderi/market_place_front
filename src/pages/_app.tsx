@@ -169,7 +169,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                     </Layout>
                   )}
                   <ToastContainer position="top-center" />
-                  <ManagedModal baseData={{ handleLogin, cookies }} />
+                  <ManagedModal baseData={{ handleLogin, cookies ,handleLoginSeller}} />
                   <ManagedDrawer />
                 </>
               </CookiesProvider>

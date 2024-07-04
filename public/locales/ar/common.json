@@ -301,5 +301,9 @@
    "earn" : "يكسب",
    "type-of-sell": "ماذا سيكون نوع البيع الخاص بك؟",
    "whole-saler":"تاجر الجملة",
-   "retail-seller": "بائع التجزئة"
+   "retail-seller": "بائع التجزئة",
+   "forgot-password-helper-1":"نرسل الرمز إلى بريدك الإلكتروني، يرجى إدخال الرمز",
+   "send-code": " إرسال الرمز",
+   "t-setting": "جلسة",
+   "change-password": "تغيير كلمة المرور"
 }

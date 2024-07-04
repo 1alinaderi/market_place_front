@@ -55,35 +55,29 @@ export default function Home() {
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Referral<ArrowRight2 size={18}/></button>
         </div>
         <div className="relative z-10 ">
-          <Swiper loop autoplay={{delay:4000}} modules={[Autoplay,EffectFade]} effect="fade" >
+          <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}  >
             <SwiperSlide>
             <img
-              className="w-full  object-cover "
-              src="/image/banner/product 4.jpg"
+              className="w-full  object-cover lg:h-[450px] h-[200px] "
+              src="/assets/images/home/header.png"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full  object-cover "
-              src="/image/banner/product 4v2.jpg"
+              className="w-full  object-cover lg:h-[450px] h-[200px]"
+              src="/assets/images/slider2.jpg"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full  object-cover "
-              src="/image/banner/product 1.jpg"
+              className="w-full  object-cover lg:h-[450px] h-[200px]"
+              src="/assets/images/slider3.jpg"
               alt=""
             />
             </SwiperSlide>
-            <SwiperSlide>
-            <img
-              className="w-full  object-cover "
-              src="/image/banner/product 1v2.jpg"
-              alt=""
-            />
-            </SwiperSlide>
+           
           </Swiper>
       
         
@@ -356,36 +350,29 @@ export default function Home() {
         
         </div>   
         <div className="relative z-10 col-span-full">
-        <Swiper loop autoplay={{delay:4000}} modules={[Autoplay,EffectFade]} effect="fade" >
-          
+        <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}  >
             <SwiperSlide>
             <img
-              className="w-full  object-cover "
-              src="/image/banner/product 2.jpg"
+              className="w-full  object-cover lg:h-[450px] h-[200px] "
+              src="/assets/images/home/header.png"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full  object-cover "
-              src="/image/banner/product 2v2.jpg"
+              className="w-full  object-cover lg:h-[450px] h-[200px]"
+              src="/assets/images/slider2.jpg"
               alt=""
             />
             </SwiperSlide>
             <SwiperSlide>
             <img
-              className="w-full  object-cover "
-              src="/image/banner/product 3.jpg"
+              className="w-full  object-cover lg:h-[450px] h-[200px]"
+              src="/assets/images/slider3.jpg"
               alt=""
             />
             </SwiperSlide>
-            <SwiperSlide>
-            <img
-              className="w-full  object-cover "
-              src="/image/banner/product 3v2.jpg"
-              alt=""
-            />
-            </SwiperSlide>
+           
           </Swiper>
       
         

@@ -301,5 +301,9 @@
    "wallet" : "Wallet",
    "type-of-sell": "What will be your type of sale?",
    "whole-saler":"Whole Saler",
-   "retail-seller": "Retail Saler"
+   "retail-seller": "Retail Saler",
+   "forgot-password-helper-1":"We send code to your Email please enter the code",
+   "send-code": " Send Code",
+   "t-setting": "Setting",
+   "change-password": "Change password"
 }

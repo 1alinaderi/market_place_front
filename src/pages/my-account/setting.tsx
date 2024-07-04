@@ -8,10 +8,13 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Balance from '@components/my-account/Balance';
 import { httpReauest } from 'src/api/api';
-export default function wallet ({baseData}) {
+import { useTranslation } from 'next-i18next';
+export default function setting ({baseData}) {
     const [isSeller, setIsSeller] = useState(false);
     const router = useRouter();
+    const { t } = useTranslation('common');
     const [data,setData] = useState([])
+    const [newPassword,setNewPassword] = useState("")
     async function getuserData(id: any) {
       const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
       setData(data.data);
@@ -39,20 +42,36 @@ export default function wallet ({baseData}) {
   return (
     <>
       <Seo
-        title="Wallet"
+        title="setting"
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
-        path="my-account/wallet"
+        path="my-account/setting"
       />
       
         <AccountLayout isSeller={isSeller} >
-          <Balance data={data}/>
+        <div>
+        <h2 className="text-xl font-bold">{t('t-setting')}</h2>
+        <div className="flex flex-col lg:flex-row items-center my-10 mx-5">
+            <span className="font-bold mb-5 lg:mb-0">{t("change-password")} :</span>
+            <div className="flex items-center gap-3">
+              <input
+                className="lg:ml-5 shadow h-[42px] appearance-none border border-slate-300 rounded  py-2 px-3 text-gray-700  leading-tight rounded-r-none w-[200px] lg:w-[250px]"
+                type="text"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                
+                
+              />
+             <button className='bg-red-500 text-white rounded-md px-6 py-2'>Submit</button>
+            </div>
+          </div>
+        </div>
         </AccountLayout>
       
     </>
   )
 }
 
-wallet.Layout = Layout;
+setting.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {

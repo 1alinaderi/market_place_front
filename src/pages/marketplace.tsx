@@ -57,7 +57,10 @@ export default function Home() {
 
       <CookiesProductFeed />
       {/* <PopcornJerkyProductFeed /> */}
-      <DownloadApps />
+      {/* <DownloadApps /> */}
+      <div>
+        <img src="/image/banner/Product 4.jpg" alt="" />
+      </div>
     </>
   );
 }
