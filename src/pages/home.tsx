@@ -53,6 +53,7 @@ export default function Home() {
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Logistics<ArrowRight2 size={18}/></button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Insurance<ArrowRight2 size={18}/></button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Referral<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Translate<ArrowRight2 size={18}/></button>
         </div>
         <div className="relative z-10 ">
           <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}  >
@@ -94,7 +95,7 @@ export default function Home() {
               <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative cursor-pointer h-full w-full row-span-1  rounded-[14px] overflow-hidden ">
                 
                 <img
-                  className="w-full h-full object-cover relative p-1 rounded-[14px]"
+                  className="w-full h-full object-cover relative p-[2px] rounded-[14px]"
                   src="/assets/images/home/1.png"
                   alt=""
                 />
@@ -111,7 +112,7 @@ export default function Home() {
             <Link href={'/products'}>
               <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative cursor-pointer h-full w-full row-span-1  rounded-[14px] overflow-hidden ">
                 <img
-                  className="h-full w-full object-cover  relative p-1 rounded-[14px]"
+                  className="h-full w-full object-cover  relative p-[2px] rounded-[14px]"
                   src="/assets/images/home/3.png"
                   alt=""
                 />
@@ -175,7 +176,7 @@ export default function Home() {
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder cursor-pointer relative lg:h-full col-span-2 lg:col-span-1  rounded-[14px] overflow-hidden">
               
                 <img
-                  className=" w-full h-full object-cover relative p-1 rounded-[14px]"
+                  className=" w-full h-full object-cover relative p-[2px] rounded-[14px]"
                   src="/assets/images/home/2.png"
                   alt=""
                 />
@@ -304,7 +305,7 @@ export default function Home() {
             <Link href={"https://urameta.net"}>
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder relative h-full w-full  rounded-[14px] overflow-hidden cursor-pointer">
               <img
-                className="h-full w-full object-cover  relative p-1 rounded-[14px]"
+                className="h-full w-full object-cover  relative p-[2px] rounded-[14px]"
                 src="/urametacover.png"
                 alt=""
               />
@@ -320,7 +321,7 @@ export default function Home() {
 
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder  cursor-pointer relative h-full w-full bg-black  rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-fill lg:max-h-[300px] xl:max-h-[340px]  md:max-h-[340px] sm:max-h-[150px] relative p-1 rounded-[14px]"
+                className="h-full w-full object-fill lg:max-h-[300px] xl:max-h-[340px]  md:max-h-[340px] sm:max-h-[150px] relative p-[2px] rounded-[14px]"
                 src="/stgs.png.jpg"
                 alt=""
               />
@@ -335,7 +336,7 @@ export default function Home() {
             <Link href={"/about-us"}>
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder  relative cursor-pointer h-full w-full  rounded-[14px] overflow-hidden">
               <img
-                className="h-full w-full object-cover  relative p-1 rounded-[14px]"
+                className="h-full w-full object-cover  relative p-[2px] rounded-[14px]"
                 src="/sus (1).png"
                 alt=""
               />

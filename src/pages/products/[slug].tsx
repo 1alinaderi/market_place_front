@@ -24,7 +24,10 @@ export default function ProductPage({ baseData }) {
 
       {/* <RelatedProductFeed uniqueKey="related-products" /> */}
       <FreshVegetablesProductFeed />
-      <DownloadApps />
+      {/* <DownloadApps /> */}
+      <div>
+        <img src="/image/banner/Product 4.jpg" alt="" />
+      </div>
     </>
   );
 }

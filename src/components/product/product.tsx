@@ -52,7 +52,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   console.log(data);
 
   const { addItemToCart, isInCart, getItemFromCart, isInStock } = useCart();
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  // const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
   const [favorite, setFavorite] = useState<boolean>(false);
   const [quantity, setQuantity] = useState(1);
@@ -215,10 +215,10 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
             );
           })} */}
 
-          <div className="pb-2">
-            {/* check that item isInCart and place the available quantity or the item quantity */}
+          {/* <div className="pb-2">
+           
 
-            <>
+             <>
               {data?.balance > 0 ? (
                 <span className="text-lg font-medium text-yellow">
                   {data?.balance + ' ' + t('text-left-item')}
@@ -228,11 +228,11 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
                   {t('text-out-stock')}
                 </div>
               )}
-            </>
-          </div>
+            </> 
+          </div> */}
 
           <div className="pt-1.5 lg:pt-3 xl:pt-4 space-y-2.5 md:space-y-3.5">
-            <Counter
+            {/* <Counter
               variant="single"
               value={selectedQuantity}
               onIncrement={() => setSelectedQuantity((prev) => prev + 1)}
@@ -240,7 +240,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
                 setSelectedQuantity((prev) => (prev !== 1 ? prev - 1 : 1))
               }
               disabled={selectedQuantity >= data?.balance}
-            />
+            /> */}
             <Button
               onClick={addToCart}
               className="w-full px-1.5"

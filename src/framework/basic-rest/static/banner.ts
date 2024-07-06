@@ -157,12 +157,12 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/image/banner/product 2.jpg',
+        url: '/image/banner/Product 2.jpg',
         width: 450,
         height: 90,
       },
       desktop: {
-        url: '/image/banner/product 2.jpg',
+        url: '/image/banner/Product 2.jpg',
         width: 910,
         height: 300,
       },
@@ -174,12 +174,12 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/image/banner/product 2v2.jpg',
+        url: '/image/banner/Product 2v2.jpg',
         width: 450,
         height: 90,
       },
       desktop: {
-        url: '/image/banner/product 2v2.jpg',
+        url: '/image/banner/Product 2v2.jpg',
         width: 910,
         height: 300,
       },

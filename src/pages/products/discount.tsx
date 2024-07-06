@@ -30,7 +30,10 @@ export default function ProductsDiscount() {
           </div>
         </Element>
       </Container>
-      <DownloadApps />
+      {/* <DownloadApps /> */}
+      <div>
+        <img src="/image/banner/Product 4.jpg" alt="" />
+      </div>
     </>
   );
 }

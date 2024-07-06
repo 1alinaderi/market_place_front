@@ -58,7 +58,7 @@ const Header: React.FC = () => {
       id="siteHeader"
       ref={siteHeaderRef}
       className={cn(
-        'header-two sticky-header sticky top-0 z-20 lg:relative w-full h-16 lg:h-auto',
+        'header-two sticky-header sticky top-0 z-20 lg:relative w-full h-16 lg:h-auto ',
         displayMobileSearch && 'active-mobile-search'
       )}
     >
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
         />
         {/* End of Mobile search */}
         <Container className="flex items-center gap-5 justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
-          <img className='lg:w-[130px] w-[80px] object-cover' src="/assets/images/logo.jpg" alt="" />
+          <h1 className='text-[#fff] lg:text-2xl font-bold text-center lg:ml-3'>WIMEHR</h1>
           {/* End of logo */}
 
           <Search
@@ -115,7 +115,8 @@ const Header: React.FC = () => {
 
         <div className="hidden navbar bg-1d3557 lg:block">
           <Container className="flex items-center justify-between ">
-            <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" />
+            {/* <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" /> */}
+            <h1 className='text-[#fff] lg:text-2xl font-bold text-center lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo'>WIMEHR</h1>
             {/* End of logo */}
             
 

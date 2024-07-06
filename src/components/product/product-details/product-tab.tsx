@@ -41,7 +41,7 @@ export default function ProductDetailsTab({ data, baseData }) {
               </h2>
               {data?.desc}
             </div>
-            <div className="shrink-0 lg:w-[400px] xl:w-[480px] 2xl:w-[550px] 3xl:w-[680px] lg:ltr:pl-10 lg:rtl:pr-10 xl:ltr:pl-14 xl:rtl:pr-14 2xl:ltr:pl-20 2xl:rtl:pr-20 pt-5 lg:pt-0">
+            {/* <div className="shrink-0 lg:w-[400px] xl:w-[480px] 2xl:w-[550px] 3xl:w-[680px] lg:ltr:pl-10 lg:rtl:pr-10 xl:ltr:pl-14 xl:rtl:pr-14 2xl:ltr:pl-20 2xl:rtl:pr-20 pt-5 lg:pt-0">
               <Heading
                 variant="mediumHeading"
                 className="xl:text-lg mb-4 pt-0.5"
@@ -84,7 +84,7 @@ export default function ProductDetailsTab({ data, baseData }) {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </div> */}
           </Tab.Panel>
           <Tab.Panel>
             <ProductReviewRating baseData={baseData} data={data?.reviews} />

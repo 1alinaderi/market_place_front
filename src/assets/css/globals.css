@@ -469,7 +469,7 @@ input:checked + .slider:before {
 }
 
 .bg-1d3557 {
-  background-color: #1d3557;
+  background-color: #0b1b31;
 }
 
 .bg-457bd9 {
@@ -542,7 +542,7 @@ input:checked + .slider:before {
   top:-35%;
   z-index: 0;
   
-  animation:rotate 4s infinite  linear   ;
+  animation:rotate 5s infinite  linear   ;
 
 }
 @keyframes rotate {
