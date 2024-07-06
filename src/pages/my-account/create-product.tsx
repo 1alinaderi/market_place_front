@@ -1,11 +1,11 @@
 import Layout from '@components/layout/layout';
 import AccountLayout from '@components/my-account/account-layout';
-import AccountDetailsAdmin from '@components/my-account-admin/account-details';
+
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 import Seo from '@components/seo/seo';
-import AccountOrdersAdmin from '@components/my-account-admin/account-orders-admin';
+
 import Heading from '@components/ui/heading';
 import { useState, useEffect } from 'react';
 import { FaPlus } from 'react-icons/fa';
@@ -197,7 +197,7 @@ export default function AccountDetailsPage({ baseData }) {
               />
             </span>
 
-            {data?.membership === 'Premium' && (
+            
               <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
                   {t("t-special-price")} ?:
@@ -210,7 +210,7 @@ export default function AccountDetailsPage({ baseData }) {
                   className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </span>
-            )}
+           
 
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
