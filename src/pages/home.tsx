@@ -1,7 +1,7 @@
 import Layout from '@components/layout/layout';
 import Reveal from '@components/motion/Reveal';
 import RevealX from '@components/motion/RevealX';
-import { ArrowRight2, Box, ClipboardText, ClipboardTick, Diamonds, Gift, Truck, TruckTime } from 'iconsax-react';
+import { ArrowRight2, Box, ClipboardText, ClipboardTick, Diamonds, Gift, Truck, TruckTime,Translate, Note, RecoveryConvert } from 'iconsax-react';
 
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -54,6 +54,7 @@ export default function Home() {
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Insurance<ArrowRight2 size={18}/></button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Referral<ArrowRight2 size={18}/></button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Translate<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Contract<ArrowRight2 size={18}/></button>
         </div>
         <div className="relative z-10 ">
           <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}  >
@@ -169,6 +170,16 @@ export default function Home() {
           
           </div>
           </RevealX>
+          <RevealX head>
+          <div className="flex flex-col items-center justify-center">
+         
+            <span className='rounded-full p-2 overflow-hidden bg-white'>
+              <Translate variant='Bulk' color='#ff8a65' size={30}/>
+              </span>
+              <p className='text-center mt-1'>Translate</p>
+          
+          </div>
+          </RevealX>
             </div>
           <Reveal>
            <Link href={'/products/discount'}>
@@ -220,6 +231,16 @@ export default function Home() {
               <FaNetworkWired  color='#ff8a65' size={30}/>
               </span>
               <p className='text-center mt-1'>referral</p>
+        
+          </div>
+          </RevealX>
+          <RevealX>
+            <div className="flex flex-col items-center justify-center">
+            
+            <span className='rounded-full p-2 overflow-hidden bg-white'>
+              <RecoveryConvert  color='#ff8a65' size={30}/>
+              </span>
+              <p className='text-center mt-1'>Contract</p>
         
           </div>
           </RevealX>
