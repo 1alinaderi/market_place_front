@@ -123,19 +123,28 @@ export default function Home() {
               </div>
             </Link>
           </RevealX>
-          <span className='col-span-full lg:hidden flex justify-center'>
+          <span className='col-span-full lg:hidden flex justify-between items-center text-white'>
+          <RevealX>
+            <div className="flex flex-col items-center justify-center">
+            
+            <span className='rounded-full p-2 overflow-hidden bg-white'>
+              <Gift variant='Bulk' color='#ff8a65' size={30}/>
+              </span>
+              <p className='text-center mt-1'>Donate</p>
+        
+          </div>
+          </RevealX>
+          <div>
           <Reveal head={false}>
-          <Link href={'/supplier/signup'}>
-            <div className="flex  bg-red-600 w-fit uppercase items-center justify-center gap-3 lg:gap-6 px-10 lg:px-12 py-2 lg:py-4   rounded-[14px]">
+          <Link href={'/supplier/signup'} >
+            <div className="flex  bg-red-600 w-fit uppercase  items-center justify-center gap-3 lg:gap-6 px-10 lg:px-12 py-2 lg:py-4   rounded-[14px]">
               <h2 className="text-[#FFFFFF] text-[17px] lg:text-4xl font-sans font-[500]">Membership</h2>
             </div>
           </Link>
           </Reveal>
-          </span>
-          <span className='col-span-full text-white flex gap-3 text-[12px] lg:col-span-1'>
-            <div className='flex flex-col gap-5 lg:hidden'>
-             
-              <RevealX head>
+            </div>
+          
+          <RevealX head>
               <Link href={"/packing"}>
             <div className="flex flex-col items-center justify-center">
           
@@ -148,6 +157,11 @@ export default function Home() {
           </div>
           </Link>
           </RevealX>
+          </span>
+          <span className='col-span-full text-white flex gap-3 text-[12px] lg:col-span-1'>
+            <div className='flex flex-col gap-5 lg:hidden'>
+             
+            
            
            
           <RevealX head>
@@ -200,16 +214,7 @@ export default function Home() {
           </Link>
           </Reveal>
           <div className='flex flex-col gap-5 lg:hidden'>
-          <RevealX>
-            <div className="flex flex-col items-center justify-center">
-            
-            <span className='rounded-full p-2 overflow-hidden bg-white'>
-              <Gift variant='Bulk' color='#ff8a65' size={30}/>
-              </span>
-              <p className='text-center mt-1'>Donate</p>
-        
-          </div>
-          </RevealX>
+      
         
           <RevealX>
           <Link href={'/supplier/signup'}>
