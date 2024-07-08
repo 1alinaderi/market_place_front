@@ -42,7 +42,7 @@ const HomePagePage = () => {
       <img className='w-full lg:h-full lg:object-cover lg:absolute top-0 bottom-0 left-0 right-0' src="/assets/images/home/header.png" alt="" />
       <div className="bg-red-600/20 lg:absolute  z-10  lg:bottom-1 lg:left-[33%] left-0 right-0  w-full lg:w-fit  text-white text-lg m-1 rounded-[15px] flex justify-center items-center flex-col gap-2">
         <h1 className="font-bold text-2xl bg-white py-1 text-black w-full text-center rounded-t-xl">Project I</h1>
-        <Countdown date={'2024-7-22'} renderer={renderer} />
+        <Countdown date={'2024-8-2'} renderer={renderer} />
       </div>
     </div>
   );
