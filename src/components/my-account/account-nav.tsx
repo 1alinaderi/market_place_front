@@ -25,7 +25,7 @@ export default function AccountNav({
   async function logout() {
     await baseData.handleLogin(null);
     await baseData.handleLoginSeller(null);
-    push('/signin');
+    push('/');
   }
   const newPathname = pathname.split('/').slice(2, 3);
   const mainPath = `/${newPathname[0]}`;

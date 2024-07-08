@@ -14,13 +14,10 @@ import { httpReauest } from 'src/api/api';
 const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   const [image, setimage] = useState(null);
   const [image1, setimage1] = useState(null);
-  const [imagenew, setimagenew] = useState(null);
-  const [imagead, setimagead] = useState(null);
-  const [imagest, setimagest] = useState(null);
-  const [imagean, setimagean] = useState(null);
   const [preview, setpreview] = useState(null);
 
   const [bio, setbio] = useState(null);
+  const [nationalCode, setnationalCode] = useState(null);
 
   const router = useRouter();
 
@@ -55,12 +52,16 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (bio && image && image1) {
+    if (String(nationalCode).length != 10) {
+      return toast.error("کد ملی اشتباه است")
+    }
+
+    if (bio && image &&nationalCode ) {
       const formdata = new FormData();
 
       formdata.append('logo', image, image?.name);
-      formdata.append('siteResume', image1, image1?.name);
       formdata.append('bio', bio);
+      formdata.append('nationalCode', nationalCode);
 
       await httpReauest('POST', '/supplier/profile', formdata, {
         'x-access-token': baseData?.cookies?.seller?.token,
@@ -69,7 +70,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
           toast.success(e.data.message);
           setTimeout(() => {
             router.reload();
-          }, 3000);
+          }, 1000);
         })
         .catch((e) => {
           toast.error(e.message);
@@ -121,30 +122,18 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
             />
           </span>
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-            <Heading className="mr-2 pb-2 " variant="base">
-              {t('t-download-and-full')} :
-              <br />
-              <br />
-              <a download href={'/resume.docx'}>
-                <span className="bg-red-500 p-2 rounded cursor-pointer  text-white">
-                  {t('t-click')}
-                </span>
-              </a>
+          <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+              {t('t-national-code')} :
             </Heading>
-          </span>
-          <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              {t('t-website-resume')} :
-            </Heading>
-
             <input
               onChange={(e) => {
-                setimage1(e.target.files[0]);
+                setnationalCode(e.target.value);
               }}
-              id="addImage1"
-              type={'file'}
+              type='number'
+              className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             />
           </span>
+          
         </div>
 
         <div className="px-5 mt-8">

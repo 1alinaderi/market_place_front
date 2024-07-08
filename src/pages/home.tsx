@@ -35,26 +35,26 @@ export default function Home() {
     <div className='relative'>
       <div className="bg-[#11223a] overflow-hidden">
       
-      <div style={{background: "linear-gradient(90deg, rgba(38,47,69,1) 0%, rgba(81,150,206,1) 20%, rgba(254,132,146,1) 40%, rgba(164,37,39,1) 60%, rgba(118,29,33,1) 80%, rgba(34,22,32,1) 100%)"}} className="lg:flex hidden justify-center items-center gap-[60px] relative z-10 py-4 px-[150px] bg-[#08121f]">
+      <div style={{background: "linear-gradient(90deg, rgba(38,47,69,1) 0%, rgba(81,150,206,1) 20%, rgba(254,132,146,1) 40%, rgba(164,37,39,1) 60%, rgba(118,29,33,1) 80%, rgba(34,22,32,1) 100%)"}} className="lg:flex hidden justify-center items-center gap-[20px] xl:gap-[40px] relative z-10 py-4 px-[150px] bg-[#08121f]">
           <Link href={'/supplier/signup'}>
-            <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">
+            <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">
               Membership<ArrowRight2 size={18}/>
             </button>
           </Link>
           <Link href={'/supplier/signup'}>
-            <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl italic ">
+            <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] italic ">
               Premium<ArrowRight2 size={18}/>
             </button>
           </Link>
           <Link href={'/packing'}>
-            <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Packing <ArrowRight2 size={18}/></button>
+            <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">Packing <ArrowRight2 size={18}/></button>
           </Link>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Donate<ArrowRight2 size={18}/></button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Logistics<ArrowRight2 size={18}/></button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Insurance<ArrowRight2 size={18}/></button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Referral<ArrowRight2 size={18}/></button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Translate<ArrowRight2 size={18}/></button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] text-xl font-[100]">Contract<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">Donate<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">Logistics<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">Insurance<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">Referral<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">Translate<ArrowRight2 size={18}/></button>
+          <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">Contract<ArrowRight2 size={18}/></button>
         </div>
         <div className="relative z-10 ">
           <Swiper loop autoplay={{delay:4000}} modules={[Autoplay]}  >

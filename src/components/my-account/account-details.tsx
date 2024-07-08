@@ -220,6 +220,18 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </div>
 
+            {!data?.phone && (
+              <div id="orders">
+                <Heading
+                  variant="titleLarge"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  {t('t-verify-phone')}
+                </Heading>
+                <VerifyPhoneBuyer t={t} baseData={baseData} />
+              </div>
+            )}
+
             {!data?.inProggress && !data?.completeProfile && (
               <div className="border-b border-border-base pb-7">
                 <Heading
@@ -231,6 +243,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                   </div>
                 </Heading>
                 <CompleteProfileFormSellerPersonal t={t} baseData={baseData} />
+                
               </div>
             )}
 
@@ -260,17 +273,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
           </div>
         )} */}
 
-            {!data?.phone && (
-              <div id="orders">
-                <Heading
-                  variant="titleLarge"
-                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
-                >
-                  {t('t-verify-phone')}
-                </Heading>
-                <VerifyPhoneBuyer t={t} baseData={baseData} />
-              </div>
-            )}
+          
 
             {data?.completeProfile && (
               <Heading

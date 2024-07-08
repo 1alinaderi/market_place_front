@@ -135,7 +135,7 @@ export default function AccountDetailsPage({ baseData }) {
         isSeller={baseData?.cookies?.seller?.id ? true : false}
         baseData={baseData}
       >
-        <form onSubmit={handleSubmit}>
+        {data?.completeProfile ?        <form onSubmit={handleSubmit}>
           <div className="grid px-1 grid-cols-12   ">
             <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
               <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
@@ -262,7 +262,8 @@ export default function AccountDetailsPage({ baseData }) {
               {t("t-submit")}
             </Button>
           </div>
-        </form>
+        </form> : <>{t("t-must-complete-profile")}</>}
+ 
       </AccountLayout>
     </>
   );
