@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
@@ -42,6 +42,7 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
   const [code, setcode] = useState();
   const [usageType, setusageType] = useState<string>();
   const router = useRouter();
+  const videoRef = useRef()
   const {
     register,
     handleSubmit,
@@ -104,6 +105,11 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
         toast.error(e.message);
       });
   }
+  useEffect(()=>{
+    if (videoRef.current) {
+      videoRef.current.play()
+    }
+  },[])
 
   useEffect(() => {
     if (baseData?.cookies?.seller?.id) {
@@ -135,16 +141,16 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
   return (
     <div
       className={cn(
-        'flex bg-brand-light mx-auto rounded-lg md:w-[720px] lg:w-[920px] xl:w-[1000px] 2xl:w-[1200px]',
+        'flex bg-brand-light mx-auto rounded-lg md:w-[720px] lg:w-[800px] xl:w-[900px] 2xl:w-[900px]',
         className
       )}
     >
       {isPopup === true && <CloseButton onClick={closeModal} />}
-      <div className="flex w-full mx-auto overflow-hidden rounded-lg bg-brand-light">
-        <div className="md:w-1/2 lg:w-[55%] xl:w-[60%] registration hidden md:block relative">
-          <Image src="/assets/images/sign.jpeg" alt="sign up" layout="fill" />
+      <div className="flex w-full flex-col md:flex-row mx-auto overflow-hidden rounded-lg bg-brand-light">
+        <div className="lg:w-[50%] xl:w-[45%] md:w-[50%] registration  md:block relative">
+        <video ref={videoRef} className='w-full ' loop  muted src="/video/sign.mp4"></video>
         </div>
-        <div className="w-full md:w-1/2 lg:w-[45%] xl:w-[40%] py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md shadow-dropDown flex flex-col justify-center">
+        <div className="w-full xl:w-[55%] lg:w-[50%] md:w-[50%] py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md shadow-dropDown flex flex-col justify-center">
           <div className="text-center mb-6 pt-2.5">
             <div onClick={closeModal}>
               <Logo />

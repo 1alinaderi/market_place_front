@@ -29,7 +29,9 @@ export default function TermsPage() {
           ))}
         </div>
       </Container>
-      <DownloadApps />
+      <div>
+        <img src="/image/banner/product4.jpg" alt="" />
+      </div>
     </>
   );
 }

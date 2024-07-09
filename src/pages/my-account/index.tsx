@@ -7,22 +7,28 @@ import Seo from '@components/seo/seo';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Iagree from '@components/my-account/Iagree';
+import { httpReauest } from 'src/api/api';
 
 export default function AccountDetailsPage({ baseData }) {
   const [isSeller, setIsSeller] = useState(false);
   const router = useRouter();
   const [agree, setAgree] = useState(false);
+  const [data, setData] = useState([])
 
   useEffect(() => {
-    const hasAcceptedContract = localStorage.getItem('hasAcceptedContract');
-
+    async function getuserData(id: any) {
+      const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
+      setData(data.data);
+      console.log(data)
+    }
+    getuserData(baseData.cookies.seller?.id)
     if (baseData.cookies.user?.id) {
       setIsSeller(false);
       setAgree(true);
     }
     if (baseData.cookies.seller?.id) {
       setIsSeller(true);
-      if (hasAcceptedContract) {
+      if (!data.type) {
         setAgree(true);
       } else {
         setAgree(false);

@@ -531,18 +531,18 @@ input:checked + .slider:before {
 }
 .motionBorder::before{
   content: "";
-  height: 170%;
-  width: 170%;
+  height: 250%;
+  width: 250%;
   position: absolute;
   background-image: conic-gradient(
     #fff 20deg,
     transparent 120deg
   );
-  left:-35%;
-  top:-35%;
+  left:-75%;
+  top:-75%;
   z-index: 0;
   
-  animation:rotate 5s infinite  linear   ;
+  animation:rotate 6s infinite  linear   ;
 
 }
 @keyframes rotate {

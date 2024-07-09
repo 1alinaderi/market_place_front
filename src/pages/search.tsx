@@ -36,7 +36,9 @@ export default function Search() {
           </div>
         </Element>
       </Container>
-      <DownloadApps />
+      <div>
+        <img src="/image/banner/product4.jpg" alt="" />
+      </div>
     </>
   );
 }

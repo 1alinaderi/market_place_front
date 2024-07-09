@@ -8,7 +8,9 @@ export default function ShopDetailsPage() {
   return (
     <>
       <ShopsSingleDetails />
-      <DownloadApps />
+      <div>
+        <img src="/image/banner/product4.jpg" alt="" />
+      </div>
     </>
   );
 }

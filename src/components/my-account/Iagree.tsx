@@ -29,7 +29,7 @@ const Iagree = ({ baseData, setAgree, mx }) => {
     } else {
       await httpReauest("POST","/supplier/type",{type: typeofsell,sellerId: baseData.cookies.seller?.id },{ 'x-access-token': baseData?.cookies?.seller?.token }).then(()=>{
         setAgree(true);
-        localStorage.setItem('hasAcceptedContract', 'true');
+        
       })
       
     }
@@ -69,9 +69,9 @@ const Iagree = ({ baseData, setAgree, mx }) => {
             <AiOutlineShop size={35} />
           </div>
           <div className="flex flex-col items-start justify-center">
-            <span className="font-bold">{t('free-market')} </span>
+            <span className="font-bold">{t('authentication')} </span>
             <span className="lg:text-[14px] text-[11px] text-gray-500/80">
-              {t('free-market-desc')}
+              {t('authentication-desc')}
             </span>
           </div>
         </div>
@@ -97,17 +97,7 @@ const Iagree = ({ baseData, setAgree, mx }) => {
             </span>
           </div>
         </div>
-        <div className="flex items-center gap-3 lg:px-6">
-          <div className="text-gray-500/80">
-            <MdVerifiedUser size={35} />
-          </div>
-          <div className="flex flex-col items-start justify-center">
-            <span className="font-bold">{t('authentication')} </span>
-            <span className="lg:text-[14px] text-[11px] text-gray-500/80">
-              {t('authentication-desc')}
-            </span>
-          </div>
-        </div>
+       
 
         <div className={`${mx ? 'hidden' : 'block'}`}>
           <h5 className="mb-3 font-bold text-lg">

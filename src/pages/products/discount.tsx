@@ -32,7 +32,7 @@ export default function ProductsDiscount() {
       </Container>
       {/* <DownloadApps /> */}
       <div>
-        <img src="/image/banner/Product 4.jpg" alt="" />
+        <img src="/image/banner/product4.jpg" alt="" />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
@@ -17,6 +17,7 @@ import { httpReauest } from 'src/api/api';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+
 
 interface LoginFormProps {
   isPopup?: boolean;
@@ -37,6 +38,7 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
   const { closeModal, openModal } = useModalAction();
   const { mutate: login, isLoading } = useLoginMutation();
   const [remember, setRemember] = useState(false);
+  const videoRef = useRef()
 
   const router = useRouter();
 
@@ -103,7 +105,11 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
       });
     closeModal();
   }
-
+  useEffect(()=>{
+    if(videoRef.current){
+      videoRef.current.play()
+    }
+  },[])
   useEffect(() => {
     if (baseData?.cookies?.seller?.id) {
       router.push(`${window.location.origin}/my-account`);
@@ -119,21 +125,17 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
   return (
     <div
       className={cn(
-        'w-full md:w-[720px] lg:w-[920px] xl:w-[1000px] 2xl:w-[1200px] relative',
+        'w-full md:w-[720px] lg:w-[800px] xl:w-[800px] 2xl:w-[800px] relative',
         className
       )}
     >
       {isPopup === true && <CloseButton onClick={closeModal} />}
 
-      <div className="flex mx-auto overflow-hidden rounded-lg bg-brand-light">
-        <div className="md:w-1/2 lg:w-[55%] xl:w-[60%] registration hidden md:block relative">
-          <Image
-            src="/assets/images/login.jpeg"
-            alt="signin Image"
-            layout="fill"
-          />
+      <div className="flex flex-col md:flex-row mx-auto overflow-hidden rounded-lg bg-brand-light">
+        <div className=" lg:w-[50%] xl:w-[45%] md:w-[50%] registration  md:block relative">
+          <video ref={videoRef} className='w-full ' loop  muted src="/video/sign.mp4"></video>
         </div>
-        <div className="w-full md:w-1/2 lg:w-[45%] xl:w-[40%] py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md flex flex-col justify-center">
+        <div className="w-full xl:w-[55%] lg:w-[50%] md:w-[50%]   py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md flex flex-col justify-center">
           <div className="mb-6 text-center">
             <div onClick={closeModal}>
               <Logo />

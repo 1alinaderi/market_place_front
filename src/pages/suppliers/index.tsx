@@ -25,7 +25,9 @@ export default function ShopsPage() {
         variant="white"
       />
       <ShopsPageContent />
-      <DownloadApps />
+      <div>
+        <img src="/image/banner/product4.jpg" alt="" />
+      </div>
     </>
   );
 }

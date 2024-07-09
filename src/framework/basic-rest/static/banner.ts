@@ -5,13 +5,13 @@ export const dataBanner2 = [
     id: 1,
     title: 'feature-title-one',
     href: ROUTES.SEARCH,
-    src: '/image/banner/Product 3.jpg',
+    src: '/image/banner/product3.jpg',
   },
   {
     id: 2,
     title: 'feature-title-two',
     href: ROUTES.SEARCH,
-    src: '/image/banner/Product 2.jpg',
+    src: '/image/banner/product2.jpg',
   },
   // {
   //   id: 3,
@@ -123,12 +123,12 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/image/banner/Product 1.jpg',
+        url: '/image/banner/product1.jpg',
         width: 450,
         height: 90,
       },
       desktop: {
-        url: '/image/banner/Product 1.jpg',
+        url: '/image/banner/product1.jpg',
         width: 910,
         height: 300,
       },
@@ -140,12 +140,12 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/image/banner/Product 1v2.jpg',
+        url: '/image/banner/product1v2.jpg',
         width: 450,
         height: 90,
       },
       desktop: {
-        url: '/image/banner/Product 1v2.jpg',
+        url: '/image/banner/product1v2.jpg',
         width: 910,
         height: 300,
       },
@@ -157,12 +157,12 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/image/banner/Product 2.jpg',
+        url: '/image/banner/product2.jpg',
         width: 450,
         height: 90,
       },
       desktop: {
-        url: '/image/banner/Product 2.jpg',
+        url: '/image/banner/product2.jpg',
         width: 910,
         height: 300,
       },
@@ -174,12 +174,12 @@ export const bannerGridTwo = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/image/banner/Product 2v2.jpg',
+        url: '/image/banner/product2v2.jpg',
         width: 450,
         height: 90,
       },
       desktop: {
-        url: '/image/banner/Product 2v2.jpg',
+        url: '/image/banner/product2v2.jpg',
         width: 910,
         height: 300,
       },

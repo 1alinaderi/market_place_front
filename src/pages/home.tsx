@@ -187,7 +187,7 @@ export default function Home() {
             <div style={{boxShadow:"0px 0px 15px 0px #ffffff70"}} className="motionBorder cursor-pointer relative lg:h-full col-span-2 lg:col-span-1  rounded-[14px] overflow-hidden">
               
                 <img
-                  className=" w-full h-full object-cover relative p-[2px] rounded-[14px]"
+                  className=" w-full h-full  object-cover relative p-[2px] rounded-[14px]"
                   src="/assets/images/home/2.png"
                   alt=""
                 />
