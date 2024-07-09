@@ -176,6 +176,11 @@ export const siteSettings = {
         path: '/faq',
         label: 'menu-faq',
       },
+      {
+        id: 6,
+        path: '/membership',
+        label: 'menu-membership',
+      },
     ],
     languageMenu: [
       {

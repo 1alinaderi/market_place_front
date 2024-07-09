@@ -72,7 +72,9 @@ const Header: React.FC = () => {
         />
         {/* End of Mobile search */}
         <Container className="flex items-center gap-5 justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
-          <h1 className='text-[#fff] lg:text-2xl font-bold text-center lg:ml-3'>WIMEHR</h1>
+          <Link href={"/home"}>
+          <h1 className='text-[#fff] lg:text-2xl font-bold text-center lg:ml-3 cursor-pointer'>WIMEHR</h1>
+          </Link>
           {/* End of logo */}
 
           <Search
@@ -116,7 +118,9 @@ const Header: React.FC = () => {
         <div className="hidden navbar bg-1d3557 lg:block">
           <Container className="flex items-center justify-between ">
             {/* <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" /> */}
-            <h1 className='text-[#fff] lg:text-2xl font-bold text-center lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo'>WIMEHR</h1>
+            <div className='w-[0] cursor-pointer lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo'>
+            <Link href={"/home"}><h1 className='text-[#fff] lg:text-2xl font-bold text-center '>WIMEHR</h1></Link>
+            </div>
             {/* End of logo */}
             
 

@@ -36,7 +36,7 @@ export default function Home() {
       <div className="bg-[#11223a] overflow-hidden">
       
       <div style={{background: "linear-gradient(90deg, rgba(38,47,69,1) 0%, rgba(81,150,206,1) 20%, rgba(254,132,146,1) 40%, rgba(164,37,39,1) 60%, rgba(118,29,33,1) 80%, rgba(34,22,32,1) 100%)"}} className="lg:flex hidden justify-center items-center gap-[20px] xl:gap-[40px] relative z-10 py-4 px-[150px] bg-[#08121f]">
-          <Link href={'/supplier/signup'}>
+          <Link href={'/membership'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-[1rem] xl:text-[1.15rem] font-[100]">
               Membership<ArrowRight2 size={18}/>
             </button>
@@ -136,7 +136,7 @@ export default function Home() {
           </RevealX>
           <div>
           <Reveal head={false}>
-          <Link href={'/supplier/signup'} >
+          <Link href={'/membership'} >
             <div className="flex  bg-red-600 w-fit uppercase  items-center justify-center gap-3 lg:gap-6 px-10 lg:px-12 py-2 lg:py-4   rounded-[14px]">
               <h2 className="text-[#FFFFFF] text-[17px] lg:text-4xl font-sans font-[500]">Membership</h2>
             </div>
