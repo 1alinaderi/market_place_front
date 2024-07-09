@@ -242,6 +242,7 @@
    "t-not-verify" : "Not Verfiyed",
    "t-bio" :"Give a short description of your business",
   "t-national-code" : "National Code",
+  "t-national-code-error" : "National Code is wrong",
    "t-compelete-profile" : "Complete Your Profile",
    "t-send-information-wait" : "Your information has been sent, you must wait for it to be confirmed by the site's support",
    "t-verify-phone" : "Verify Your Phone",

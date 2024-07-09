@@ -265,6 +265,7 @@
    "t-not-verify" : "لم يتم التحقق منها",
    "t-bio" :"إعطاء وصف موجز لعملك",
    "t-national-code" : "رمز دولي",
+   "t-national-code-error" : "الكود الوطني خاطئ",
    "t-compelete-profile" : "أكمل ملفك الشخصي",
    "t-send-information-wait" : "لقد تم إرسال معلوماتك، عليك الإنتظار حتى يتم تأكيدها من قبل دعم الموقع",
    "t-verify-phone" : "التحقق من هاتفك",
