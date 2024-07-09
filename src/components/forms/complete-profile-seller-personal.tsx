@@ -16,8 +16,9 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   const [image1, setimage1] = useState(null);
   const [preview, setpreview] = useState(null);
 
-  const [bio, setbio] = useState(null);
+  const [bio, setbio] = useState<string>();
   const [nationalCode, setnationalCode] = useState(null);
+  const [isValid, setIsValid] = useState(false);
 
   const router = useRouter();
 
@@ -56,8 +57,13 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
       return toast.error("کد ملی اشتباه است")
     }
 
+    if (!isValid) {
+      return
+    }
+
     if (bio && image &&nationalCode ) {
       const formdata = new FormData();
+      
 
       formdata.append('logo', image, image?.name);
       formdata.append('bio', bio);
@@ -79,6 +85,38 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
       toast.error('Check All fild');
     }
   }
+
+  const validateNationalId = (nationalId:string) => {
+    let id = nationalId.trim();
+
+    // بررسی تعداد ارقام کد ملی
+    if (id.length < 8 || id.length > 10) {
+      setIsValid(false);
+      return;
+    }
+
+    // اضافه کردن صفر به سمت چپ
+    while (id.length < 10) {
+      id = '0' + id;
+    }
+
+    // بررسی تکرار ارقام
+    if (new Set(id.split('')).size === 1) {
+      setIsValid(false);
+      return;
+    }
+
+    // محاسبه رقم کنترلی
+    let sum = 0;
+    for (let i = 0; i < 9; i++) {
+      sum += parseInt(id[i]) * (10 - i);
+    }
+    let remainder = sum % 11;
+    let controlDigit = remainder > 1 ? 11 - remainder : remainder;
+
+    // بررسی صحت کد ملی
+    setIsValid(parseInt(id[9]) === controlDigit);
+  };
 
   return (
     <div>
@@ -117,6 +155,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
             <textarea
               onChange={(e) => {
                 setbio(e.target.value);
+
               }}
               className="shadow h-[160px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             />
@@ -128,10 +167,12 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
             <input
               onChange={(e) => {
                 setnationalCode(e.target.value);
+                validateNationalId(e.target.value)
               }}
               type='number'
               className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             />
+            {nationalCode && !isValid && <small className='text-red-500'>{t("t-national-code-error")}</small>}
           </span>
           
         </div>
