@@ -47,7 +47,7 @@ export default function Home() {
         <FeatureGrid data={dataBanner2} />
       </Container>
       <FreshVegetablesProductFeed />
-      <CollectionGrid className="mb-12 lg:mb-14 xl:mb-16" />
+      {/* <CollectionGrid className="mb-12 lg:mb-14 xl:mb-16" /> */}
 
       <ChipsProductFeed />
 

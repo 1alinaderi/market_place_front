@@ -234,7 +234,7 @@
   "account-see-product" : "Your Products",
   "text-choose-membership" : "Choose Your membership to Countinue",
   "text-congratulations-membership" : "Congratulations, your membership is premium",
-  "text-upgrade-membership" :"Upgrade your membership level to get the best services",
+  "text-upgrade-membership" :" Membership ",
    "t-name" : "Name",
    "t-email" : "Email",
    "t-sign-date" : "Signing Date",
@@ -298,7 +298,7 @@
    "text-account-referal" : "Referal",
    "t-referal": "Earn with referral code",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
-   "l-referal" : "Your Referal Code",
+   "l-referal" : "Personal referral code",
    "earn" : "Earn",
    "wallet" : "Wallet",
    "type-of-sell": "What will be your type of sale?",
@@ -329,6 +329,13 @@
    "member-about":"About me:(From the third person point of view, short and concise)",
    "member-market":"Target market countries",
    "member-resume":"Resume",
-   "member-export":"Completed export projects"
+   "member-export":"Completed export projects",
+   "t-bio-1":"Description",
+   "settings":"Settings",
+   "l-referal-1":"Received referral code",
+   "upgrade-membership":"Upgrade your membership level to get the best services",
+   "add-product":"Add products",
+   "pay":"Payment"
+   
    
 }

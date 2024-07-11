@@ -44,6 +44,7 @@ const BannerGridTwo: React.FC<BannerProps> = ({
       <Carousel
         prevActivateId="banner-carousel-button-prev"
         nextActivateId="banner-carousel-button-next"
+        fade
       >
         {data?.map((banner: any) => (
           <SwiperSlide key={`banner-key-${banner.id}`}>

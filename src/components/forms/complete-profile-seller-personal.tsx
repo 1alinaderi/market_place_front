@@ -15,7 +15,8 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   const [image, setimage] = useState(null);
   const [image1, setimage1] = useState(null);
   const [preview, setpreview] = useState(null);
-
+  const [previewPay, setpreviewPay] = useState(null);
+  const [imagePay, setimagePay] = useState(null);
   const [bio, setbio] = useState<string>();
   const [nationalCode, setnationalCode] = useState(null);
   const [isValid, setIsValid] = useState(false);
@@ -32,6 +33,16 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
       }
     }
   }, [image]);
+  useEffect(() => {
+    if (imagePay) {
+      if (imagePay.size > 1031517) {
+        toast.error('The file size is more than 1mb');
+        setimagePay(null);
+      } else {
+        setPreviwImagePay();
+      }
+    }
+  }, [imagePay]);
 
   useEffect(() => {
     if (image1) {
@@ -49,22 +60,29 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
     };
     reader.readAsDataURL(image);
   }
+  function setPreviwImagePay() {
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      setpreviewPay(reader.result);
+    };
+    reader.readAsDataURL(imagePay);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (String(nationalCode).length != 10) {
-      return toast.error("کد ملی اشتباه است")
+      return toast.error('کد ملی اشتباه است');
     }
 
     if (!isValid) {
-      return
+      return;
     }
 
-    if (bio && image &&nationalCode ) {
+    if (bio && image && nationalCode && imagePay) {
       const formdata = new FormData();
-      
 
+      formdata.append('paymant', imagePay, imagePay?.name);
       formdata.append('logo', image, image?.name);
       formdata.append('bio', bio);
       formdata.append('nationalCode', nationalCode);
@@ -86,7 +104,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
     }
   }
 
-  const validateNationalId = (nationalId:string) => {
+  const validateNationalId = (nationalId: string) => {
     let id = nationalId.trim();
 
     // بررسی تعداد ارقام کد ملی
@@ -155,26 +173,54 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
             <textarea
               onChange={(e) => {
                 setbio(e.target.value);
-
               }}
               className="shadow h-[160px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             />
           </span>
           <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-          <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
               {t('t-national-code')} :
             </Heading>
             <input
               onChange={(e) => {
                 setnationalCode(e.target.value);
-                validateNationalId(e.target.value)
+                validateNationalId(e.target.value);
               }}
-              type='number'
+              type="number"
               className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             />
-            {nationalCode && !isValid && <small className='text-red-500'>{t("t-national-code-error")}</small>}
+            {nationalCode && !isValid && (
+              <small className="text-red-500">
+                {t('t-national-code-error')}
+              </small>
+            )}
           </span>
-          
+          <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+              {t("pay")} *:
+            </Heading>
+            <label className="cursor-pointer relative" htmlFor="payment">
+              {previewPay ? (
+                <img
+                  src={previewPay ? previewPay : null}
+                  className="w-full h-[160px] rounded object-contain"
+                />
+              ) : (
+                <div className="w-full h-[160px] rounded relative border">
+                  <FaPlus size={25} className="inset-0 absolute m-auto" />
+                </div>
+              )}
+            </label>
+            <input
+              onChange={(e) => {
+                setimagePay(e.target.files[0]);
+              }}
+              id="payment"
+              className="hidden"
+              type={'file'}
+              accept="image/png, image/jpg, image/jpeg"
+            />
+          </span>
         </div>
 
         <div className="px-5 mt-8">

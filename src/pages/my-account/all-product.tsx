@@ -29,6 +29,7 @@ export default function AccountDetailsPage({ baseData }) {
     );
 
     setData(data.data);
+    console.log(data.data)
   }
   useEffect(() => {
     if (!baseData.cookies.seller?.id) {

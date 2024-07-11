@@ -37,6 +37,7 @@ type CarouselPropsType = {
 };
 
 const Carousel: React.FunctionComponent<CarouselPropsType> = ({
+  fade,
   children,
   className = '',
   buttonGroupClassName = '',
@@ -75,7 +76,7 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({
     >
       <Swiper
         modules={[Navigation, Autoplay, Pagination, Grid,EffectFade]}
-        effect="fade"
+        effect={`${fade ? "fade" : "none"}`}
         autoplay={autoplay}
         breakpoints={breakpoints}
         dir={dir}

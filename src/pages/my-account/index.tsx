@@ -37,13 +37,13 @@ export default function AccountDetailsPage({ baseData }) {
     console.log(agree)
   }, [router.pathname]);
   console.log(agree)
-  useEffect(() => {
-    if (router.locale == 'fa') {
-      document.documentElement.dir = 'rtl';
-    } else {
-      document.documentElement.dir = 'ltr';
-    }
-  }, [router.locale]);
+  // useEffect(() => {
+  //   if (router.locale == 'fa') {
+  //     document.documentElement.dir = 'rtl';
+  //   } else {
+  //     document.documentElement.dir = 'ltr';
+  //   }
+  // }, [router.locale]);
   return (
     <>
       <Seo

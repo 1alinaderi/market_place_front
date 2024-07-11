@@ -257,7 +257,7 @@
   "t-dont-product" : "ليس لديك منتج",
   "text-choose-membership" : "اختر عضويتك للمتابعة",
   "text-congratulations-membership" : "تهانينا، عضويتك متميزة",
-  "text-upgrade-membership" :"قم بترقية مستوى عضويتك للحصول على أفضل الخدمات",
+  "text-upgrade-membership" :" عضويتك ",
    "t-name" : "اسم",
    "t-email" : "بريد إلكتروني",
    "t-sign-date" : "تاريخ التوقيع",
@@ -299,7 +299,7 @@
    "text-account-referal" : "الإحالة",
    "t-referal": "الربح من خلال رمز الإحالة",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
-   "l-referal" : "رمز الإحالة الخاص بك",
+   "l-referal" : "رمز الإحالة الشخصية",
    "earn" : "يكسب",
    "type-of-sell": "ماذا سيكون نوع البيع الخاص بك؟",
    "whole-saler":"تاجر الجملة",
@@ -329,5 +329,13 @@
    "member-about":"عني:(من وجهة نظر الشخص الثالث، قصيرة وموجزة)",
    "member-market":"دول السوق المستهدفة",
    "member-resume":"سيرة ذاتية",
-   "member-export":"مشاريع التصدير المكتملة"
+   "member-export":"مشاريع التصدير المكتملة",
+   "wallet":"محفظة",
+   "t-bio-1":"وصف",
+   "settings":"إعدادات",
+   "l-referal-1":"تم استلام رمز الإحالة",
+   "upgrade-membership":"قم بترقية مستوى عضويتك للحصول على أفضل الخدمات",
+   "add-product":"أضف المنتجات",
+   "pay":"قسط"
+
 }

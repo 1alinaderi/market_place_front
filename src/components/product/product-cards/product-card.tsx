@@ -128,7 +128,7 @@ const ProductCard: React.FC<ProductProps> = ({
 
         <div className="flex flex-col px-3 md:px-4 lg:px-[18px] pb-5 lg:pb-6 lg:pt-1.5 h-full">
           <div className="mb-1 lg:mb-1.5 -mx-1">
-            {specialPrice != 0 ? (
+            {specialPrice ? (
               <>
                 <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand-dark">
                   ${specialPrice}

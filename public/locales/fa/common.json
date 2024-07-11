@@ -7,7 +7,7 @@
   "text-account-details-help" : "پشتیبانی",
   "text-choose-membership" : "ممبرشیپ خود را برای ادامه انتخاب کنید",
   "text-congratulations-membership" : "تبریک ! ممبرشیپ شما پریمیوم است",
-  "text-upgrade-membership" :"ممبرشیپ خود را ارتقا دهید تا بهترین سرویس را دریافت کنید",
+  "text-upgrade-membership" :"ممبرشیپ ",
   "text-account-details-personal" : "اطلاعات کاربری",
   "t-name" : "اسم",
   "t-email" : "ایمیل",
@@ -284,7 +284,7 @@
   "modal-p-6" : "و بسیاری از گزینه های دیگر برای خواندن روی خرید کلیک کنید",
   "modal-p-7" : "انتخاب شده",
   "modal-p-8" : "همین حالا بخرید",
-  "account-learn-product" :"بدانیم",
+  "account-learn-product" :"اموزش",
   "back-project": "بازگشت به پروژه I",
   "hi" : "سلام عزیزم",
   "active-steps" : "مراحل فعال سازی",
@@ -300,8 +300,8 @@
   "text-account-referal" : "معرف",
    "t-referal": "با کد ارجاع کسب درآمد کنید",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
-   "l-referal" : "کد ارجاع شما",
-   "earn" : "بدست اوردن",
+   "l-referal" : "کد ارجاع شخصی",
+   "earn" : "درامدزدایی",
    "type-of-sell": "نوع فروش شما چه خواهد بود؟",
    "whole-saler":"عمده فروش",
    "retail-seller": "خرده فروشی",
@@ -330,6 +330,14 @@
    "member-about":"درباره من: (از دیدگاه سوم شخص، کوتاه و مختصر)",
    "member-market":"کشورهای بازار هدف",
    "member-resume":"از سرگیری",
-   "member-export":"پروژه های صادراتی انجام شده است"
+   "member-export":"پروژه های صادراتی انجام شده است",
+   "wallet":"کیف پول",
+   "settings":"تنظیمات",
+   "t-bio-1":"توضیحات",
+   "l-referal-1" : "کد ارجاع دریافتی",
+   "upgrade-membership":"سطح عضویت خود را ارتقا دهید تا بهترین خدمات را دریافت کنید",
+   "add-product":"محصولاتتان را اضافه کنید",
+   "pay":"پرداختی"
+
 
 }

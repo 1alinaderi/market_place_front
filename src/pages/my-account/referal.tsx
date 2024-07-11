@@ -64,7 +64,7 @@ export default function referal({ baseData }) {
           <p className="mx-5 mt-5">{t('p-referal')}</p>
           <div className="flex flex-col lg:flex-row items-center my-10 mx-5">
             <span className="font-bold mb-5 lg:mb-0">{t('l-referal')} :</span>
-            <div className="flex items-center">
+            <div className="flex items-center " dir='ltr'>
               <input
                 className="lg:ml-5 shadow h-[42px] appearance-none border border-slate-300 rounded  py-2 px-3 text-gray-700  leading-tight rounded-r-none w-[200px] lg:w-[250px]"
                 type="text"
@@ -82,7 +82,7 @@ export default function referal({ baseData }) {
             </div>
           </div>
           <div className="flex flex-col lg:flex-row items-center my-10 mx-5">
-            <span className="font-bold mb-5 lg:mb-0">{t('l-referal')} :</span>
+            <span className="font-bold mb-5 lg:mb-0">{t('l-referal-1')} :</span>
             <div className="flex items-center gap-3">
               <input
                 className="lg:ml-5 shadow h-[42px] appearance-none border border-slate-300 rounded  py-2 px-3 text-gray-700  leading-tight rounded-r-none w-[200px] lg:w-[250px]"
@@ -92,7 +92,7 @@ export default function referal({ baseData }) {
                 
                 
               />
-             <button onClick={handleRef} className='bg-red-500 text-white rounded-md px-6 py-2'>Submit</button>
+             <button onClick={handleRef} className='bg-red-500 text-white rounded-md px-6 py-2'>{t("t-submit")}</button>
             </div>
           </div>
         </div>

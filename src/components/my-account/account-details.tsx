@@ -116,7 +116,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               <CloseButton onClick={onClose} />
               <div className="flex mx-auto overflow-hidden rounded-lg bg-brand-light py-5 gap-4 justify-center flex-wrap">
                 <h1 className="w-full text-3xl py-3 text-center text-black font-semibold">
-                  {t('text-choose-membership')}
+                   {t('text-choose-membership')}
                 </h1>
                 <MembershipCard gotovip={gotovip} onClose={onClose} free />
                 <MembershipCard
@@ -128,20 +128,24 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
             </div>
           </Modal>
 
-          <Link href={'/my-account/vip'}>
+          <Link href={'/membership'}>
             {data.membership === 'Premium' ? (
               <div
                 className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-black items-center  font-semibold flex  border-2 border-green-500 mb-8  rounded `}
               >
                 <FaCheckCircle className="text-green-600 mx-2 text-3xl" />
-                {t('text-congratulations-membership')}
+                {t('text-congratulations-membership')} 
               </div>
             ) : (
-              <div
-                className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 rounded `}
+              
+              <div className='flex  gap-1'>
+                <Heading className='text-[18px] md:text-xl  py-4'>{t("upgrade-membership")}</Heading>
+                <div
+                className={`w-fit  duration-200 cursor-pointer py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 hover:bg-green-400 rounded `}
               >
                 {t('text-upgrade-membership')}
-                <FaAngleRight size={23} className="ml-1" />
+                
+              </div>
               </div>
             )}
           </Link>
@@ -211,7 +215,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
 
                   <span className="col-span-12 sm:col-span-12 flex my-1 sm:my-3 ">
                     <Heading className="mx-2 whitespace-nowrap" variant="base">
-                      {t('t-bio')} :
+                      {t('t-bio-1')} :
                     </Heading>
 
                     <span>{data?.bio}</span>
@@ -282,8 +286,10 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               >
                 <div className="flex items-center gap-3">
                   <FaCheckCircle className="text-green-500" />
-                  {t('t-profile-us-complete')}
+                  {t('t-profile-us-complete')} ,
+                  <span className='bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-400 duration-150'><Link  href={"/my-account/create-product"}>{t("add-product")}</Link></span>
                 </div>
+                
               </Heading>
             )}
           </div>
@@ -369,7 +375,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
             >
               <div className="flex items-center gap-3">
                 <FaCheckCircle className="text-green-500" />
-                Your Profile is Complete
+                Your Profile is Complete 
               </div>
             </Heading>
           )}
