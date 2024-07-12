@@ -138,10 +138,10 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             ) : (
               
-              <div className='flex  gap-1'>
+              <div className='flex lg:flex-row flex-col  gap-1'>
                 <Heading className='text-[18px] md:text-xl  py-4'>{t("upgrade-membership")}</Heading>
                 <div
-                className={`w-fit  duration-200 cursor-pointer py-4 px-5 text-[18px] md:text-xl text-white items-center  font-semibold flex  border  mb-8 bg-green-500 hover:bg-green-400 rounded `}
+                className={`w-fit  duration-200 cursor-pointer lg:py-4 lg:px-5 py-2 px-3 text-sm md:text-sm text-white items-center  font-semibold flex  border  mb-8 bg-red-500 hover:bg-red-400 rounded `}
               >
                 {t('text-upgrade-membership')}
                 
@@ -246,6 +246,16 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                     {t('t-compelete-profile')}
                   </div>
                 </Heading>
+                <div className='text-[12px] lg:text-[16px] lg:px-3 mb-4'>
+                  <h2 className='mb-5 text-black'>{t("profile-h")}</h2>
+                  <div className='grid md:grid-cols-2 grid-cols-1 gap-4 mb-5 '>
+                    <img className='md:h-[340px] rounded shadow w-full' src="/assets/images/img.jpg" alt="" />
+                    <img className='md:h-[340px] rounded shadow w-full'  src="/assets/images/img1.jpg" alt="" />
+                  </div>
+                  <p>{t("profile-p")}</p>
+                  <p>{t("profile-p-1")}</p>
+                  <p>{t("profile-p-2")}</p>
+                </div>
                 <CompleteProfileFormSellerPersonal t={t} baseData={baseData} />
                 
               </div>
@@ -287,7 +297,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                 <div className="flex items-center gap-3">
                   <FaCheckCircle className="text-green-500" />
                   {t('t-profile-us-complete')} ,
-                  <span className='bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-400 duration-150'><Link  href={"/my-account/create-product"}>{t("add-product")}</Link></span>
+                  <span className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 duration-150'><Link  href={"/my-account/create-product"}>{t("add-product")}</Link></span>
                 </div>
                 
               </Heading>

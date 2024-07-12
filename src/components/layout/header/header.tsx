@@ -73,7 +73,7 @@ const Header: React.FC = () => {
         {/* End of Mobile search */}
         <Container className="flex items-center gap-5 justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
           <Link href={"/home"}>
-          <h1 className='text-[#fff] lg:text-2xl font-bold text-center lg:ml-3 cursor-pointer'>WIMEHR</h1>
+          <div className='flex items-baseline cursor-pointer'><h1 className='text-yellow-600  lg:text-[30px] text-[20px] font-bold'>W</h1><span className='text-[#fff] lg:text-2xl font-bold   '>IMEHR</span></div>
           </Link>
           {/* End of logo */}
 
@@ -119,7 +119,7 @@ const Header: React.FC = () => {
           <Container className="flex items-center justify-between ">
             {/* <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" /> */}
             <div className='w-[0] cursor-pointer lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo'>
-            <Link href={"/home"}><h1 className='text-[#fff] lg:text-2xl font-bold text-center '>WIMEHR</h1></Link>
+            <Link href={"/home"}><div className='flex items-baseline cursor-pointer'><h1 className='text-yellow-600  lg:text-[30px] text-[20px] font-bold'>W</h1><span className='text-[#fff] lg:text-2xl font-bold   '>IMEHR</span></div></Link>
             </div>
             {/* End of logo */}
             

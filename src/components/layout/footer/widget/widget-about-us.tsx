@@ -26,7 +26,7 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
           href={ROUTES.HOME}
           className="mx-auto mb-3 lg:mb-5 sm:ltr:ml-0 sm:rtl:mr-0"
         />
-        <Text>{t('text-about-us')}</Text>
+       <p className='text-[12px]'>{t('text-about-us')}</p> 
       </div>
 
       {social && (

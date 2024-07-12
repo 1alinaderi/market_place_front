@@ -14,12 +14,14 @@ import { useState } from 'react';
 import { FaRegPlusSquare } from 'react-icons/fa';
 import Button from '@components/ui/button';
 import { httpReauest } from 'src/api/api';
+import { productGalleryPlaceholder } from '@assets/placeholders';
 
 export default function Membership() {
   const { t } = useTranslation('common');
   const [records, setRecords] = useState([{}]);
   const [massage, setMassege] = useState('');
   const [error, setError] = useState('');
+  const [product, setProduct] = useState(['', '', '', '', '', '', '', '']);
 
   function handleAddBasicRecord() {
     if (records.length <= 7) {
@@ -33,14 +35,16 @@ export default function Membership() {
       setRecords([...records, {}]);
     }
   }
-   
+
   const VALUE_SIGN_VALIDATION = () => {
     return Yup.object({
       name: Yup.string().required('required'),
-      phone: Yup.string().required("required").max(11,'the number is wrong').min(11,'the number is wrong'),
+      phone: Yup.string()
+        .required('required')
+        .max(11, 'the number is wrong')
+        .min(11, 'the number is wrong'),
       address: Yup.string().required('required'),
       email: Yup.string().required('required'),
-     
     });
   };
   const formik = useFormik({
@@ -61,28 +65,53 @@ export default function Membership() {
           activitydone: '',
         },
       ],
-      product: '',
+      productionName:'',
+      capacity:'',
+      companyAddress:'',
+      product: product,
       about: '',
       market: '',
-      resume: '',
+      resume: ['', '', '', ''],
       exportProject: '',
+      referral:''
     },
     validationSchema: VALUE_SIGN_VALIDATION,
     onSubmit: async (values) => {
-      console.log(formik.errors)
-      await httpReauest('POST', '/membership/create', { values }, {})
+      const newProduct = values.product.filter((e) => e !== '');
+      const newResume = values.resume.filter((e)=>e !== '')
+      const newValues = {
+        name: values.name,
+        activity: values.activity,
+        phone: values.phone,
+        email: values.email,
+        instagram: values.instagram,
+        website: values.website,
+        address: values.address,
+        records: values.records,
+        productionName: values.productionName,
+        capacity: values.capacity,
+        companyAddress: values.companyAddress,
+        product: newProduct,
+        about: values.about,
+        market: values.market,
+        reume: newResume,
+        exportProject: values.exportProject,
+        referral: values.referral
+      };
+      console.log(formik.errors);
+      await httpReauest('POST', '/membership/create', newValues, {})
         .then((data) => {
           console.log(data);
           setMassege('send');
         })
         .catch((data) => {
           setMassege('nosend');
-          console.log(data)
+          console.log(data);
           setError(data.massage);
         });
     },
   });
-  console.log(formik.errors)
+  console.log(formik.errors);
   return (
     <>
       <Seo
@@ -90,7 +119,7 @@ export default function Membership() {
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="membership"
       />
-      <div className="lg:mx-[100px] mx-2">
+      <div className="lg:mx-[100px] mx-4 px-3 border border-slate-200 rounded-sm mt-8 shadow pb-5">
         <h1 className="text-center font-bold my-7 text-black text-2xl ">
           {t('member-title')}
         </h1>
@@ -112,10 +141,10 @@ export default function Membership() {
                 onBlur={formik.handleBlur}
               />
               {formik.errors.name && formik.touched.name && (
-            <small className="text-danger" style={{ color: "red" }}>
-              {formik.errors.name}
-            </small>
-          )}
+                <small className="text-danger" style={{ color: 'red' }}>
+                  {formik.errors.name}
+                </small>
+              )}
             </div>
             <div className="">
               <label className="text-sm mb-2" htmlFor="activity">
@@ -131,7 +160,6 @@ export default function Membership() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              
             </div>
             <div className="">
               <label className="text-sm mb-2" htmlFor="phone">
@@ -147,10 +175,10 @@ export default function Membership() {
                 onBlur={formik.handleBlur}
               />
               {formik.errors.phone && formik.touched.phone && (
-            <small className="text-danger" style={{ color: "red" }}>
-              {formik.errors.phone}
-            </small>
-          )}
+                <small className="text-danger" style={{ color: 'red' }}>
+                  {formik.errors.phone}
+                </small>
+              )}
             </div>
             <div className="">
               <label className="text-sm mb-2" htmlFor="email">
@@ -166,10 +194,10 @@ export default function Membership() {
                 onBlur={formik.handleBlur}
               />
               {formik.errors.email && formik.touched.email && (
-            <small className="text-danger" style={{ color: "red" }}>
-              {formik.errors.email}
-            </small>
-          )}
+                <small className="text-danger" style={{ color: 'red' }}>
+                  {formik.errors.email}
+                </small>
+              )}
             </div>
             <div className="">
               <label className="text-sm mb-2" htmlFor="instagram">
@@ -213,10 +241,25 @@ export default function Membership() {
                 onBlur={formik.handleBlur}
               />
               {formik.errors.address && formik.touched.address && (
-            <small className="text-danger" style={{ color: "red" }}>
-              {formik.errors.address}
-            </small>
-          )}
+                <small className="text-danger" style={{ color: 'red' }}>
+                  {formik.errors.address}
+                </small>
+              )}
+            </div>
+            <div className="">
+              <label className="text-sm mb-2" htmlFor="name">
+              {t("inavite-ref")} :
+              </label>
+              <input
+                className="shadow h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
+                type="text"
+                id="referral"
+                name="referral"
+                value={formik.values.referral}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              
             </div>
           </div>
           <div>
@@ -242,7 +285,6 @@ export default function Membership() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-              
                 </div>
                 <div className="">
                   <label
@@ -320,19 +362,76 @@ export default function Membership() {
               </button>
             </div>
           </div>
-          <div className="lg:mx-10 grid grid-cols-2 gap-4">
-            <div className="col-span-full">
-              <label htmlFor="product">{t('member-project')}</label>
-              <textarea
-                className="shadow h-[160px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                name="product"
-                id="product"
-                value={formik.values.product}
+          <div className='grid lg:grid-cols-4 grid-cols-2 gap-4 lg:mx-10 mb-10'>
+          <h1 className="text-center font-bold my-7 text-black text-2xl col-span-full">
+          {t('member-title-2')}
+        </h1>
+          <div className="">
+
+              <label className="text-sm mb-2" htmlFor="productionName">
+                {t('member-productionName')}:
+              </label>
+              <input
+                className="shadow h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
+                type="text"
+                id="productionName"
+                name="productionName"
+                value={formik.values.productionName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                cols="30"
-                rows="10"
-              ></textarea>
+              />
+            </div>
+            <div className="">
+              <label className="text-sm mb-2" htmlFor="capacity">
+                {t('member-capacity')}:
+              </label>
+              <input
+                className="shadow h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
+                type="text"
+                id="capacity"
+                name="capacity"
+                value={formik.values.capacity}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </div>
+            <div className="col-span-2">
+              <label className="text-sm mb-2" htmlFor="companyAddress">
+                {t('member-companyAddress')}:
+              </label>
+              <input
+                className="shadow w-full h-[42px] appearance-none border border-slate-300 rounded  py-2 px-3 text-gray-700  leading-tight"
+                type="text"
+                id="companyAddress"
+                name="companyAddress"
+                value={formik.values.companyAddress}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.address && formik.touched.address && (
+                <small className="text-danger" style={{ color: 'red' }}>
+                  {formik.errors.address}
+                </small>
+              )}
+            </div>
+
+          </div>
+          <div className="lg:mx-10 grid grid-cols-2 gap-4">
+            <div className="col-span-full grid lg:grid-cols-4 grid-cols-2 gap-4">
+              <label className="col-span-full" htmlFor="product">
+                {t('member-project')}
+              </label>
+              {product.map((e, i) => (
+                <input
+                  className="shadow  h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
+                  type="text"
+                  value={formik.values.product[i]}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  id={`product[${i}]`}
+                  name={`product[${i}]`}
+                />
+              ))}
             </div>
             <div className="col-span-full">
               <label htmlFor="about">{t('member-about')}</label>
@@ -360,18 +459,19 @@ export default function Membership() {
                 rows="10"
               ></textarea>
             </div>
-            <div className="lg:col-span-1 col-span-full">
-              <label htmlFor="resume">{t('member-resume')}:</label>
-              <textarea
-                className="shadow lg:h-[160px] h-[100px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                name="resume"
-                id="resume"
-                value={formik.values.resume}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                cols="30"
-                rows="10"
-              ></textarea>
+            <div className="lg:col-span-1 col-span-full grid grid-cols-2 gap-4 ">
+              <label className='col-span-full' htmlFor="resume">{t('member-resume')}:</label>
+              {formik.values.resume.map((e, i) => (
+                <input
+                  className="shadow  h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
+                  type="text"
+                  value={formik.values.resume[i]}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  id={`resume[${i}]`}
+                  name={`resume[${i}]`}
+                />
+              ))}
             </div>
             <div className="col-span-full">
               <label htmlFor="exportProject">{t('member-export')}:</label>
@@ -402,9 +502,7 @@ export default function Membership() {
           )}
           {massage === 'nosend' && (
             <div className="bg-red-500 flex justify-center items-center text-white py-4 mt-5 rounded-md shadow text-[14px] px-3 lg:text-[18px] lg:mx-10">
-              <span>
-                {error}
-              </span>
+              <span>{error}</span>
             </div>
           )}
         </form>
