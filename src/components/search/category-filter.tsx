@@ -59,7 +59,7 @@ export const CategoryFilter = () => {
 
     displaySidebar && closeSidebar();
   }
-
+console.log(data)
   if (loading) {
     return (
       <div className="hidden xl:block">
@@ -74,59 +74,14 @@ export const CategoryFilter = () => {
   return (
     <div className="block">
       <>
-        {data?.map((item) => {
-          if (
-            selectedCategories.includes(item?.name) &&
-            item?.subCategory?.length != 1
-          ) {
-            return (
-              <>
-                <Heading className="mb-5 -mt-1">
-                  Categories in {item.name}
-                </Heading>
-                <div className="max-h-full overflow-hidden rounded border border-border-base mb-5">
-                  {item?.subCategory?.map((name) => {
-                    return (
-                      <li
-                        className={
-                          'flex justify-between items-center transition text-sm md:text-15px hover:bg-fill-base border-t border-border-base first:border-t-0 px-3.5 2xl:px-4 py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3'
-                        }
-                        onClick={() => onClick(name)}
-                      >
-                        <button
-                          className={
-                            'flex items-center w-full ltr:text-left rtl:text-right cursor-pointer group'
-                          }
-                        >
-                          <span className="text-brand-dark capitalize py-0.5">
-                            {name}
-                          </span>
-                          <span
-                            className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-border-four rounded-full ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light ${
-                              selectedSubCategories.includes(name) &&
-                              'border-yellow-100 bg-yellow-100'
-                            }`}
-                          >
-                            {selectedSubCategories.includes(name) && (
-                              <FaCheck />
-                            )}
-                          </span>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </div>
-              </>
-            );
-          }
-        })}
+        
       </>
       <Heading className="mb-5 -mt-1">{t('text-categories')}</Heading>
 
       <div className="max-h-full overflow-hidden rounded border border-border-base">
         <Scrollbar className="w-full ">
-          {data ? (
-            <CategoryFilterMenu items={data} />
+          {!loading ? (
+            <CategoryFilterMenu items={data.categorys} />
           ) : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">
               {t('text-no-results-found')}
