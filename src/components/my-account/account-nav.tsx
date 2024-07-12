@@ -30,7 +30,7 @@ export default function AccountNav({
   const newPathname = pathname.split('/').slice(2, 3);
   const mainPath = `/${newPathname[0]}`;
   return (
-    <nav className="flex flex-col pb-2 md:pb-6 border border-border-base rounded-md overflow-hidden">
+    <nav className="flex flex-col pb-2 md:pb-6 border border-border-base rounded-md overflow-hidden  shadow-lg">
       {options.map((item) => {
         const menuPathname = item.slug.split('/').slice(2, 3);
         const menuPath = `/${menuPathname[0]}`;
@@ -38,7 +38,7 @@ export default function AccountNav({
         return (
           <Link key={item.slug} href={item.slug}>
             <a
-              className={`flex items-center cursor-pointer text-sm lg:text-15px text-brand-dark py-3.5 px-3.5 xl:px-4 2xl:px-5 mb-1 ${
+              className={`flex items-center cursor-pointer text-sm lg:text-15px hover:bg-slate-100 duration-200 text-brand-dark py-3.5 px-3.5 xl:px-4 2xl:px-5 mb-1 ${
                 mainPath === menuPath
                   ? 'bg-fill-base font-medium'
                   : 'font-normal'
