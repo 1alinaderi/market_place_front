@@ -14,6 +14,7 @@ export default function AccountDetailsPage({ baseData }) {
   const router = useRouter();
   const [agree, setAgree] = useState(false);
   const [data, setData] = useState([])
+ 
 
   useEffect(() => {
     async function getuserData(id: any) {
@@ -21,7 +22,11 @@ export default function AccountDetailsPage({ baseData }) {
       setData(data.data);
       console.log(data)
     }
-    getuserData(baseData.cookies.seller?.id)
+    if(!baseData.cookies.user?.id || !baseData.cookies.seller?.id){
+      router.push(`${window.location.origin}/sign`);
+    }else{
+      getuserData(baseData.cookies.seller?.id)
+    }
     if (baseData.cookies.user?.id) {
       setIsSeller(false);
       setAgree(true);

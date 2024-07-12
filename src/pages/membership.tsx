@@ -291,7 +291,7 @@ export default function Membership() {
                     className="text-sm mb-2"
                     htmlFor={`records[${i}].position`}
                   >
-                    {t('member-position')}:
+                   {i + 1}_ {t('member-position')}:
                   </label>
                   <input
                     className="shadow h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
@@ -308,7 +308,7 @@ export default function Membership() {
                     className="text-sm mb-2"
                     htmlFor={`records[${i}].startDate`}
                   >
-                    {t('member-date')}:
+                   {i + 1}_ {t('member-date')}:
                   </label>
                   <input
                     className="shadow h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
@@ -325,7 +325,7 @@ export default function Membership() {
                     className="text-sm mb-2"
                     htmlFor={`records[${i}].staffs`}
                   >
-                    {t('member-staff')}:
+                   {i + 1}_ {t('member-staff')}:
                   </label>
                   <input
                     className="shadow h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"
@@ -342,7 +342,7 @@ export default function Membership() {
                     className="text-sm mb-2"
                     htmlFor={`records[${i}].activitydone`}
                   >
-                    {t('member-done')}:
+                   {i + 1}_ {t('member-done')}:
                   </label>
                   <input
                     className="shadow  h-[42px] appearance-none border border-slate-300 rounded w-full  py-2 px-3 text-gray-700  leading-tight"

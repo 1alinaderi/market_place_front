@@ -296,7 +296,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               >
                 <div className="flex items-center gap-3">
                   <FaCheckCircle className="text-green-500" />
-                  {t('t-profile-us-complete')} ,
+                  {t('t-profile-us-complete')} 
                   <span className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 duration-150'><Link  href={"/my-account/create-product"}>{t("add-product")}</Link></span>
                 </div>
                 
