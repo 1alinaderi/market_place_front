@@ -55,7 +55,7 @@ export default function referal({ baseData }) {
     <>
       <Seo
         title="Help Center"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
         path="my-account/referal"
       />
       <AccountLayout isSeller={isSeller} baseData={baseData}>

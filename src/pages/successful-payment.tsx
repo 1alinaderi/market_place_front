@@ -1,31 +1,21 @@
-import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
+import { FaCheck } from 'react-icons/fa';
 
-const Payment = () => {
-    const url = 'https://api.cryptocloud.plus/v2/invoice/create';
+const SuccessfullPayment = () => {
+    const getUrl = "https://api.cryptocloud.plus/v2/invoice/merchant/info"
+
     const headers = new Headers({
         'Authorization': 'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1dWlkIjoiTWpNek9UTT0iLCJ0eXBlIjoicHJvamVjdCIsInYiOiJjMjk0OTYzZmIxNGJjOTIzMjEyZWViN2YxM2VlMDY2Y2IwNDZjMTVmYThhYzllNDc4ZTgyMzc1ZGI5ZjI3NGFmIiwiZXhwIjo4ODEyMDY4MzM5Mn0.oUrG2q4Ta7eIPaNCb-nCOVaXxE1BjAcsC9x-u-A7uP0',
         "Content-Type" : "application/json"
     });
 
-    const bodyfirst = {
-        shop_id : "2Gt7Ur32pAyo7bgQ",amount : 50
-    }
-
-   
-
-    const router = useRouter()
-
-
-    function getAuth() {
-        fetch(url, { method: 'POST', headers , body : JSON.stringify(bodyfirst)})
+    function getStatus() {
+        const newbody = {uuids :[localStorage.getItem("uuid")]}
+        fetch(getUrl, { method: 'POST', headers , body : JSON.stringify(newbody)})
         .then(async response => {            
             if (response.ok) {
                 const res = await response.json()
-                if (res.status == "success") {
-                    localStorage.setItem("uuid" ,res.result.uuid)
-                    router.push(res.result.link)
-                }
+                console.log(res)
             } else {
                 return Promise.reject('Auth error');
             }
@@ -33,12 +23,16 @@ const Payment = () => {
         .catch(error => {
             console.error('Fail:', error);
         });
-                   }
+    }
 
-
+    useEffect(()=>{
+      getStatus()
+    },[])
   return (
-    <button onClick={getAuth}>Payment</button>
+    <div className='flex justify-center items-start w-full h-full'>
+        <FaCheck className='text-green-500' size={50}/>
+    </div>
   )
 }
 
-export default Payment
+export default SuccessfullPayment
