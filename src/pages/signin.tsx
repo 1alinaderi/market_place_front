@@ -83,7 +83,7 @@ export default function SignInPage({ baseData }) {
     <>
       <Seo
         title="Sign In"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
         path="signin"
       />
       <Head><script src='https://accounts.google.com/gsi/client' async defer></script></Head>
