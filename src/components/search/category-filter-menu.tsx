@@ -5,22 +5,25 @@ import { useUI } from '@contexts/ui.context';
 import { useEffect, useMemo, useState } from 'react';
 import Image from '@components/ui/image';
 import { useTranslation } from 'next-i18next';
-import { FaCheck } from 'react-icons/fa';
+import { FaCheck, FaChevronDown } from 'react-icons/fa';
 
-function checkIsActive(arr: any, item: string) {
+function checkIsActive(arr: any, item: string, subItems: string) {
   if (arr.includes(item)) {
     return true;
   }
   return false;
 }
+
 function CategoryFilterMenuItem({
   className = 'hover:bg-fill-base border-t border-border-base first:border-t-0 px-3.5 2xl:px-4 py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3',
   item,
+  subItems,
   depth = 0,
 }: any) {
   const { t } = useTranslation('common');
   const router = useRouter();
   const { pathname, query } = router;
+  const [selected, setSelected] = useState([]);
   const selectedCategories = useMemo(
     () => (query?.category ? (query.category as string).split(',') : []),
     [query?.category]
@@ -35,42 +38,47 @@ function CategoryFilterMenuItem({
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
-  const { slug, name, children: items, icon } = item;
+  const { slug, name, children: items, icon, _id } = item;
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
     setOpen((prevValue) => !prevValue);
   }
+
   const handleChange = () => {
     setSubItemAction(!subItemAction);
   };
 
+  
   function onClick() {
-    if (Array.isArray(items) && !!items.length) {
-      toggleCollapse();
-    } else {
-      const { category, ...restQuery } = query;
-      let currentFormState = selectedCategories.includes(name)
-        ? selectedCategories.filter((i) => i !== name)
-        : [...selectedCategories, name];
-      router.push(
-        {
-          pathname,
-          query: {
-            ...restQuery,
-            ...(!!currentFormState.length
-              ? { category: currentFormState.join(',') }
-              : {}),
-          },
-        },
-        undefined,
-        { scroll: false }
-      );
+     const sub = subItems.filter((i) => i.category === _id);
+    setSelected(sub)
+    
+    // if (Array.isArray(items) && !!items.length) {
+    //   toggleCollapse();
+    // } else {
+    //   const { category, ...restQuery } = query;
+    //   let currentFormState = selectedCategories.includes(name)
+    //     ? selectedCategories.filter((i) => i !== name)
+    //     : [...selectedCategories, name];
+    //   router.push(
+    //     {
+    //       pathname,
+    //       query: {
+    //         ...restQuery,
+    //         ...(!!currentFormState.length
+    //           ? { category: currentFormState.join(',') }
+    //           : {}),
+    //       },
+    //     },
+    //     undefined,
+    //     { scroll: false }
+    //   );
 
-      displaySidebar && closeSidebar();
-    }
+    //   displaySidebar && closeSidebar();
+    // }
   }
-
+console.log(selected)
   let expandIcon;
   if (Array.isArray(items) && items.length) {
     expandIcon = !isOpen ? (
@@ -109,13 +117,15 @@ function CategoryFilterMenuItem({
           )}
           <span className="text-brand-dark capitalize py-0.5">{name}</span>
           <span
-            className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-border-four rounded-full ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light ${
-              selectedCategories.includes(name) &&
-              'border-yellow-100 bg-yellow-100'
-            }`}
+            className={`w-[22px] h-[22px] text-13px flex items-center justify-center rounded-full  ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light `}
           >
-            {selectedCategories.includes(name) && <FaCheck />}
+            <FaChevronDown
+              color={`${
+                selectedCategories.includes(name) ? 'orange' : '#5555'
+              }`}
+            />
           </span>
+          {/* {selected !== 'undefined' && (<span>{selected.map((e)=>(e.name))}</span>) } */}
           {/* {depth > 0 && (
             <span
               className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-border-four rounded-full ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light ${
@@ -131,6 +141,7 @@ function CategoryFilterMenuItem({
           )}
         </button>
       </li>
+     
       {Array.isArray(items) && isOpen ? (
         <li>
           <ul key="content" className="px-4 text-xs">
@@ -152,14 +163,11 @@ function CategoryFilterMenuItem({
   );
 }
 
-function CategoryFilterMenu({ items, className }: any) {
+function CategoryFilterMenu({ items, className, subItems }: any) {
   return (
     <ul className={cn(className)}>
       {items?.map((item: any) => (
-        <CategoryFilterMenuItem
-          key={`${item.slug}-key-${item.id}`}
-          item={item}
-        />
+        <CategoryFilterMenuItem key={items._id} item={item} subItems={subItems} />
       ))}
     </ul>
   );

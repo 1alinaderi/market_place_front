@@ -20,11 +20,12 @@ export const CategoryFilter = () => {
     limit: 10,
   });
 
-  const [subCategory, setSubcategory] = useState();
+  
 
   const router = useRouter();
 
   const { query, pathname } = router;
+  
 
   const selectedCategories = useMemo(
     () => (query?.category ? (query.category as string).split(',') : []),
@@ -59,7 +60,7 @@ export const CategoryFilter = () => {
 
     displaySidebar && closeSidebar();
   }
-console.log(data)
+
   if (loading) {
     return (
       <div className="hidden xl:block">
@@ -81,7 +82,7 @@ console.log(data)
       <div className="max-h-full overflow-hidden rounded border border-border-base">
         <Scrollbar className="w-full ">
           {!loading ? (
-            <CategoryFilterMenu items={data.categorys} />
+            <CategoryFilterMenu items={data.categorys} subItems={data?.subCategorys} />
           ) : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">
               {t('text-no-results-found')}

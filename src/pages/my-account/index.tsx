@@ -23,9 +23,9 @@ export default function AccountDetailsPage({ baseData }) {
       console.log(data)
     }
     if(!baseData.cookies.user?.id || !baseData.cookies.seller?.id){
-      router.push(`${window.location.origin}/sign`);
+       getuserData(baseData.cookies.seller?.id)
     }else{
-      getuserData(baseData.cookies.seller?.id)
+      router.push(`${window.location.origin}/sign`);
     }
     if (baseData.cookies.user?.id) {
       setIsSeller(false);

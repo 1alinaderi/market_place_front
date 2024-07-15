@@ -344,7 +344,10 @@
    "member-capacity":"Production capacity",
    "member-companyAddress":"CompanyAddress",
    "member-title-2":"If you own a production or mine, write down its information in this section",
-   "invite-ref":"Invitation referral"
-   
-   
+   "invite-ref":"Invitation referral", 
+   "pay-membership": "Payment(payment receipt)",
+   "type-pay":"What type of payment do you prefer?",
+   "crypto-pay":"Payment Crypto",
+   "payment":"Payment",
+   "information": "Completion of information"
 }
