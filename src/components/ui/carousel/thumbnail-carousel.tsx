@@ -12,6 +12,7 @@ import { productGalleryPlaceholder } from '@assets/placeholders';
 import { getDirection } from '@utils/get-direction';
 import { useRouter } from 'next/router';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 
 interface Props {
   gallery: any[];
@@ -66,7 +67,7 @@ const ThumbnailCarousel: React.FC<Props> = ({
               className="flex items-center justify-center"
             >
               <Image
-                src={item?.original ?? productGalleryPlaceholder}
+                src={CDN_BASE_URL +  item}
                 alt={`Product gallery ${item.id}`}
                 width={650}
                 height={590}
@@ -109,7 +110,7 @@ const ThumbnailCarousel: React.FC<Props> = ({
               className="flex items-center justify-center overflow-hidden transition border rounded cursor-pointer border-border-base hover:opacity-75"
             >
               <Image
-                src={item?.thumbnail ?? productGalleryPlaceholder}
+              src={CDN_BASE_URL +  item}
                 alt={`Product thumb gallery ${item.id}`}
                 width={170}
                 height={170}

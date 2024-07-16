@@ -43,7 +43,7 @@ export default function ProductsFreeMarket() {
   },[])
   return (
     <>
-      <div className={`fixed top-1/2 ${show ? "right-0" : "-right-[280px] lg:-right-[380px]"}  duration-300  flex items-center z-50 -translate-y-1/2`}>
+      <div dir='ltr' className={`fixed top-1/2 ${show ? "right-0" : "-right-[280px] lg:-right-[380px]"}  duration-300  flex items-center z-50 -translate-y-1/2`}>
         <span onClick={()=>setShow(!show)} className='p-2 h-fit bg-brand-light shadow-md  cursor-pointer'>
         <FaSignInAlt/>
         </span>
@@ -72,7 +72,7 @@ export default function ProductsFreeMarket() {
         description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
         path="products"
       />
-      <PageHeroSection heroTitle={t('text-all-grocery-items')} />
+      <PageHeroSection heroTitle={"Free Market"} />
       <Container>
         <Element name="grid" className="flex pb-16 pt-7 lg:pt-11 lg:pb-20">
           <div className="sticky hidden h-full shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 xl:rtl:pl-16 lg:block w-80 xl:w-96 top-16">

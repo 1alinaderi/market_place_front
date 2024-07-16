@@ -105,7 +105,7 @@ export type Product = {
   max_price?: number;
   image: Attachment;
   sku?: string;
-  gallery?: Attachment[];
+  images?: Attachment[];
   category?: Category;
   tag?: Tag[];
   meta?: any[];
