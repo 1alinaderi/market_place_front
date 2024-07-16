@@ -223,6 +223,7 @@ export default function AccountDetailsPage({ baseData }) {
                   }}
                   id="addImage"
                   className="hidden"
+                  accept="image/png, image/jpg, image/jpeg"
                   type={'file'}
                 />
               </span>
