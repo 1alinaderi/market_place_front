@@ -17,6 +17,7 @@ import { useAllSupplierQuery } from '@framework/product/get-all-supplier';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { Formik } from 'formik';
 
 export default function AccountDetailsPage({ baseData }) {
   const categoriesData = useCategoriesQuery({ limit: 15 });
@@ -149,6 +150,7 @@ export default function AccountDetailsPage({ baseData }) {
     } else {
       toast.error(t('t-check-all-fild'));
     }
+    
   }
 
   return (

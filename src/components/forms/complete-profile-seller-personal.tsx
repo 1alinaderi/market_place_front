@@ -20,6 +20,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   const [bio, setbio] = useState<string>();
   const [nationalCode, setnationalCode] = useState(null);
   const [isValid, setIsValid] = useState(false);
+  const [step, setStep] = useState(true);
 
   const router = useRouter();
 
@@ -43,6 +44,14 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
       }
     }
   }, [imagePay]);
+  function handlestep(e) {
+    e.preventDefault();
+    if (imagePay !== null) {
+      setStep(false);
+    } else {
+      toast.warning('Please select a payment method');
+    }
+  }
 
   useEffect(() => {
     if (image1) {
@@ -135,98 +144,147 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
     // بررسی صحت کد ملی
     setIsValid(parseInt(id[9]) === controlDigit);
   };
+  const url = 'https://api.cryptocloud.plus/v2/invoice/create';
+  const headers = new Headers({
+    Authorization:
+      'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1dWlkIjoiTWpNek9UTT0iLCJ0eXBlIjoicHJvamVjdCIsInYiOiJjMjk0OTYzZmIxNGJjOTIzMjEyZWViN2YxM2VlMDY2Y2IwNDZjMTVmYThhYzllNDc4ZTgyMzc1ZGI5ZjI3NGFmIiwiZXhwIjo4ODEyMDY4MzM5Mn0.oUrG2q4Ta7eIPaNCb-nCOVaXxE1BjAcsC9x-u-A7uP0',
+    'Content-Type': 'application/json',
+  });
+
+  const bodyfirst = {
+    shop_id: '2Gt7Ur32pAyo7bgQ',
+    amount: 50,
+  };
+
+  function getAuth() {
+    fetch(url, { method: 'POST', headers, body: JSON.stringify(bodyfirst) })
+      .then(async (response) => {
+        if (response.ok) {
+          const res = await response.json();
+          if (res.status == 'success') {
+            localStorage.setItem('uuid', res.result.uuid);
+            router.push(res.result.link);
+          }
+        } else {
+          return Promise.reject('Auth error');
+        }
+      })
+      .catch((error) => {
+        console.error('Fail:', error);
+      });
+  }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="grid px-1 grid-cols-12   ">
-          <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              {t('t-logo')} *:
-            </Heading>
-            <label className="cursor-pointer relative" htmlFor="addImage">
-              {preview ? (
-                <img
-                  src={preview ? preview : null}
-                  className="w-full h-[160px] rounded object-contain"
+          {step ? (
+            <>
+            <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+              <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                {t('pay')} *:
+              </Heading>
+              <label className="cursor-pointer relative" htmlFor="payment">
+                {previewPay ? (
+                  <img
+                    src={previewPay ? previewPay : null}
+                    className="w-full h-[160px] rounded object-contain"
+                  />
+                ) : (
+                  <div className="w-full h-[160px] rounded relative border">
+                    <FaPlus size={25} className="inset-0 absolute m-auto" />
+                  </div>
+                )}
+              </label>
+              <input
+                onChange={(e) => {
+                  setimagePay(e.target.files[0]);
+                }}
+                id="payment"
+                className="hidden"
+                type={'file'}
+                accept="image/png, image/jpg, image/jpeg"
+              />
+            </span>
+            <div className="flex col-span-full lg:col-span-6 justify-center items-center mt-6">
+            <button
+              className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
+              onClick={getAuth}
+            >
+              {t('crypto-pay')}
+            </button>
+          </div>
+            </>
+          ) : (
+            <>
+              {' '}
+              <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                  {t('t-logo')} *:
+                </Heading>
+                <label className="cursor-pointer relative" htmlFor="addImage">
+                  {preview ? (
+                    <img
+                      src={preview ? preview : null}
+                      className="w-full h-[160px] rounded object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-[160px] rounded relative border">
+                      <FaPlus size={25} className="inset-0 absolute m-auto" />
+                    </div>
+                  )}
+                </label>
+                <input
+                  onChange={(e) => {
+                    setimage(e.target.files[0]);
+                  }}
+                  id="addImage"
+                  className="hidden"
+                  type={'file'}
+                  accept="image/png, image/jpg, image/jpeg"
                 />
-              ) : (
-                <div className="w-full h-[160px] rounded relative border">
-                  <FaPlus size={25} className="inset-0 absolute m-auto" />
-                </div>
-              )}
-            </label>
-            <input
-              onChange={(e) => {
-                setimage(e.target.files[0]);
-              }}
-              id="addImage"
-              className="hidden"
-              type={'file'}
-              accept="image/png, image/jpg, image/jpeg"
-            />
-          </span>
-          <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              {t('t-bio')} :
-            </Heading>
-            <textarea
-              onChange={(e) => {
-                setbio(e.target.value);
-              }}
-              className="shadow h-[160px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </span>
-          <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              {t('t-national-code')} :
-            </Heading>
-            <input
-              onChange={(e) => {
-                setnationalCode(e.target.value);
-                validateNationalId(e.target.value);
-              }}
-              type="number"
-              className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            />
-            {nationalCode && !isValid && (
-              <small className="text-red-500">
-                {t('t-national-code-error')}
-              </small>
-            )}
-          </span>
-          <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
-            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-              {t("pay")} *:
-            </Heading>
-            <label className="cursor-pointer relative" htmlFor="payment">
-              {previewPay ? (
-                <img
-                  src={previewPay ? previewPay : null}
-                  className="w-full h-[160px] rounded object-contain"
+              </span>
+              <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                  {t('t-bio')} :
+                </Heading>
+                <textarea
+                  onChange={(e) => {
+                    setbio(e.target.value);
+                  }}
+                  className="shadow h-[160px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 />
-              ) : (
-                <div className="w-full h-[160px] rounded relative border">
-                  <FaPlus size={25} className="inset-0 absolute m-auto" />
-                </div>
-              )}
-            </label>
-            <input
-              onChange={(e) => {
-                setimagePay(e.target.files[0]);
-              }}
-              id="payment"
-              className="hidden"
-              type={'file'}
-              accept="image/png, image/jpg, image/jpeg"
-            />
-          </span>
+              </span>
+              <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
+                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                  {t('t-national-code')} :
+                </Heading>
+                <input
+                  onChange={(e) => {
+                    setnationalCode(e.target.value);
+                    validateNationalId(e.target.value);
+                  }}
+                  type="number"
+                  className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                {nationalCode && !isValid && (
+                  <small className="text-red-500">
+                    {t('t-national-code-error')}
+                  </small>
+                )}
+              </span>{' '}
+            </>
+          )}
         </div>
 
         <div className="px-5 mt-8">
-          <Button variant="formButton" type="submit">
-            {t('t-submit')}
-          </Button>
+          {step ? (
+            <Button onClick={handlestep}>{t('t-submit')}</Button>
+          ) : (
+            <Button variant="formButton" type="submit">
+              {t('t-submit')}
+            </Button>
+          )}
         </div>
       </form>
     </div>

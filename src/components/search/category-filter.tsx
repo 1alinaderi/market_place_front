@@ -9,8 +9,9 @@ import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FaCheck } from 'react-icons/fa';
 import { useUI } from '@contexts/ui.context';
+import { httpReauest } from 'src/api/api';
 
-export const CategoryFilter = () => {
+export const CategoryFilter = ({setProductData , setLoading,mainMarket}) => {
   const { t } = useTranslation('common');
   const {
     data,
@@ -19,8 +20,18 @@ export const CategoryFilter = () => {
   } = useCategoriesQuery({
     limit: 10,
   });
+  const [mainCategory,setMainCategory] = useState([])
+  const [selected, setSelected] = useState([]);
+  async function getMainCategory() {
+    
+    const response = await httpReauest('GET','/categorys',{},{});
+    setMainCategory(response.data)
+    console.log(response)
+  }
 
-  
+useEffect(()=>{
+  getMainCategory()
+},[])  
 
   const router = useRouter();
 
@@ -39,27 +50,27 @@ export const CategoryFilter = () => {
 
   const { displaySidebar, closeSidebar } = useUI();
 
-  function onClick(name: any) {
-    const { subcategory, ...restQuery } = query;
-    let currentFormState = selectedSubCategories.includes(name)
-      ? selectedSubCategories.filter((i) => i !== name)
-      : [...selectedSubCategories, name];
-    router.push(
-      {
-        pathname,
-        query: {
-          ...restQuery,
-          ...(!!currentFormState.length
-            ? { subcategory: currentFormState.join(',') }
-            : {}),
-        },
-      },
-      undefined,
-      { scroll: false }
-    );
+  // function onClick(name: any) {
+  //   const { subcategory, ...restQuery } = query;
+  //   let currentFormState = selectedSubCategories.includes(name)
+  //     ? selectedSubCategories.filter((i) => i !== name)
+  //     : [...selectedSubCategories, name];
+  //   router.push(
+  //     {
+  //       pathname,
+  //       query: {
+  //         ...restQuery,
+  //         ...(!!currentFormState.length
+  //           ? { subcategory: currentFormState.join(',') }
+  //           : {}),
+  //       },
+  //     },
+  //     undefined,
+  //     { scroll: false }
+  //   );
 
-    displaySidebar && closeSidebar();
-  }
+  //   displaySidebar && closeSidebar();
+  // }
 
   if (loading) {
     return (
@@ -82,7 +93,7 @@ export const CategoryFilter = () => {
       <div className="max-h-full overflow-hidden rounded border border-border-base">
         <Scrollbar className="w-full ">
           {!loading ? (
-            <CategoryFilterMenu items={data.categorys} subItems={data?.subCategorys} />
+            mainMarket ? (<CategoryFilterMenu items={mainCategory?.categorys} subItems={mainCategory?.subCategorys} setProductData={setProductData} setLoading={setLoading} selected={selected} setSelected={setSelected}/>): (<CategoryFilterMenu selected={selected} setSelected={setSelected} items={data.categorys} subItems={data?.subCategorys} setProductData={setProductData} setLoading={setLoading}/>)
           ) : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">
               {t('text-no-results-found')}

@@ -16,7 +16,7 @@ import Link from 'next/link';
 import Button from '@components/ui/button';
 import { httpReauest } from 'src/api/api';
 
-export default function Products() {
+export default function ProductsFreeMarket() {
   const { t } = useTranslation('common');
   const [productData , setProductData ] = useState([])
   const [loading, setLoading] = useState(false)
@@ -32,7 +32,7 @@ export default function Products() {
   async function getAllProduct() {
     setLoading(true)
    const response = await httpReauest('GET', '/prouduct/free',{},{});
-   setProductData(response);
+   setProductData(response.data.data);
    console.log(response)
    setLoading(false)
   } 
@@ -76,7 +76,7 @@ export default function Products() {
       <Container>
         <Element name="grid" className="flex pb-16 pt-7 lg:pt-11 lg:pb-20">
           <div className="sticky hidden h-full shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 xl:rtl:pl-16 lg:block w-80 xl:w-96 top-16">
-            <ShopFilters setProductData={setProductData} setLoading={setLoading} mainMarket/>
+            <ShopFilters setProductData={setProductData} setLoading={setLoading}/>
           </div>
           <div className="w-full lg:ltr:-ml-4 lg:rtl:-mr-2 xl:ltr:-ml-8 xl:rtl:-mr-8 lg:-mt-1">
             {/* <SearchTopBar /> */}
@@ -92,7 +92,7 @@ export default function Products() {
   );
 }
 
-Products.Layout = Layout;
+ProductsFreeMarket.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {

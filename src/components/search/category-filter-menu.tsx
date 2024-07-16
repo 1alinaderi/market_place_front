@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Image from '@components/ui/image';
 import { useTranslation } from 'next-i18next';
 import { FaCheck, FaChevronDown } from 'react-icons/fa';
+import { httpReauest } from 'src/api/api';
 
 function checkIsActive(arr: any, item: string, subItems: string) {
   if (arr.includes(item)) {
@@ -19,11 +20,17 @@ function CategoryFilterMenuItem({
   item,
   subItems,
   depth = 0,
+  setProductData,
+  setLoading,
+  selected,
+  setSelected
 }: any) {
   const { t } = useTranslation('common');
   const router = useRouter();
   const { pathname, query } = router;
-  const [selected, setSelected] = useState([]);
+  // const [selected, setSelected] = useState([]);
+  const [active, setActive] = useState(false);
+  const [subActive, setSubactive] = useState('');
   const selectedCategories = useMemo(
     () => (query?.category ? (query.category as string).split(',') : []),
     [query?.category]
@@ -38,7 +45,7 @@ function CategoryFilterMenuItem({
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
-  const { slug, name, children: items, icon, _id } = item;
+  const { slug, name, children: items, icon, _id,name_en,name_ar } = item;
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
@@ -49,36 +56,47 @@ function CategoryFilterMenuItem({
     setSubItemAction(!subItemAction);
   };
 
-  
-  function onClick() {
-     const sub = subItems.filter((i) => i.category === _id);
-    setSelected(sub)
-    
-    // if (Array.isArray(items) && !!items.length) {
-    //   toggleCollapse();
-    // } else {
-    //   const { category, ...restQuery } = query;
-    //   let currentFormState = selectedCategories.includes(name)
-    //     ? selectedCategories.filter((i) => i !== name)
-    //     : [...selectedCategories, name];
-    //   router.push(
-    //     {
-    //       pathname,
-    //       query: {
-    //         ...restQuery,
-    //         ...(!!currentFormState.length
-    //           ? { category: currentFormState.join(',') }
-    //           : {}),
-    //       },
-    //     },
-    //     undefined,
-    //     { scroll: false }
-    //   );
-
-    //   displaySidebar && closeSidebar();
-    // }
+  async function onClick() {
+    setLoading(true);
+    if (selected.length) {
+      setSelected([]);
+      setActive(false);
+      setProductData()
+    } else {
+      const sub = subItems.filter((i) => i.category === _id);
+      setSelected(sub);
+      console.log(sub);
+      setActive(true);
+    }
+    const response = await httpReauest('GET', `/prouduct/free?category=${_id}`);
+    setProductData(response.data.data);
+    if (Array.isArray(items) && !!items.length) {
+      toggleCollapse();
+    }
+    setLoading(false);
   }
-console.log(selected)
+  async function handleSubcategory(e) {
+    setLoading(true);
+    console.log(e._id);
+    if (subActive === e.name) {
+      setSubactive('');
+      const response = await httpReauest(
+        'GET',
+        `/prouduct/free?category=${_id}`
+      );
+      setProductData(response.data.data);
+    } else {
+      const response = await httpReauest(
+        'GET',
+        `/prouduct/free?category=${_id}&subCategory=${e._id}`
+      );
+      setSubactive(e.name);
+      console.log(response);
+      setProductData(response.data.data);
+    }
+    setLoading(false);
+  }
+
   let expandIcon;
   if (Array.isArray(items) && items.length) {
     expandIcon = !isOpen ? (
@@ -115,7 +133,7 @@ console.log(selected)
               />
             </div>
           )}
-          <span className="text-brand-dark capitalize py-0.5">{name}</span>
+          <span className="text-brand-dark capitalize py-0.5">{router.locale === 'en' && name_en} {router.locale === 'fa' && name} {router.locale === 'ar' && name_ar}</span>
           <span
             className={`w-[22px] h-[22px] text-13px flex items-center justify-center rounded-full  ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light `}
           >
@@ -125,6 +143,7 @@ console.log(selected)
               }`}
             />
           </span>
+
           {/* {selected !== 'undefined' && (<span>{selected.map((e)=>(e.name))}</span>) } */}
           {/* {depth > 0 && (
             <span
@@ -141,7 +160,7 @@ console.log(selected)
           )}
         </button>
       </li>
-     
+
       {Array.isArray(items) && isOpen ? (
         <li>
           <ul key="content" className="px-4 text-xs">
@@ -159,15 +178,54 @@ console.log(selected)
           </ul>
         </li>
       ) : null}
+      <div
+        className={`${
+          active ? 'max-h-[1000px] ' : ' max-h-[0px] '
+        } overflow-hidden duration-300  `}
+      >
+        {selected?.map((e) => (
+          <div  className="flex justify-between items-center py-2  px-5  text-slate-500 border-[1px] border-slate-50  hover:bg-slate-100">
+            <button
+              onClick={() => {
+                handleSubcategory(e);
+              }}
+              className=" mx-3"
+            >
+              {router.locale === 'en' && e?.name_en} {router.locale === 'fa' && e?.name} {router.locale === 'ar' && e?.name_ar}
+            </button>
+            <span
+              className={`${
+                subActive === e.name ? 'bg-slate-300 ' : 'bg-none'
+              } h-4 w-4 border-2 active:bg-slate-300 rounded-full border-slate-300`}
+            ></span>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
 
-function CategoryFilterMenu({ items, className, subItems }: any) {
+function CategoryFilterMenu({
+  items,
+  className,
+  subItems,
+  setProductData,
+  setLoading,
+  selected,
+  setSelected
+}: any) {
   return (
     <ul className={cn(className)}>
       {items?.map((item: any) => (
-        <CategoryFilterMenuItem key={items._id} item={item} subItems={subItems} />
+        <CategoryFilterMenuItem
+          key={items._id}
+          item={item}
+          subItems={subItems}
+          setProductData={setProductData}
+          setLoading={setLoading}
+          selected={selected}
+          setSelected={setSelected}
+        />
       ))}
     </ul>
   );

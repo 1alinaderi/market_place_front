@@ -16,33 +16,38 @@ import { Product } from '@framework/types';
 interface ProductGridProps {
   className?: string;
   discount?: boolean;
+  productData?:string;
+  loading?:boolean
 }
 
 export const ProductGrid: FC<ProductGridProps> = ({
   className = '',
   discount,
+  productData,
+  loading
 }) => {
   const { t } = useTranslation('common');
   const { query } = useRouter();
+  const error = {message: "product not found"}
+  
 
+  // const {
+  //   isFetching: isLoading,
+  //   isFetchingNextPage: loadingMore,
+  //   fetchNextPage,
+  //   hasNextPage,
+  //   data,
+  //   error,
+  // } = discount
+  //   ? useProductsDiscountQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query })
+  //   : useProductsQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query });
 
-  const {
-    isFetching: isLoading,
-    isFetchingNextPage: loadingMore,
-    fetchNextPage,
-    hasNextPage,
-    data,
-    error,
-  } = discount
-    ? useProductsDiscountQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query })
-    : useProductsQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query });
-
-  const prouductData = data?.pages[0]?.data;
-
+  // const productData = data?.pages[0]?.data;
+  console.log(productData)
   return (
     <>
       <div className="shrink-0 text-brand-dark font-medium text-15px leading-4 md:ltr:mr-6 md:rtl:ml-6 hidden lg:block mt-0.5 pb-7">
-        {prouductData?.length} {t('text-items-found')}
+        {productData?.length} {t('text-items-found')}
       </div>
       <div
         className={cn(
@@ -50,33 +55,24 @@ export const ProductGrid: FC<ProductGridProps> = ({
           className
         )}
       >
-        {error ? (
-          <div className="col-span-full">
-            <Alert message={error?.message} />
-          </div>
-        ) : isLoading && !data?.pages?.length ? (
-          Array.from({ length: 30 }).map((_, idx) => (
-            <ProductCardLoader
-              key={`product--key-${idx}`}
-              uniqueKey={`product--key-${idx}`}
-            />
-          ))
-        ) : prouductData?.length ? (
-          prouductData?.map((product: Product) => (
+        {loading && (<ProductCardLoader/>)}
+        {  productData?.length  ? (
+          productData?.map((product: Product) => (
             <ProductCard
               key={`product--key-${product._id}`}
               product={product}
             />
           ))
         ) : null}
+        
         {/* end of error state */}
       </div>
-      {!prouductData?.length && (
+      {!productData?.length &&  (
         <div className="text-center w-full text-3xl text-black font-bold">
           No Item Founded
         </div>
       )}
-      {hasNextPage && (
+      {/* {hasNextPage && (
         <div className="text-center pt-8 xl:pt-10">
           <Button
             loading={loadingMore}
@@ -86,7 +82,7 @@ export const ProductGrid: FC<ProductGridProps> = ({
             {t('button-load-more')}
           </Button>
         </div>
-      )}
+      )} */}
     </>
   );
 };
