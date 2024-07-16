@@ -91,7 +91,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
     if (bio && image && nationalCode && imagePay) {
       const formdata = new FormData();
 
-      formdata.append('paymant', imagePay, imagePay?.name);
+      formdata.append('payment', imagePay, imagePay?.name);
       formdata.append('logo', image, image?.name);
       formdata.append('bio', bio);
       formdata.append('nationalCode', nationalCode);
@@ -180,40 +180,40 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
         <div className="grid px-1 grid-cols-12   ">
           {step ? (
             <>
-            <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
-              <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                {t('pay')} *:
-              </Heading>
-              <label className="cursor-pointer relative" htmlFor="payment">
-                {previewPay ? (
-                  <img
-                    src={previewPay ? previewPay : null}
-                    className="w-full h-[160px] rounded object-contain"
-                  />
-                ) : (
-                  <div className="w-full h-[160px] rounded relative border">
-                    <FaPlus size={25} className="inset-0 absolute m-auto" />
-                  </div>
-                )}
-              </label>
-              <input
-                onChange={(e) => {
-                  setimagePay(e.target.files[0]);
-                }}
-                id="payment"
-                className="hidden"
-                type={'file'}
-                accept="image/png, image/jpg, image/jpeg"
-              />
-            </span>
-            <div className="flex col-span-full lg:col-span-6 justify-center items-center mt-6">
-            <button
-              className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
-              onClick={getAuth}
-            >
-              {t('crypto-pay')}
-            </button>
-          </div>
+              <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                  {t('pay')} *:
+                </Heading>
+                <label className="cursor-pointer relative" htmlFor="payment">
+                  {previewPay ? (
+                    <img
+                      src={previewPay ? previewPay : null}
+                      className="w-full h-[160px] rounded object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-[160px] rounded relative border">
+                      <FaPlus size={25} className="inset-0 absolute m-auto" />
+                    </div>
+                  )}
+                </label>
+                <input
+                  onChange={(e) => {
+                    setimagePay(e.target.files[0]);
+                  }}
+                  id="payment"
+                  className="hidden"
+                  type={'file'}
+                  accept="image/png, image/jpg, image/jpeg"
+                />
+              </span>
+              <div className="flex col-span-full lg:col-span-6 justify-center items-center mt-6">
+                <button
+                  className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
+                  onClick={getAuth}
+                >
+                  {t('crypto-pay')}
+                </button>
+              </div>
             </>
           ) : (
             <>

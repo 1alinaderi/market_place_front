@@ -22,7 +22,6 @@ import { Formik } from 'formik';
 export default function AccountDetailsPage({ baseData }) {
   const categoriesData = useCategoriesQuery({ limit: 15 });
   const suppliers = useAllSupplierQuery();
-  console.log(categoriesData);
 
   const [image, setimage] = useState(null);
   const [preview, setpreview] = useState(null);
@@ -75,7 +74,7 @@ export default function AccountDetailsPage({ baseData }) {
         const c = categoriesData?.data?.subCategorys.filter((e) => {
           return e.category === firstCategory;
         });
-        console.log(c);
+
         setsubcategory(c);
       }
     }
@@ -133,7 +132,7 @@ export default function AccountDetailsPage({ baseData }) {
       formData.append('category', category);
       if (images) {
         for (let index = 0; index < images.length; index++) {
-          formData.append("images", images[index], images[index]?.name);
+          formData.append('images', images[index], images[index]?.name);
         }
       }
 
@@ -150,7 +149,6 @@ export default function AccountDetailsPage({ baseData }) {
     } else {
       toast.error(t('t-check-all-fild'));
     }
-    
   }
 
   return (
@@ -249,13 +247,25 @@ export default function AccountDetailsPage({ baseData }) {
                   onChange={(e) => {
                     setcategory(e.target.value);
                     setFirstCategory(e.target.value);
+                    const id = e.target.value;
+                    const r = categoriesData.data.categorys.find(
+                      (c) => c._id === id
+                    );
+                    console.log(r);
+                    setcategoryName(r.name);
                   }}
                   dir="ltr"
                   className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 >
+                  <option></option>
                   {categoriesData.data?.categorys?.map((category) => {
                     return (
-                      <option value={category._id}>{category.name}</option>
+                      <option
+                        onChange={(category) => console.log(category)}
+                        value={category._id}
+                      >
+                        {category.name}
+                      </option>
                     );
                   })}
                 </select>
@@ -273,6 +283,7 @@ export default function AccountDetailsPage({ baseData }) {
                     onChange={(e) => setsubcategoryForm(e.target.value)}
                     className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   >
+                    <option></option>
                     {subcategory?.map((sub) => {
                       return <option value={sub._id}>{sub.name}</option>;
                     })}
@@ -291,7 +302,10 @@ export default function AccountDetailsPage({ baseData }) {
                 className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </span> */}
-              <Heading className="col-span-full mx-4 pb-2 mt-4 whitespace-nowrap" variant="base">
+              <Heading
+                className="col-span-full mx-4 pb-2 mt-4 whitespace-nowrap"
+                variant="base"
+              >
                 {t('t-image')} :
               </Heading>
               <label
@@ -310,7 +324,7 @@ export default function AccountDetailsPage({ baseData }) {
                       gap: '15px',
                     }}
                   >
-                    <FaPlus className='mt-10'  size={40} />
+                    <FaPlus className="mt-10" size={40} />
                     {previews &&
                       previews.map((src) => {
                         return (
@@ -325,10 +339,9 @@ export default function AccountDetailsPage({ baseData }) {
                           />
                         );
                       })}
-                    
                   </div>
                 ) : (
-                  <div className=' absolute top-[45%] left-[45%] '>
+                  <div className=" absolute top-[45%] left-[45%] ">
                     <FaPlus className="center" size={50} />
                   </div>
                 )}
