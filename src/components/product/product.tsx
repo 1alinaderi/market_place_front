@@ -49,7 +49,6 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
 
   const { data, isLoading } = useProductQuery(slug as string);
 
-  console.log(data);
 
   const { addItemToCart, isInCart, getItemFromCart, isInStock } = useCart();
   // const [selectedQuantity, setSelectedQuantity] = useState(1);
@@ -121,13 +120,15 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
     return `${CDN_BASE_URL}${data?.image}`;
   };
 
+  console.log(data)
+
   return (
     <div className="pt-6 pb-2 md:pt-7">
       <div className="grid-cols-10 lg:grid gap-7 2xl:gap-8">
         <div className="col-span-5 mb-6 overflow-hidden xl:col-span-6 md:mb-8 lg:mb-0">
-          {!!data?.gallery?.length ? (
+          {data?.images?.length ? (
             <ThumbnailCarousel
-              gallery={data?.gallery}
+              gallery={data?.images}
               thumbnailClassName="xl:w-[700px] 2xl:w-[900px]"
               galleryClassName="xl:w-[150px] 2xl:w-[170px]"
             />

@@ -11,6 +11,9 @@ module.exports = withPWA({
     disable: process.env.NODE_ENV === 'development',
     runtimeCaching,
   },
+  images: {
+    domains: ['server.wimehr.com'],
+  },
   i18n,
   ...(process.env.NODE_ENV === 'production' && {
     typescript: {
