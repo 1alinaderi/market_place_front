@@ -349,5 +349,11 @@
    "type-pay":"What type of payment do you prefer?",
    "crypto-pay":"Payment Crypto",
    "payment":"Payment",
-   "information": "Completion of information"
+   "information": "Completion of information",
+   "product-currently":"This product currently has no reviews",
+   "have-account":"You must have an Account to write a review",
+   "p-detail":"Product Details",
+   "r-rating":"Review Rating",
+   "no-rate":"No Rate yet",
+   "t-owner":"Owner"
 }

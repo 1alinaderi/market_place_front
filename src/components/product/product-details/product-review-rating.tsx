@@ -40,7 +40,7 @@ const ProductReviewRating: FC = ({ data, baseData }) => {
       <div className="pt-2">
         {data?.length == 0 ? (
           <Heading className="w-full">
-            This product currently has no reviews
+            {t('product-currently')}
           </Heading>
         ) : (
           data?.map((item, i) => (
@@ -57,11 +57,11 @@ const ProductReviewRating: FC = ({ data, baseData }) => {
       ) : (
         <div className="lg:w-[500px] xl:w-[540px] 2xl:w-[600px] 3xl:w-[730px]">
           <Heading variant='titleLarge' className="w-full text-center pt-5">
-            You must have an Account to write a review
+            {t('have-account')}
           </Heading>
           <div className="h-[200px] w-full flex justify-center items-center">
             <Link href={'/signin'}>
-              <Button>Sign in</Button>
+              <Button>{t('text-sign-in')}</Button>
             </Link>
           </div>
         </div>

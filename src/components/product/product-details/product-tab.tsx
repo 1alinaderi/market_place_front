@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Tab } from '@headlessui/react';
 import Heading from '@components/ui/heading';
 import ProductReviewRating from './product-review-rating';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
@@ -9,10 +11,11 @@ function classNames(...classes: any) {
 
 export default function ProductDetailsTab({ data, baseData }) {
   let [tabHeading] = useState({
-    Product_Details: '',
-    Review_Rating: '',
+    Product_Details: 'p-detail',
+    Review_Rating: 'r-rating',
   });
-
+  const router = useRouter()
+  const { t } = useTranslation('common');
   return (
     <div className="w-full xl:px-2 py-11 lg:py-14 xl:py-16 sm:px-0">
       <Tab.Group>
@@ -29,7 +32,7 @@ export default function ProductDetailsTab({ data, baseData }) {
                 )
               }
             >
-              {item.split('_').join(' ')}
+              {t(tabHeading[item])}
             </Tab>
           ))}
         </Tab.List>
@@ -37,9 +40,9 @@ export default function ProductDetailsTab({ data, baseData }) {
           <Tab.Panel className="lg:flex">
             <div className="text-sm sm:text-15px text-brand-muted leading-[2em] space-y-4 lg:space-y-5 xl:space-y-7">
               <h2 className="text-lg pb-5 font-medium transition-colors duration-300 text-brand-dark md:text-xl xl:text-2xl">
-                Description
+                {t('t-desc')}
               </h2>
-              {data?.desc}
+              {router.locale === 'fa' && data?.desc} {router.locale === 'ar' && data?.desc_ar} {router.locale === 'en' && data?.desc_en}
             </div>
             {/* <div className="shrink-0 lg:w-[400px] xl:w-[480px] 2xl:w-[550px] 3xl:w-[680px] lg:ltr:pl-10 lg:rtl:pr-10 xl:ltr:pl-14 xl:rtl:pr-14 2xl:ltr:pl-20 2xl:rtl:pr-20 pt-5 lg:pt-0">
               <Heading

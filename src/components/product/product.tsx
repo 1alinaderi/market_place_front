@@ -150,10 +150,10 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
           <div className="pb-3 lg:pb-5">
             <div className="md:mb-2.5 block -mt-1.5">
               <h2 className="text-lg font-medium transition-colors duration-300 text-brand-dark md:text-xl xl:text-2xl">
-                {data?.name}
+                {router.locale === 'fa' && data?.name}{router.locale === 'ar' && data?.name_ar}{router.locale === 'en' && data?.name_en}
               </h2>
             </div>
-            <div className="pt-2">Owner : {data?.owner?.name}</div>
+            <div className="pt-2">{t("t-owner")} : {data?.owner?.name}</div>
             {data?.rate ? (
               <StarRatingComponent
                 name="app"
@@ -172,7 +172,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
                 )}
               />
             ) : (
-              <div className="pt-2">No Rate yet</div>
+              <div className="pt-2">{t('no-rate')}</div>
             )}
 
             {/* {data?.reviews?.length == 0 ? (
