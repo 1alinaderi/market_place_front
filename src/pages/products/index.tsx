@@ -31,8 +31,8 @@ export default function Products() {
   }
   async function getAllProduct() {
     setLoading(true)
-   const response = await httpReauest('GET', '/prouduct/free',{},{});
-   setProductData(response);
+   const response = await httpReauest('GET', '/prouduct',{},{});
+   setProductData(response.data.data);
    console.log(response)
    setLoading(false)
   } 

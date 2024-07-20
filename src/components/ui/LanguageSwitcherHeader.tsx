@@ -5,7 +5,7 @@ import { siteSettings } from '@settings/site-settings';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
-export default function LanguageSwitcherHeader({ justFa }) {
+export default function LanguageSwitcherHeader({ justFa , mobile,small }) {
   const { site_header } = siteSettings;
   const { t } = useTranslation('common');
   const options = justFa ? site_header.languageMenu2 : site_header.languageMenu;
@@ -27,16 +27,16 @@ export default function LanguageSwitcherHeader({ justFa }) {
     <Listbox value={selectedItem} onChange={handleItemClick}>
       {({ open }) => (
         <div className="relative z-10 lg:top-[1px] ">
-          <Listbox.Button className="relative w-full py-2 rounded-lg cursor-pointer text-white ltr:pl-3 rtl:pr-3 ltr:pr-5 rtl:pl-5 ltr:text-left rtl:text-right focus:outline-none">
+          <Listbox.Button className={`relative w-full py-2 rounded-lg cursor-pointer  ltr:pl-3 rtl:pr-3 ltr:pr-5 rtl:pl-5 ltr:text-left rtl:text-right focus:outline-none ${mobile ? 'text-black' : "text-white"}`}>
             <span className="flex items-center text-sm truncate lg:text-15px">
               <span className="w-5 h-5 overflow-hidden rounded-full ltr:mr-2 rtl:ml-2 shrink-0">
                 {selectedItem.icon}
               </span>
-              <span className="leading-5 pb-0.5">{t(selectedItem.name)}</span>
+              {small ? null : <span className="leading-5 pb-0.5">{t(selectedItem.name)}</span>}
             </span>
             <span className="absolute inset-y-0 flex items-center pointer-events-none ltr:right-0 rtl:left-0">
               <FaChevronDown
-                className="w-3 h-3.5 text-white opacity-40"
+                className={`w-3 h-3.5  opacity-40 ${mobile ? 'text-black' : "text-white"}`}
                 aria-hidden="true"
               />
             </span>

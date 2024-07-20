@@ -4,8 +4,13 @@ import { CNFlag } from '@components/icons/language/CNFlag';
 import { USFlag } from '@components/icons/language/USFlag';
 import { DEFlag } from '@components/icons/language/DEFlag';
 import { ESFlag } from '@components/icons/language/ESFlag';
+import { httpReauest } from 'src/api/api';
+import { useEffect } from 'react';
+
 
 export const siteSettings = {
+
+  
   name: 'Project I',
   description:
     'Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life.',

@@ -23,7 +23,8 @@ function CategoryFilterMenuItem({
   setProductData,
   setLoading,
   selected,
-  setSelected
+  setSelected,
+  main
 }: any) {
   const { t } = useTranslation('common');
   const router = useRouter();
@@ -96,7 +97,7 @@ function CategoryFilterMenuItem({
     }
     setLoading(false);
   }
-
+  console.log(item)
   let expandIcon;
   if (Array.isArray(items) && items.length) {
     expandIcon = !isOpen ? (
@@ -212,7 +213,8 @@ function CategoryFilterMenu({
   setProductData,
   setLoading,
   selected,
-  setSelected
+  setSelected,
+  main
 }: any) {
   return (
     <ul className={cn(className)}>
@@ -225,6 +227,7 @@ function CategoryFilterMenu({
           setLoading={setLoading}
           selected={selected}
           setSelected={setSelected}
+          main
         />
       ))}
     </ul>

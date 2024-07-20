@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTranslation } from 'next-i18next';
 import cn from 'classnames';
@@ -20,6 +20,8 @@ import MenuIcon from '@components/icons/menu-icon';
 
 import Link from 'next/link';
 import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
+import { httpReauest } from 'src/api/api';
+import { useStateList } from 'react-use';
 const AuthMenu = dynamic(() => import('./auth-menu'), { ssr: false });
 const CartButton = dynamic(() => import('@components/cart/cart-button'), {
   ssr: false,
@@ -52,7 +54,31 @@ const Header: React.FC = () => {
   function handleMobileMenu() {
     return openSidebar();
   }
-
+  const [menuData, setMenuData] = useState([]);
+  async function getcategory() {
+    const response = await httpReauest('GET', '/categorys', {}, {});
+    const category = response.data.data;
+    console.log(response);
+    setMenuData(category);
+  }
+  function handleMobile() {
+    if (window.innerWidth >= 1024) {
+      setMobile(false);
+    } else {
+      setMobile(true);
+    }
+    
+    console.log(window.innerWidth)
+  }
+  useEffect(() => {
+    getcategory();
+    handleMobile()
+  }, []);
+  
+  const [activeSearch, setActiveSearch] = useState(false);
+  const [mobile , setMobile] =useState(true)
+  console.log(mobile)
+  console.log(menuData);
   return (
     <header
       id="siteHeader"
@@ -72,23 +98,44 @@ const Header: React.FC = () => {
         />
         {/* End of Mobile search */}
         <Container className="flex items-center gap-5 justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
-          <Link href={"/home"}>
-          <div className='flex items-baseline cursor-pointer'><h1 className='text-yellow-600  lg:text-[30px] text-[20px] font-bold'>W</h1><span className='text-[#fff] lg:text-2xl font-bold   '>IMEHR</span></div>
+          <Link href={'/home'}>
+            <div className="flex items-baseline cursor-pointer">
+              <h1 className="text-yellow-600  lg:text-[30px] text-[20px] font-bold">
+                W
+              </h1>
+              <span className="text-[#fff] lg:text-2xl font-bold   ">
+                IMEHR
+              </span>
+            </div>
           </Link>
           {/* End of logo */}
 
+          {!activeSearch && (
+            <>
+              <div className="lg:hidden ">
+                <LanguageSwitcherHeader justFa={true} />
+              </div>
+            </>
+          )}
+          
           <Search
+            mobile={mobile}
+            activeSearch={activeSearch}
+            setActiveSearch={setActiveSearch}
             searchId="top-bar-search"
             className=" lg:flex lg:max-w-[650px] px-1 md:px-6 2xl:max-w-[800px] lg:ltr:ml-7 lg:rtl:mr-7 lg:ltr:mr-5 lg:rtl:ml-5"
           />
-
-          <button
-            aria-label="Menu"
-            onClick={handleMobileMenu}
-            className="flex text-white flex-col items-center justify-center outline-none shrink-0 focus:outline-none lg:hidden"
-          >
-            <MenuIcon />
-          </button>
+         
+          
+          {!activeSearch && (
+            <button
+              aria-label="Menu"
+              onClick={handleMobileMenu}
+              className="flex text-white flex-col items-center justify-center outline-none shrink-0 focus:outline-none lg:hidden"
+            >
+              <MenuIcon />
+            </button>
+          )}
           <div></div>
           {/* End of search */}
 
@@ -118,14 +165,23 @@ const Header: React.FC = () => {
         <div className="hidden navbar bg-1d3557 lg:block">
           <Container className="flex items-center justify-between ">
             {/* <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" /> */}
-            <div className='w-[0] cursor-pointer lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo'>
-            <Link href={"/home"}><div className='flex items-baseline cursor-pointer'><h1 className='text-yellow-600  lg:text-[30px] text-[20px] font-bold'>W</h1><span className='text-[#fff] lg:text-2xl font-bold   '>IMEHR</span></div></Link>
+            <div className="w-[0] cursor-pointer lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo">
+              <Link href={'/home'}>
+                <div className="flex items-baseline cursor-pointer">
+                  <h1 className="text-yellow-600  lg:text-[30px] text-[20px] font-bold">
+                    W
+                  </h1>
+                  <span className="text-[#fff] lg:text-2xl font-bold   ">
+                    IMEHR
+                  </span>
+                </div>
+              </Link>
             </div>
             {/* End of logo */}
-            
 
             <HeaderMenu
               data={site_header.menu}
+              categorys={menuData}
               row={true}
               className="flex transition-all duration-200 ease-in-out"
             />

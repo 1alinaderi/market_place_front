@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from '@components/ui/link';
 import { siteSettings } from '@settings/site-settings';
 import Scrollbar from '@components/ui/scrollbar';
@@ -15,6 +15,8 @@ import {
   IoLogoYoutube,
   IoClose,
 } from 'react-icons/io5';
+import { httpReauest } from 'src/api/api';
+import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
 
 const social = [
   {
@@ -52,6 +54,18 @@ export default function MobileMenu() {
   const { site_header } = siteSettings;
   const { closeSidebar } = useUI();
   const { t } = useTranslation('menu');
+  const [menuData, setMenuData] = useState([]);
+  const [activeCate, setActiveCate] = useState(false)
+  async function getcategory() {
+    const response = await httpReauest('GET', '/categorys', {}, {});
+    const category = response.data.data;
+    console.log(response);
+    setMenuData(category);
+  }
+
+  useEffect(() => {
+    getcategory();
+  }, []);
   const handleArrowClick = (menuName: string) => {
     let newActiveMenus = [...activeMenus];
     if (newActiveMenus.includes(menuName)) {
@@ -77,11 +91,11 @@ export default function MobileMenu() {
       <li className={`transition-colors duration-200 ${className}`}>
         <div className="relative flex items-center justify-between">
           <Link
-            href={data.path}
+            href={data?.path ? data?.path : '/'}
             className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
           >
             <span className="block w-full" onClick={closeSidebar}>
-              {t(`${data.label}`)}
+              {data?.label ? t(`${data.label}`) : data?.name}
             </span>
           </Link>
           {hasSubMenu && (
@@ -146,7 +160,7 @@ export default function MobileMenu() {
           <div role="button" onClick={closeSidebar} className="inline-flex">
             <Logo />
           </div>
-
+          <LanguageSwitcherHeader justFa={true} mobile />
           <button
             className="flex items-center justify-center px-4 py-5 text-2xl transition-opacity md:px-5 lg:py-8 focus:outline-none hover:opacity-60"
             onClick={closeSidebar}
@@ -154,11 +168,52 @@ export default function MobileMenu() {
           >
             <IoClose className="text-brand-dark mt-0.5" />
           </button>
+          
         </div>
 
         <Scrollbar className="flex-grow mb-auto menu-scrollbar">
           <div className="flex flex-col px-0 py-6 text-brand-dark ">
             <ul className="mobile-menu">
+            <li className="transition-colors duration-200">
+                <div onClick={()=>setActiveCate(!activeCate)} className="relative flex items-center justify-between">
+                  <Link
+                    href={'/'}
+                    className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
+                  >
+                    <span className="block w-full" onClick={closeSidebar}>
+                      Category
+                    </span>
+                  </Link>
+                  <div className="cursor-pointer w-full h-8 text-[17px] px-5 shrink-0 flex items-center justify-end text-brand-dark text-opacity-80 absolute ltr:right-0 rtl:left-0 top-1/2 transform -translate-y-1/2">
+                    <IoIosArrowDown
+                      className={`transition duration-200 ease-in-out transform ${
+                        activeCate ? '-rotate-180' : 'rotate-0'
+                      }`}
+                    />
+                  </div>
+                </div>
+              </li>
+              <ul className={cn('mobile-sub-menu ltr:-ml-4 rtl:-mr-4')}>
+                {menuData?.map((cate, index) => {
+                  if (!activeCate) {
+                    return null
+                  }
+                  return (
+                    <li className="transition-colors duration-200 mx-4">
+                      <div className="relative flex items-center justify-between">
+                        <Link
+                          href={'/'}
+                          className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
+                        >
+                          <span className="block w-full text-sm font-[300]" onClick={closeSidebar}>
+                           -{cate?.name}
+                          </span>
+                        </Link>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
               {site_header.menu.map((menu, index) => {
                 const dept: number = 1;
                 const menuName: string = `sidebar-menu-${dept}-${index}`;
@@ -174,6 +229,7 @@ export default function MobileMenu() {
                   />
                 );
               })}
+              
             </ul>
           </div>
         </Scrollbar>

@@ -25,7 +25,7 @@ export const CategoryFilter = ({setProductData , setLoading,mainMarket}) => {
   async function getMainCategory() {
     
     const response = await httpReauest('GET','/categorys',{},{});
-    setMainCategory(response.data)
+    setMainCategory(response.data.data)
     console.log(response)
   }
 
@@ -93,7 +93,7 @@ useEffect(()=>{
       <div className="max-h-full overflow-hidden rounded border border-border-base">
         <Scrollbar className="w-full ">
           {!loading ? (
-            mainMarket ? (<CategoryFilterMenu items={mainCategory?.categorys} subItems={mainCategory?.subCategorys} setProductData={setProductData} setLoading={setLoading} selected={selected} setSelected={setSelected}/>): (<CategoryFilterMenu selected={selected} setSelected={setSelected} items={data.categorys} subItems={data?.subCategorys} setProductData={setProductData} setLoading={setLoading}/>)
+            mainMarket ? (<CategoryFilterMenu items={mainCategory}  setProductData={setProductData} setLoading={setLoading} selected={selected} setSelected={setSelected} main/>): (<CategoryFilterMenu selected={selected} setSelected={setSelected} items={data.categorys} subItems={data?.subCategorys} setProductData={setProductData} setLoading={setLoading}/>)
           ) : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">
               {t('text-no-results-found')}

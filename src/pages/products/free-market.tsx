@@ -33,7 +33,6 @@ export default function ProductsFreeMarket() {
     setLoading(true)
    const response = await httpReauest('GET', '/prouduct/free',{},{});
    setProductData(response.data.data);
-   console.log(response)
    setLoading(false)
   } 
 

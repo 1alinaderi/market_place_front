@@ -7,10 +7,10 @@ const ListMenu = ({ dept, data, hasSubMenu, menuIndex, row }: any) => {
   return (
     <li className={`relative ${row && 'w-1/3'} `}>
       <Link
-        href={data.path}
+        href={data.path ? data.path : '/'}
         className="flex items-center justify-between py-2 ltr:pl-5 rtl:pr-5 xl:ltr:pl-7 xl:rtl:pr-7 ltr:pr-3 rtl:pl-3 xl:ltr:pr-3.5 xl:rtl:pl-3.5 hover:bg-fill-dropdown-hover hover:text-brand-dark"
       >
-        {t(data.label)}
+        {data.label ? t(data.label) : data.name}
         {data.subMenu && (
           <span className="text-sm mt-0.5 shrink-0">
             <IoIosArrowForward className="transition duration-300 ease-in-out text-body group-hover:text-brand-dark" />

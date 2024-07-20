@@ -7,11 +7,15 @@ import SearchResultLoader from '@components/ui/loaders/search-result-loader';
 import useFreezeBodyScroll from '@utils/use-freeze-body-scroll';
 import Scrollbar from '@components/ui/scrollbar';
 import { useUI } from '@contexts/ui.context';
+import SearchIcon from '@components/icons/search-icon';
 
 type Props = {
   className?: string;
   searchId?: string;
   variant?: 'border' | 'fill';
+  setActiveSearch?;
+  activeSearch?;
+  mobile?: boolean;
 };
 
 const Search = React.forwardRef<HTMLDivElement, Props>(
@@ -20,6 +24,9 @@ const Search = React.forwardRef<HTMLDivElement, Props>(
       className = 'md:w-[730px] 2xl:w-[800px]',
       searchId = 'search',
       variant = 'border',
+      setActiveSearch,
+      activeSearch,
+      mobile,
     },
     ref
   ) => {
@@ -48,9 +55,11 @@ const Search = React.forwardRef<HTMLDivElement, Props>(
       setInputFocus(false);
       closeMobileSearch();
       closeSearch();
+      setActiveSearch(false);
     }
     function enableInputFocus() {
       setInputFocus(true);
+      setActiveSearch(true);
     }
 
     return (
@@ -76,16 +85,35 @@ const Search = React.forwardRef<HTMLDivElement, Props>(
 
         <div className="relative z-30 flex flex-col justify-center w-full shrink-0">
           <div className="flex flex-col w-full mx-auto">
-            <SearchBox
-              searchId={searchId}
-              name="search"
-              value={searchText}
-              onSubmit={handleSearch}
-              onChange={handleAutoSearch}
-              onClear={clear}
-              onFocus={() => enableInputFocus()}
-              variant={variant}
-            />
+            {mobile &&
+              (activeSearch ? (
+                <SearchBox
+                  searchId={searchId}
+                  name="search"
+                  value={searchText}
+                  onSubmit={handleSearch}
+                  onChange={handleAutoSearch}
+                  onClear={clear}
+                  onFocus={() => enableInputFocus()}
+                  variant={variant}
+                />
+              ) : (
+                <button onFocus={() => enableInputFocus()}>
+                  <SearchIcon />
+                </button>
+              ))}
+            {!mobile && (
+              <SearchBox
+                searchId={searchId}
+                name="search"
+                value={searchText}
+                onSubmit={handleSearch}
+                onChange={handleAutoSearch}
+                onClear={clear}
+                onFocus={() => enableInputFocus()}
+                variant={variant}
+              />
+            )}
           </div>
           {/* End of searchbox */}
 
