@@ -15,13 +15,14 @@ import { FaSign, FaSignInAlt } from 'react-icons/fa';
 import Link from 'next/link';
 import Button from '@components/ui/button';
 import { httpReauest } from 'src/api/api';
+import { useRouter } from 'next/router';
 
 export default function Products() {
   const { t } = useTranslation('common');
   const [productData , setProductData ] = useState([])
   const [loading, setLoading] = useState(false)
   const [show , setShow] = useState<boolean>(false)
-
+  const router = useRouter()
   async function getIp() {
     const response = await fetch('https://geolocation-db.com/json/')
     const data = await response.json();
@@ -38,6 +39,7 @@ export default function Products() {
   } 
 
   useEffect(()=>{
+    
     getIp();
     getAllProduct()
   },[])

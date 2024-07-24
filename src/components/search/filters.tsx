@@ -7,13 +7,13 @@ import { useTranslation } from 'next-i18next';
 import { DietaryFilter } from '@components/search/dietary-filter';
 import Heading from '@components/ui/heading';
 
-export const ShopFilters: React.FC = ({setProductData,setLoading,mainMarket}) => {
+export const ShopFilters: React.FC = ({setProductData,setLoading,mainMarket,setFilter}) => {
   const router = useRouter();
   const { pathname, query } = router;
   const { t } = useTranslation('common');
   return (
-    <div className="space-y-10">
-      {!isEmpty(query) && (
+    <div className="space-y-10 bg-white">
+      {/* {!isEmpty(query) && (
         <div className="block -mb-3">
           <div className="flex items-center justify-between mb-4 -mt-1">
             <Heading>{t('text-filters')}</Heading>
@@ -45,9 +45,9 @@ export const ShopFilters: React.FC = ({setProductData,setLoading,mainMarket}) =>
               )}
           </div>
         </div>
-      )}
+      )} */}
 
-      <CategoryFilter setProductData={setProductData} setLoading={setLoading} mainMarket={mainMarket}/>
+      <CategoryFilter setProductData={setProductData} setLoading={setLoading} mainMarket={mainMarket} setFilter={setFilter}/>
       {/* <DietaryFilter />
       <BrandFilter /> */}
     </div>

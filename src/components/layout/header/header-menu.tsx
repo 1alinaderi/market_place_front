@@ -3,6 +3,7 @@ import { FaChevronDown } from 'react-icons/fa';
 import ListMenu from '@components/ui/list-menu';
 import { useTranslation } from 'next-i18next';
 import cn from 'classnames';
+import { useRouter } from 'next/router';
 
 interface MenuProps {
   data: any;
@@ -17,43 +18,45 @@ const HeaderMenu: React.FC<MenuProps> = ({
   categorys,
 }) => {
   const { t } = useTranslation('menu');
-
+  const router = useRouter();
   return (
     <nav className={cn('headerMenu flex w-full relative ', className)}>
-      <div className="relative py-3 mx-3 cursor-pointer menuItem group xl:mx-4">
-        <Link
-          href={'/'}
-          className="relative inline-flex items-center py-2 text-sm font-normal lg:text-15px text-brand-light group-hover:text-brand before:absolute before:w-0 before:ltr:right-0 rtl:left-0 before:bg-brand before:h-[3px] before:transition-all before:duration-300 before:-bottom-[14px] group-hover:before:w-full ltr:group-hover:before:left-0 rtl:group-hover:before:right-0 lrt:group-hover:before:right-auto rtl:group-hover:before:left-auto"
-        >
-          Categories
-          <span className="text-xs mt-1 xl:mt-0.5 w-4 flex justify-end text-brand-light opacity-80 group-hover:text-brand">
-            <FaChevronDown className="transition duration-300 ease-in-out transform group-hover:-rotate-180" />
-          </span>
-        </Link>
-        <div
-          className={`absolute z-30 opacity-0 subMenu shadow-dropDown transition-all w-[630px] xl:w-[700px] duration-300 invisible bg-brand-light ltr:left-0 rtl:right-0  group-hover:opacity-100`}
-        >
-          <ul
-            className={`py-5 text-sm text-brand-muted flex flex-wrap col-span-12  `}
+      {router.pathname === '/free-market' ? null : (
+        <div className="relative py-3 mx-3 cursor-pointer menuItem group xl:mx-4">
+          <Link
+            href={'/products'}
+            className="relative inline-flex items-center py-2 text-sm font-normal lg:text-15px text-brand-light group-hover:text-brand before:absolute before:w-0 before:ltr:right-0 rtl:left-0 before:bg-brand before:h-[3px] before:transition-all before:duration-300 before:-bottom-[14px] group-hover:before:w-full ltr:group-hover:before:left-0 rtl:group-hover:before:right-0 lrt:group-hover:before:right-auto rtl:group-hover:before:left-auto"
           >
-            {categorys.map((menu: any, index: number) => {
-              const dept: number = 1;
-              const menuName: string = `sidebar-menu-${dept}-${index}`;
-              return (
-                <ListMenu
-                  dept={dept}
-                  data={menu}
-                  hasSubMenu={menu.subMenu}
-                  menuName={menuName}
-                  key={menuName}
-                  menuIndex={index}
-                  row={ true }
-                />
-              );
-            })}
-          </ul>
+            {t("text-categories")}
+            <span className="text-xs mt-1 xl:mt-0.5 w-4 flex justify-end text-brand-light opacity-80 group-hover:text-brand">
+              <FaChevronDown className="transition duration-300 ease-in-out transform group-hover:-rotate-180" />
+            </span>
+          </Link>
+          <div
+            className={`absolute z-30 opacity-0 subMenu shadow-dropDown transition-all w-[630px] xl:w-[700px] duration-300 invisible bg-brand-light ltr:left-0 rtl:right-0  group-hover:opacity-100`}
+          >
+            <ul
+              className={`py-5 text-sm text-brand-muted flex flex-wrap col-span-12  `}
+            >
+              {categorys.map((menu: any, index: number) => {
+                const dept: number = 1;
+                const menuName: string = `sidebar-menu-${dept}-${index}`;
+                return (
+                  <ListMenu
+                    dept={dept}
+                    data={menu}
+                    hasSubMenu={menu.subMenu}
+                    menuName={menuName}
+                    key={menuName}
+                    menuIndex={index}
+                    row={true}
+                  />
+                );
+              })}
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
 
       {data?.map((item: any) => (
         <div

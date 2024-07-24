@@ -1,16 +1,18 @@
 import { useTranslation } from 'next-i18next';
 import { IoIosArrowForward } from 'react-icons/io';
 import Link from '@components/ui/link';
+import { useRouter } from 'next/router';
 
 const ListMenu = ({ dept, data, hasSubMenu, menuIndex, row }: any) => {
   const { t } = useTranslation('menu');
+  const router = useRouter()
   return (
     <li className={`relative ${row && 'w-1/3'} `}>
       <Link
-        href={data.path ? data.path : '/'}
+        href={data.path ? data.path : `/products?category=${data?._id}`}
         className="flex items-center justify-between py-2 ltr:pl-5 rtl:pr-5 xl:ltr:pl-7 xl:rtl:pr-7 ltr:pr-3 rtl:pl-3 xl:ltr:pr-3.5 xl:rtl:pl-3.5 hover:bg-fill-dropdown-hover hover:text-brand-dark"
       >
-        {data.label ? t(data.label) : data.name}
+        {data.label ? t(data.label) : router.locale === 'fa'&& data.name || router.locale === 'en'&& data.name_en || router.locale === 'ar'&& data.name_ar}
         {data.subMenu && (
           <span className="text-sm mt-0.5 shrink-0">
             <IoIosArrowForward className="transition duration-300 ease-in-out text-body group-hover:text-brand-dark" />

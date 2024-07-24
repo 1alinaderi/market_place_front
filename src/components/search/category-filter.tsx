@@ -10,8 +10,14 @@ import { useRouter } from 'next/router';
 import { FaCheck } from 'react-icons/fa';
 import { useUI } from '@contexts/ui.context';
 import { httpReauest } from 'src/api/api';
+import { IoCloseOutline } from 'react-icons/io5';
 
-export const CategoryFilter = ({setProductData , setLoading,mainMarket}) => {
+export const CategoryFilter = ({
+  setProductData,
+  setLoading,
+  mainMarket,
+  setFilter,
+}) => {
   const { t } = useTranslation('common');
   const {
     data,
@@ -20,33 +26,38 @@ export const CategoryFilter = ({setProductData , setLoading,mainMarket}) => {
   } = useCategoriesQuery({
     limit: 10,
   });
-  const [mainCategory,setMainCategory] = useState([])
+  const [mainCategory, setMainCategory] = useState([]);
   const [selected, setSelected] = useState([]);
+  const [id, setId] = useState('');
+  const router = useRouter();
   async function getMainCategory() {
+    const response = await httpReauest('GET', '/categorys', {}, {});
+    setMainCategory(response.data.data);
+    if (router.query.category) {
+      const id = router.query.category;
+      getQueryData(id,response.data.data)
+    }
     
-    const response = await httpReauest('GET','/categorys',{},{});
-    setMainCategory(response.data.data)
-    console.log(response)
   }
 
-useEffect(()=>{
-  getMainCategory()
-},[])  
-
-  const router = useRouter();
-
-  const { query, pathname } = router;
-  
-
-  const selectedCategories = useMemo(
-    () => (query?.category ? (query.category as string).split(',') : []),
-    [query?.category]
-  );
-
-  const selectedSubCategories = useMemo(
-    () => (query?.subcategory ? (query.subcategory as string).split(',') : []),
-    [query?.subcategory]
-  );
+  async function getQueryData(id,data) {
+    const response = await httpReauest(
+      'GET',
+      `/prouduct?category=${id}`,
+      {},
+      {}
+    );
+    setProductData(response.data.data);
+    setId(id);
+    const subItems = data?.subCategorys;
+    console.log(subItems)
+    const sub = subItems.filter((i) => i.category === id);
+    setSelected(sub);
+  }
+  useEffect(() => {
+    getMainCategory();
+  }, []);
+  console.log(mainCategory);
 
   const { displaySidebar, closeSidebar } = useUI();
 
@@ -84,16 +95,41 @@ useEffect(()=>{
   if (error) return <Alert message={error?.message} />;
 
   return (
-    <div className="block">
-      <>
-        
-      </>
-      <Heading className="mb-5 -mt-1">{t('text-categories')}</Heading>
+    <div className="block bg-white">
+      <div className="flex justify-between items-center ">
+        <Heading className="mb-5 -mt-1">{t('text-categories')}</Heading>{' '}
+        <button onClick={() => setFilter(false)} className="mb-4 lg:hidden">
+          <IoCloseOutline size={30} />
+        </button>
+      </div>
 
       <div className="max-h-full overflow-hidden rounded border border-border-base">
         <Scrollbar className="w-full ">
           {!loading ? (
-            mainMarket ? (<CategoryFilterMenu items={mainCategory}  setProductData={setProductData} setLoading={setLoading} selected={selected} setSelected={setSelected} main/>): (<CategoryFilterMenu selected={selected} setSelected={setSelected} items={data.categorys} subItems={data?.subCategorys} setProductData={setProductData} setLoading={setLoading}/>)
+            mainMarket ? (
+              <CategoryFilterMenu
+                items={mainCategory?.categorys}
+                subItems={mainCategory?.subCategorys}
+                setProductData={setProductData}
+                setLoading={setLoading}
+                selected={selected}
+                setSelected={setSelected}
+                id={id}
+                setId={setId}
+                mainMarket={mainMarket}
+              />
+            ) : (
+              <CategoryFilterMenu
+                selected={selected}
+                setSelected={setSelected}
+                items={data.categorys}
+                subItems={data?.subCategorys}
+                setProductData={setProductData}
+                setLoading={setLoading}
+                id={id}
+                setId={setId}
+              />
+            )
           ) : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">
               {t('text-no-results-found')}

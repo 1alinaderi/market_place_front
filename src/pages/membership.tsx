@@ -193,18 +193,22 @@ export default function Membership() {
       {whichPay ? (
         <div className="lg:mx-[100px] mx-4 px-3 border border-slate-200 rounded-sm mt-8 shadow pb-5">
           <div className="flex col-span-full justify-center items-start  mt-5  p-1">
-            <div className='flex flex-col justify-center'>
+            <div className="flex flex-col justify-center">
               <span className="border-2 rounded-full p-2 px-[18px] border-green-500 text-green-500 text-xl mx-2">
                 1
               </span>
-              <p className='text-[10px] text-center mt-2 text-green-500'>{t('payment')}</p>
+              <p className="text-[10px] text-center mt-2 text-green-500">
+                {t('payment')}
+              </p>
             </div>
             <div className="lg:w-[300px] w-[100px] md:w-[200px] border-b mt-[25px] border-green-500 "></div>
-            <div className='w-[70px] flex flex-col justify-center'>
+            <div className="w-[70px] flex flex-col justify-center">
               <span className="border-2 w-fit mx-auto rounded-full p-2 px-[17px] border-green-500 text-green-500 text-xl ">
                 2
               </span>
-              <p className='text-[10px] mt-2 text-green-500 text-center'>{t('information')}</p>
+              <p className="text-[10px] mt-2 text-green-500 text-center">
+                {t('information')}
+              </p>
             </div>
           </div>
           <h1 className="text-center font-bold my-7 text-black text-2xl ">
@@ -594,33 +598,40 @@ export default function Membership() {
           </form>
         </div>
       ) : (
-        <div className="grid lg:grid-cols-2 mx-4  mt-10 lg:mx-[200px] border border-slate-200 shadow px-10 rounded-sm">
+        <div className="grid gap-5 lg:grid-cols-2 mx-4  mt-10 lg:mx-[200px] border border-slate-200 shadow px-10 rounded-sm">
           <div className="flex col-span-full justify-center items-start  mt-5  p-1">
-            <div className='flex flex-col justify-center'>
+            <div className="flex flex-col justify-center">
               <span className="border-2 rounded-full p-2 px-[18px] border-green-500 text-green-500 text-xl mx-2">
                 1
               </span>
-              <p className='text-[10px] text-center mt-2 text-green-500'>{t('payment')}</p>
+              <p className="text-[10px] text-center mt-2 text-green-500">
+                {t('payment')}
+              </p>
             </div>
             <div className="lg:w-[300px] w-[100px] md:w-[200px] border-b mt-[25px] border-slate-500 "></div>
-            <div className='w-[70px] flex flex-col justify-center'>
+            <div className="w-[70px] flex flex-col justify-center">
               <span className="border-2 w-fit mx-auto rounded-full p-2 px-[17px] border-gray-500 text-gray-500 text-xl ">
                 2
               </span>
-              <p className='text-[10px] mt-2 text-gray-500 text-center'>{t('information')}</p>
+              <p className="text-[10px] mt-2 text-gray-500 text-center">
+                {t('information')}
+              </p>
             </div>
           </div>
           <h2 className="col-span-full text-center mt-8 font-bold text-xl text-black">
             {' '}
             {t('type-pay')}
           </h2>{' '}
-          <div className="flex justify-center items-center mt-6">
-            <button
-              className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
-              onClick={getAuth}
-            >
-              {t('crypto-pay')}
-            </button>
+          <div className='mt-[25px]'> 
+            <p className='text-black font-bold'>{t('crypto-pay')}:</p>
+            <div className="flex justify-center items-center mt-2 h-[20vh] lg:h-[55%] border rounded ">
+              <button
+                className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
+                onClick={getAuth}
+              >
+                {t('crypto-pay')} 
+              </button>
+            </div>
           </div>
           <form>
             {' '}
@@ -650,15 +661,15 @@ export default function Membership() {
                 accept="image/png, image/jpg, image/jpeg"
               />
             </span>
+            <div className="col-span-full flex justify-center items-center">
+              <button
+                onClick={handleSubmit}
+                className="bg-red-500 rounded-2xl px-5 py-2 text-white mb-7 mt-2"
+              >
+                {t('t-submit')}
+              </button>
+            </div>
           </form>
-          <div className="col-span-full flex justify-center items-center">
-            <button
-              onClick={handleSubmit}
-              className="bg-red-500 rounded-2xl px-5 py-2 text-white mb-7 mt-2"
-            >
-              {t('t-submit')}
-            </button>
-          </div>
         </div>
       )}
     </>

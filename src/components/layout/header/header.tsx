@@ -57,7 +57,7 @@ const Header: React.FC = () => {
   const [menuData, setMenuData] = useState([]);
   async function getcategory() {
     const response = await httpReauest('GET', '/categorys', {}, {});
-    const category = response.data.data;
+    const category = response.data.data.categorys;
     console.log(response);
     setMenuData(category);
   }
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
           className="top-bar-search  lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-1"
         />
         {/* End of Mobile search */}
-        <Container className="flex items-center gap-5 justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
+        <Container className="flex items-center  justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
           <Link href={'/home'}>
             <div className="flex items-baseline cursor-pointer">
               <h1 className="text-yellow-600  lg:text-[30px] text-[20px] font-bold">
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
 
           {!activeSearch && (
             <>
-              <div className="lg:hidden ">
+              <div className="lg:hidden mx-2">
                 <LanguageSwitcherHeader justFa={true} />
               </div>
             </>

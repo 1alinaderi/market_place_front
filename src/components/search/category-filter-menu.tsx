@@ -24,13 +24,15 @@ function CategoryFilterMenuItem({
   setLoading,
   selected,
   setSelected,
-  main
+  id,
+  setId,
+  mainMarket,
 }: any) {
   const { t } = useTranslation('common');
   const router = useRouter();
   const { pathname, query } = router;
   // const [selected, setSelected] = useState([]);
-  const [active, setActive] = useState(false);
+
   const [subActive, setSubactive] = useState('');
   const selectedCategories = useMemo(
     () => (query?.category ? (query.category as string).split(',') : []),
@@ -46,7 +48,7 @@ function CategoryFilterMenuItem({
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
-  const { slug, name, children: items, icon, _id,name_en,name_ar } = item;
+  const { slug, name, children: items, icon, _id, name_en, name_ar } = item;
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
@@ -59,18 +61,41 @@ function CategoryFilterMenuItem({
 
   async function onClick() {
     setLoading(true);
-    if (selected.length) {
-      setSelected([]);
-      setActive(false);
-      setProductData()
+    if (mainMarket) {
+      if (id === _id) {
+        setSelected([]);
+        const response = await httpReauest('GET', '/prouduct', {}, {});
+        setProductData(response.data.data);
+        setId('');
+      } else {
+        setSelected([]);
+        setId(_id);
+        const sub = subItems.filter((i) => i.category === _id);
+        setSelected(sub);
+        console.log(sub);
+        const response = await httpReauest('GET', `/prouduct?category=${_id}`);
+        setProductData(response.data.data);
+      }
     } else {
-      const sub = subItems.filter((i) => i.category === _id);
-      setSelected(sub);
-      console.log(sub);
-      setActive(true);
+      if (id === _id) {
+        setSelected([]);
+        const response = await httpReauest('GET', '/prouduct/free', {}, {});
+        setProductData(response.data.data);
+        setId('');
+      } else {
+        setSelected([]);
+        setId(_id);
+        const sub = subItems.filter((i) => i.category === _id);
+        setSelected(sub);
+        console.log(sub);
+        const response = await httpReauest(
+          'GET',
+          `/prouduct/free?category=${_id}`
+        );
+        setProductData(response.data.data);
+      }
     }
-    const response = await httpReauest('GET', `/prouduct/free?category=${_id}`);
-    setProductData(response.data.data);
+
     if (Array.isArray(items) && !!items.length) {
       toggleCollapse();
     }
@@ -78,26 +103,44 @@ function CategoryFilterMenuItem({
   }
   async function handleSubcategory(e) {
     setLoading(true);
-    console.log(e._id);
-    if (subActive === e.name) {
-      setSubactive('');
-      const response = await httpReauest(
-        'GET',
-        `/prouduct/free?category=${_id}`
-      );
-      setProductData(response.data.data);
+    if (mainMarket) {
+      if (subActive === e.name) {
+        setSubactive('');
+        const response = await httpReauest(
+          'GET',
+          `/prouduct?category=${_id}`
+        );
+        setProductData(response.data.data);
+      } else {
+        const response = await httpReauest(
+          'GET',
+          `/prouduct?category=${_id}&subCategory=${e._id}`
+        );
+        setSubactive(e.name);
+        console.log(response);
+        setProductData(response.data.data);
+      }
     } else {
-      const response = await httpReauest(
-        'GET',
-        `/prouduct/free?category=${_id}&subCategory=${e._id}`
-      );
-      setSubactive(e.name);
-      console.log(response);
-      setProductData(response.data.data);
+      if (subActive === e.name) {
+        setSubactive('');
+        const response = await httpReauest(
+          'GET',
+          `/prouduct/free?category=${_id}`
+        );
+        setProductData(response.data.data);
+      } else {
+        const response = await httpReauest(
+          'GET',
+          `/prouduct/free?category=${_id}&subCategory=${e._id}`
+        );
+        setSubactive(e.name);
+        console.log(response);
+        setProductData(response.data.data);
+      }
     }
     setLoading(false);
   }
-  console.log(item)
+
   let expandIcon;
   if (Array.isArray(items) && items.length) {
     expandIcon = !isOpen ? (
@@ -112,7 +155,9 @@ function CategoryFilterMenuItem({
       <li
         onClick={onClick}
         className={cn(
-          'flex justify-between items-center transition text-sm md:text-15px',
+          `flex justify-between items-center transition text-sm md:text-15px ${
+            id === _id ? 'bg-slate-300' : 'bg-none'
+          }`,
           { 'bg-fill-base': isOpen },
           className
         )}
@@ -124,17 +169,10 @@ function CategoryFilterMenuItem({
           )}
           // onClick={handleChange}
         >
-          {icon && (
-            <div className="inline-flex shrink-0 2xl:w-12 2xl:h-12 3xl:w-auto 3xl:h-auto ltr:mr-2.5 rtl:ml-2.5 md:ltr:mr-4 md:rtl:ml-4 2xl:ltr:mr-3 2xl:rtl:ml-3 3xl:ltr:mr-4 3xl:rtl:ml-4">
-              <Image
-                src={icon ?? '/assets/placeholder/category-small.svg'}
-                alt={name || t('text-category-thumbnail')}
-                width={40}
-                height={40}
-              />
-            </div>
-          )}
-          <span className="text-brand-dark capitalize py-0.5">{router.locale === 'en' && name_en} {router.locale === 'fa' && name} {router.locale === 'ar' && name_ar}</span>
+          <span className="text-brand-dark capitalize py-0.5">
+            {router.locale === 'en' && name_en} {router.locale === 'fa' && name}{' '}
+            {router.locale === 'ar' && name_ar}
+          </span>
           <span
             className={`w-[22px] h-[22px] text-13px flex items-center justify-center rounded-full  ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light `}
           >
@@ -156,9 +194,6 @@ function CategoryFilterMenuItem({
               {selectedCategories.includes(slug) && <FaCheck />}
             </span>
           )} */}
-          {expandIcon && (
-            <span className="ltr:ml-auto rtl:mr-auto">{expandIcon}</span>
-          )}
         </button>
       </li>
 
@@ -181,18 +216,20 @@ function CategoryFilterMenuItem({
       ) : null}
       <div
         className={`${
-          active ? 'max-h-[1000px] ' : ' max-h-[0px] '
+          id === _id ? 'max-h-[1000px] ' : ' max-h-[0px] '
         } overflow-hidden duration-300  `}
       >
         {selected?.map((e) => (
-          <div  className="flex justify-between items-center py-2  px-5  text-slate-500 border-[1px] border-slate-50  hover:bg-slate-100">
+          <div className="flex justify-between items-center py-2  px-5  text-slate-500 border-[1px] border-slate-50  hover:bg-slate-100">
             <button
               onClick={() => {
                 handleSubcategory(e);
               }}
               className=" mx-3"
             >
-              {router.locale === 'en' && e?.name_en} {router.locale === 'fa' && e?.name} {router.locale === 'ar' && e?.name_ar}
+              {router.locale === 'en' && e?.name_en}{' '}
+              {router.locale === 'fa' && e?.name}{' '}
+              {router.locale === 'ar' && e?.name_ar}
             </button>
             <span
               className={`${
@@ -214,7 +251,9 @@ function CategoryFilterMenu({
   setLoading,
   selected,
   setSelected,
-  main
+  id,
+  setId,
+  mainMarket,
 }: any) {
   return (
     <ul className={cn(className)}>
@@ -227,7 +266,9 @@ function CategoryFilterMenu({
           setLoading={setLoading}
           selected={selected}
           setSelected={setSelected}
-          main
+          id={id}
+          setId={setId}
+          mainMarket={mainMarket}
         />
       ))}
     </ul>
