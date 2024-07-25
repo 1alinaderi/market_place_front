@@ -32,7 +32,7 @@ import { useTranslation } from 'next-i18next';
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
-  const ref = useRef<HTMLVideoElement>();
+  const ref = useRef<any>();
   const { t } = useTranslation('common');
   useEffect(() => {
     if (window.innerWidth <= 1024) {
@@ -96,7 +96,7 @@ export default function Home() {
             <ArrowRight2 size={18} />
           </button>
           <div className="relative z-30 mx-2">
-            <LanguageSwitcherHeader justFa={true} />
+            <LanguageSwitcherHeader justFa={true} mobile={false} small={false} />
           </div>
         </div>
         <div dir='ltr' className="relative z-10 ">
@@ -172,7 +172,7 @@ export default function Home() {
             </Link>
           </RevealX>
           <div className="relative z-30 flex justify-center col-span-full lg:hidden">
-            <LanguageSwitcherHeader justFa={true} />
+            <LanguageSwitcherHeader justFa={true} mobile={false} small={false} />
           </div>
           <span className="col-span-full lg:hidden flex justify-between items-center text-white">
             <RevealX>
@@ -357,7 +357,7 @@ export default function Home() {
             </div>
           </RevealX>
           <RevealX>
-            <Link href={'https://urameta.net'}>
+          <a target="_blank" href={'https://urameta.net'} rel="noopener noreferrer">
               <div
                 style={{ boxShadow: '0px 0px 15px 0px #ffffff70' }}
                 className="motionBorder relative h-full w-full  rounded-[14px] overflow-hidden cursor-pointer"
@@ -371,10 +371,10 @@ export default function Home() {
                   {t("urameta")}
                 </p>
               </div>
-            </Link>
+            </a>
           </RevealX>
           <RevealX>
-            <Link href={'https://sdgs.un.org/goals'}>
+          <a target="_blank" href={'https://sdgs.un.org/goals'} rel="noopener noreferrer">
               <div
                 style={{ boxShadow: '0px 0px 15px 0px #ffffff70' }}
                 className="motionBorder  cursor-pointer relative h-full w-full bg-black  rounded-[14px] overflow-hidden"
@@ -388,7 +388,7 @@ export default function Home() {
                   SDGS
                 </p>
               </div>
-            </Link>
+            </a>
           </RevealX>
           <span className="col-span-full lg:col-span-1">
             <RevealX>

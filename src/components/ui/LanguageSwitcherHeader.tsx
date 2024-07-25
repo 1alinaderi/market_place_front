@@ -5,7 +5,7 @@ import { siteSettings } from '@settings/site-settings';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
-export default function LanguageSwitcherHeader({ justFa , mobile,small }) {
+export default function LanguageSwitcherHeader({ justFa , mobile,small }:{justFa : any , mobile : any , small : any}) {
   const { site_header } = siteSettings;
   const { t } = useTranslation('common');
   const options = justFa ? site_header.languageMenu2 : site_header.languageMenu;
