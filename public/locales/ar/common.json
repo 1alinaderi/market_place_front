@@ -356,6 +356,24 @@
    "p-detail":"تفاصيل المنتج",
    "r-rating":"مراجعة التقييم",
    "no-rate":"لا يوجد معدل حتى الآن",
-   "t-owner":"مالك"
+   "t-owner":"مالك",
+   "premium-home":"غالي",
+   "packing":"التعبئة",
+   "donate":"يتبرع",
+   "logistics":"الخدمات اللوجستية",
+   "insurance":"تأمين",
+   "translate":"يترجم",
+   "discount":"التجزئة مخفضة",
+   "contract":"عقد",
+   "sustainable":"مستمر",
+   "arch-and-art":"القوس والفن",
+   "friendly-brands":"العلامات التجارية الودية",
+   "l-retail":"التجزئة الفاخرة",
+   "c-brands":"علامة تجارية",
+   "organic-food":"طعام عضوي",
+   "l-v-product":"منتج منخفض القيمة",
+   "gaming":"الألعاب",
+   "urameta":"يوراميتا",
+   "about":"معلومات عنا"
 
 }

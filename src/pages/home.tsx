@@ -26,11 +26,14 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { EffectFade } from 'swiper';
 import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
   const ref = useRef<HTMLVideoElement>();
-
+  const { t } = useTranslation('common');
   useEffect(() => {
     if (window.innerWidth <= 1024) {
       setMobile(true);
@@ -52,50 +55,51 @@ export default function Home() {
         >
           <Link href={'/membership'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-              Membership
+              {t('account-membership')}
               <ArrowRight2 size={18} />
             </button>
           </Link>
           <Link href={'/supplier/signup'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] italic ">
-              Premium
+              {t('premium-home')}
               <ArrowRight2 size={18} />
             </button>
           </Link>
           <Link href={'/packing'}>
             <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-              Packing <ArrowRight2 size={18} />
+              {t('packing')} <ArrowRight2 size={18} />
             </button>
           </Link>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-            Donate
+            {t('donate')}
             <ArrowRight2 size={18} />
           </button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-            Logistics
+            {t('logistics')}
             <ArrowRight2 size={18} />
           </button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-            Insurance
+            {t('insurance')}
             <ArrowRight2 size={18} />
           </button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-            Referral
+            {t('referral')}
             <ArrowRight2 size={18} />
           </button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-            Translate
+            {t('translate')}
+
             <ArrowRight2 size={18} />
           </button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] text-[14px] xl:text-[1.15rem] font-[100]">
-            Contract
+            {t("contract")}
             <ArrowRight2 size={18} />
           </button>
           <div className="relative z-30 mx-2">
             <LanguageSwitcherHeader justFa={true} />
           </div>
         </div>
-        <div className="relative z-10 ">
+        <div dir='ltr' className="relative z-10 ">
           <Swiper loop autoplay={{ delay: 4000 }} modules={[Autoplay]}>
             <SwiperSlide>
               <img
@@ -142,9 +146,9 @@ export default function Home() {
                   alt=""
                 />
                 <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                  Sustainable
+                  {t("sustainable")}
                   <br />
-                  arch and art
+                  {t("arch-and-art")}
                 </p>
               </div>
             </Link>
@@ -162,7 +166,7 @@ export default function Home() {
                   alt=""
                 />
                 <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                  Free market
+                  {t("free-market")}
                 </p>
               </div>
             </Link>
@@ -176,16 +180,16 @@ export default function Home() {
                 <span className="rounded-full p-2 overflow-hidden bg-white">
                   <Gift variant="Bulk" color="#ff8a65" size={30} />
                 </span>
-                <p className="text-center mt-1">Donate</p>
+                <p className="text-center mt-1">{t("donate")}</p>
               </div>
             </RevealX>
-            
+
             <div>
               <Reveal head={false}>
                 <Link href={'/membership'}>
                   <div className="flex  bg-red-600 w-fit uppercase  items-center justify-center gap-3 lg:gap-6 px-10 lg:px-12 py-2 lg:py-4   rounded-[14px]">
                     <h2 className="text-[#FFFFFF] text-[17px] lg:text-4xl font-sans font-[500]">
-                      Membership
+                    {t('account-membership')}
                     </h2>
                   </div>
                 </Link>
@@ -199,7 +203,7 @@ export default function Home() {
                     <Box variant="Bulk" color="#ff8a65" size={30} />
                   </span>
 
-                  <p className="text-center mt-1">Packing</p>
+                  <p className="text-center mt-1">{t('packing')}</p>
                 </div>
               </Link>
             </RevealX>
@@ -211,7 +215,7 @@ export default function Home() {
                   <span className="rounded-full p-2 overflow-hidden bg-white">
                     <TruckTime variant="Bulk" color="#ff8a65" size={30} />
                   </span>
-                  <p className="text-center mt-1">Logistics</p>
+                  <p className="text-center mt-1">{t('logistics')}</p>
                 </div>
               </RevealX>
               <RevealX head>
@@ -219,7 +223,7 @@ export default function Home() {
                   <span className="rounded-full p-2 overflow-hidden bg-white">
                     <ClipboardText variant="Bulk" color="#ff8a65" size={30} />
                   </span>
-                  <p className="text-center mt-1">Insurance</p>
+                  <p className="text-center mt-1">{t('insurance')}</p>
                 </div>
               </RevealX>
               <RevealX head>
@@ -227,7 +231,7 @@ export default function Home() {
                   <span className="rounded-full p-2 overflow-hidden bg-white">
                     <Translate variant="Bulk" color="#ff8a65" size={30} />
                   </span>
-                  <p className="text-center mt-1">Translate</p>
+                  <p className="text-center mt-1">{t('translate')}</p>
                 </div>
               </RevealX>
             </div>
@@ -243,7 +247,7 @@ export default function Home() {
                     alt=""
                   />
                   <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                    discounted retail
+                    {t('discount')}
                   </p>
                 </div>
               </Link>
@@ -255,7 +259,7 @@ export default function Home() {
                     <span className="rounded-full p-2 overflow-hidden bg-white">
                       <Diamonds variant="Bulk" color="#ff8a65" size={30} />
                     </span>
-                    <p className="text-center mt-1">Premium</p>
+                    <p className="text-center mt-1">{t('premium-home')}</p>
                   </div>
                 </Link>
               </RevealX>
@@ -265,7 +269,7 @@ export default function Home() {
                   <span className="rounded-full p-2 overflow-hidden bg-white">
                     <FaNetworkWired color="#ff8a65" size={30} />
                   </span>
-                  <p className="text-center mt-1">referral</p>
+                  <p className="text-center mt-1">{t('referral')}</p>
                 </div>
               </RevealX>
               <RevealX>
@@ -273,7 +277,7 @@ export default function Home() {
                   <span className="rounded-full p-2 overflow-hidden bg-white">
                     <RecoveryConvert color="#ff8a65" size={30} />
                   </span>
-                  <p className="text-center mt-1">Contract</p>
+                  <p className="text-center mt-1">{t("contract")}</p>
                 </div>
               </RevealX>
             </div>
@@ -288,7 +292,7 @@ export default function Home() {
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
                 ECO <br />
-                friendly brands
+                {t("friendly-brands")}
               </p>
             </div>
           </RevealX>
@@ -300,7 +304,7 @@ export default function Home() {
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                Luxury Retail
+                {t("l-retail")}
               </p>
             </div>
           </RevealX>
@@ -312,7 +316,7 @@ export default function Home() {
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                Commercial brand
+                {t("c-brands")}
               </p>
             </div>
           </RevealX>
@@ -324,7 +328,7 @@ export default function Home() {
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                Organic food
+                {t("organic-food")}
               </p>
             </div>
           </RevealX>
@@ -336,7 +340,7 @@ export default function Home() {
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                Low value product
+                {t("l-v-product")}
               </p>
             </div>
           </RevealX>
@@ -348,7 +352,7 @@ export default function Home() {
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                Gaming
+                {t("gaming")}
               </p>
             </div>
           </RevealX>
@@ -364,7 +368,7 @@ export default function Home() {
                   alt=""
                 />
                 <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                  Urameta
+                  {t("urameta")}
                 </p>
               </div>
             </Link>
@@ -399,14 +403,14 @@ export default function Home() {
                     alt=""
                   />
                   <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[15px] lg:text-[30px] italic text-[#fff] z-20">
-                    About Us
+                    {t("about")}
                   </p>
                 </div>
               </Link>
             </RevealX>
           </span>
         </div>
-        <div className="relative z-10 col-span-full">
+        <div dir='ltr' className="relative z-10 col-span-full">
           <Swiper loop autoplay={{ delay: 4000 }} modules={[Autoplay]}>
             <SwiperSlide>
               <img
@@ -437,3 +441,15 @@ export default function Home() {
 }
 
 Home.Layout = Layout;
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, [
+        'common',
+        'forms',
+        'menu',
+        'footer',
+      ])),
+    },
+  };
+};
