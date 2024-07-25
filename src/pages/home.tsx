@@ -441,6 +441,7 @@ export default function Home() {
 }
 
 Home.Layout = Layout;
+
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
