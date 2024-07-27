@@ -22,11 +22,20 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
   return (
     <div className={`pb-10 sm:pb-0 ${className}`}>
       <div className="flex flex-col text-center sm:ltr:text-left sm:rtl:text-right max-w-[300px] mx-auto sm:ltr:ml-0 sm:rtl:mr-0 pb-6 sm:pb-5">
-        <Logo
-          href={ROUTES.HOME}
-          className="mx-auto mb-3 lg:mb-5 sm:ltr:ml-0 sm:rtl:mr-0"
-        />
-       <p className='text-[12px]'>{t('text-about-us')}</p> 
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-items-center justify-center">
+          <Logo
+            href={ROUTES.HOME}
+            className="mx-auto mb-3 lg:mb-5 sm:ltr:ml-0 sm:rtl:mr-0"
+          />
+          
+            <img
+              className=" cursor-pointer h-[100px]"
+              src="/assets/images/sdgs.png"
+              alt=""
+            />
+          
+        </div>
+        <p className="text-[12px]">{t('text-about-us')}</p>
       </div>
 
       {social && (

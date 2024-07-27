@@ -32,7 +32,7 @@ const data = [
       <MailIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
     ),
     name: 'text-email',
-    description: 'text-email-details',
+    description: 'WIMEHR@GMAIL.COM',
   },
 ];
 const ContactInformation: FC = () => {

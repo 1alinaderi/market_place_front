@@ -155,7 +155,7 @@ export default function Home() {
           </RevealX>
 
           <RevealX>
-            <Link href={'/products/free-market'}>
+            <Link href={'/free-market'}>
               <div
                 style={{ boxShadow: '0px 0px 15px 0px #ffffff70' }}
                 className="motionBorder relative cursor-pointer h-full w-full row-span-1  rounded-[14px] overflow-hidden "

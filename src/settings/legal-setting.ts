@@ -24,19 +24,5 @@ export const legalSetting = [
     title: 'legal-five-title',
     description: 'legal-five-content',
   },
-  {
-    id: '6',
-    title: 'legal-six-title',
-    description: 'legal-six-content',
-  },
-  {
-    id: '7',
-    title: 'legal-seven-title',
-    description: 'legal-seven-content',
-  },
-  {
-    id: '8',
-    title: 'legal-eight-title',
-    description: 'legal-eight-content',
-  },
+ 
 ];

@@ -17,7 +17,9 @@ export default function ContactUsPage() {
         description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
         path="contact-us"
       />
+      <div dir='ltr'>
       <PageContactHeroSection />
+      </div>
       <Container>
         <div className="max-w-[1420px] mx-auto mb-1 lg:mb-14 xl:mb-16">
           <div className="flex flex-wrap bg-brand-light w-full p-5 md:p-7 lg:p-10 xl:p-16 3xl:px-[70px] xl:py-12 shadow-contact rounded-md -mt-8 relative z-10">
