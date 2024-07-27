@@ -1,6 +1,6 @@
 {
-  "name": "Project I React E-Commerce Template",
-  "short_name": "Project I",
+  "name": "Wimehr",
+  "short_name": "Wimehr",
   "theme_color": "#ffffff",
   "background_color": "#004740",
   "display": "fullscreen",
@@ -9,15 +9,15 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "assets/images/logo.png",
+      "src": "assets/images/logo.jpg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpg",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/images/logo.png",
+      "src": "assets/images/logo.jpg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpg",
       "purpose": "maskable any"
     }
   ],
