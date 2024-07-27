@@ -483,52 +483,10 @@ input:checked + .slider:before {
 
 @font-face {
   font-family: 'Nazanin';
-  src: url("/public/B-NAZANIN.TTF");
+  src: url("../../../public/B-NAZANIN.TTF");
 }
 
-.pastel_text {
-  font-family: 'Rocher';
-  base-palette: 9;
-}
 
-.grays {
-  font-palette: --Grays;
-}
-
-.purples {
-  font-palette: --Purples;
-}
-
-.mint {
-  font-palette: --Mint;
-}
-
-.reds {
-  font-palette: --Reds;
-}
-
-.oranges {
-  font-palette: --Orange;
-}
-
-.blacks {
-  font-palette: --Black;
-}
-.whites {
-  font-palette: --White;
-}
-
-.foods {
-  font-palette: --Food;
-}
-.motionBorder{
-  
-  
-  
-  
-  
-  
-}
 .motionBorder::before{
   content: "";
   height: 250%;
