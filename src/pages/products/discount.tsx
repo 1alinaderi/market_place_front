@@ -10,9 +10,27 @@ import { useTranslation } from 'next-i18next';
 import SearchTopBar from '@components/search/search-top-bar';
 import { Element } from 'react-scroll';
 import Seo from '@components/seo/seo';
+import { useEffect, useState } from 'react';
+import { httpReauest } from 'src/api/api';
+import DiscountFilters from '@components/search/discount-filter';
+import { FaFilter } from 'react-icons/fa';
 
 export default function ProductsDiscount() {
   const { t } = useTranslation('common');
+  const [productData , setProductData] = useState([])
+  const [loading , setLoading] = useState(false)
+  const [filter ,setFilter] = useState(false)
+  async function getDiscountProduct() {
+    setLoading(true)
+   const response = await httpReauest('GET', '/prouduct/discount',{},{});
+   setProductData(response.data.data);
+   console.log(response)
+   setLoading(false)
+  } 
+
+  useEffect(()=>{
+    getDiscountProduct()
+  },[])
   return (
     <>
       <Seo
@@ -23,10 +41,17 @@ export default function ProductsDiscount() {
       <PageHeroSection heroTitle={"DISCOUNTED RETAIL"} />
       <Container>
         <Element name="grid" className="flex pb-16 pt-7 lg:pt-11 lg:pb-20">
-          
+          <div className={`absolute lg:static shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 w-full xl:rtl:pl-16 h-full pb-[100px] lg:pb-0 bg-white overflow-y-auto lg:overflow-y-hidden lg:bg-transparent lg:block duration-300 top-[15px] pt-5 right-0 pl-6  xl:w-96 z-20 lg:z-0 ${filter ? "left-[0%] " : "left-[-100%]"}`}>
+            <DiscountFilters setProductData={setProductData} setLoading={setLoading} setFilter={setFilter} />
+          </div>
           <div className="w-full lg:ltr:-ml-4 lg:rtl:-mr-2 xl:ltr:-ml-8 xl:rtl:-mr-8 lg:-mt-1 px-5">
-            {/* <SearchTopBar /> */}
-            <ProductGrid discount/>
+          <button
+              onClick={() => setFilter(true)}
+              className="bg-red-600 rounded py-2 px-5 mb-4 text-white flex items-center gap-1 lg:hidden"
+            >
+              <p>{t("filters")}</p> <FaFilter />
+            </button>
+            <ProductGrid productData={productData} loading={loading}/>
           </div>
         </Element>
       </Container>

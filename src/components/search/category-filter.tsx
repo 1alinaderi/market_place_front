@@ -16,7 +16,7 @@ export const CategoryFilter = ({
   setProductData,
   setLoading,
   mainMarket,
-  setFilter,
+  setFilter
 }) => {
   const { t } = useTranslation('common');
   const {

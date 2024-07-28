@@ -92,7 +92,7 @@ export default function ProductsFreeMarket() {
               onClick={() => setFilter(true)}
               className="bg-red-600 rounded py-2 px-5 mb-4 text-white flex items-center gap-1 lg:hidden"
             >
-              <p>Filters</p> <FaFilter />
+              <p>{t("filters")}</p> <FaFilter />
             </button>
             {/* <SearchTopBar /> */}
             <ProductGrid productData={productData} loading={loading} />

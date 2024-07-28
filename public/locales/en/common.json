@@ -373,5 +373,8 @@
    "l-v-product":"Low value product",
    "gaming":"Gaming",
    "urameta":"Urameta",
-   "about":"About Us"
+   "about":"About Us",
+   "discount-filter":"Discount filter",
+   "discount-more":"More than",
+   "filters":"Filters"
 }
