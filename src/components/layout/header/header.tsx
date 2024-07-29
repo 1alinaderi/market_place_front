@@ -58,7 +58,6 @@ const Header: React.FC = () => {
   async function getcategory() {
     const response = await httpReauest('GET', '/categorys', {}, {});
     const category = response.data.data.categorys;
-    console.log(response);
     setMenuData(category);
   }
   function handleMobile() {
@@ -77,14 +76,12 @@ const Header: React.FC = () => {
   
   const [activeSearch, setActiveSearch] = useState(false);
   const [mobile , setMobile] =useState(true)
-  console.log(mobile)
-  console.log(menuData);
   return (
     <header
       id="siteHeader"
       ref={siteHeaderRef}
       className={cn(
-        'header-two sticky-header sticky top-0 z-20 lg:relative w-full h-16 lg:h-auto ',
+        'header-two sticky-header sticky top-0 z-20 lg:relative w-full h-20 lg:h-auto ',
         displayMobileSearch && 'active-mobile-search'
       )}
     >
@@ -100,12 +97,8 @@ const Header: React.FC = () => {
         <Container className="flex items-center  justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
           <Link href={'/home'}>
             <div className="flex items-baseline cursor-pointer">
-              <h1 className="text-yellow-600  lg:text-[30px] text-[20px] font-bold">
-                W
-              </h1>
-              <span className="text-[#fff] lg:text-2xl font-bold   ">
-                IMEHR
-              </span>
+              <img src='/logo.png' className='p-2 lg:p-0 max-w-[7rem] lg:w-[7rem] object-contain'/>
+             
             </div>
           </Link>
           {/* End of logo */}

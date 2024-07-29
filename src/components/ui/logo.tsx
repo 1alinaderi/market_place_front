@@ -21,6 +21,7 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
         width={siteSettings.logo.width}
         layout="fixed"
         loading="eager"
+        className='object-contain'
       />
     </Link>
   );
