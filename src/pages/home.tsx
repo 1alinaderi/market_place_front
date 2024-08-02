@@ -96,7 +96,7 @@ export default function Home() {
             </span>
           </button>
           <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
-            {t('referral')}
+            {t('earn-home')}
             <span>
               <ArrowRight2 size={16} />
             </span>
