@@ -318,7 +318,7 @@ export default function Home() {
                 alt=""
               />
               <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
-                ECO <br />
+                
                 {t('friendly-brands')}
               </p>
             </div>
