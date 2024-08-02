@@ -51,67 +51,67 @@ export default function Home() {
             background:
               'linear-gradient(90deg, rgba(38,47,69,1) 0%, rgba(81,150,206,1) 20%, rgba(254,132,146,1) 40%, rgba(164,37,39,1) 60%, rgba(118,29,33,1) 80%, rgba(34,22,32,1) 100%)',
           }}
-          className="lg:grid grid-cols-10 hidden justify-center items-center gap-4  relative  py-4 px-[100px] bg-[#08121f]"
+          className="lg:grid grid-cols-10 hidden justify-center items-center gap-4  relative  py-4  pr-24 pl-6 2xl:pl-20 2xl:pr-32 bg-[#08121f]"
         >
           <Link href={'/membership'}>
-            <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
+            <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
               {t('account-membership')}
               <span>
-                <ArrowRight2 size={18} />
+                <ArrowRight2 size={16} />
               </span>
             </button>
           </Link>
           <Link href={'/supplier/signup'}>
-            <button className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] italic ">
+            <button className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] italic ">
               {t('premium-home')}
               <span>
-                <ArrowRight2 size={18} />
+                <ArrowRight2 size={16} />
               </span>
             </button>
           </Link>
           <Link href={'/packing'}>
-            <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
+            <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
               {t('packing')}{' '}
               <span>
-                <ArrowRight2 size={18} />
+                <ArrowRight2 size={16} />
               </span>
             </button>
           </Link>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
+          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('donate')}
             <span>
-              <ArrowRight2 size={18} />
+              <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
+          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('logistics')}
             <span>
-              <ArrowRight2 size={18} />
+              <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
+          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('insurance')}
             <span>
-              <ArrowRight2 size={18} />
+              <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
-            {t('earn-home')}
+          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+            {t('referral')}
             <span>
-              <ArrowRight2 size={18} />
+              <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
+          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('translate')}
 
             <span>
-              <ArrowRight2 size={18} />
+              <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[12px]  xl:text-[18px] font-[100]">
+          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('contract')}
             <span>
-              <ArrowRight2 size={18} />
+              <ArrowRight2 size={16} />
             </span>
           </button>
           <div className=" w-fit relative z-30 mx-2">

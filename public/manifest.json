@@ -9,13 +9,13 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "assets/images/logo.jpg",
+      "src": "logo-black.png",
       "sizes": "192x192",
       "type": "image/jpg",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/images/logo.jpg",
+      "src": "logo-black.png",
       "sizes": "512x512",
       "type": "image/jpg",
       "purpose": "maskable any"

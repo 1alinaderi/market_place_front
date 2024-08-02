@@ -17,6 +17,7 @@ import {
 } from 'react-icons/io5';
 import { httpReauest } from 'src/api/api';
 import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
+import { useRouter } from 'next/router';
 
 const social = [
   {
@@ -58,10 +59,11 @@ export default function MobileMenu() {
   const [activeCate, setActiveCate] = useState(false)
   async function getcategory() {
     const response = await httpReauest('GET', '/categorys', {}, {});
-    const category = response.data.data;
-    console.log(response);
+    const category = response.data.data.categorys;
     setMenuData(category);
   }
+
+  const router = useRouter()
 
   useEffect(() => {
     getcategory();
@@ -202,11 +204,11 @@ export default function MobileMenu() {
                     <li className="transition-colors duration-200 mx-4">
                       <div className="relative flex items-center justify-between">
                         <Link
-                          href={'/'}
+                          href={ `/products?category=${cate?._id}`}
                           className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
                         >
                           <span className="block w-full text-sm font-[300]" onClick={closeSidebar}>
-                           -{cate?.name}
+                           - {cate?.label ? t(cate?.label) : router.locale === 'fa'&& cate?.name || router.locale === 'en'&& cate?.name_en || router.locale === 'ar'&& cate?.name_ar}
                           </span>
                         </Link>
                       </div>
