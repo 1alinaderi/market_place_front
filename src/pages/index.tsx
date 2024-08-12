@@ -79,7 +79,7 @@ const HomePagePage = () => {
       )}
       <img className='w-full lg:h-full lg:object-cover lg:absolute top-0 bottom-0 left-0 right-0' src="/assets/images/home/header.png" alt="" />
      
-        <Countdown date={'2024-8-12 15:27'} renderer={renderer} />
+        <Countdown date={'2024-8-15'} renderer={renderer} />
     </div>
   );
 };
