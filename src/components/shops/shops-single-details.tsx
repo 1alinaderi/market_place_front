@@ -88,7 +88,7 @@ const ShopsSingleDetails: React.FC = () => {
           </div>
 
           <div className="w-full lg:ltr:pl-7 lg:rtl:pr-7">
-            <AllProductFeed name={data?.name} />
+            <AllProductFeed name={data?._id} />
           </div>
         </Element>
       </Container>

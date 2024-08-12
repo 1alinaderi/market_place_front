@@ -19,8 +19,8 @@ import { MdDelete } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { httpReauest } from 'src/api/api';
 
-const CreateProductForm = ({ baseData }) => {
-  const categoriesData = useMainCategoriesQuery({ limit: 15 });
+const CreateProductFreeForm = ({ baseData }) => {
+  const categoriesData = useCategoriesQuery({ limit: 15 });
   const suppliers = useAllSupplierQuery();
 
   const [image, setimage] = useState(null);
@@ -136,7 +136,7 @@ const CreateProductForm = ({ baseData }) => {
         }
       }
 
-      await httpReauest('POST', '/prouduct/create', formData, {
+      await httpReauest('POST', '/prouduct/free/create', formData, {
         'x-access-token': baseData?.cookies?.seller?.token,
       })
         .then((e) => {
@@ -356,4 +356,4 @@ const CreateProductForm = ({ baseData }) => {
   );
 };
 
-export default CreateProductForm;
+export default CreateProductFreeForm;

@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
   ADDVISIT: '/prouduct/addVisit',
   FORGET_PASSWORD: '/forget-password',
   CATEGORIES: '/categorys/free',
+  CATEGORIESMAIN: '/categorys',
   DIETARY: '/dietary.json',
   BRANDS: '/brands.json',
   PRODUCTS: '/prouduct',

@@ -201,7 +201,7 @@ export default function Home() {
               small={false}
             />
           </div>
-          <span className="col-span-full lg:hidden flex justify-between items-center text-white">
+          <span className="col-span-full lg:hidden flex justify-between items-center text-white text-[12px]">
             <RevealX>
               <div className="flex flex-col items-center justify-center">
                 <span className="rounded-full p-2 overflow-hidden bg-white">
