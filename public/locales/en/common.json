@@ -366,7 +366,7 @@
    "contract":"Contract",
    "sustainable":"Sustainable",
    "arch-and-art":"arch and art",
-   "friendly-brands":"friendly brands",
+   "friendly-brands":"friendly brands ECO",
    "l-retail":"Luxury Retail",
    "c-brands":"Commercial brand",
    "organic-food":"Organic food",
@@ -375,6 +375,7 @@
    "urameta":"Urameta",
    "about":"About Us",
    "discount-filter":"Discount filter",
-   "discount-more":"less than",
-   "filters":"Filters"
+   "filters":"Filters",
+   "earn-home":"referral",
+   "discount-more":"less than"
 }

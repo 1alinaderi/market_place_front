@@ -110,34 +110,33 @@ export default function Membership() {
       resume: ['', '', '', ''],
       exportProject: '',
       referral: '',
-      payment: imagePay,
     },
     validationSchema: VALUE_SIGN_VALIDATION,
     onSubmit: async (values) => {
       const newProduct = values.product.filter((e) => e !== '');
       const newResume = values.resume.filter((e) => e !== '');
-      const newValues = {
-        name: values.name,
-        activity: values.activity,
-        phone: values.phone,
-        email: values.email,
-        instagram: values.instagram,
-        website: values.website,
-        address: values.address,
-        records: values.records,
-        productionName: values.productionName,
-        capacity: values.capacity,
-        companyAddress: values.companyAddress,
-        product: newProduct,
-        about: values.about,
-        market: values.market,
-        reume: newResume,
-        exportProject: values.exportProject,
-        referral: values.referral,
-        payment: values.payment,
-      };
+
+      const formData = new FormData();
+      formData.append('payment', imagePay, imagePay?.name);
+      formData.append('name', values.name);
+      formData.append('activity', values.activity);
+      formData.append('phone', values.phone);
+      formData.append('email', values.email);
+      formData.append('instagram', values.instagram);
+      formData.append('website', values.website);
+      formData.append('address', values.address);
+      formData.append('records', values.records);
+      formData.append('productionName', values.productionName);
+      formData.append('capacity', values.capacity);
+      formData.append('companyAddress', values.companyAddress);
+      formData.append('product', newProduct);
+      formData.append('about', values.about);
+      formData.append('market', values.market);
+      formData.append('reume', newResume);
+      formData.append('exportProject', values.exportProject);
+      formData.append('referral', values.referral);
       console.log(formik.errors);
-      await httpReauest('POST', '/membership/create', newValues, {})
+      await httpReauest('POST', '/membership/create', formData, {})
         .then((data) => {
           console.log(data);
           setMassege('send');
@@ -622,14 +621,14 @@ export default function Membership() {
             {' '}
             {t('type-pay')}
           </h2>{' '}
-          <div className='mt-[25px]'> 
-            <p className='text-black font-bold'>{t('crypto-pay')}:</p>
+          <div className="mt-[25px]">
+            <p className="text-black font-bold">{t('crypto-pay')}:</p>
             <div className="flex justify-center items-center mt-2 h-[20vh] lg:h-[55%] border rounded ">
               <button
                 className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
                 onClick={getAuth}
               >
-                {t('crypto-pay')} 
+                {t('crypto-pay')}
               </button>
             </div>
           </div>
@@ -656,6 +655,7 @@ export default function Membership() {
                   setimagePay(e.target.files[0]);
                 }}
                 id="payment"
+                name="payment"
                 className="hidden"
                 type={'file'}
                 accept="image/png, image/jpg, image/jpeg"

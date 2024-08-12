@@ -27,13 +27,22 @@ function CategoryFilterMenuItem({
   id,
   setId,
   mainMarket,
+  
 }: any) {
   const { t } = useTranslation('common');
+  const [idrouter,setIdrouter] = useState('')
+  
   const router = useRouter();
+  useEffect(()=>{
+    if (router.query.category) {
+      setIdrouter(router.query.category)
+    }
+  },[router.query.category])
   const { pathname, query } = router;
   // const [selected, setSelected] = useState([]);
 
   const [subActive, setSubactive] = useState('');
+  
   const selectedCategories = useMemo(
     () => (query?.category ? (query.category as string).split(',') : []),
     [query?.category]
@@ -48,6 +57,7 @@ function CategoryFilterMenuItem({
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
+  
   const { slug, name, children: items, icon, _id, name_en, name_ar } = item;
   const { displaySidebar, closeSidebar } = useUI();
 
@@ -106,10 +116,7 @@ function CategoryFilterMenuItem({
     if (mainMarket) {
       if (subActive === e.name) {
         setSubactive('');
-        const response = await httpReauest(
-          'GET',
-          `/prouduct?category=${_id}`
-        );
+        const response = await httpReauest('GET', `/prouduct?category=${_id}`);
         setProductData(response.data.data);
       } else {
         const response = await httpReauest(
@@ -254,6 +261,7 @@ function CategoryFilterMenu({
   id,
   setId,
   mainMarket,
+  routerActive
 }: any) {
   return (
     <ul className={cn(className)}>
@@ -269,6 +277,7 @@ function CategoryFilterMenu({
           id={id}
           setId={setId}
           mainMarket={mainMarket}
+          routerActive={routerActive}
         />
       ))}
     </ul>

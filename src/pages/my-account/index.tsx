@@ -22,10 +22,10 @@ export default function AccountDetailsPage({ baseData }) {
       setData(data.data);
       console.log(data)
     }
-    if(!baseData.cookies.user?.id || !baseData.cookies.seller?.id){
+    if(baseData.cookies.seller?.id){
        getuserData(baseData.cookies.seller?.id)
     }else{
-      router.push(`${window.location.origin}/sign`);
+      router.push(`${window.location.origin}/supplier/signin`);
     }
     if (baseData.cookies.user?.id) {
       setIsSeller(false);
@@ -34,13 +34,14 @@ export default function AccountDetailsPage({ baseData }) {
     if (baseData.cookies.seller?.id) {
       setIsSeller(true);
       if (!data.type) {
-        setAgree(true);
-      } else {
         setAgree(false);
+      } else {
+        setAgree(true);
       }
     }
     console.log(agree)
   }, [router.pathname]);
+  console.log(data.type)
   console.log(agree)
   // useEffect(() => {
   //   if (router.locale == 'fa') {

@@ -14,50 +14,78 @@ import { IoCloseOutline } from 'react-icons/io5';
 
 export const CategoryFilter = ({
   setProductData,
-  setLoading,
+  
   mainMarket,
   setFilter
 }) => {
   const { t } = useTranslation('common');
-  const {
-    data,
-    isLoading: loading,
-    error,
-  } = useCategoriesQuery({
-    limit: 10,
-  });
+  const [data,setData] = useState([])
   const [mainCategory, setMainCategory] = useState([]);
+  const [loading ,setLoading] = useState(true)
   const [selected, setSelected] = useState([]);
   const [id, setId] = useState('');
+  
   const router = useRouter();
   async function getMainCategory() {
+    setLoading(true)
     const response = await httpReauest('GET', '/categorys', {}, {});
     setMainCategory(response.data.data);
     if (router.query.category) {
       const id = router.query.category;
       getQueryData(id,response.data.data)
+     
     }
+    setLoading(false)
     
+  }
+  async function getFreeCategory() {
+    setLoading(true)
+    const response = await httpReauest('GET', '/categorys/free', {}, {});
+    setData(response.data.data);
+    if (router.query.category) {
+      const id = router.query.category;
+      getQueryData(id,response.data.data)
+      
+    }
+    setLoading(false)
   }
 
   async function getQueryData(id,data) {
-    const response = await httpReauest(
-      'GET',
-      `/prouduct?category=${id}`,
-      {},
-      {}
-    );
-    setProductData(response.data.data);
-    setId(id);
-    const subItems = data?.subCategorys;
-    console.log(subItems)
-    const sub = subItems.filter((i) => i.category === id);
-    setSelected(sub);
+    if (router.pathname === "/free-market") {
+      const response = await httpReauest(
+        'GET',
+        `/prouduct/free?category=${id}`,
+        {},
+        {}
+      );
+      setProductData(response.data.data);
+      setId(id);
+      
+      const subItems = data?.subCategorys;
+      console.log(subItems)
+      const sub = subItems.filter((i) => i.category === id);
+      setSelected(sub);
+    }else{
+      const response = await httpReauest(
+        'GET',
+        `/prouduct?category=${id}`,
+        {},
+        {}
+      );
+      setProductData(response.data.data);
+      setId(id);
+      
+      const subItems = data?.subCategorys;
+      console.log(subItems)
+      const sub = subItems.filter((i) => i.category === id);
+      setSelected(sub);
+    }
   }
   useEffect(() => {
     getMainCategory();
-  }, []);
-  console.log(mainCategory);
+    getFreeCategory();
+  }, [router.query.category]);
+ 
 
   const { displaySidebar, closeSidebar } = useUI();
 
@@ -92,7 +120,7 @@ export const CategoryFilter = ({
       </div>
     );
   }
-  if (error) return <Alert message={error?.message} />;
+  
 
   return (
     <div className="block bg-white">
@@ -117,6 +145,7 @@ export const CategoryFilter = ({
                 id={id}
                 setId={setId}
                 mainMarket={mainMarket}
+               
               />
             ) : (
               <CategoryFilterMenu
@@ -128,6 +157,7 @@ export const CategoryFilter = ({
                 setLoading={setLoading}
                 id={id}
                 setId={setId}
+                
               />
             )
           ) : (

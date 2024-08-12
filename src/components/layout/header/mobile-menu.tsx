@@ -58,16 +58,24 @@ export default function MobileMenu() {
   const [menuData, setMenuData] = useState([]);
   const [activeCate, setActiveCate] = useState(false)
   async function getcategory() {
-    const response = await httpReauest('GET', '/categorys', {}, {});
-    const category = response.data.data.categorys;
-    setMenuData(category);
+    if(router.pathname === '/free-market'){
+      const response = await httpReauest('GET', '/categorys/free', {}, {});
+      const category = response.data.data.categorys;
+      setMenuData(category);
+    }else{
+      const response = await httpReauest('GET', '/categorys', {}, {});
+      const category = response.data.data.categorys;
+      setMenuData(category);
+    }
+    
+    
   }
 
   const router = useRouter()
 
   useEffect(() => {
     getcategory();
-  }, []);
+  }, [router.pathname]);
   const handleArrowClick = (menuName: string) => {
     let newActiveMenus = [...activeMenus];
     if (newActiveMenus.includes(menuName)) {
@@ -204,7 +212,7 @@ export default function MobileMenu() {
                     <li className="transition-colors duration-200 mx-4">
                       <div className="relative flex items-center justify-between">
                         <Link
-                          href={ `/products?category=${cate?._id}`}
+                          href={ `/${router.pathname=== '/free-market' ? 'free-market': 'products'}?category=${cate?._id}`}
                           className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
                         >
                           <span className="block w-full text-sm font-[300]" onClick={closeSidebar}>
