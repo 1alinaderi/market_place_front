@@ -24,6 +24,7 @@ export const CategoryFilter = ({
   const [loading ,setLoading] = useState(true)
   const [selected, setSelected] = useState([]);
   const [id, setId] = useState('');
+  
   const router = useRouter();
   async function getMainCategory() {
     setLoading(true)
@@ -32,6 +33,7 @@ export const CategoryFilter = ({
     if (router.query.category) {
       const id = router.query.category;
       getQueryData(id,response.data.data)
+     
     }
     setLoading(false)
     
@@ -43,6 +45,7 @@ export const CategoryFilter = ({
     if (router.query.category) {
       const id = router.query.category;
       getQueryData(id,response.data.data)
+      
     }
     setLoading(false)
   }
@@ -57,6 +60,7 @@ export const CategoryFilter = ({
       );
       setProductData(response.data.data);
       setId(id);
+      
       const subItems = data?.subCategorys;
       console.log(subItems)
       const sub = subItems.filter((i) => i.category === id);
@@ -70,6 +74,7 @@ export const CategoryFilter = ({
       );
       setProductData(response.data.data);
       setId(id);
+      
       const subItems = data?.subCategorys;
       console.log(subItems)
       const sub = subItems.filter((i) => i.category === id);
@@ -80,7 +85,7 @@ export const CategoryFilter = ({
     getMainCategory();
     getFreeCategory();
   }, [router.query.category]);
-  console.log(mainCategory);
+ 
 
   const { displaySidebar, closeSidebar } = useUI();
 
@@ -140,6 +145,7 @@ export const CategoryFilter = ({
                 id={id}
                 setId={setId}
                 mainMarket={mainMarket}
+               
               />
             ) : (
               <CategoryFilterMenu
@@ -151,6 +157,7 @@ export const CategoryFilter = ({
                 setLoading={setLoading}
                 id={id}
                 setId={setId}
+                
               />
             )
           ) : (
