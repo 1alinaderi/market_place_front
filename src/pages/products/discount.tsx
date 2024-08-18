@@ -34,9 +34,9 @@ export default function ProductsDiscount() {
   return (
     <>
       <Seo
-        title="Products"
+        title="Discounted retail"
         description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
-        path="products"
+        path="Discounted retail"
       />
       <PageHeroSection heroTitle={"DISCOUNTED RETAIL"} />
       <Container>

@@ -15,13 +15,13 @@ const Seo = ({ title, description, path }: SeoProps) => {
         description,
         images: [
           {
-            url: '/msg1102901531-64614.jpg',
+            url: '/logo.png',
             width: 800,
             height: 600,
             alt: 'Og Image Alt',
           },
           {
-            url: '/msg1102901531-64614.jpg',
+            url: '/logo.png',
             width: 900,
             height: 800,
             alt: 'Og Image Alt Second',

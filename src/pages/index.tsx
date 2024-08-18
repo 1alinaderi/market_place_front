@@ -29,6 +29,7 @@ import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
+import Seo from '@components/seo/seo';
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
@@ -45,6 +46,11 @@ export default function Home() {
 
   return (
     <div className="relative">
+      <Seo
+        title="Home"
+        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
+        path="Home"
+      />
       <div className="bg-[#11223a] overflow-hidden">
         <div
           style={{

@@ -8,7 +8,7 @@ export const DefaultSeo = () => {
       titleTemplate={`${siteSettings.name} | %s`}
       defaultTitle={siteSettings.name}
       description={siteSettings.description}
-      canonical="https://pixer.vercel.app/"
+      canonical="https://wimehr.com"
       openGraph={{
         type: 'website',
         locale: 'en_IE',
@@ -36,7 +36,7 @@ export const DefaultSeo = () => {
       additionalLinkTags={[
         {
           rel: 'apple-touch-icon',
-          href: 'icons/apple-icon-180.png',
+          href: '/logo.png',
         },
         {
           rel: 'manifest',
