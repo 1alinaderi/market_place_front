@@ -14,7 +14,6 @@ import BannerGridTwo from '@components/common/banner-grid-two';
 import {
   bannerGridTwo as banners,
   dataBanner2,
-  dataBanner3,
 } from '@framework/static/banner';
 import { GetStaticProps } from 'next';
 import { QueryClient } from 'react-query';
@@ -41,12 +40,12 @@ export default function Home() {
           className="my-3 md:my-4 lg:mt-0 lg:mb-5 xl:my-6"
         />
       </Container>
+      {/* <BestSellerProductFeed /> */}
 
-      <BestSellerProductFeed />
+      <FreshVegetablesProductFeed />
       <Container>
         <FeatureGrid data={dataBanner2} />
       </Container>
-      <FreshVegetablesProductFeed />
       {/* <CollectionGrid className="mb-12 lg:mb-14 xl:mb-16" /> */}
 
       <ChipsProductFeed />

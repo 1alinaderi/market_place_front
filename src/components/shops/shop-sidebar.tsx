@@ -20,6 +20,7 @@ import {
 } from 'react-icons/io5';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import { BsShieldCheck, BsShieldFillCheck } from 'react-icons/bs';
+import { BiEnvelope } from 'react-icons/bi';
 
 interface ShopSidebarProps {
   data: any;
@@ -84,23 +85,23 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
         </div>
       </div>
       <div className="space-y-6 py-7">
-        <div className="flex items-start">
+      <div className="flex items-start">
           <div className="w-10 shrink-0">
-            <IoLocationOutline className="text-2xl text-brand-muted text-opacity-60" />
+            <BiEnvelope className="text-2xl text-brand-muted text-opacity-60" />
           </div>
-          <div className="-mt-1">
-            <h4 className="mb-1 font-medium text-brand-dark text-15px">
-              {t('text-address')}:
+          <div className="-mt-1 flex items-center gap-2">
+            <h4 className=" font-medium text-brand-dark text-15px">
+              {t('t-email')}:
             </h4>
-            <Text>{data?.address}</Text>
+            <Text>{data?.email}</Text>
           </div>
         </div>
         <div className="flex items-start">
           <div className="w-10 shrink-0">
             <IoCallOutline className="text-2xl text-brand-muted text-opacity-60" />
           </div>
-          <div className="-mt-1">
-            <h4 className="mb-1 font-medium text-brand-dark text-15px">
+          <div className="-mt-1 flex items-center gap-1">
+            <h4 className=" font-medium text-brand-dark text-15px">
               {t('text-phone-number')}:
             </h4>
             <Text>{data?.phone}</Text>

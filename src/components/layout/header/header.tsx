@@ -95,7 +95,7 @@ const Header: React.FC = () => {
         />
         {/* End of Mobile search */}
         <Container className="flex items-center  justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
-          <Link href={'/home'}>
+          <Link href={'/'}>
             <div className="flex items-baseline cursor-pointer">
               <img src='/logo.png' className='p-2 lg:p-0 max-w-[7rem] lg:w-[7rem] object-contain'/>
              
@@ -159,7 +159,7 @@ const Header: React.FC = () => {
           <Container className="flex items-center justify-between ">
             {/* <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" /> */}
             <div className="w-[0] cursor-pointer lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo">
-              <Link href={'/home'}>
+              <Link href={'/'}>
                 <div className="flex items-baseline cursor-pointer">
                   <h1 className="text-yellow-600  lg:text-[30px] text-[20px] font-bold">
                     W

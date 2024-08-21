@@ -43,7 +43,6 @@ export const ProductGrid: FC<ProductGridProps> = ({
   //   : useProductsQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query });
 
   // const productData = data?.pages[0]?.data;
-  console.log(productData)
   return (
     <>
       <div className="shrink-0 text-brand-dark font-medium text-15px leading-4 md:ltr:mr-6 md:rtl:ml-6 hidden lg:block mt-0.5 pb-7">

@@ -102,7 +102,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                 <>
                   <DefaultSeo />
                 
-                  {(router.pathname === '/home' || router.pathname === '/') ? (
+                  {(router.pathname === '/' || router.pathname === '/') ? (
                     <>
                       {isPlaying ? (
                         <MdMusicOff

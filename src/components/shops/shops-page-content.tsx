@@ -11,7 +11,6 @@ const ShopsPageContent: React.FC = ({ admin }) => {
     limit: 9,
   });
 
-  console.log(data);
 
   if (error) return <Alert message={error?.message} />;
 

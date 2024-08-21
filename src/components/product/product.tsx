@@ -28,6 +28,8 @@ import { API_ENDPOINTS, CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import StarRatingComponent from 'react-star-rating-component';
 import StarIcon from '@components/icons/star-icon';
 import { BsStarHalf } from 'react-icons/bs';
+import Modal from '@components/common/modal/modal';
+import ShopSidebar from '@components/shops/shop-sidebar';
 
 const ProductSingleDetails: React.FC = ({ baseData }) => {
   const { t } = useTranslation('common');
@@ -54,7 +56,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   // const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
   const [favorite, setFavorite] = useState<boolean>(false);
-  const [quantity, setQuantity] = useState(1);
+  const [show, setshow] = useState(false);
   const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
   const [addToWishlistLoader, setAddToWishlistLoader] =
     useState<boolean>(false);
@@ -120,10 +122,17 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
     return `${CDN_BASE_URL}${data?.image}`;
   };
 
-  console.log(data)
+  function showSupplierDetails() {
+    setshow(true)
+  }
 
   return (
     <div className="pt-6 pb-2 md:pt-7">
+      <Modal open={show} onClose={()=>setshow(false)}>
+        <div className='w-full bg-white p-2 max-w-[400px]'>
+          <ShopSidebar data={data?.owner}/>
+        </div>
+      </Modal>
       <div className="grid-cols-10 lg:grid gap-7 2xl:gap-8">
         <div className="col-span-5 mb-6 overflow-hidden xl:col-span-6 md:mb-8 lg:mb-0">
           {data?.images?.length ? (
@@ -243,7 +252,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
               disabled={selectedQuantity >= data?.balance}
             /> */}
             <Button
-              onClick={addToCart}
+              onClick={showSupplierDetails}
               className="w-full px-1.5"
               disabled={!isSelected}
               loading={addToCartLoader}
