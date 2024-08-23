@@ -50,7 +50,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             alt={data?.name}
             width={158}
             height={158}
-            className="rounded-xl object-cover"
+            className="rounded-xl object-contain"
           />
         </div>
         <Heading variant="titleLarge" className="mt-6 mb-1.5">

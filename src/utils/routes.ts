@@ -1,5 +1,5 @@
 export const ROUTES = {
-  HOME: '/marketplace',
+  HOME: '/sustainable-arch',
   PRODUCT: `/products`,
   CHECKOUT: '/checkout',
   CONTACT: '/contact-us',

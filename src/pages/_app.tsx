@@ -15,7 +15,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 // external
-
+import NextNProgress from 'nextjs-progressbar';
 // base css file
 import '@assets/css/scrollbar.css';
 import '@assets/css/swiper-carousel.css';
@@ -87,12 +87,8 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
-      <PayPalScriptProvider
-        options={{
-          clientId:
-            'AaHw48SxjwQ5fd_vnuRY4AsibkBn0qWx-7Usnp4yglQ3UGN7ISqP698t0-llTGnyidB0eqeAJVaIJDYa',
-        }}
-      >
+      <NextNProgress color="red"/>
+
         <audio ref={audio} src="/2.mp3" width="180" height="90" hidden />
         <Hydrate state={pageProps.dehydratedState}>
           {' '}
@@ -171,7 +167,6 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             </ManagedUIContext>
           </GoogleOAuthProvider>{' '}
         </Hydrate>
-      </PayPalScriptProvider>
 
       {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>

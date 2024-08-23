@@ -25,6 +25,7 @@ export type QueryOptionsType = {
   category?: string;
   status?: string;
   limit?: number;
+  freeMarket?:boolean
 };
 
 export type QueryParamsType = {
@@ -95,10 +96,14 @@ export type Tag = {
 export type Product = {
   id: number | string;
   name: string;
+  name_en: string;
+  name_ar: string;
   slug: string;
   price: number;
+  specialPrice: number;
   quantity: number;
   sold: number;
+  rate: number;
   unit: string;
   sale_price?: number;
   min_price?: number;
@@ -110,9 +115,16 @@ export type Product = {
   tag?: Tag[];
   meta?: any[];
   brand?: Brand;
-  description?: string;
+  desc?: string;
+  desc_en?: string;
+  desc_ar?: string;
+  freeMarket?: boolean;
   variations?: object;
   [key: string]: unknown;
+  owner : {
+    name: string;
+    email: string;
+  }
 };
 export type OrderItem = {
   id: number | string;

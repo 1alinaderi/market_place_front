@@ -30,6 +30,8 @@ import StarIcon from '@components/icons/star-icon';
 import { BsStarHalf } from 'react-icons/bs';
 import Modal from '@components/common/modal/modal';
 import ShopSidebar from '@components/shops/shop-sidebar';
+import RelatedProductFeed from './feeds/related-product-feed';
+import Seo from '@components/seo/seo';
 
 const ProductSingleDetails: React.FC = ({ baseData }) => {
   const { t } = useTranslation('common');
@@ -94,9 +96,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   }
   const item = generateCartItem(data!, selectedVariation);
   const outOfStock = isInCart(item.id) && !isInStock(item.id);
-  function addToCart() {
-    router.push(`/checkout/${slug}?amount=${selectedQuantity}`);
-  }
+ 
   function addToWishlist() {
     // to show btn feedback while product wishlist
     setAddToWishlistLoader(true);
@@ -127,6 +127,12 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   }
 
   return (
+    <>
+     <Seo
+      title={data?.name_en}
+      description={data?.desc_en}    
+      path={`products/${data?._id}`}
+      />
     <div className="pt-6 pb-2 md:pt-7">
       <Modal open={show} onClose={()=>setshow(false)}>
         <div className='w-full bg-white p-2 max-w-[400px]'>
@@ -274,9 +280,11 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
             </ul>
           )}
         </div>
-      </div>
-      <ProductDetailsTab baseData={baseData} data={data} />
-    </div>
+        </div>
+       <ProductDetailsTab baseData={baseData} data={data} />
+       </div>
+      <RelatedProductFeed freeMarket={data?.freeMarket} category={data?.category?._id} uniqueKey="related-products" />
+    </>
   );
 };
 

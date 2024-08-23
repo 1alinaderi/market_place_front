@@ -164,7 +164,7 @@ export default function Home() {
           />
 
           <RevealX head>
-            <Link href={'/marketplace'}>
+            <Link href={'/sustainable-arch'}>
               <div
                 style={{ boxShadow: '0px 0px 18px 0px #ffffff70' }}
                 className="motionBorder relative cursor-pointer h-full w-full row-span-1  rounded-[14px] overflow-hidden "

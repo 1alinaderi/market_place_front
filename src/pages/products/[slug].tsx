@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetServerSideProps } from 'next';
 import Divider from '@components/ui/divider';
 import FreshVegetablesProductFeed from '@components/product/feeds/fresh-vegetables-product-feed';
+import Simillarproducts from '@components/product/feeds/simillarproducts';
 
 export default function ProductPage({ baseData }) {
 
@@ -19,11 +20,11 @@ export default function ProductPage({ baseData }) {
         <Container>
           <Breadcrumb />
           <ProductSingleDetails baseData={baseData} />
+          
         </Container>
       </div>
 
-      {/* <RelatedProductFeed uniqueKey="related-products" /> */}
-      <FreshVegetablesProductFeed />
+      {/* <Simillarproducts category='' /> */}
       {/* <DownloadApps /> */}
       <div>
         <img src="/image/banner/product4.jpg" alt="" />

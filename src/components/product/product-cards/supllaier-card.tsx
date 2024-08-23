@@ -103,7 +103,7 @@ const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
                 width={150}
                 height={150}
                 quality={100}
-                className="object-fill "
+                className="object-contain "
               />
               {membership === 'Premium' && (
                 <BsShieldFillCheck

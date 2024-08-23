@@ -5,8 +5,14 @@ import { useQuery } from 'react-query';
 
 export const fetchRelatedProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const { data } = await http.get(API_ENDPOINTS.RELATED_PRODUCTS);
-  return data;
+  if (queryKey[1].freeMarket) {
+    
+    const { data } = await http.get(`${API_ENDPOINTS.RELATED_PRODUCTS_FREE}?category=${queryKey[1].category}`);
+    return data.data;
+  }else {
+    const { data } = await http.get(`${API_ENDPOINTS.RELATED_PRODUCTS}?category=${queryKey[1].category}`);
+    return data.data;
+  }
 };
 export const useRelatedProductsQuery = (options: QueryOptionsType) => {
   return useQuery<Product[], Error>(
