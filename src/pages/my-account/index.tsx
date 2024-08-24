@@ -20,7 +20,11 @@ export default function AccountDetailsPage({ baseData }) {
     async function getuserData(id: any) {
       const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
       setData(data.data);
-      console.log(data)
+      if(data?.data?.type){
+        setAgree(true)
+      }else{
+        setAgree(false)
+      }
     }
     if(baseData.cookies.seller?.id){
        getuserData(baseData.cookies.seller?.id)
@@ -33,11 +37,7 @@ export default function AccountDetailsPage({ baseData }) {
     }
     if (baseData.cookies.seller?.id) {
       setIsSeller(true);
-      if (!data.type) {
-        setAgree(false);
-      } else {
-        setAgree(true);
-      }
+     
     }
     console.log(agree)
   }, [router.pathname]);

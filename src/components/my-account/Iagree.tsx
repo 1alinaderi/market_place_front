@@ -20,6 +20,7 @@ const Iagree = ({ baseData, setAgree, mx }) => {
   }
   useEffect(() => {
     getuserData(baseData.cookies.seller?.id);
+   
     
   }, []);
   console.log(baseData.cookies)
