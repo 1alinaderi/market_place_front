@@ -27,22 +27,21 @@ function CategoryFilterMenuItem({
   id,
   setId,
   mainMarket,
-  
+  setSubactive,
+  subActive
 }: any) {
   const { t } = useTranslation('common');
-  const [idrouter,setIdrouter] = useState('')
-  
+  const [idrouter, setIdrouter] = useState('');
+
   const router = useRouter();
-  useEffect(()=>{
+  useEffect(() => {
     if (router.query.category) {
-      setIdrouter(router.query.category)
+      setIdrouter(router.query.category);
     }
-  },[router.query.category])
+  }, [router.query.category]);
   const { pathname, query } = router;
   // const [selected, setSelected] = useState([]);
 
-  const [subActive, setSubactive] = useState('');
-  
   const selectedCategories = useMemo(
     () => (query?.category ? (query.category as string).split(',') : []),
     [query?.category]
@@ -57,7 +56,7 @@ function CategoryFilterMenuItem({
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
-  
+
   const { slug, name, children: items, icon, _id, name_en, name_ar } = item;
   const { displaySidebar, closeSidebar } = useUI();
 
@@ -70,7 +69,7 @@ function CategoryFilterMenuItem({
   };
 
   async function onClick() {
-    setLoading(true);
+    // setLoading(true);
     if (mainMarket) {
       if (id === _id) {
         setSelected([]);
@@ -109,10 +108,10 @@ function CategoryFilterMenuItem({
     if (Array.isArray(items) && !!items.length) {
       toggleCollapse();
     }
-    setLoading(false);
+    // setLoading(false);
   }
   async function handleSubcategory(e) {
-    setLoading(true);
+    // setLoading(true);
     if (mainMarket) {
       if (subActive === e.name) {
         setSubactive('');
@@ -129,7 +128,7 @@ function CategoryFilterMenuItem({
       }
     } else {
       if (subActive === e.name) {
-        setSubactive('');
+        setSubactive('a');
         const response = await httpReauest(
           'GET',
           `/prouduct/free?category=${_id}`
@@ -141,20 +140,11 @@ function CategoryFilterMenuItem({
           `/prouduct/free?category=${_id}&subCategory=${e._id}`
         );
         setSubactive(e.name);
-        console.log(response);
+        console.log(subActive);
         setProductData(response.data.data);
       }
     }
-    setLoading(false);
-  }
-
-  let expandIcon;
-  if (Array.isArray(items) && items.length) {
-    expandIcon = !isOpen ? (
-      <IoIosArrowDown className="text-base text-brand-dark text-opacity-40" />
-    ) : (
-      <IoIosArrowUp className="text-base text-brand-dark text-opacity-40" />
-    );
+    // setLoading(false);
   }
 
   return (
@@ -241,7 +231,7 @@ function CategoryFilterMenuItem({
             <span
               className={`${
                 subActive === e.name ? 'bg-slate-300 ' : 'bg-none'
-              } h-4 w-4 border-2 active:bg-slate-300 rounded-full border-slate-300`}
+              } h-4 w-4 border-2  rounded-full border-slate-300`}
             ></span>
           </div>
         ))}
@@ -261,7 +251,10 @@ function CategoryFilterMenu({
   id,
   setId,
   mainMarket,
-  routerActive
+  routerActive,
+  subActive,
+  setSubactive
+
 }: any) {
   return (
     <ul className={cn(className)}>
@@ -278,6 +271,8 @@ function CategoryFilterMenu({
           setId={setId}
           mainMarket={mainMarket}
           routerActive={routerActive}
+          subActive={subActive}
+          setSubactive={setSubactive}
         />
       ))}
     </ul>

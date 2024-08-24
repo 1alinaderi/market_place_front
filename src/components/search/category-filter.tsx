@@ -24,6 +24,7 @@ export const CategoryFilter = ({
   const [loading ,setLoading] = useState(true)
   const [selected, setSelected] = useState([]);
   const [id, setId] = useState('');
+  const [subActive, setSubactive] = useState('');
   
   const router = useRouter();
   async function getMainCategory() {
@@ -145,7 +146,8 @@ export const CategoryFilter = ({
                 id={id}
                 setId={setId}
                 mainMarket={mainMarket}
-               
+                subActive={subActive}
+                setSubactive={setSubactive}
               />
             ) : (
               <CategoryFilterMenu
@@ -157,7 +159,8 @@ export const CategoryFilter = ({
                 setLoading={setLoading}
                 id={id}
                 setId={setId}
-                
+                subActive={subActive}
+                setSubactive={setSubactive}
               />
             )
           ) : (
