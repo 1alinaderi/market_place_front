@@ -29,12 +29,15 @@ export default function AccountDetailsPage({ baseData }) {
     if(baseData.cookies.seller?.id){
        getuserData(baseData.cookies.seller?.id)
     }else{
-      router.push(`${window.location.origin}/supplier/signin`);
+      if (baseData.cookies.user?.id) {
+        setIsSeller(false);
+        setAgree(true);
+      }else{
+        router.push(`${window.location.origin}/signin`);
+      }
+      
     }
-    if (baseData.cookies.user?.id) {
-      setIsSeller(false);
-      setAgree(true);
-    }
+    
     if (baseData.cookies.seller?.id) {
       setIsSeller(true);
      
