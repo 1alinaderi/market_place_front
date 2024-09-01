@@ -28,7 +28,8 @@ function CategoryFilterMenuItem({
   setId,
   mainMarket,
   setSubactive,
-  subActive
+  subActive,
+  news
 }: any) {
   const { t } = useTranslation('common');
   const [idrouter, setIdrouter] = useState('');
@@ -70,6 +71,7 @@ function CategoryFilterMenuItem({
 
   async function onClick() {
     // setLoading(true);
+    
     if (mainMarket) {
       if (id === _id) {
         setSelected([]);
@@ -81,8 +83,21 @@ function CategoryFilterMenuItem({
         setId(_id);
         const sub = subItems.filter((i) => i.category === _id);
         setSelected(sub);
-        console.log(sub);
-        const response = await httpReauest('GET', `/prouduct?category=${_id}`);
+        const response = await httpReauest('GET', `/prouduct?category=${_id}`,{},{});
+        setProductData(response.data.data);
+      }
+    } else if (news) {
+      if (id === _id) {
+        setSelected([]);
+        const response = await httpReauest('GET', '/news', {}, {});
+        setProductData(response.data.data);
+        setId('');
+      } else {
+        setSelected([]);
+        setId(_id);
+        const sub = subItems.filter((i) => i.category === _id);
+        setSelected(sub);
+        const response = await httpReauest('GET', `/news?category=${_id}`,{},{});
         setProductData(response.data.data);
       }
     } else {
@@ -96,7 +111,6 @@ function CategoryFilterMenuItem({
         setId(_id);
         const sub = subItems.filter((i) => i.category === _id);
         setSelected(sub);
-        console.log(sub);
         const response = await httpReauest(
           'GET',
           `/prouduct/free?category=${_id}`
@@ -115,15 +129,27 @@ function CategoryFilterMenuItem({
     if (mainMarket) {
       if (subActive === e.name) {
         setSubactive('');
-        const response = await httpReauest('GET', `/prouduct?category=${_id}`);
+        const response = await httpReauest('GET', `/prouduct?category=${_id}`,{},{});
         setProductData(response.data.data);
       } else {
         const response = await httpReauest(
           'GET',
-          `/prouduct?category=${_id}&subCategory=${e._id}`
+          `/prouduct?category=${_id}&subCategory=${e._id}`,{},{}
         );
         setSubactive(e.name);
-        console.log(response);
+        setProductData(response.data.data);
+      }
+    }else if(news){
+      if (subActive === e.name) {
+        setSubactive('');
+        const response = await httpReauest('GET', `/news?category=${_id}`,{},{});
+        setProductData(response.data.data);
+      } else {
+        const response = await httpReauest(
+          'GET',
+          `/news?category=${_id}&subCategory=${e._id}`,{},{}
+        );
+        setSubactive(e.name);
         setProductData(response.data.data);
       }
     } else {
@@ -140,7 +166,6 @@ function CategoryFilterMenuItem({
           `/prouduct/free?category=${_id}&subCategory=${e._id}`
         );
         setSubactive(e.name);
-        console.log(subActive);
         setProductData(response.data.data);
       }
     }
@@ -253,7 +278,8 @@ function CategoryFilterMenu({
   mainMarket,
   routerActive,
   subActive,
-  setSubactive
+  setSubactive,
+  news
 
 }: any) {
   return (
@@ -273,6 +299,7 @@ function CategoryFilterMenu({
           routerActive={routerActive}
           subActive={subActive}
           setSubactive={setSubactive}
+          news={news}
         />
       ))}
     </ul>

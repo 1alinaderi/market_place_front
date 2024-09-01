@@ -12,15 +12,16 @@ import {
 } from '@framework/product/get-all-products';
 import { LIMITS } from '@framework/utils/limits';
 import { Product } from '@framework/types';
+import BlogCard from '@components/cards/blog-card';
 
-interface ProductGridProps {
+interface NewsGridProps {
   className?: string;
   discount?: boolean;
   productData?:any;
   loading?:boolean
 }
 
-export const ProductGrid: FC<ProductGridProps> = ({
+export const NewsGrid: FC<NewsGridProps> = ({
   className = '',
   discount,
   productData,
@@ -50,16 +51,16 @@ export const ProductGrid: FC<ProductGridProps> = ({
       </div>
       <div
         className={cn(
-          'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-3 md:gap-4 2xl:gap-5',
+          'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-4 gap-3 md:gap-4 2xl:gap-5',
           className
         )}
       >
         {loading && (<ProductCardLoader/>)}
         {  productData?.length  ? (
           productData?.map((product: Product) => (
-            <ProductCard
+            <BlogCard
               key={`product--key-${product._id}`}
-              product={product}
+              data={product}
             />
           ))
         ) : null}

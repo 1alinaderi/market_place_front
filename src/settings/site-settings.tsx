@@ -84,9 +84,14 @@ export const siteSettings = {
         label: 'menu-faq',
       },
       {
-        id: 6,
+        id: 7,
         path: '/membership',
         label: 'menu-membership',
+      },
+      {
+        id: 8,
+        path: '/news',
+        label: 'common:news',
       },
     ],
     languageMenu: [

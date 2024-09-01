@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next';
 import { DietaryFilter } from '@components/search/dietary-filter';
 import Heading from '@components/ui/heading';
 
-export const ShopFilters: React.FC = ({setProductData,setLoading,mainMarket,setFilter}) => {
+export const ShopFilters: React.FC = ({setProductData,mainMarket,setFilter}:any) => {
   const router = useRouter();
   const { pathname, query } = router;
   const { t } = useTranslation('common');
@@ -47,7 +47,7 @@ export const ShopFilters: React.FC = ({setProductData,setLoading,mainMarket,setF
         </div>
       )} */}
 
-      <CategoryFilter setProductData={setProductData} setLoading={setLoading} mainMarket={mainMarket} setFilter={setFilter}/>
+      <CategoryFilter setProductData={setProductData}  mainMarket={mainMarket} setFilter={setFilter}/>
       {/* <DietaryFilter />
       <BrandFilter /> */}
     </div>

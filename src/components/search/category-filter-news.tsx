@@ -12,11 +12,10 @@ import { useUI } from '@contexts/ui.context';
 import { httpReauest } from 'src/api/api';
 import { IoCloseOutline } from 'react-icons/io5';
 
-export const CategoryFilter = ({
+export const CategoryFilterNews = ({
   setProductData,
-  mainMarket,
   setFilter
-}) => {
+}:any) => {
   const { t } = useTranslation('common');
   const [data,setData] = useState([])
   const [mainCategory, setMainCategory] = useState([]);
@@ -28,66 +27,18 @@ export const CategoryFilter = ({
   const router = useRouter();
   async function getMainCategory() {
     setLoading(true)
-    const response = await httpReauest('GET', '/categorys', {}, {});
+    const response = await httpReauest('GET', '/categorys/news', {}, {});
     setMainCategory(response.data.data);
-    if (router.query.category) {
-      const id = router.query.category;
-      getQueryData(id,response.data.data)
-     
-    }
+   
     setLoading(false)
     
   }
-  async function getFreeCategory() {
-    setLoading(true)
-    const response = await httpReauest('GET', '/categorys/free', {}, {});
-    setData(response.data.data);
-    if (router.query.category) {
-      const id = router.query.category;
-      getQueryData(id,response.data.data)
-      
-    }
-    setLoading(false)
-  }
 
-  async function getQueryData(id,data) {
-    if (router.pathname === "/free-market") {
-      const response = await httpReauest(
-        'GET',
-        `/prouduct/free?category=${id}`,
-        {},
-        {}
-      );
-      setProductData(response.data.data);
-      setId(id);
-      
-      const subItems = data?.subCategorys;
-      console.log(subItems)
-      const sub = subItems.filter((i) => i.category === id);
-      setSelected(sub);
-    }else{
-      const response = await httpReauest(
-        'GET',
-        `/prouduct?category=${id}`,
-        {},
-        {}
-      );
-      setProductData(response.data.data);
-      setId(id);
-      
-      const subItems = data?.subCategorys;
-      console.log(subItems)
-      const sub = subItems.filter((i) => i.category === id);
-      setSelected(sub);
-    }
-  }
   useEffect(() => {
     getMainCategory();
-    getFreeCategory();
   }, [router.query.category]);
  
 
-  const { displaySidebar, closeSidebar } = useUI();
 
   // function onClick(name: any) {
   //   const { subcategory, ...restQuery } = query;
@@ -113,7 +64,7 @@ export const CategoryFilter = ({
 
   if (loading) {
     return (
-      <div className="hidden xl:block">
+      <div className="hidden lg:block">
         <div className="w-72 mt-8 px-2">
           <CategoryListCardLoader uniqueKey="category-list-card-loader" />
         </div>
@@ -123,6 +74,7 @@ export const CategoryFilter = ({
   
 
   return (
+    <div className="space-y-10 bg-white">
     <div className="block bg-white">
       <div className="flex justify-between items-center ">
         <Heading className="mb-5 -mt-1">{t('text-categories')}</Heading>{' '}
@@ -133,8 +85,8 @@ export const CategoryFilter = ({
 
       <div className="max-h-full overflow-hidden rounded border border-border-base">
         <Scrollbar className="w-full ">
-          {!loading ? (
-            mainMarket ? (
+          {!loading ? 
+           ( 
               <CategoryFilterMenu
                 items={mainCategory?.categorys}
                 subItems={mainCategory?.subCategorys}
@@ -144,31 +96,19 @@ export const CategoryFilter = ({
                 setSelected={setSelected}
                 id={id}
                 setId={setId}
-                mainMarket={mainMarket}
-                subActive={subActive}
-                setSubactive={setSubactive}
-              />
-            ) : (
-              <CategoryFilterMenu
-                selected={selected}
-                setSelected={setSelected}
-                items={data.categorys}
-                subItems={data?.subCategorys}
-                setProductData={setProductData}
-                setLoading={setLoading}
-                id={id}
-                setId={setId}
+                news
                 subActive={subActive}
                 setSubactive={setSubactive}
               />
             )
-          ) : (
+           : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">
               {t('text-no-results-found')}
             </div>
           )}
         </Scrollbar>
       </div>
+    </div>
     </div>
   );
 };

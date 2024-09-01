@@ -101,12 +101,14 @@ export default function Home() {
               <ArrowRight2 size={16} />
             </span>
           </button>
+          <Link href={"/news"}>
           <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
-            {t('earn-home')}
+            {t('news')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
+          </Link>
           <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('translate')}
 
@@ -302,7 +304,7 @@ export default function Home() {
                   <span className="rounded-full p-2 overflow-hidden bg-white">
                     <FaNetworkWired color="#ff8a65" size={30} />
                   </span>
-                  <p className="text-center mt-1">{t('referral')}</p>
+                  <p className="text-center mt-1">{t('news')}</p>
                 </div>
               </RevealX>
               <RevealX>

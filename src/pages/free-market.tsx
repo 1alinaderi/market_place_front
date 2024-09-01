@@ -20,7 +20,7 @@ export default function ProductsFreeMarket() {
   const { t } = useTranslation('common');
   const [productData, setProductData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(true);
   const [filter, setFilter] = useState(false);
   async function getIp() {
     const response = await fetch('https://geolocation-db.com/json/');
@@ -79,7 +79,7 @@ export default function ProductsFreeMarket() {
       <PageHeroSection heroTitle={'Free Market'} />
       <Container className=' relative'>
         <Element name="grid" className="flex pb-16 pt-7 lg:pt-11 lg:pb-20">
-          <div className={`absolute lg:static shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 w-full xl:rtl:pl-16 h-fit pb-[100px] lg:pb-0 bg-white overflow-y-auto lg:overflow-y-hidden lg:bg-transparent lg:block duration-300 top-[-220px] pt-5 right-0 pl-6  xl:w-96 z-20 lg:z-0 ${filter ? "left-[0%] " : "left-[-100%]"}`}>
+          <div className={`absolute lg:static shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 w-full xl:rtl:pl-16 h-fit pb-[100px] lg:pb-0 bg-white overflow-y-auto lg:overflow-y-hidden lg:bg-transparent lg:block duration-300 top-[-220px] pt-5 right-0 pl-6 lg:w-64 xl:w-96 z-20 lg:z-0 ${filter ? "left-[0%] " : "left-[-100%]"}`}>
             <ShopFilters
               setProductData={setProductData}
               setLoading={setLoading}

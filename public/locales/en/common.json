@@ -291,6 +291,7 @@
    "premium" : "Add product",
    "premium-desc" : "Add product and enter product details",
    "referral" : "Referral",
+   "news" : "News",
    "referral-desc" : "Income from personal code referral in crypto",
    "authentication" : "Authentication",
    "authentication-desc" : "Complete your profile",
@@ -377,5 +378,19 @@
    "discount-filter":"Discount filter",
    "filters":"Filters",
    "earn-home":"referral",
-   "discount-more":"less than"
+   "discount-more":"less than",
+   "news-popular-text" : "Hot content on the website",
+   "news-popular-title" : "Most visited content",
+   "news-other-text": "You may be interested in this content",
+   "news-other-title": "Other contents",
+   "realated-news" : "Related News",
+   "write-review" : "Write a review",
+   "send":"Send",
+   "comments":"Comments",
+   "text-all-news" :"All News",
+   "days-ago": " days ago",
+   "hours-ago" : " hours ago",
+   "minutes-ago" : " minutes ago",
+   "read-more" : "Read more"
+
 }

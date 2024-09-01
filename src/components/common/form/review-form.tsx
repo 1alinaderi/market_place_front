@@ -38,7 +38,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
   } = useForm<ReviewFormValues>();
   const [rating_custom_icon, set_rating_custom_icon] = useState(1);
   async function onSubmit(values: ReviewFormValues) {
-    console.log(values, rating_custom_icon, 'review');
 
     await httpReauest(
       'POST',

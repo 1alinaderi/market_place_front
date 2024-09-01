@@ -246,6 +246,7 @@
   "premium" : "أضف منتج",
   "premium-desc" : "إضافة المنتج وإدخال تفاصيل المنتج",
   "referral" : "الإحالة",
+  "news" : "أخبار",
   "referral-desc" : "الدخل من إحالة الرمز الشخصي في التشفير",
   "authentication" : "المصادقة",
   "authentication-desc" : "أكمل ملفك الشخصي",
@@ -378,5 +379,19 @@
    "discount-filter":"مرشح الخصم",
    "discount-more":"أقل من",
    "filters":"المرشحات",
-   "earn-home":"يكسب"
+   "earn-home":"يكسب",
+   "news-popular-text" : "المحتوى الأكثر شعبية على الموقع",
+   "news-popular-title" : "المحتوى الأكثر زيارة",
+   "news-other-text": "قد تكون مهتمًا بهذا المحتوى",
+   "news-other-title": "محتويات أخرى",
+   "realated-news" : "اخبار ذات صله",
+   "write-review" : "اكتب مراجعة",
+   "send":"يرسل",
+   "comments":"تعليقات",
+   "text-all-news" :"كل الأخبار",
+   "days-ago": " منذ أيام",
+   "hours-ago": " منذ ساعات",
+   "minutes-ago": " منذ دقائق",
+   "read-more" : "اتابع الطلب"
+
 }

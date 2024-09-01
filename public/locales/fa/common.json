@@ -159,7 +159,7 @@
   "text-no-found": "یافت نشد",
   "text-product-details": "جزئیات محصول",
   "text-learn-more": "جزئیات محصول",
-  "text-see-all": "همه را ببین",
+  "text-see-all": "مشاهده همه",
   "text-see-more": "بیشتر ببین",
   "text-add-to-cart": "تماس بگیرید",
   "text-account": "اکانت",
@@ -293,10 +293,11 @@
   "premium" : "محصول را اضافه کنید",
   "premium-desc" : "محصول را اضافه کنید و جزئیات محصول را وارد کنید",
   "referral" : "معرف",
+  "news" : "اخبار",
   "referral-desc" : "درآمد حاصل از ارجاع کد شخصی در کریپتو",
   "authentication" : "احراز هویت",
   "authentication-desc" : "مشخصات خود را کامل کنید ",
-  "continue" : "ادامه هید",
+  "continue" : "ادامه دهید",
   "text-account-referal" : "معرف",
    "t-referal": "با کد ارجاع کسب درآمد کنید",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
@@ -379,7 +380,19 @@
    "discount-filter":"فیلتر تخفیف",
    "filters":"فیلترها",
    "earn-home":"درامدزدایی",
-   "discount-more":"کمتر از"
-  
+   "discount-more":"کمتر از",
+   "news-popular-text" : "مطالب داغ در سایت",
+   "news-popular-title" : "پربازدیدترین مطالب",
+   "news-other-text" : "شاید به این مطالب علاقه داشته باشی",
+   "news-other-title" : "بقیه مطالب",
+   "realated-news" : "اخبار مرتبط",
+   "write-review" : "افزودن دیدگاه",
+   "send":"ارسال",
+   "comments":"نظرات",
+   "text-all-news" :"همه اخبار",
+   "days-ago" : " روز پیش ",
+   "hours-ago" : " ساعت پیش ",
+   "minutes-ago" : " دقیقه پیش ",
+   "read-more" : "ادامه مطلب"
 
 }
