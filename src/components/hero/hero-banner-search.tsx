@@ -9,7 +9,6 @@ const HeroSearchBox = () => {
   const [searchTerm, setSearchTerm] = useState('');
   function onSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    router.push(`/search?q=${searchTerm}`);
   }
   return (
     <form

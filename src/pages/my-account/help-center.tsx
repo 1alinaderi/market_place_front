@@ -21,8 +21,7 @@ export default function HelpCenter({ baseData }) {
   return (
     <>
       <Seo
-        title="Help Center"
-        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
+        title="مرکز کمک"
         path="my-account/help-center"
       />
       <AccountLayout isSeller={isSeller} baseData={baseData}>

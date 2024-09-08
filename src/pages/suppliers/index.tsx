@@ -14,9 +14,8 @@ export default function ShopsPage() {
   return (
     <>
       <Seo
-        title="Suplliers"
-        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
-        path="Suplliers"
+        title="تامین کنندگان"
+        path="suplliers"
       />
       <PageHeroSection
         heroTitle="Suppliers Page"

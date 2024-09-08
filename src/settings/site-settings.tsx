@@ -9,24 +9,22 @@ import { useEffect } from 'react';
 
 
 export const siteSettings = {
-
-  
-  name: 'Wimehr',
+  name: 'ویمهر',
   description:
-    'Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life.',
+ "خوش آمدید به هاب تجاری آینده، مقصد نهایی شما برای درک بهتر مسیرهای شغلی و رشد حرفه‌ای در بخش توسعه صادرات. در پلتفرم ویمهر، ما به ارائه دانش و ابزارهایی که برای رسیدن به موفقیت در حیات حرفه‌ای و شخصی لازم دارید، متعهد هستیم.",
   author: {
-    name: '',
-    websiteUrl: '',
+    name: 'Mahyar babazadeh',
+    websiteUrl: 'https://mbabz.com/',
     address: '',
   },
   logo: {
     url: '/logo-black.png',
-    alt: 'Wimehr',
+    alt: 'ویمهر',
     href: '/',
     width: 160,
     height: 90,
   },
-  defaultLanguage: 'en',
+  defaultLanguage: 'fa',
   currencyCode: 'USD',
   site_header: {
     menu: [

@@ -129,8 +129,8 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   return (
     <>
      <Seo
-      title={data?.name_en}
-      description={data?.desc_en}    
+      title={data?.name}
+      description={data?.desc}    
       path={`products/${data?._id}`}
       />
     <div className="pt-6 pb-2 md:pt-7">

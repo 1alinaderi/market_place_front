@@ -81,7 +81,7 @@ const Breadcrumb: React.FC<{ separator?: string }> = ({
       {breadcrumbs?.map((breadcrumb: any) => (
         <Link href={breadcrumb.href} key={breadcrumb.href}>
           <a className="capitalize font-semibold text-heading">
-            {convertBreadcrumbTitle(breadcrumb.breadcrumb)}
+            {t(breadcrumb.breadcrumb)}
           </a>
         </Link>
       ))}

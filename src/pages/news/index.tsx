@@ -50,33 +50,10 @@ export default function NewsPage() {
   },[])
   return (
     <>
-      <div className={`fixed top-1/2 ${show ? "right-0" : "-right-[280px] lg:-right-[380px]"}  duration-300  flex items-center z-50 -translate-y-1/2`}>
-        <span onClick={()=>setShow(!show)} className='p-2 h-fit bg-brand-light shadow-md  cursor-pointer'>
-        <FaSignInAlt/>
-        </span>
-        <span>
-          <div
-            className={
-              'w-full  relative '
-            }
-          >
-            <div className="mx-auto overflow-hidden rounded-lg text-center shadow-md w-[280px] lg:w-[380px] bg-brand-light md:px-8 py-6 px-3">
-            <h4 className="w-full text-md lg:text-xl   text-black font-semibold">
-            اگه تولید کننده هستی یا کالای صادراتی داری حتی با حجم کم تو فری مارکت مشتری صادراتی پیدا کن
-            </h4>
-            <Link href="/supplier/signin">
-            <Button className='mt-3 font-[900] scale-90'>
-           الان ثبت نام کن
-            </Button>
-            </Link>
-            </div>
-        </div>
-        </span>
-      </div>
+    
       
       <Seo
-        title="News"
-        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
+        title="اخبار"
         path="news"
       />
       <Container>

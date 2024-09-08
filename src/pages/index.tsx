@@ -47,20 +47,20 @@ export default function Home() {
   return (
     <div className="relative">
       <Seo
-        title="Home"
-        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
-        path="Home"
+        title="صفحه اصلی"
+        path=""
       />
       <div className="bg-[#11223a] overflow-hidden">
         <div
+        dir='ltr'
           style={{
             background:
               'linear-gradient(90deg, rgba(38,47,69,1) 0%, rgba(81,150,206,1) 20%, rgba(254,132,146,1) 40%, rgba(164,37,39,1) 60%, rgba(118,29,33,1) 80%, rgba(34,22,32,1) 100%)',
           }}
-          className="lg:grid grid-cols-10 hidden justify-center items-center gap-4  relative  py-4  pr-24 pl-6 2xl:pl-20 2xl:pr-32 bg-[#08121f]"
+          className="lg:grid grid-cols-10 hidden justify-center items-center gap-4  relative  py-4  pr-20 pl-6 2xl:pl-20 2xl:pr-32 bg-[#08121f]"
         >
           <Link href={'/membership'}>
-            <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+            <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
               {t('account-membership')}
               <span>
                 <ArrowRight2 size={16} />
@@ -68,7 +68,7 @@ export default function Home() {
             </button>
           </Link>
           <Link href={'/supplier/signup'}>
-            <button className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] italic ">
+            <button dir='ltr' className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] italic ">
               {t('premium-home')}
               <span>
                 <ArrowRight2 size={16} />
@@ -76,47 +76,47 @@ export default function Home() {
             </button>
           </Link>
           <Link href={'/packing'}>
-            <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+            <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
               {t('packing')}{' '}
               <span>
                 <ArrowRight2 size={16} />
               </span>
             </button>
           </Link>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('donate')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('logistics')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('insurance')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
           <Link href={"/news"}>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('news')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
           </Link>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('translate')}
 
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <button className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('contract')}
             <span>
               <ArrowRight2 size={16} />
@@ -300,12 +300,14 @@ export default function Home() {
               </RevealX>
 
               <RevealX>
+                <Link href={"/news"}>
                 <div className="flex flex-col items-center justify-center">
                   <span className="rounded-full p-2 overflow-hidden bg-white">
                     <FaNetworkWired color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('news')}</p>
                 </div>
+                </Link>
               </RevealX>
               <RevealX>
                 <div className="flex flex-col items-center justify-center">

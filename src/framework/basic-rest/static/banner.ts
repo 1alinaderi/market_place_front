@@ -78,7 +78,7 @@ export const bannerGridTwo = [
   {
     id: 3,
     title: 'Fresh Healthy Breakfast food',
-    slug: '/search',
+    slug: '/products',
     image: {
       mobile: {
         url: '/image/banner/product2.jpg',
@@ -95,7 +95,7 @@ export const bannerGridTwo = [
   {
     id: 4,
     title: 'Fresh Healthy Breakfast food',
-    slug: '/search',
+    slug: '/products',
     image: {
       mobile: {
         url: '/image/banner/product2v2.jpg',

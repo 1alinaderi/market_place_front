@@ -14,6 +14,7 @@ import useWindowSize from '@utils/use-window-size';
 import { useSupplierQuery } from '@framework/product/get-supplier';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import { BsShieldFillCheck } from 'react-icons/bs';
+import Seo from '@components/seo/seo';
 
 const ShopsSingleDetails: React.FC = () => {
   const {
@@ -36,6 +37,11 @@ const ShopsSingleDetails: React.FC = () => {
 
   return (
     <>
+      <Seo
+        title={data?.name}
+        description={data?.desc}
+        path={`suplliers/${data?._id}`}
+      />
       <div
         className="flex justify-center w-full h-56 bg-center bg-no-repeat bg-cover md:h-64"
         style={{

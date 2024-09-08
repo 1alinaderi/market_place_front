@@ -48,9 +48,9 @@ export default function AllNewsPage() {
     <>
       
       <Seo
-        title="News"
+        title="همه اخبار"
         description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
-        path="news"
+        path="news/all"
       />
       <PageHeroSection backgroundThumbnail={"/18309537_SL-112119-25250-40.jpg"} mobileBackgroundThumbnail={"/18309537_SL-112119-25250-40.jpg"} heroTitle={t('text-all-news')} />
       <Container>

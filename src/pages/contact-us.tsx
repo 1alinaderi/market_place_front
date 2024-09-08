@@ -13,8 +13,7 @@ export default function ContactUsPage() {
   return (
     <>
       <Seo
-        title="Contact Us"
-        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
+        title="ارتباط با ما"
         path="contact-us"
       />
       <div dir='ltr'>

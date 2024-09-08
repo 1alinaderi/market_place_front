@@ -50,9 +50,8 @@ export default function AccountDetailsPage({ baseData }) {
   return (
     <>
       <Seo
-        title="Account Settings"
-        description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
-        path="my-account/account-settings"
+        title="ایجاد محصول"
+        path="my-account/create-product"
       />
       <AccountLayout
         isSeller={baseData?.cookies?.seller?.id ? true : false}
