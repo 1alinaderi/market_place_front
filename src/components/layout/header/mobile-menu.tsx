@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Link from '@components/ui/link';
 import { siteSettings } from '@settings/site-settings';
 import Scrollbar from '@components/ui/scrollbar';
@@ -18,6 +18,7 @@ import {
 import { httpReauest } from 'src/api/api';
 import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
 import { useRouter } from 'next/router';
+import { SearchContext } from '@contexts/searchContext';
 
 const social = [
   {
@@ -54,6 +55,7 @@ export default function MobileMenu() {
   const [activeMenus, setActiveMenus] = useState<any>([]);
   const { site_header } = siteSettings;
   const { closeSidebar } = useUI();
+  const {setCategory} = useContext(SearchContext)
   const { t } = useTranslation('menu');
   const [menuData, setMenuData] = useState([]);
   const [activeCate, setActiveCate] = useState(false)
@@ -67,8 +69,11 @@ export default function MobileMenu() {
       const category = response.data.data.categorys;
       setMenuData(category);
     }
-    
-    
+  }
+
+  function handleRoute(params:string) {
+    setCategory(params)
+    router.push(`/${router.pathname === '/free-market' ? 'free-market': 'products'}`)
   }
 
   const router = useRouter()
@@ -191,7 +196,7 @@ export default function MobileMenu() {
                     className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
                   >
                     <span className="block w-full" onClick={closeSidebar}>
-                      Category
+                      {t("common:t-category")}
                     </span>
                   </Link>
                   <div className="cursor-pointer w-full h-8 text-[17px] px-5 shrink-0 flex items-center justify-end text-brand-dark text-opacity-80 absolute ltr:right-0 rtl:left-0 top-1/2 transform -translate-y-1/2">
@@ -205,20 +210,21 @@ export default function MobileMenu() {
               </li>
               <ul className={cn('mobile-sub-menu ltr:-ml-4 rtl:-mr-4')}>
                 {menuData?.map((cate, index) => {
+
                   if (!activeCate) {
                     return null
                   }
                   return (
                     <li className="transition-colors duration-200 mx-4">
                       <div className="relative flex items-center justify-between">
-                        <Link
-                          href={ `/${router.pathname=== '/free-market' ? 'free-market': 'products'}?category=${cate?._id}`}
+                        <span
+                          onClick={()=>handleRoute(cate?._id)}
                           className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
                         >
                           <span className="block w-full text-sm font-[300]" onClick={closeSidebar}>
                            - {cate?.label ? t(cate?.label) : router.locale === 'fa'&& cate?.name || router.locale === 'en'&& cate?.name_en || router.locale === 'ar'&& cate?.name_ar}
                           </span>
-                        </Link>
+                        </span>
                       </div>
                     </li>
                   );

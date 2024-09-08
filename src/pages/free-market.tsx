@@ -35,6 +35,7 @@ export default function ProductsFreeMarket() {
     setProductData(response.data.data);
     setLoading(false);
   }
+  
 
   useEffect(() => {
     getIp();
@@ -78,7 +79,7 @@ export default function ProductsFreeMarket() {
       <PageHeroSection heroTitle={'free-market'} />
       <Container className=' relative'>
         <Element name="grid" className="flex pb-16 pt-7 lg:pt-11 lg:pb-20">
-          <div className={`absolute lg:static shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 w-full xl:rtl:pl-16 h-fit pb-[100px] lg:pb-0 bg-white overflow-y-auto lg:overflow-y-hidden lg:bg-transparent lg:block duration-300 top-[-220px] pt-5 right-0 pl-6 lg:w-64 xl:w-96 z-20 lg:z-0 ${filter ? "left-[0%] " : "left-[-100%]"}`}>
+          <div  className={`absolute lg:static shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 w-full xl:rtl:pl-16 h-fit pb-[100px] lg:pb-0 bg-white overflow-y-auto lg:overflow-y-hidden lg:bg-transparent lg:block duration-300 top-[-220px] pt-5 right-0 rtl:left-0 pl-6 rtl:pr-6 lg:w-64 xl:w-96 z-20 lg:z-0 ${filter ? "left-[0%] rtl:right-0" : "left-[-100%] rtl:right-[-100%]"}`}>
             <ShopFilters
               setProductData={setProductData}
               setLoading={setLoading}

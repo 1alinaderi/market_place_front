@@ -55,7 +55,7 @@ export default function AllNewsPage() {
       <PageHeroSection backgroundThumbnail={"/18309537_SL-112119-25250-40.jpg"} mobileBackgroundThumbnail={"/18309537_SL-112119-25250-40.jpg"} heroTitle={t('text-all-news')} />
       <Container>
         <Element name="grid" className="flex pb-16 pt-7 lg:pt-11 lg:pb-20">
-          <div className={`absolute lg:static shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 w-full xl:rtl:pl-16 h-full pb-[100px] lg:pb-0 bg-white overflow-y-auto lg:overflow-y-hidden lg:bg-transparent lg:block duration-300 top-[0px] pt-5 right-0 pl-6 lg:w-64 xl:w-96 z-20 lg:z-0 ${filter ? "left-[0%] " : "left-[-100%]"}`}>
+        <div  className={`absolute lg:static shrink-0 ltr:pr-8 rtl:pl-8 xl:ltr:pr-16 w-full xl:rtl:pl-16 h-fit pb-[100px] lg:pb-0 bg-white overflow-y-auto lg:overflow-y-hidden lg:bg-transparent lg:block duration-300 top-[0px] pt-5 right-0 rtl:left-0 pl-6 rtl:pr-6 lg:w-64 xl:w-96 z-20 lg:z-0 ${filter ? "left-[0%] rtl:right-0" : "left-[-100%] rtl:right-[-100%]"}`}>
             <CategoryFilterNews setProductData={setProductData}  setFilter={setFilter}/>
           </div>
           <div className="w-full lg:ltr:-ml-4 lg:rtl:-mr-2 xl:ltr:-ml-8 xl:rtl:-mr-8 lg:-mt-1">

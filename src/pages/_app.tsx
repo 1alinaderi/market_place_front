@@ -29,6 +29,7 @@ import Modal from '@components/common/modal/modal';
 import CloseButton from '@components/ui/close-button';
 import Button from '@components/ui/button';
 import Link from 'next/link';
+import { SearchContext } from '@contexts/searchContext';
 
 const Noop: React.FC = ({ children }) => <>{children}</>;
 
@@ -85,6 +86,8 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
     
   }, []);
 
+  const [category , setCategory] = useState()
+
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <NextNProgress color="red"/>
@@ -94,6 +97,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           {' '}
           <GoogleOAuthProvider clientId="74472575659-u08deub6ejrgjqied21q0ucikd0qjrgh.apps.googleusercontent.com">
             <ManagedUIContext>
+              <SearchContext.Provider value={{category , setCategory}}>
               <CookiesProvider>
                 <>
                   <DefaultSeo />
@@ -164,6 +168,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                   <ManagedDrawer />
                 </>
               </CookiesProvider>
+              </SearchContext.Provider>
             </ManagedUIContext>
           </GoogleOAuthProvider>{' '}
         </Hydrate>

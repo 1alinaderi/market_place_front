@@ -5,12 +5,13 @@ import Alert from '@components/ui/alert';
 import Scrollbar from '@components/ui/scrollbar';
 import CategoryListCardLoader from '@components/ui/loaders/category-list-card-loader';
 import { useCategoriesQuery } from '@framework/category/get-all-categories';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { FaCheck } from 'react-icons/fa';
 import { useUI } from '@contexts/ui.context';
 import { httpReauest } from 'src/api/api';
 import { IoCloseOutline } from 'react-icons/io5';
+import { SearchContext } from '@contexts/searchContext';
 
 export const CategoryFilter = ({
   setProductData,
@@ -24,31 +25,28 @@ export const CategoryFilter = ({
   const [selected, setSelected] = useState([]);
   const [id, setId] = useState('');
   const [subActive, setSubactive] = useState('');
+
+  const {category} = useContext(SearchContext)
   
   const router = useRouter();
   async function getMainCategory() {
     setLoading(true)
-    const response = await httpReauest('GET', '/categorys', {}, {});
-    setMainCategory(response.data.data);
-    if (router.query.category) {
-      const id = router.query.category;
-      getQueryData(id,response.data.data)
-     
+    if (router.pathname === "/free-market") {
+      const response = await httpReauest('GET', '/categorys/free', {}, {});
+      setData(response.data.data);
+    }else {
+      const response = await httpReauest('GET', '/categorys', {}, {});
+      setMainCategory(response.data.data);
+      if (category) {
+        const id = category;
+        getQueryData(id,response.data.data)
+      }
     }
+ 
     setLoading(false)
     
   }
-  async function getFreeCategory() {
-    setLoading(true)
-    const response = await httpReauest('GET', '/categorys/free', {}, {});
-    setData(response.data.data);
-    if (router.query.category) {
-      const id = router.query.category;
-      getQueryData(id,response.data.data)
-      
-    }
-    setLoading(false)
-  }
+  
 
   async function getQueryData(id,data) {
     if (router.pathname === "/free-market") {
@@ -62,7 +60,6 @@ export const CategoryFilter = ({
       setId(id);
       
       const subItems = data?.subCategorys;
-      console.log(subItems)
       const sub = subItems.filter((i) => i.category === id);
       setSelected(sub);
     }else{
@@ -76,15 +73,13 @@ export const CategoryFilter = ({
       setId(id);
       
       const subItems = data?.subCategorys;
-      console.log(subItems)
       const sub = subItems.filter((i) => i.category === id);
       setSelected(sub);
     }
   }
   useEffect(() => {
     getMainCategory();
-    getFreeCategory();
-  }, [router.query.category]);
+  }, [category]);
  
 
   const { displaySidebar, closeSidebar } = useUI();
