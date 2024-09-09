@@ -19,7 +19,7 @@ const Modal: FC<ModalProps> = ({
     <Transition appear show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-50 overflow-x-hidden overflow-y-auto"
+        className="fixed inset-0 z-[52] overflow-x-hidden overflow-y-auto"
         onClose={onClose}
       >
         <div

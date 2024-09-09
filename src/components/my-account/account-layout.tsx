@@ -148,10 +148,10 @@ const AccountLayout: React.FunctionComponent<{
   isSeller: boolean;
 }> = ({ children, baseData, isSeller }) => {
   return (
-    <div className="border-t border-b border-border-base ">
+    <div className="border-t border-b border-border-base bg-slate-100">
       <Container>
         <div className="pt-10 2xl:pt-12 pb-12 lg:pb-14 xl:pb-16 2xl:pb-20 xl:max-w-screen-xl 2xl:max-w-[1300px] mx-auto">
-          <div className="flex flex-col w-full lg:flex-row">
+          <div className="flex flex-col w-full lg:flex-row ">
             <div className="lg:hidden">
               <AccountNavMobile
                 baseData={baseData}
@@ -165,7 +165,7 @@ const AccountLayout: React.FunctionComponent<{
               />
             </div>
 
-            <div className="w-full p-4 mt-4 border rounded-md lg:mt-0 border-border-base sm:p-5 lg:py-8 2xl:py-10 lg:px-7 2xl:px-12">
+            <div className="w-full p-4 mt-4 border rounded-md lg:mt-0 border-border-base bg-white shadow sm:p-5 lg:py-8 2xl:py-10 lg:px-7 2xl:px-12">
               {children}
             </div>
           </div>

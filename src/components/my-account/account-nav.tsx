@@ -30,7 +30,7 @@ export default function AccountNav({
   const newPathname = pathname.split('/').slice(2, 3);
   const mainPath = `/${newPathname[0]}`;
   return (
-    <nav className="flex flex-col pb-2 md:pb-6 border border-border-base rounded-md overflow-hidden  shadow-lg">
+    <nav className="flex flex-col pb-2 md:pb-6 border border-border-base rounded-md overflow-hidden  shadow bg-white">
       {options.map((item) => {
         const menuPathname = item.slug.split('/').slice(2, 3);
         const menuPath = `/${menuPathname[0]}`;

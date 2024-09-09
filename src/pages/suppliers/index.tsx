@@ -18,7 +18,7 @@ export default function ShopsPage() {
         path="suplliers"
       />
       <PageHeroSection
-        heroTitle="Suppliers Page"
+        heroTitle="menu:suppliers"
         backgroundThumbnail="/assets/images/shop-page-hero-bg.jpg"
         mobileBackgroundThumbnail="/assets/images/shop-page-hero-mobile-bg.png"
         variant="white"

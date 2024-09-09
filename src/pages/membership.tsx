@@ -626,6 +626,7 @@ export default function Membership() {
               <button
                 className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
                 onClick={getAuth}
+                type='button'
               >
                 {t('crypto-pay')}
               </button>
@@ -649,6 +650,8 @@ export default function Membership() {
                   </div>
                 )}
               </label>
+              <input dir='ltr' value={"5022-2910-1917-7474"} disabled className='shadow border rounded p-2 mt-3 w-full'/>
+              <span >مهیار بابازاده</span>
               <input
                 onChange={(e) => {
                   setimagePay(e.target.files[0]);

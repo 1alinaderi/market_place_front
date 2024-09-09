@@ -85,10 +85,10 @@ const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
   }
 
   return (
-    <Link href={`/suppliers/${_id}`}>
+    <Link href={`/suppliers/${name}`}>
       <article
         className={cn(
-          'flex flex-col group overflow-hidden rounded-md cursor-pointer transition-all duration-300 shadow-card hover:shadow-cardHover relative h-full',
+          'flex flex-col group overflow-hidden rounded-lg cursor-pointer transition-all duration-300 shadow hover:shadow-cardHover relative h-full bg-white',
           className
         )}
         title={name}
@@ -103,7 +103,7 @@ const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
                 width={150}
                 height={150}
                 quality={100}
-                className="object-contain "
+                className="object-contain rounded-full bg-slate-50"
               />
               {membership === 'Premium' && (
                 <BsShieldFillCheck
@@ -134,7 +134,7 @@ const SupplierCard: React.FC<ProductProps> = ({ product, className }) => {
                 </del>
               )}
             </div>
-            <h2 className="text-brand-dark text-13px sm:text-sm lg:text-15px leading-5 sm:leading-6 mb-1.5">
+            <h2 className="text-brand-dark text-13px sm:text-sm lg:text-[17px] font-bold leading-5 sm:leading-6 mb-1.5">
               {name}
             </h2>
             <div className="mt-auto text-13px sm:text-sm">

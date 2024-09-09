@@ -336,7 +336,7 @@
    "l-referal-1":"Received referral code",
    "upgrade-membership":"Upgrade your membership level to get the best services",
    "add-product":"Add products",
-   "pay":"Donate (58000 toman minimum )",
+   "pay":"Donate",
    "profile-h":"Support butterfly patients and the Sustainable Development Goals (SDGs) with WIMEHR",
    "profile-p":"At WIMEHR Export Platform, we believe in the importance of social responsibility. For this reason, the amount you pay through us will be directly allocated to the support of parathyroid patients in Iran. These brave people face many challenges in their daily lives and we are proud that with your help, we can reduce some of this burden.",
    "profile-p-1":"In addition, WIMEHR is committed to working in line with the United Nations Sustainable Development Goals (SDGs). Your payments will not only help eligible patients, but also help meet key indicators of these goals. These indicators include providing a better and sustainable future for future generations and improving the quality of human life.",
@@ -391,6 +391,10 @@
    "days-ago": " days ago",
    "hours-ago" : " hours ago",
    "minutes-ago" : " minutes ago",
-   "read-more" : "Read more"
+   "read-more" : "Read more",
+   "suppliers" : "Suppliers",
+   "all-products" : "All Products",
+   "text-suggest-supplier" : "Products recommended by the supplier",
+   "cover" : "Cover"
 
 }

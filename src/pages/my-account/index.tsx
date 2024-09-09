@@ -42,10 +42,7 @@ export default function AccountDetailsPage({ baseData }) {
       setIsSeller(true);
      
     }
-    console.log(agree)
   }, [router.pathname]);
-  console.log(data.type)
-  console.log(agree)
   // useEffect(() => {
   //   if (router.locale == 'fa') {
   //     document.documentElement.dir = 'rtl';

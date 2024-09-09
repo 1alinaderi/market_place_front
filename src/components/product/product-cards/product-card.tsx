@@ -100,7 +100,7 @@ const ProductCard: React.FC<ProductProps> = ({
     <Link href={`/products/${product?._id}`}>
       <article
         className={cn(
-          'flex flex-col group overflow-hidden rounded-md cursor-pointer transition-all duration-300 shadow-card hover:shadow-cardHover relative h-full',
+          'flex flex-col group overflow-hidden rounded-md cursor-pointer transition-all duration-300 shadow-card hover:shadow-cardHover relative h-full bg-white',
           className
         )}
         title={name}
@@ -114,7 +114,7 @@ const ProductCard: React.FC<ProductProps> = ({
               width={230}
               height={200}
               quality={100}
-              className="object-contain "
+              className="object-cover "
             />
           </div>
           <div className="w-full h-full absolute top-0 pt-2.5 md:pt-3.5 px-3 md:px-4 lg:px-[18px] z-10 -mx-0.5 sm:-mx-1">
@@ -143,7 +143,7 @@ const ProductCard: React.FC<ProductProps> = ({
               </span>
             )}
           </div>
-          <h2 className="text-brand-dark text-13px sm:text-sm lg:text-15px leading-5 sm:leading-6 mb-1.5">
+          <h2 className="text-brand-dark text-13px sm:text-sm lg:text-[15px] font-bold leading-5 sm:leading-6 mb-1.5">
             {router.locale === 'fa' && name} {router.locale === 'ar' && name_ar} {router.locale === 'en' && name_en}
           </h2>
           <div className="mt-2 text-13px sm:text-sm">

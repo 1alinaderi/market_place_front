@@ -15,6 +15,13 @@ import { useSupplierQuery } from '@framework/product/get-supplier';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import { BsShieldFillCheck } from 'react-icons/bs';
 import Seo from '@components/seo/seo';
+import Text from '@components/ui/text';
+import ProductsCarousel from '@components/product/products-carousel';
+import { LIMITS } from '@framework/utils/limits';
+import { useFreshVegetablesProductsQuery } from '@framework/product/get-all-fresh-vegetables-products';
+import { ROUTES } from '@utils/routes';
+import FreshVegetablesProductFeed from '@components/product/feeds/fresh-vegetables-product-feed';
+import SupplierSugestProducts from '@components/product/feeds/supplier-suggest-products';
 
 const ShopsSingleDetails: React.FC = () => {
   const {
@@ -35,15 +42,16 @@ const ShopsSingleDetails: React.FC = () => {
     return `${CDN_BASE_URL}${data?.logo}`;
   };
 
+
   return (
     <>
       <Seo
         title={data?.name}
         description={data?.desc}
-        path={`suplliers/${data?._id}`}
+        path={`suplliers/${data.name}`}
       />
       <div
-        className="flex justify-center w-full h-56 bg-center bg-no-repeat bg-cover md:h-64"
+        className="flex justify-center w-full h-56 bg-center bg-no-repeat bg-cover md:h-64 "
         style={{
           backgroundImage: `url(${
             width! <= 480
@@ -56,18 +64,20 @@ const ShopsSingleDetails: React.FC = () => {
           })`,
         }}
       />
-      <div className="flex items-center px-4 py-4 border-b lg:hidden md:px-6 border-border-base mb-7">
-        <div className="flex shrink-0">
+      <div className="flex items-center px-4 py-4 border-b lg:hidden md:px-6 border-border-base  bg-slate-100">
+      <ShopSidebar data={data} />
+
+        {/* <div className="flex shrink-0">
           <Image
             loader={myLoader}
             src={imageSrc}
             alt={data?.name}
             width={80}
             height={80}
-            className="rounded-md object-contain"
+            className="rounded-full bg-slate-50 object-contain"
           />
-        </div>
-        <div className="ltr:pl-4 rtl:pr-4">
+        </div> */}
+        {/* <div className="ltr:pl-4 rtl:pr-4">
           {data?.membership === 'Premium' && (
             <BsShieldFillCheck className="text-green-500 mr-2 " size={20} />
           )}
@@ -80,21 +90,21 @@ const ShopsSingleDetails: React.FC = () => {
           >
             {t('text-more-info')}
           </button>
-        </div>
+        </div> */}
       </div>
-      <Container>
+      <Container className='bg-slate-100 pt-7 lg:pt-0'>
         <Element
           name="grid"
-          className="flex flex-col pb-16 lg:flex-row lg:pt-8 lg:pb-20"
+          className="flex flex-col pb-16 lg:pt-8 lg:pb-20 xl:max-w-screen-xl 2xl:max-w-[1300px] mx-auto gap-5"
         >
-          <div className="shrink-0 hidden lg:block lg:w-80 xl:w-[350px] 2xl:w-96 lg:sticky lg:top-16 category-mobile-sidebar">
-            <div className="border border-[#EFF2F4] shadow-vendorSidebar rounded-lg">
+          <div className="shrink-0 hidden lg:block  lg:top-[80px] category-mobile-sidebar">
               <ShopSidebar data={data} />
-            </div>
           </div>
-
-          <div className="w-full lg:ltr:pl-7 lg:rtl:pr-7">
-            <AllProductFeed name={data?._id} />
+          <div >
+           <SupplierSugestProducts name={data?._id}/>
+          </div>
+          <div className="w-full ">
+            <AllProductFeed name={data?._id} small/>
           </div>
         </Element>
       </Container>

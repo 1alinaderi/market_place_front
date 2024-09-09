@@ -1,26 +1,27 @@
 import Button from '@components/ui/button';
-import { CheckBox } from '@components/ui/form/checkbox';
 import Heading from '@components/ui/heading';
-import { useCategoriesQuery } from '@framework/category/get-all-categories';
-import { useAllSupplierQuery } from '@framework/product/get-all-supplier';
-import { CountrysName } from '@utils/countrys';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import dynamic from 'next/dynamic';
 import { httpReauest } from 'src/api/api';
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import 'react-quill/dist/quill.snow.css';
 
-const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
+const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
   const [image, setimage] = useState(null);
+  const [video, setvideo] = useState(null);
   const [image1, setimage1] = useState(null);
   const [preview, setpreview] = useState(null);
+  const [previewVideo, setpreviewVideo] = useState(null);
   const [previewPay, setpreviewPay] = useState(null);
   const [imagePay, setimagePay] = useState(null);
   const [bio, setbio] = useState<string>();
   const [nationalCode, setnationalCode] = useState(null);
   const [isValid, setIsValid] = useState(false);
   const [step, setStep] = useState(true);
+  const [text, settext] = useState<string>("");
 
   const router = useRouter();
 
@@ -34,6 +35,18 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
       }
     }
   }, [image]);
+
+  useEffect(() => {
+    if (video) {
+      if (video.size > 10031517) {
+        toast.error('The file size is more than 10mb');
+        setvideo(null);
+      } else {
+        setPreviwVideo();
+      }
+    }
+  }, [video]);
+
   useEffect(() => {
     if (imagePay) {
       if (imagePay.size > 1031517) {
@@ -44,6 +57,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
       }
     }
   }, [imagePay]);
+
   function handlestep(e) {
     e.preventDefault();
     if (imagePay !== null) {
@@ -68,6 +82,13 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
       setpreview(reader.result);
     };
     reader.readAsDataURL(image);
+  }
+  function setPreviwVideo() {
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      setpreviewVideo(reader.result);
+    };
+    reader.readAsDataURL(video);
   }
   function setPreviwImagePay() {
     const reader = new FileReader();
@@ -153,7 +174,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
 
   const bodyfirst = {
     shop_id: '2Gt7Ur32pAyo7bgQ',
-    amount: 10,
+    amount: 50,
   };
 
   function getAuth() {
@@ -177,71 +198,45 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-       
         <div className="grid px-1 grid-cols-12   ">
-          {step ? (
-            <>
-              <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+        <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('pay')} *:
+                  {t('footer:link-instagram')} :
                 </Heading>
-                <select className='shadow border rounded p-2 w-full mb-2 text-[14px] border-slate-300' dir='ltr'>
-                  <option>6,000,000 IRR (min)</option>
-                  <option>12,000,000 IRR</option>
-                  <option>18,000,000 IRR</option>
-                  <option>30,000,000 IRR</option>
-                  <option>60,000,000 IRR</option>
-                  <option>More</option>
-                </select>
-                <label className="cursor-pointer relative" htmlFor="payment">
-                  {previewPay ? (
-                    <img
-                      src={previewPay ? previewPay : null}
-                      className="w-full h-[160px] rounded object-contain"
-                    />
-                  ) : (
-                    <div className="w-full h-[160px] rounded relative border">
-                      <FaPlus size={25} className="inset-0 absolute m-auto" />
-                    </div>
-                  )}
-                </label>
-                <input dir='ltr' value={"5022-2910-1917-7474"} disabled className='shadow border rounded p-2 mt-3 w-full'/>
-                <span >مهیار بابازاده</span>
                 <input
                   onChange={(e) => {
-                    setimagePay(e.target.files[0]);
+                    setnationalCode(e.target.value);
                   }}
-                  id="payment"
-                  className="hidden"
-                  type={'file'}
-                  accept="image/png, image/jpg, image/jpeg"
+                  type="text"
+                  className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 />
+               
               </span>
-              <div className="flex col-span-full lg:col-span-6 justify-center items-center mt-6">
-                <button
-                  className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
-                  onClick={getAuth}
-                  type='button'
-                >
-                  {t('crypto-pay')}
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              {' '}
-              <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+              <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('t-logo')} *:
+                  {t('text-website')} :
+                </Heading>
+                <input
+                  onChange={(e) => {
+                    setnationalCode(e.target.value);
+                  }}
+                  type="text"
+                  className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                />
+               
+              </span>
+              <span className="col-span-12 sm:col-span-12  my-1 sm:my-3 px-4">
+                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                  {t('cover')} :
                 </Heading>
                 <label className="cursor-pointer relative" htmlFor="addImage">
                   {preview ? (
                     <img
                       src={preview ? preview : null}
-                      className="w-full h-[160px] rounded object-contain"
+                      className="w-full h-[130px] lg:h-[160px] rounded object-cover"
                     />
                   ) : (
-                    <div className="w-full h-[160px] rounded relative border">
+                    <div className="w-full h-[130px] lg:h-[160px] rounded relative border">
                       <FaPlus size={25} className="inset-0 absolute m-auto" />
                     </div>
                   )}
@@ -258,38 +253,74 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
               </span>
               <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('t-bio')} :
+                  {t('intro-video')} : {previewVideo && <FaTrash className='text-red-500' onClick={()=>{setvideo(null);setpreviewVideo(null)}}/>}
                 </Heading>
-                <textarea
-                  onChange={(e) => {
-                    setbio(e.target.value);
-                  }}
-                  className="shadow h-[160px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </span>
-              <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('t-national-code')} :
-                </Heading>
+                <label className="cursor-pointer relative" htmlFor="addIVideo">
+                  {previewVideo ? (
+                    <video
+                      src={previewVideo ? previewVideo : null}
+                      controls
+                      className="w-full h-[140px] lg:h-[170px] rounded object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-[140px] lg:h-[170px] rounded relative border">
+                      <FaPlus size={25} className="inset-0 absolute m-auto" />
+                    </div>
+                  )}
+                </label>
                 <input
                   onChange={(e) => {
-                    setnationalCode(e.target.value);
-                    validateNationalId(e.target.value);
+                    setvideo(e.target.files[0]);
                   }}
-                  type="number"
-                  className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  id="addIVideo"
+                  className="hidden"
+                  type={'file'}
+                  accept="video/*"
                 />
-                {nationalCode && !isValid && (
-                  <small className="text-red-500">
-                    {t('t-national-code-error')}
-                  </small>
-                )}
-              </span>{' '}
-            </>
-          )}
+              </span>
+              <span className="col-span-12 sm:col-span-12  my-1 sm:my-3 px-4">
+                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+                  {t('intro-video')} : {previewVideo && <FaTrash className='text-red-500' onClick={()=>{setvideo(null);setpreviewVideo(null)}}/>}
+                </Heading>
+                <div className='ltr'>
+
+                <ReactQuill
+                  value={text}
+                  modules={{
+                    toolbar: [
+                      [{ header: [1, 2, false], font: ["inherit"] }, {}],
+                      ["bold", "italic", "underline", "strike", "blockquote"],
+                      [
+                        { list: "ordered" },
+                        { list: "bullet" },
+                        { indent: "-1" },
+                        { indent: "+1" },
+                      ],
+                      ["link", "image", "code"],
+                      ["clean" ],
+                    ],
+                  }}
+                  formats={[
+                    "header",
+                    "bold",
+                    "italic",
+                    "underline",
+                    "strike",
+                    "blockquote",
+                    "list",
+                    "bullet",
+                    "indent",
+                    "link",
+                    "image",
+                  ]}
+                  onChange={(value)=>settext(value)}
+                  style={{direction:"ltr" , height:"210px"}}
+                  />
+                </div>
+              </span>
         </div>
 
-        <div className="px-5 mt-8">
+        <div className="px-5 mt-10">
           {step ? (
             <Button onClick={handlestep}>{t('t-submit')}</Button>
           ) : (
@@ -303,4 +334,4 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   );
 };
 
-export default CompleteProfileFormSellerPersonal;
+export default CompleteOtherInfoSeller;

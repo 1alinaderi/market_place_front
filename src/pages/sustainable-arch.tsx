@@ -28,7 +28,7 @@ import { LIMITS } from '@framework/utils/limits';
 
 export default function Home() {
   return (
-    <>
+    <div className='bg-slate-100'>
       <Seo
         title="معماری پایدار و هنر"
         path="sustainable-arch"
@@ -59,7 +59,7 @@ export default function Home() {
       <div>
         <img src="/image/banner/product4.jpg" alt="" />
       </div>
-    </>
+    </div>
   );
 }
 

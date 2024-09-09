@@ -156,7 +156,7 @@ const Header: React.FC = () => {
         {/* End of top part */}
 
         <div className="hidden navbar bg-1d3557 lg:block">
-          <Container className="flex items-center justify-between ">
+          <Container className="flex items-center justify-between lg:px-6 2xl:px-10">
             {/* <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" /> */}
             <div className="w-[0] cursor-pointer lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo">
               <Link href={'/'}>
@@ -176,7 +176,7 @@ const Header: React.FC = () => {
               data={site_header.menu}
               categorys={menuData}
               row={true}
-              className="flex transition-all duration-200 ease-in-out"
+              className="flex transition-all duration-200 ease-in-out xl:gap-3 gap-2"
             />
             <LanguageSwitcherHeader justFa={true} />
             {/* End of main menu */}
@@ -208,7 +208,7 @@ const Header: React.FC = () => {
                 <CartButton /> */}
 
                 <Link href={'/signin'}>
-                  <div className="flex items-center shrink-0 ltr:ml-4 rtl:mr-7">
+                  <div className="flex items-center shrink-0 mx-0 xl:mx-1">
                     <UserIcon className="text-white" />
                     <AuthMenu
                       isAuthorized={isAuthorized}

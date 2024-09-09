@@ -32,6 +32,7 @@ import CloseButton from '@components/ui/close-button';
 import MembershipCard from '@components/cards/membership-card';
 import LanguageSwitcher from '@components/ui/language-switcher';
 import Balance from './Balance';
+import CompleteOtherInfoSeller from '@components/forms/complete-other-info-seller';
 
 const defaultValues = {};
 
@@ -106,7 +107,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
     <div className="flex flex-col w-full">
       {isSeller ? (
         <>
-          <Modal open={open} onClose={onClose}>
+          {/* <Modal open={open} onClose={onClose}>
             <div
               className={
                 'w-full md:w-[720px] lg:w-[920px] xl:w-[1000px] 2xl:w-[1000px] relative '
@@ -126,10 +127,10 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                 />
               </div>
             </div>
-          </Modal>
+          </Modal> */}
 
           <Link href={'/membership'}>
-            {data.membership === 'Premium' ? (
+            {data?.membership === 'Premium' ? (
               <div
                 className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-black items-center  font-semibold flex  border-2 border-green-500 mb-8  rounded `}
               >
@@ -239,7 +240,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
             {!data?.inProggress && !data?.completeProfile && (
               <div className="border-b border-border-base pb-7">
                 <Heading
-                  variant="titleLarge"
+                  variant="titleMedium"
                   className="pt-6 mb-5  md:pt-7 lg:pt-8"
                 >
                   <div className="flex items-center gap-3">
@@ -264,7 +265,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
             {data?.inProggress && (
               <div className="border-b border-border-base pb-7">
                 <Heading
-                  variant="titleLarge"
+                  variant="titleMedium"
                   className="pt-6 mb-5  md:pt-7 lg:pt-8"
                 >
                   <div className="flex items-center gap-3">
@@ -289,19 +290,22 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
 
           
 
-            {data?.completeProfile && (
-              <Heading
-                variant="titleLarge"
-                className="pt-6 mb-5  md:pt-7 lg:pt-8"
-              >
-                <div className="flex items-center gap-3">
-                  <FaCheckCircle className="text-green-500" />
-                  {t('t-profile-us-complete')} 
-                  <span className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 duration-150'><Link  href={"/my-account/create-product"}>{t("add-product")}</Link></span>
-                </div>
-                
-              </Heading>
-            )}
+          {data?.completeProfile && (
+            <>
+            <Heading
+              variant="title"
+              className="pt-6 mb-5  md:pt-7 lg:pt-8"
+            >
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-green-500" />
+                {t('t-profile-us-complete')} 
+                <span className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 duration-150'><Link  href={"/my-account/create-product"}>{t("add-product")}</Link></span>
+              </div>
+              
+            </Heading>
+            <CompleteOtherInfoSeller t={t} baseData={baseData} />
+            </>
+          )}
           </div>
         </>
       ) : (

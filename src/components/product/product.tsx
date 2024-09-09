@@ -25,7 +25,6 @@ import ProductDetailsTab from '@components/product/product-details/product-tab';
 import VariationPrice from './variation-price';
 import isEqual from 'lodash/isEqual';
 import { API_ENDPOINTS, CDN_BASE_URL } from '@framework/utils/api-endpoints';
-import StarRatingComponent from 'react-star-rating-component';
 import StarIcon from '@components/icons/star-icon';
 import { BsStarHalf } from 'react-icons/bs';
 import Modal from '@components/common/modal/modal';
@@ -170,22 +169,23 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
             </div>
             <div className="pt-2">{t("t-owner")} : {data?.owner?.name}</div>
             {data?.rate ? (
-              <StarRatingComponent
-                name="app"
-                starCount={5}
-                value={data?.rate}
-                starColor="#F3B81F"
-                emptyStarColor="#DFE6ED"
-                renderStarIconHalf={() => (
-                  <BsStarHalf
-                    color="#F3B81F"
-                    className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3"
-                  />
-                )}
-                renderStarIcon={() => (
-                  <StarIcon className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3" />
-                )}
-              />
+              // <StarRatingComponent
+              //   name="app"
+              //   starCount={5}
+              //   value={data?.rate}
+              //   starColor="#F3B81F"
+              //   emptyStarColor="#DFE6ED"
+              //   renderStarIconHalf={() => (
+              //     <BsStarHalf
+              //       color="#F3B81F"
+              //       className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3"
+              //     />
+              //   )}
+              //   renderStarIcon={() => (
+              //     <StarIcon className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3" />
+              //   )}
+              // />
+              <></>
             ) : (
               <div className="pt-2">{t('no-rate')}</div>
             )}

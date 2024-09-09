@@ -147,9 +147,9 @@ input:checked + .slider:before {
     @apply absolute top-0 h-full ltr:right-0 rtl:left-0;
     background-image: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 1)
+      rgba(241, 245 ,249, 0.2),
+      rgba(241, 245 ,249, 0.9),
+      rgba(241, 245 ,249, 1)
     );
     content: '';
     z-index: 5;
