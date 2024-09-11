@@ -105,11 +105,11 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
             router.reload();
           }, 1000);
         })
-        .catch((e) => {
-          toast.error(e.message);
+        .catch((err) => {
+          toast.error(err?.response?.data?.message);
         });
     } else {
-      toast.error('Check All fild');
+      toast.error('تمام فیلد ها رو چک کنید');
     }
   }
 
