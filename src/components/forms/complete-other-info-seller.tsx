@@ -8,20 +8,24 @@ import dynamic from 'next/dynamic';
 import { httpReauest } from 'src/api/api';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
+import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 
-const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
+const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
+
   const [image, setimage] = useState(null);
   const [video, setvideo] = useState(null);
   const [image1, setimage1] = useState(null);
-  const [preview, setpreview] = useState(null);
-  const [previewVideo, setpreviewVideo] = useState(null);
+  const [preview, setpreview] = useState(data?.coverImage ? CDN_BASE_URL + data?.coverImage : null);
+  const [previewVideo, setpreviewVideo] = useState(data?.video ? CDN_BASE_URL + data?.video : null);
   const [previewPay, setpreviewPay] = useState(null);
   const [imagePay, setimagePay] = useState(null);
   const [bio, setbio] = useState<string>();
   const [nationalCode, setnationalCode] = useState(null);
   const [isValid, setIsValid] = useState(false);
   const [step, setStep] = useState(true);
-  const [text, settext] = useState<string>("");
+  const [text, settext] = useState<string>(data?.content);
+  const [instagram, setinstagram] = useState<string>(data?.instagram);
+  const [website, setwebsite] = useState<string>(data?.website);
 
   const router = useRouter();
 
@@ -58,14 +62,7 @@ const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
     }
   }, [imagePay]);
 
-  function handlestep(e) {
-    e.preventDefault();
-    if (imagePay !== null) {
-      setStep(false);
-    } else {
-      toast.warning('Please select a payment method');
-    }
-  }
+  
 
   useEffect(() => {
     if (image1) {
@@ -101,23 +98,25 @@ const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (String(nationalCode).length != 10) {
-      return toast.error('کد ملی اشتباه است');
-    }
-
-    if (!isValid) {
-      return;
-    }
-
-    if (bio && image && nationalCode && imagePay) {
+  
       const formdata = new FormData();
+      if (image) {
+        formdata.append('cover', image, image?.name);
+      }
+      if (video) {
+        formdata.append('video', video, video?.name);
+      }
+      if (instagram) {
+        formdata.append('instagram', instagram);
+      }
+      if (website) {
+        formdata.append('website', website);
+      }
+      if (text) {
+        formdata.append('text', text);
+      }
 
-      formdata.append('payment', imagePay, imagePay?.name);
-      formdata.append('logo', image, image?.name);
-      formdata.append('bio', bio);
-      formdata.append('nationalCode', nationalCode);
-
-      await httpReauest('POST', '/supplier/profile', formdata, {
+      await httpReauest('POST', '/supplier/more-info', formdata, {
         'x-access-token': baseData?.cookies?.seller?.token,
       })
         .then((e) => {
@@ -126,12 +125,10 @@ const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
             router.reload();
           }, 1000);
         })
-        .catch((e) => {
-          toast.error(e.message);
+        .catch((err) => {
+          toast.error(err?.response?.data?.message)
         });
-    } else {
-      toast.error('Check All fild');
-    }
+  
   }
 
   const validateNationalId = (nationalId: string) => {
@@ -205,8 +202,9 @@ const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
                 </Heading>
                 <input
                   onChange={(e) => {
-                    setnationalCode(e.target.value);
+                    setinstagram(e.target.value);
                   }}
+                  value={instagram}
                   type="text"
                   className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 />
@@ -218,8 +216,9 @@ const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
                 </Heading>
                 <input
                   onChange={(e) => {
-                    setnationalCode(e.target.value);
+                    setwebsite(e.target.value);
                   }}
+                  value={website}
                   type="text"
                   className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 />
@@ -280,54 +279,34 @@ const CompleteOtherInfoSeller = ({ baseData, t } : any) => {
               </span>
               <span className="col-span-12 sm:col-span-12  my-1 sm:my-3 px-4">
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('intro-video')} : {previewVideo && <FaTrash className='text-red-500' onClick={()=>{setvideo(null);setpreviewVideo(null)}}/>}
+                  {t('more-info')} :
                 </Heading>
-                <div className='ltr'>
-
+                
                 <ReactQuill
                   value={text}
                   modules={{
                     toolbar: [
-                      [{ header: [1, 2, false], font: ["inherit"] }, {}],
-                      ["bold", "italic", "underline", "strike", "blockquote"],
-                      [
-                        { list: "ordered" },
-                        { list: "bullet" },
-                        { indent: "-1" },
-                        { indent: "+1" },
-                      ],
-                      ["link", "image", "code"],
-                      ["clean" ],
+                      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                      ['blockquote', 'code-block'],
+                      ['link', 'image', 'video', 'formula'],
+                    
+                      [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+                      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                                      
+                      [{ 'align': [] }],
+                    
                     ],
                   }}
-                  formats={[
-                    "header",
-                    "bold",
-                    "italic",
-                    "underline",
-                    "strike",
-                    "blockquote",
-                    "list",
-                    "bullet",
-                    "indent",
-                    "link",
-                    "image",
-                  ]}
+          
                   onChange={(value)=>settext(value)}
-                  style={{direction:"ltr" , height:"210px"}}
                   />
-                </div>
               </span>
         </div>
 
-        <div className="px-5 mt-10">
-          {step ? (
-            <Button onClick={handlestep}>{t('t-submit')}</Button>
-          ) : (
-            <Button variant="formButton" type="submit">
-              {t('t-submit')}
-            </Button>
-          )}
+        <div className="px-5 mt-6">
+           <Button type='submit'>{t('t-submit')}</Button>
         </div>
       </form>
     </div>

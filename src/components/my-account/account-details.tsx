@@ -303,7 +303,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
               
             </Heading>
-            <CompleteOtherInfoSeller t={t} baseData={baseData} />
+            <CompleteOtherInfoSeller data={data} t={t} baseData={baseData} />
             </>
           )}
           </div>

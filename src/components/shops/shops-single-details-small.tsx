@@ -23,7 +23,7 @@ import { ROUTES } from '@utils/routes';
 import FreshVegetablesProductFeed from '@components/product/feeds/fresh-vegetables-product-feed';
 import SupplierSugestProducts from '@components/product/feeds/supplier-suggest-products';
 
-const ShopsSingleDetails: React.FC = () => {
+const ShopsSingleDetailsSmall: React.FC = () => {
   const {
     query: { slug },
   } = useRouter();
@@ -123,4 +123,4 @@ const ShopsSingleDetails: React.FC = () => {
   );
 };
 
-export default ShopsSingleDetails;
+export default ShopsSingleDetailsSmall;

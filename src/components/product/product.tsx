@@ -31,6 +31,7 @@ import Modal from '@components/common/modal/modal';
 import ShopSidebar from '@components/shops/shop-sidebar';
 import RelatedProductFeed from './feeds/related-product-feed';
 import Seo from '@components/seo/seo';
+import ShopSidebarSmall from '@components/shops/shops-sidebar-small';
 
 const ProductSingleDetails: React.FC = ({ baseData }) => {
   const { t } = useTranslation('common');
@@ -135,7 +136,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
     <div className="pt-6 pb-2 md:pt-7">
       <Modal open={show} onClose={()=>setshow(false)}>
         <div className='w-full bg-white p-2 max-w-[400px]'>
-          <ShopSidebar data={data?.owner}/>
+          <ShopSidebarSmall data={data?.owner}/>
         </div>
       </Modal>
       <div className="grid-cols-10 lg:grid gap-7 2xl:gap-8">

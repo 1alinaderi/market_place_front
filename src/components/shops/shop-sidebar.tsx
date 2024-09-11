@@ -102,8 +102,20 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
           )}
         </div>
       </div>
+      <div className="py-7  border-b">
+        {data?.video && (
+           <div>
+           <Heading className='text-center mb-2' variant='titleLarge'>{t("intro-video")}</Heading>
+           <video src={CDN_BASE_URL + data?.video} className='w-full lg:w-2/3 mx-auto rounded' controls/>
+         </div>
+        )}
+       {data?.content && (
+        <div className='mt-4' dangerouslySetInnerHTML={{__html:data?.content}}/>
+       )}
+      </div>
       <div className="py-7 grid lg:grid-cols-2 items-center gap-3">
-      <div className="flex items-start">
+        
+      <a href={'mail:' + data?.email} className="flex items-start">
           <div className="w-10 shrink-0">
             <BiEnvelope className="text-2xl text-brand-muted text-opacity-60" />
           </div>
@@ -113,8 +125,8 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             </h4>
             <Text>{data?.email}</Text>
           </div>
-        </div>
-        <div className="flex items-start">
+        </a>
+        <a href={'tel:' + data?.phone} className="flex items-start">
           <div className="w-10 shrink-0">
             <IoCallOutline className="text-2xl text-brand-muted text-opacity-60" />
           </div>
@@ -124,10 +136,10 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             </h4>
             <Text>{data?.phone}</Text>
           </div>
-        </div>
+        </a>
         {data?.website && (
 
-        <div className="flex items-start">
+        <a target='_blank' href={data?.website} className="flex items-start">
           <div className="w-10 shrink-0">
             <BiWorld className="text-2xl text-brand-muted text-opacity-60" />
           </div>
@@ -137,11 +149,11 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             </h4>
             <Text>{data?.website}</Text>
           </div>
-        </div>
+        </a>
         )}
          {data?.instagram && (
 
-<div className="flex items-start">
+<a target='_blank' href={data?.website} className="flex items-start">
   <div className="w-10 shrink-0">
     <Instagram className="text-2xl text-brand-muted text-opacity-60" />
   </div>
@@ -151,7 +163,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
     </h4>
     <Text>{data?.instagram}</Text>
   </div>
-</div>
+</a>
 )}
       </div>
     </div>

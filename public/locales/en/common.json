@@ -395,6 +395,7 @@
    "suppliers" : "Suppliers",
    "all-products" : "All Products",
    "text-suggest-supplier" : "Products recommended by the supplier",
-   "cover" : "Cover"
-
+   "cover" : "Cover",
+   "intro-video": "Intro Video",
+   "more-info" : "More Info"
 }
