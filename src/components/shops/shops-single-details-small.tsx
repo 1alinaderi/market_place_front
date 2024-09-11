@@ -56,10 +56,10 @@ const ShopsSingleDetailsSmall: React.FC = () => {
           backgroundImage: `url(${
             width! <= 480
               ? data?.coverImage
-                ? data?.coverImage
+                ? CDN_BASE_URL + data?.coverImage
                 : '/assets/images/shop-page-hero-bg.jpg'
               : data?.coverImage
-              ? data?.coverImage
+              ? CDN_BASE_URL + data?.coverImage
               : '/assets/images/shop-page-hero-bg.jpg'
           })`,
         }}
