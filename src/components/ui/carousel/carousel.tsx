@@ -77,7 +77,7 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({
       <Swiper
         modules={[Navigation, Autoplay, Pagination, Grid,EffectFade]}
         effect={`${fade ? "fade" : "none"}`}
-        autoplay={autoplay}
+        autoplay={autoplay ? {delay : 3000} : false}
         breakpoints={breakpoints}
         dir={dir}
         pagination={pagination}

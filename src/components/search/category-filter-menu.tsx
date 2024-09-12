@@ -29,7 +29,8 @@ function CategoryFilterMenuItem({
   mainMarket,
   setSubactive,
   subActive,
-  news
+  news,
+  onClose
 }: any) {
   const { t } = useTranslation('common');
   const [idrouter, setIdrouter] = useState('');
@@ -242,11 +243,13 @@ function CategoryFilterMenuItem({
         } overflow-hidden duration-300  `}
       >
         {selected?.map((e) => (
-          <div className="flex justify-between items-center py-2  px-5  text-slate-500 border-[1px] border-slate-50  hover:bg-slate-100">
+          <div onClick={() => {
+                  handleSubcategory(e);
+                  onClose()
+                }} 
+                className="flex justify-between items-center py-2  px-5  text-slate-500 border-[1px] border-slate-50  hover:bg-slate-100">
             <button
-              onClick={() => {
-                handleSubcategory(e);
-              }}
+              
               className=" mx-3"
             >
               {router.locale === 'en' && e?.name_en}{' '}
@@ -279,8 +282,8 @@ function CategoryFilterMenu({
   routerActive,
   subActive,
   setSubactive,
-  news
-
+  news,
+  onClose
 }: any) {
   return (
     <ul className={cn(className)}>
@@ -300,6 +303,7 @@ function CategoryFilterMenu({
           subActive={subActive}
           setSubactive={setSubactive}
           news={news}
+          onClose={onClose}
         />
       ))}
     </ul>

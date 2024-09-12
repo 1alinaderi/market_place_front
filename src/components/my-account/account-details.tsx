@@ -148,6 +148,56 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
           <div
             className="flex flex-col justify-center w-full mx-auto"
           >
+                        {!data?.phone && (
+              <div id="orders">
+                <Heading
+                  variant="titleLarge"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  {t('t-verify-phone')}
+                </Heading>
+                <VerifyPhoneBuyer t={t} baseData={baseData} />
+              </div>
+            )}
+
+            {!data?.inProggress && !data?.completeProfile && (
+              <div className="border-b border-border-base pb-7">
+                <Heading
+                  variant="titleMedium"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  <div className="flex items-center gap-3">
+                    {t('t-compelete-profile')}
+                  </div>
+                </Heading>
+                <div className='text-[12px] lg:text-[16px] lg:px-3 mb-4'>
+                  <h2 className='mb-5 text-black'>{t("profile-h")}</h2>
+                  <div className='grid md:grid-cols-2 grid-cols-1 gap-4 mb-5 '>
+                    <img className='md:h-[340px] rounded shadow w-full' src="/assets/images/img.jpg" alt="" />
+                    <img className='md:h-[340px] rounded shadow w-full'  src="/assets/images/img1.jpg" alt="" />
+                  </div>
+                  <p>{t("profile-p")}</p>
+                  <p>{t("profile-p-1")}</p>
+                  <p>{t("profile-p-2")}</p>
+                </div>
+                <CompleteProfileFormSellerPersonal t={t} baseData={baseData} />
+                
+              </div>
+            )}
+
+            {data?.inProggress && (
+              <div className="border-b border-border-base pb-7">
+                <Heading
+                  variant="titleMedium"
+                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
+                >
+                  <div className="flex items-center gap-3">
+                    <MdPendingActions size={35} />
+                    {t('t-send-information-wait')}
+                  </div>
+                </Heading>
+              </div>
+            )}
             <Heading
               variant="titleLarge"
               className="mb-5 md:mb-6 lg:mb-7 lg:-mt-1"
@@ -216,56 +266,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </div>
 
-            {!data?.phone && (
-              <div id="orders">
-                <Heading
-                  variant="titleLarge"
-                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
-                >
-                  {t('t-verify-phone')}
-                </Heading>
-                <VerifyPhoneBuyer t={t} baseData={baseData} />
-              </div>
-            )}
 
-            {!data?.inProggress && !data?.completeProfile && (
-              <div className="border-b border-border-base pb-7">
-                <Heading
-                  variant="titleMedium"
-                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
-                >
-                  <div className="flex items-center gap-3">
-                    {t('t-compelete-profile')}
-                  </div>
-                </Heading>
-                <div className='text-[12px] lg:text-[16px] lg:px-3 mb-4'>
-                  <h2 className='mb-5 text-black'>{t("profile-h")}</h2>
-                  <div className='grid md:grid-cols-2 grid-cols-1 gap-4 mb-5 '>
-                    <img className='md:h-[340px] rounded shadow w-full' src="/assets/images/img.jpg" alt="" />
-                    <img className='md:h-[340px] rounded shadow w-full'  src="/assets/images/img1.jpg" alt="" />
-                  </div>
-                  <p>{t("profile-p")}</p>
-                  <p>{t("profile-p-1")}</p>
-                  <p>{t("profile-p-2")}</p>
-                </div>
-                <CompleteProfileFormSellerPersonal t={t} baseData={baseData} />
-                
-              </div>
-            )}
-
-            {data?.inProggress && (
-              <div className="border-b border-border-base pb-7">
-                <Heading
-                  variant="titleMedium"
-                  className="pt-6 mb-5  md:pt-7 lg:pt-8"
-                >
-                  <div className="flex items-center gap-3">
-                    <MdPendingActions size={35} />
-                    {t('t-send-information-wait')}
-                  </div>
-                </Heading>
-              </div>
-            )}
 
             {/* {data?.bankCards?.length == 0 && (
           <div id="orders">

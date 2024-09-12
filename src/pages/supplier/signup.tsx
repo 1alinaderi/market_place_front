@@ -44,7 +44,6 @@ export default function SignInPage({ baseData }) {
   //   }
   // }, [user]);
   async function handlecallback(response) {
-    console.log(response.credential);
     const userObject = jwtDecode(response.credential);
     console.log(userObject);
     setProfile(userObject);
@@ -70,11 +69,11 @@ export default function SignInPage({ baseData }) {
     }
   }
   useEffect(()=>{
-   google.accounts.id.initialize({
+   google?.accounts.id.initialize({
     client_id:process.env.NEXT_PUBLIC_GOOGLE_ID,
     callback: handlecallback
    })
-   google.accounts.id.renderButton(
+   google?.accounts.id.renderButton(
     document.getElementById("signUpDivS"),{
       theme:"outline" , width:"100%" ,text: "Sign With Google",class: "custom-google-button",
     }

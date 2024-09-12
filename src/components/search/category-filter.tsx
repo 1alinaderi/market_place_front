@@ -142,6 +142,7 @@ export const CategoryFilter = ({
                 mainMarket={mainMarket}
                 subActive={subActive}
                 setSubactive={setSubactive}
+                onClose={() => setFilter(false)}
               />
             ) : (
               <CategoryFilterMenu
@@ -155,6 +156,7 @@ export const CategoryFilter = ({
                 setId={setId}
                 subActive={subActive}
                 setSubactive={setSubactive}
+                onClose={() => setFilter(false)}
               />
             )
           ) : (

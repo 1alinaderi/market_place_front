@@ -66,7 +66,7 @@ const Heading: React.FC<Props> = ({
             variant === 'titleLarge',
           'text-base lg:text-[17px] lg:leading-7 font-medium':
             variant === 'mediumHeading',
-          'text-lg lg:text-xl xl:text-[22px] xl:leading-8 font-bold font-manrope':
+          'text-[22px] lg:text-[28px] xl:text-[28px] xl:leading-8 font-bold font-manrope':
             variant === 'heading',
           'text-lg lg:text-xl xl:text-[26px] xl:leading-8 font-semibold text-brand-dark ':
             variant === 'checkoutHeading',

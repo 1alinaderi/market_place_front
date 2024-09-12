@@ -102,13 +102,13 @@ export default function AccountDetailsPage({ baseData }) {
         path="my-account/all-product"
       />
       <Modal open={show} onClose={()=>setshow(false)}>
-        <div className='bg-white p-3 w-full rounded shadow lg:min-w-[70vw]'>
+        <div className='bg-slate-100 p-3 w-full rounded shadow lg:min-w-[70vw]'>
           <FaTimes onClick={()=>setshow(false)}/>
           <div className='mt-2'>
           <Heading >
             برای اضافه کردن محصول روی آن کلیک کنید (برای ثبت شدن حتما روی دکمه تایید کلیک کنید)
           </Heading>
-          <div className='border rounded mt-2 p-3 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4'>
+          <div className='border rounded mt-2 p-3 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4'>
           <Heading className='col-span-full' variant='title'>
            محصولات انتخاب شده:
           </Heading>
@@ -133,7 +133,7 @@ export default function AccountDetailsPage({ baseData }) {
           </div>
           </div>
           <div
-            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
+            className={`grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
            >
               <Heading className='col-span-full' variant='title'>
            محصولات شما:
@@ -165,7 +165,7 @@ export default function AccountDetailsPage({ baseData }) {
             <button onClick={()=>setshow(true)} className='bg-green-500 px-3 py-1 text-white text-[14px] rounded'>اضافه کردن</button>
           </Heading>
           <div
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
+          className={`grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
         >
           {suggested?.length == 0 ? (
             <Heading className='text-center'>{t("t-dont-product")}</Heading>
@@ -182,7 +182,7 @@ export default function AccountDetailsPage({ baseData }) {
           </div>
         </div>
         <div
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
+          className={`grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
         >
             <Heading className='mb-2 col-span-full' variant='titleMedium'>
             {t("all-products")}

@@ -41,7 +41,7 @@ const DiscountFilters = ({ setProductData, setLoading, setFilter }) => {
       <div className="flex flex-col border-[1px] border-slate-400/20 rounded ">
         {discounts.map((d) => (
           <span
-            onClick={() => handleFilter(d)}
+            onClick={() => {handleFilter(d);setFilter(false)}}
             className="border-[1px] cursor-pointer border-slate-400/20 py-2 px-3 flex justify-between items-center"
           >
             <p> {t("discount-more")} {d}%</p>

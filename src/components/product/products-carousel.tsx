@@ -80,8 +80,8 @@ const ProductsCarousel: React.FC<ProductsCarouselProps> = ({
             )
       }
     >
-      <div className="flex flex-wrap items-center justify-between mb-5 md:mb-6">
-        <SectionHeader sectionHeading={sectionHeading} className="mb-0" />
+      <div className="flex flex-wrap items-center justify-center mb-5 md:mb-6">
+        <SectionHeader sectionHeading={sectionHeading} className="mb-0"  />
       </div>
       {error ? (
         <div className="2xl:ltr:pr-10 2xl:rtl:pl-10">
@@ -96,6 +96,7 @@ const ProductsCarousel: React.FC<ProductsCarouselProps> = ({
           }`}
         >
           <Carousel
+            autoplay
             breakpoints={carouselBreakpoint || breakpoints}
             className="-mx-1.5 md:-mx-2 xl:-mx-2.5 -mt-4"
             prevButtonClassName="ltr:-left-2 rtl:-right-2 md:ltr:-left-1 md:rtl:-right-1.5 lg:ltr:-left-2 rtl:-right-2 xl:ltr:-left-2.5 xl:rtl:-right-2.5 2xl:ltr:left-5 2xl:rtl:right-5 -top-12 3xl:top-auto 3xl:-translate-y-2 4xl:-translate-y-10"

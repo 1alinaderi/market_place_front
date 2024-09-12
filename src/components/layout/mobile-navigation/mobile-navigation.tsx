@@ -60,10 +60,10 @@ const BottomNavigation: React.FC = () => {
           <HomeIcon />
         </Link>
         {/* <CartButton hideLabel={true} iconClassName="text-opacity-100" /> */}
-        <Link href={ROUTES.LOGIN}>
+        <Link href={"/supplier/signin"}>
           <AuthMenu
             isAuthorized={isAuthorized}
-            href={ROUTES.ACCOUNT}
+            href={"/supplier/signin"}
             btnProps={{
               className: 'shrink-0 focus:outline-none',
               children: <UserIcon />,
