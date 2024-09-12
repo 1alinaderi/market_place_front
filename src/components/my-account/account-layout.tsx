@@ -19,13 +19,6 @@ const accountMenuSeller = [
     name: 'account-information',
     icon: <SettingsIcon className="w-5 md:w-[22px] h-5 md:h-[22px]" />,
   },
-  // {
-  //   slug: '/my-account/vip',
-  //   name: 'account-membership',
-  //   icon: (
-  //     <RiVipCrown2Line className="w-5 md:w-[22px] h-5 md:h-[22px] text-[#8C969F]" />
-  //   ),
-  // },
   {
     slug: '/my-account/create-product',
     name: 'account-add-product',

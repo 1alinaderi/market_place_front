@@ -112,28 +112,6 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-            {t("modal-p-4")}
-            </p>
-          </li>
-          <li className="flex items-center gap-4">
-            <span className="p-1 border rounded-full border-white/20 bg-white/20">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="w-3 h-3"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4.5 12.75l6 6 9-13.5"
-                ></path>
-              </svg>
-            </span>
-            <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
             {t("modal-p-5")}
             </p>
           </li>
@@ -175,7 +153,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
           </button>
         ) : (
           <>
-            <Link href={'/my-account/vip'}>
+            <Link href={'/membership'}>
               <button
                 className="block w-full select-none rounded-lg bg-white py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-pink-500 shadow-md shadow-blue-gray-500/10 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-gray-500/20 focus:scale-[1.02] focus:opacity-[0.85] focus:shadow-none active:scale-100 active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"

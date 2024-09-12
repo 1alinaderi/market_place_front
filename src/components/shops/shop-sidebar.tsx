@@ -69,7 +69,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             
 
       <div className="w-full px-5 pb-8 text-center border-b border-gray-base sm:px-8 lg:px-0  flex lg:flex-row flex-col gap-5 items-center relative">
-        <span onClick={()=>setShare(true)} className='border rounded p-3 lg:absolute left-0 top-0 w-fit h-fit cursor-pointer hidden'>
+        <span onClick={()=>setShare(true)} className='border rounded p-3 absolute left-0 top-0 w-fit h-fit cursor-pointer hidden lg:block'>
           <Share/>
         </span>
         <span onClick={()=>setShare2(true)} className='border rounded p-3 absolute -left-0 -top-0 w-fit h-fit cursor-pointer lg:hidden'>

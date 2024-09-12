@@ -50,8 +50,6 @@ export default function NewsPage() {
   },[])
   return (
     <>
-    
-      
       <Seo
         title="اخبار"
         path="news"
@@ -70,7 +68,7 @@ export default function NewsPage() {
       </Container>
       {/* <DownloadApps /> */}
       <div>
-        <img src="/image/banner/product4.jpg" alt="" />
+        <img src="/assets/images/home/header.png" alt="" />
       </div>
     </>
   );

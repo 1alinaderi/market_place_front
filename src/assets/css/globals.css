@@ -563,10 +563,10 @@ input:checked + .slider:before {
 
 @keyframes floating {
   from {
-    transform: rotate(-0.001deg) translate3d(3px, 0, 0) rotate(-0.001deg);
+    transform: rotate(-0.001deg) translate3d(2px, 0, 0) rotate(-0.001deg);
   }
 
   to {
-    transform: rotate(360.001deg) translate3d(3px, 0, 0) rotate(-360.001deg);
+    transform: rotate(360.001deg) translate3d(2px, 0, 0) rotate(-360.001deg);
   }
 }

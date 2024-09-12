@@ -19,7 +19,7 @@ import OrderTable from '@components/order/order-table';
 import CompleteProfileFormSellerPersonal from '@components/forms/complete-profile-seller-personal';
 import { MdPendingActions } from 'react-icons/md';
 import VerifyPhoneBuyer from '@components/forms/verify-phone-buyer';
-import { FaAngleRight, FaCheckCircle } from 'react-icons/fa';
+import { FaAngleRight, FaCheckCircle, FaTimes } from 'react-icons/fa';
 import CompleteProfileFormBuyerCompany from '@components/forms/complete-profile-buyer-company';
 import CompleteProfileFormBuyerPersonal from '@components/forms/complete-profile-buyer-personal';
 import VerifyCardBank from '@components/forms/verify-bank-card';
@@ -49,7 +49,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
   const { t } = useTranslation('common');
   const [data, setData] = useState([]);
   const [open, setopen] = useState<boolean>(false);
-  const [orders, setorders] = useState();
+  const [dontshow, setdontshow] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -87,8 +87,14 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
   async function getSellerData(id: any) {
     const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
 
-    if (data?.data?.membership == 'Freemium') {
+    const showmodal = localStorage.getItem("showmodal")
+
+    if (data?.data?.membership == 'Freemium' && !showmodal) {
       setopen(true);
+    }
+    const isdont = localStorage.getItem("dontshow")
+    if (data?.data?.phone && data?.data?.completeProfile && !isdont) {
+      setdontshow(true)
     }
     setData(data.data);
   }
@@ -98,16 +104,22 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
 
   function onClose() {
     setopen(false);
+    localStorage.setItem("showmodal" , "false")
   }
 
   function gotovip() {
-    router.push(`${window.location.origin}/my-account/vip`);
+    router.push(`${window.location.origin}/membership`);
+  }
+
+  function handleDontshow() {
+    localStorage.setItem("dontshow" , "false")
+    setdontshow(false)
   }
   return (
     <div className="flex flex-col w-full">
       {isSeller ? (
         <>
-          {/* <Modal open={open} onClose={onClose}>
+          <Modal open={open} onClose={onClose}>
             <div
               className={
                 'w-full md:w-[720px] lg:w-[920px] xl:w-[1000px] 2xl:w-[1000px] relative '
@@ -127,35 +139,14 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                 />
               </div>
             </div>
-          </Modal> */}
-
-          <Link href={'/membership'}>
-            {data?.membership === 'Premium' ? (
-              <div
-                className={`w-full hover:text-red-600 duration-200 cursor-pointer h-full py-4 px-5 text-[18px] md:text-xl text-black items-center  font-semibold flex  border-2 border-green-500 mb-8  rounded `}
-              >
-                <FaCheckCircle className="text-green-600 mx-2 text-3xl" />
-                {t('text-congratulations-membership')} 
-              </div>
-            ) : (
-              
-              <div className='flex lg:flex-row flex-col  gap-1'>
-                <Heading className='text-[18px] md:text-xl  py-4'>{t("upgrade-membership")}</Heading>
-                <div
-                className={`w-fit  duration-200 cursor-pointer lg:py-4 lg:px-5 py-2 px-3 text-sm md:text-sm text-white items-center  font-semibold flex  border  mb-8 bg-red-500 hover:bg-red-400 rounded `}
-              >
-                {t('text-upgrade-membership')}
-                
-              </div>
-              </div>
-            )}
-          </Link>
-          <div className='mb-5'>
+          </Modal>
+          <small className='mb-2'>{t("manage-coins")}</small>
+          <div className='flex gap-2 items-center mb-3 flex-wrap lg:flex-nowrap'>
             <Balance data={data}/>
+            {dontshow &&<div className='border w-full border-green-400 p-3 pb-4 rounded bg-green-200 text-green-700 font-bold relative'> <span onClick={handleDontshow} className='absolute rtl:left-1 top-1 ltr:right-1'><FaTimes/></span>{t("congragelation-text")}</div>}
           </div>
           <div
             className="flex flex-col justify-center w-full mx-auto"
-            noValidate
           >
             <Heading
               variant="titleLarge"

@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <div className="relative">
       <Seo
-        title="صفحه اصلی"
+        title="هاب تجاری آینده"
         path=""
       />
       <div className="bg-[#11223a] overflow-hidden">
@@ -212,7 +212,7 @@ export default function Home() {
           <span className="col-span-full lg:hidden flex justify-between items-center text-white text-[12px]">
             <RevealX>
               <div className="flex flex-col items-center justify-center">
-                <span className="rounded-full p-2 overflow-hidden bg-white">
+                <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                   <Gift variant="Bulk" color="#ff8a65" size={30} />
                 </span>
                 <p className="text-center mt-1">{t('donate')}</p>
@@ -234,7 +234,7 @@ export default function Home() {
             <RevealX head>
               <Link href={'/packing'}>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white">
+                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                     <Box variant="Bulk" color="#ff8a65" size={30} />
                   </span>
 
@@ -247,7 +247,7 @@ export default function Home() {
             <div className="flex flex-col gap-5 lg:hidden">
               <RevealX head>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white">
+                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                     <TruckTime variant="Bulk" color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('logistics')}</p>
@@ -255,7 +255,7 @@ export default function Home() {
               </RevealX>
               <RevealX head>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white">
+                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                     <ClipboardText variant="Bulk" color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('insurance')}</p>
@@ -263,7 +263,7 @@ export default function Home() {
               </RevealX>
               <RevealX head>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white">
+                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                     <Translate variant="Bulk" color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('translate')}</p>
@@ -291,7 +291,7 @@ export default function Home() {
               <RevealX>
                 <Link href={'/supplier/signup'}>
                   <div className="flex flex-col items-center justify-center">
-                    <span className="rounded-full p-2 overflow-hidden bg-white">
+                    <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                       <Diamonds variant="Bulk" color="#ff8a65" size={30} />
                     </span>
                     <p className="text-center mt-1">{t('premium-home')}</p>
@@ -302,7 +302,7 @@ export default function Home() {
               <RevealX>
                 <Link href={"/news"}>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white">
+                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                     <FaNetworkWired color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('news')}</p>
@@ -311,7 +311,7 @@ export default function Home() {
               </RevealX>
               <RevealX>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white">
+                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                     <RecoveryConvert color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('contract')}</p>

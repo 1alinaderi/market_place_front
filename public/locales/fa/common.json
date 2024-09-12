@@ -292,13 +292,13 @@
   "free-market-desc" : "محصول را اضافه کنید و جزئیات محصول را وارد کنید",
   "premium" : "محصول را اضافه کنید",
   "premium-desc" : "محصول را اضافه کنید و جزئیات محصول را وارد کنید",
-  "referral" : "معرف",
+  "referral" : "درآمدزایی",
   "news" : "اخبار",
   "referral-desc" : "درآمد حاصل از ارجاع کد شخصی در کریپتو",
   "authentication" : "احراز هویت",
   "authentication-desc" : "مشخصات خود را کامل کنید ",
   "continue" : "ادامه دهید",
-  "text-account-referal" : "معرف",
+  "text-account-referal" : "درآمدزایی",
    "t-referal": "با کد ارجاع کسب درآمد کنید",
    "p-referal" : " Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.Lorem ipsum dolor sit amet consectetur adipisicing.",
    "l-referal" : "کد ارجاع شخصی",
@@ -399,5 +399,7 @@
    "text-suggest-supplier" : "محصولات پیشنهادی تامین کننده",
    "cover" : "کاور",
    "intro-video": "ویدیو معرفی",
-   "more-info" : "توضیحات بیشتر"
+   "more-info" : "توضیحات بیشتر",
+   "congragelation-text" : "تبریک ! 50 سکه برای ثبت نام از طرف پلتفرم ویمهر دریافت کردید برای مدیریت سکه ها به بخش کیف پول بروید",
+   "manage-coins" : "برای مدیریت سکه ها به بخش کیف پول بروید"
 }

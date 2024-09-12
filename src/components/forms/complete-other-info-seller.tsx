@@ -9,6 +9,7 @@ import { httpReauest } from 'src/api/api';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
+import Loading from '@components/common/Loading';
 
 const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
 
@@ -19,7 +20,7 @@ const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
   const [previewVideo, setpreviewVideo] = useState(data?.video ? CDN_BASE_URL + data?.video : null);
   const [previewPay, setpreviewPay] = useState(null);
   const [imagePay, setimagePay] = useState(null);
-  const [bio, setbio] = useState<string>();
+  const [loading, setloading] = useState<boolean>(false);
   const [nationalCode, setnationalCode] = useState(null);
   const [isValid, setIsValid] = useState(false);
   const [step, setStep] = useState(true);
@@ -97,37 +98,39 @@ const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setloading(true)
+      
+    const formdata = new FormData();
+    if (image) {
+      formdata.append('cover', image, image?.name);
+    }
+    if (video) {
+      formdata.append('video', video, video?.name);
+    }
+    if (instagram) {
+      formdata.append('instagram', instagram);
+    }
+    if (website) {
+      formdata.append('website', website);
+    }
+    if (text) {
+      formdata.append('text', text);
+    }
 
-  
-      const formdata = new FormData();
-      if (image) {
-        formdata.append('cover', image, image?.name);
-      }
-      if (video) {
-        formdata.append('video', video, video?.name);
-      }
-      if (instagram) {
-        formdata.append('instagram', instagram);
-      }
-      if (website) {
-        formdata.append('website', website);
-      }
-      if (text) {
-        formdata.append('text', text);
-      }
-
-      await httpReauest('POST', '/supplier/more-info', formdata, {
-        'x-access-token': baseData?.cookies?.seller?.token,
+    await httpReauest('POST', '/supplier/more-info', formdata, {
+      'x-access-token': baseData?.cookies?.seller?.token,
+    })
+      .then((e) => {
+        toast.success(e.data.message);
+        setloading(false)
+        setTimeout(() => {
+          router.reload();
+        }, 1000);
       })
-        .then((e) => {
-          toast.success(e.data.message);
-          setTimeout(() => {
-            router.reload();
-          }, 1000);
-        })
-        .catch((err) => {
-          toast.error(err?.response?.data?.message)
-        });
+      .catch((err) => {
+        toast.error(err?.response?.data?.message)
+        setloading(false)
+      });
   
   }
 
@@ -306,7 +309,7 @@ const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
         </div>
 
         <div className="px-5 mt-6">
-           <Button type='submit'>{t('t-submit')}</Button>
+          {loading ? <Loading/> :   <Button type='submit'>{t('t-submit')}</Button>}
         </div>
       </form>
     </div>

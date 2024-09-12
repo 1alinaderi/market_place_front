@@ -13,6 +13,9 @@ import { jwtDecode } from 'jwt-decode';
 import { httpReauest } from 'src/api/api';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import Alert from '@components/ui/alert';
+import Button from '@components/ui/button';
+import Link from 'next/link';
 
 export default function SignInPage({ baseData }) {
   const [user, setUser] = useState([]);
@@ -42,9 +45,7 @@ export default function SignInPage({ baseData }) {
   //   }
   // }, [user]);
   async function handlecallback(response) {
-    console.log(response.credential);
     const userObject = jwtDecode(response.credential);
-    console.log(userObject);
     setProfile(userObject);
     if (userObject) {
       await httpReauest(
@@ -89,6 +90,7 @@ export default function SignInPage({ baseData }) {
       <Divider />
       <div className="flex items-center justify-center">
         <div className="px-4 py-12 sm:py-16 lg:py-20 md:px-6 lg:px-8 2xl:px-10">
+        <div className='flex gap-3 items-center border p-2 mb-4 justify-between rounded font-bold'> برای ثبت نام نیاز به راهنمایی داری؟<Link href={"/guide"}><button className='text-[14px] text-white bg-red-500 rounded px-4 py-1'>راهنما</button></Link></div>
           <LoginFormSeller
             // profile={profile}
             baseData={baseData}

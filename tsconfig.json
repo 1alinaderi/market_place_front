@@ -30,7 +30,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/my-account/vip"
   ],
   "exclude": ["node_modules"]
 }
