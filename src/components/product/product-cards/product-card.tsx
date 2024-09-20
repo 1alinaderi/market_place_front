@@ -130,7 +130,7 @@ const ProductCard: React.FC<ProductProps> = ({
           <div className="mb-1 lg:mb-1.5 -mx-1">
             {specialPrice ? (
               <>
-                <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand-dark">
+                <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand">
                   ${specialPrice}
                 </span>
                 <del className="mx-1 text-sm text-brand-dark text-opacity-70">
@@ -138,7 +138,7 @@ const ProductCard: React.FC<ProductProps> = ({
                 </del>
               </>
             ) : (
-              <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand-dark">
+              <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand">
                 {price}
               </span>
             )}
