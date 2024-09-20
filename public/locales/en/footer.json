@@ -32,6 +32,8 @@
   "User": "User",
   "Sign-In":"Sign In",
   "Sgin-Up":"Sign Up",
-  "office-address" : "Office Address",
-  "office-address-value" : "Muscat, Ghubra North, Safa Street, Building No. 6212 (Makarem Building), 1st Floor, Unit 11, Oman."
+  "office-address-oman" : "Office Address Oman",
+  "office-address-oman-value" : "Muscat, Ghubra North, Safa Street, Building No. 6212 (Makarem Building), 1st Floor, Unit 11, Oman.",
+  "office-address-iran" : "Office Address Iran",
+  "office-address-iran-value" : "International Unit, 2nd Floor, CW-5, Science and Technology Park Building, Iran Research Organization for Science and Technology (IROST), Tehran, Iran."
 }

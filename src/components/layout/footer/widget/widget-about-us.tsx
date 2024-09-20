@@ -21,7 +21,7 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
 
   return (
     <div className={`pb-10 sm:pb-0 ${className}`}>
-      <div className="flex flex-col text-center sm:ltr:text-left sm:rtl:text-right max-w-[300px] mx-auto sm:ltr:ml-0 sm:rtl:mr-0 pb-6 sm:pb-5">
+      <div className="flex flex-col text-center sm:ltr:text-left sm:rtl:text-right  mx-auto sm:ltr:ml-0 sm:rtl:mr-0 pb-6 sm:pb-5">
         <div className="flex items-center  justify-center mb-2">
           <Logo
             href={ROUTES.HOME}
@@ -35,9 +35,12 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
             />
           
         </div>
-        <p className="text-[12px]">{t('text-about-us')}</p>
+        <p className="text-[14px]">{t('text-about-us')}</p>
         <div className="text-[12px] text-left rtl:text-right border-t border-b py-2 mt-2">
-        {t("office-address")}:<address className='inline ltr:pl-2 rtl:pr-2'>{t("office-address-value")}</address>
+        {t("office-address-oman")}:<address className='inline ltr:pl-2 rtl:pr-2'>{t("office-address-oman-value")}</address>
+        </div>
+        <div className="text-[12px] text-left rtl:text-right border-t border-b py-2 mt-2">
+        {t("office-address-iran")}:<address className='inline ltr:pl-2 rtl:pr-2'>{t("office-address-iran-value")}</address>
         </div>
       </div>
 

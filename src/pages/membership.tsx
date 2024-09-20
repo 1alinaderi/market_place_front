@@ -188,8 +188,9 @@ export default function Membership() {
         title="ممبرشیپ"
         path="membership"
       />
+      <div className='bg-slate-100 py-8'>
       {whichPay ? (
-        <div className="lg:mx-[100px] mx-4 px-3 border border-slate-200 rounded-sm mt-8 shadow pb-5">
+        <div className="lg:mx-[100px] mx-4 px-3 border border-slate-200 bg-white rounded-lg  shadow pb-5 ">
           <div className="flex col-span-full justify-center items-start  mt-5  p-1">
             <div className="flex flex-col justify-center">
               <span className="border-2 rounded-full p-2 px-[18px] border-green-500 text-green-500 text-xl mx-2">
@@ -596,7 +597,7 @@ export default function Membership() {
           </form>
         </div>
       ) : (
-        <div className="grid gap-5 lg:grid-cols-2 mx-4  mt-10 lg:mx-[200px] border border-slate-200 shadow px-10 rounded-sm">
+        <div className="grid gap-5 lg:grid-cols-2 mx-4  mt-10 lg:mx-[200px] border border-slate-200 bg-white shadow px-10 rounded-lg">
           <div className="flex col-span-full justify-center items-start  mt-5  p-1">
             <div className="flex flex-col justify-center">
               <span className="border-2 rounded-full p-2 px-[18px] border-green-500 text-green-500 text-xl mx-2">
@@ -645,7 +646,7 @@ export default function Membership() {
                     className="w-full h-[160px] rounded object-contain"
                   />
                 ) : (
-                  <div className="w-full h-[160px] rounded relative border">
+                  <div className="w-full h-[160px] rounded relative border ">
                     <FaPlus size={25} className="inset-0 absolute m-auto" />
                   </div>
                 )}
@@ -674,6 +675,8 @@ export default function Membership() {
           </form>
         </div>
       )}
+      </div>
+    
     </>
   );
 }

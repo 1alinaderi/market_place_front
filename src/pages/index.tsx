@@ -32,17 +32,8 @@ import { useTranslation } from 'next-i18next';
 import Seo from '@components/seo/seo';
 
 export default function Home() {
-  const [mobile, setMobile] = useState(false);
-  const ref = useRef<any>();
   const { t } = useTranslation('common');
-  useEffect(() => {
-    if (window.innerWidth <= 1024) {
-      setMobile(true);
-    }
-    if (ref.current) {
-      ref.current.play();
-    }
-  }, []);
+
 
   return (
     <div className="relative">
@@ -158,9 +149,9 @@ export default function Home() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4  gap-3 lg:gap-10 py-4 lg:py-8 px-3 grid-flow-row  relative">
           <video
-            ref={ref}
             loop
             muted
+            autoPlay
             src="/video/1 (1).mp4"
             className="absolute left-0 top-0 h-full w-full object-cover lg:opacity-90 opacity-60"
           />
@@ -176,7 +167,7 @@ export default function Home() {
                   src="/assets/images/home/1.png"
                   alt=""
                 />
-                <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+                <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                   {t('sustainable')}
                   <br />
                   {t('arch-and-art')}
@@ -196,7 +187,7 @@ export default function Home() {
                   src="/assets/images/home/3.png"
                   alt=""
                 />
-                <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+                <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                   {t('free-market')}
                 </p>
               </div>
@@ -281,7 +272,7 @@ export default function Home() {
                     src="/assets/images/home/2.png"
                     alt=""
                   />
-                  <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+                  <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                     {t('discount')}
                   </p>
                 </div>
@@ -327,7 +318,7 @@ export default function Home() {
                 src="/assets/images/home/4.png"
                 alt=""
               />
-              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+              <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[22px] xl:text-[28px] italic text-[#fff] z-20">
                 
                 {t('friendly-brands')}
               </p>
@@ -340,7 +331,7 @@ export default function Home() {
                 src="/assets/images/home/5.png"
                 alt=""
               />
-              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+              <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                 {t('l-retail')}
               </p>
             </div>
@@ -352,7 +343,7 @@ export default function Home() {
                 src="/assets/images/home/6.png"
                 alt=""
               />
-              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+              <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                 {t('c-brands')}
               </p>
             </div>
@@ -364,7 +355,7 @@ export default function Home() {
                 src="/assets/images/home/7.png"
                 alt=""
               />
-              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+              <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                 {t('organic-food')}
               </p>
             </div>
@@ -376,7 +367,7 @@ export default function Home() {
                 src="/assets/images/home/8.png"
                 alt=""
               />
-              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+              <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                 {t('l-v-product')}
               </p>
             </div>
@@ -388,7 +379,7 @@ export default function Home() {
                 src="/assets/images/home/9.png"
                 alt=""
               />
-              <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+              <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                 {t('gaming')}
               </p>
             </div>
@@ -408,7 +399,7 @@ export default function Home() {
                   src="/urametacover.png"
                   alt=""
                 />
-                <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+                <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                   {t('urameta')}
                 </p>
               </div>
@@ -429,7 +420,7 @@ export default function Home() {
                   src="/stgs.png.jpg"
                   alt=""
                 />
-                <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+                <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                   SDGS
                 </p>
               </div>
@@ -447,7 +438,7 @@ export default function Home() {
                     src="/sus (1).png"
                     alt=""
                   />
-                  <p className=" absolute bottom-1 lg:bottom-5 left-3 lg:left-8 text-[18px] lg:text-[30px] italic text-[#fff] z-20">
+                  <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[26px] xl:text-[30px] italic text-[#fff] z-20">
                     {t('about')}
                   </p>
                 </div>

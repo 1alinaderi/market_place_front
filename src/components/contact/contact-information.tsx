@@ -13,17 +13,17 @@ const data = [
     icon: (
       <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
     ),
-    name: 'text-office-location',
-    description: 'text-office-location-details',
+    name: 'footer:office-address-oman',
+    description: 'footer:office-address-oman-value',
   },
   {
     id: 2,
     slug: '/',
     icon: (
-      <PhoneIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
+      <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
     ),
-    name: 'text-phone',
-    description: 'text-phone-details',
+    name: 'footer:office-address-iran',
+    description: 'footer:office-address-iran-value',
   },
   {
     id: 3,
@@ -34,6 +34,7 @@ const data = [
     name: 'text-email',
     description: 'WIMEHR@GMAIL.COM',
   },
+ 
 ];
 const ContactInformation: FC = () => {
   const { t } = useTranslation('common');
