@@ -152,6 +152,8 @@ export default function Home() {
             loop
             muted
             autoPlay
+            playsInline
+            webkit-playsinline
             src="/video/1 (1).mp4"
             className="absolute left-0 top-0 h-full w-full object-cover lg:opacity-90 opacity-60"
           />
