@@ -92,31 +92,19 @@ const ShopSidebarSmall: React.FC<ShopSidebarSmallProps> = ({ data }) => {
         </Button>
         </Link>
       </div>
-      <div className="flex flex-col gap-2 py-7">
+      <div className="flex py-7 justify-center">
         <a  href={"mail:" + data?.email}>
-         <div className="flex items-start">
+         <div className="flex items-start justify-center">
           <div className="w-10 shrink-0">
-            <BiEnvelope className="text-2xl text-brand-muted text-opacity-60" />
-          </div>
-          <div className="-mt-1 flex items-center gap-2">
-            <h4 className=" font-medium text-brand-dark text-15px">
-              {t('t-email')}:
-            </h4>
-            <Text>{data?.email}</Text>
+            <BiEnvelope className="text-3xl text-white bg-blue-600 rounded-full p-1 " />
           </div>
         </div>
         </a>
         <a  href={"tel:" + data?.phone}>
 
-        <div className="flex items-start">
+        <div className="flex items-start justify-center">
           <div className="w-10 shrink-0">
-            <IoCallOutline className="text-2xl text-brand-muted text-opacity-60" />
-          </div>
-          <div className="-mt-1 flex items-center gap-1">
-            <h4 className=" font-medium text-brand-dark text-15px">
-              {t('text-phone-number')}:
-            </h4>
-            <Text>{data?.phone}</Text>
+            <IoCallOutline className="text-3xl text-white bg-green-600 rounded-full p-1" />
           </div>
         </div>
         </a>
@@ -124,15 +112,9 @@ const ShopSidebarSmall: React.FC<ShopSidebarSmallProps> = ({ data }) => {
         {data?.website && (
         <a target='_blank' href={data?.website}>
 
-          <div className="flex items-start">
+          <div className="flex items-start justify-center">
             <div className="w-10 shrink-0">
-              <BiWorld className="text-2xl text-brand-muted text-opacity-60" />
-            </div>
-            <div className="-mt-1 flex items-center gap-1">
-              <h4 className=" font-medium text-brand-dark text-15px">
-                {t('text-website')}:
-              </h4>
-              <Text>{data?.website}</Text>
+              <BiWorld className="text-3xl text-white bg-blue-400 rounded-full p-1 " />
             </div>
           </div>
           </a>
@@ -140,16 +122,11 @@ const ShopSidebarSmall: React.FC<ShopSidebarSmallProps> = ({ data }) => {
  {data?.instagram && (
         <a target='_blank' href={data?.instagram}>
 
-        <div className="flex items-start">
+        <div className="flex items-start justify-center">
         <div className="w-10 shrink-0">
-        <Instagram className="text-2xl text-brand-muted text-opacity-60" />
+        <Instagram size={32} className="text-3xl text-white bg-red-400 rounded-full p-1 " />
         </div>
-        <div className="-mt-1 flex items-center gap-1">
-        <h4 className=" font-medium text-brand-dark text-15px">
-        {t('footer:link-instagram')}:
-        </h4>
-        <Text>{data?.instagram}</Text>
-        </div>
+        
         </div>
         </a>
         )}

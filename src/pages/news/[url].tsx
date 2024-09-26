@@ -80,12 +80,21 @@ export default function NewsDetailPage(props : any) {
     getAllProduct()
     getData()
   },[])
+
   return (
     <> 
       <Seo
         title={data?.name}
         description={data?.desc}
         path={"/news/" + data?.url}
+        article={ {
+          publishedTime: data?.createdAt,
+          modifiedTime: data?.updatedAt,
+          authors: [
+            data?.author,
+          ],
+          tags: data?.meta_keywords.split(", "),
+        }}
       />
       <Container>
       <div className="lg:px-[50px] grid grid-cols-3 gap-5 my-8">
@@ -100,7 +109,7 @@ export default function NewsDetailPage(props : any) {
 
           <div
             dangerouslySetInnerHTML={{ __html: data?.content }}
-            className="col-span-2 font-[Inter] lg:mt-10 mt-6 lg:text-lg text-[14px]"
+            className="col-span-2 font-[Inter] lg:mt-10 mt-6 lg:text-lg text-[14px] content-blog"
           />
             <div  dir="ltr" className="mt-10 border-t border-b border-[#73818D57] py-3">
                  

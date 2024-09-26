@@ -63,6 +63,32 @@
 .subMenu {
   top: calc(100% + 21px);
 }
+.content-blog img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.content-blog h1,h2,h3,h4,h5,h6 {
+  font-weight: bold;
+}
+
+.content-blog h1 {
+  font-size: 140%;
+}
+.content-blog h2 {
+  font-size: 130%;
+}
+.content-blog h3 {
+  font-size: 120%;
+}
+
+.content-blog ul {
+  list-style: disc;
+}
+
+.content-blog p {
+  margin-top:15px;
+}
+
 /* for header one */
 .header-one .headerMenu .menuItem > a::before {
   bottom: -22px;
