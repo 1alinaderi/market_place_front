@@ -206,12 +206,15 @@ export default function Home() {
           </div>
           <span className="col-span-full lg:hidden flex justify-between items-center text-white text-[12px]">
             <RevealX>
+              <Link href="/donate">
               <div className="flex flex-col items-center justify-center">
                 <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
                   <Gift variant="Bulk" color="#ff8a65" size={30} />
                 </span>
                 <p className="text-center mt-1">{t('donate')}</p>
               </div>
+              </Link>
+
             </RevealX>
 
             <div>
