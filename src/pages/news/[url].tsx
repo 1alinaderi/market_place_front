@@ -29,7 +29,8 @@ import BlogSmallCard from '@components/cards/BlogSmallCard';
 
 export default function NewsDetailPage(props : any) {
 
-  const {data} = props
+  const {data , baseData} = props
+  
   const { t } = useTranslation('common');
   const [productData , setProductData ] = useState([])
   const [loading, setLoading] = useState(false)
@@ -57,10 +58,9 @@ export default function NewsDetailPage(props : any) {
   } 
 
   async function getData() {
-    const user = JSON.parse(localStorage.getItem("user"));
 
-    if (user) {
-      setuser(user);
+    if (baseData.cookies.user?.id) {
+      setuser(baseData.cookies.user);
     }
 
     await httpReauest("GET", "/news?page=1&limit=12&category=" + data?.category, {}, {}).then((res) => {

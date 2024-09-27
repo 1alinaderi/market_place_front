@@ -1,8 +1,12 @@
 
+import Comment from "@components/common/comment";
 import Button from "@components/ui/button";
+import { getTiming } from "@utils/getTiming";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { FaReply } from "react-icons/fa";
 import { FaSquare } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { httpReauest } from "src/api/api";
@@ -10,21 +14,41 @@ import { httpReauest } from "src/api/api";
 const BlogComments = ({ comments, user, blog }:{comments:any , user:any ,blog:string }) => {
   const [content, setContent] = useState();
   const { t } = useTranslation('common');
+  const router = useRouter()
 
-  async function handleSubmit(e:any) {
-    e.preventDefault();
-    if (!content) {
-      return;
+
+  async function handleSubmit(e:any , newsId?:string) {
+    if (e == "reply") {
+      if (!content) {
+        return;
+      }
+  
+      await httpReauest(
+        "POST",
+        "/news/comment",
+        { userId: user.id, news:blog, content , reply : newsId },
+        {}
+      ).then(({ data }) => {
+        toast.success("Success");
+        router.reload()
+      });
+    }else {
+      e.preventDefault();
+      if (!content) {
+        return;
+      }
+  
+      await httpReauest(
+        "POST",
+        "/news/comment",
+        { userId: user.id, news:blog, content },
+        {}
+      ).then(({ data }) => {
+        toast.success("Success");
+        router.reload()
+      });
     }
-
-    await httpReauest(
-      "POST",
-      "/news/comment",
-      { userId: user._id, blog, content },
-      {}
-    ).then(({ data }) => {
-      toast.success("Success");
-    });
+   
   }
 
   return (
@@ -70,21 +94,7 @@ const BlogComments = ({ comments, user, blog }:{comments:any , user:any ,blog:st
             <FaSquare className="hidden lg:inline" size={14} color="#F37324" />{" "}
             {t("comments")} ({comments.length})
           </h4>
-          {comments.map((item) => (
-            <div className="py-8 border-b">
-              <h5 className="text-[14px] lg:text-[16px]">
-                {item.userId?.f_name} {item.userId?.l_name}
-              </h5>
-              <div className="text-[#858597] mt-2 mb-4 text-[13px] lg:text-[15px]">
-                {/* {Shamsi.format("DDD dd MMM yyyy ", new Date(item.createdAt))} */}
-                <span className="text-black">|</span> ساعت{" "}
-                {/* {Shamsi.format("hh:mm", new Date(item.createdAt))} */}
-              </div>
-              <p className="text-[#43425D] text-[16px] lg:text-[18px]">
-                {item.content}
-              </p>
-            </div>
-          ))}
+          {comments.map((item) => <Comment data={item} t={t} user={user} handleSubmit={handleSubmit} setContent={setContent}/> )}
         </div>
       </div>
     </div>

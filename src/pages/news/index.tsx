@@ -51,7 +51,7 @@ export default function NewsPage() {
   return (
     <>
       <Seo
-        title="اخبار"
+        title="خبر نامه"
         path="news"
       />
       <Container>
