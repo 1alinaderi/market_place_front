@@ -148,7 +148,6 @@ export default function Membership() {
         });
     },
   });
-  console.log(formik.errors);
   const url = 'https://api.cryptocloud.plus/v2/invoice/create';
   const headers = new Headers({
     Authorization:

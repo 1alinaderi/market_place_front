@@ -74,12 +74,14 @@ export default function Home() {
               </span>
             </button>
           </Link>
+          <Link href={'/donate'}>
           <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('donate')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
+          </Link>
           <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
             {t('logistics')}
             <span>
