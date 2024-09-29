@@ -119,8 +119,8 @@ const ShopSidebarSmall: React.FC<ShopSidebarSmallProps> = ({ data }) => {
           </div>
           </a>
           )}
- {data?.instagram && (
-        <a target='_blank' href={data?.instagram}>
+    {data?.instagram && (
+        <a target='_blank' href={`https://instagram.com/${data?.instagram}`}>
 
         <div className="flex items-start justify-center">
         <div className="w-10 shrink-0">

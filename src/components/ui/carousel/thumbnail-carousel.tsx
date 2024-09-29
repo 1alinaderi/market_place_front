@@ -71,7 +71,7 @@ const ThumbnailCarousel: React.FC<Props> = ({
                 alt={`Product gallery ${item.id}`}
                 width={650}
                 height={590}
-                className="rounded-lg"
+                className="rounded-lg object-contain"
               />
             </SwiperSlide>
           ))}
@@ -112,6 +112,7 @@ const ThumbnailCarousel: React.FC<Props> = ({
               <Image
               src={CDN_BASE_URL +  item}
                 alt={`Product thumb gallery ${item.id}`}
+                className=' object-cover'
                 width={170}
                 height={170}
               />

@@ -153,7 +153,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
         )}
          {data?.instagram && (
 
-<a target='_blank' href={data?.website} className="flex items-start">
+<a target='_blank' href={`https://instagram.com/${data?.instagram}`} className="flex items-start">
   <div className="w-10 shrink-0">
     <Instagram className="text-2xl text-brand-muted text-opacity-60" />
   </div>
