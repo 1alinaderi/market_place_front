@@ -58,14 +58,12 @@ export default function Home() {
               </span>
             </button>
           </Link>
-          <Link href={'/supplier/signup'}>
-            <button dir='ltr' className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] italic ">
+            <button dir='ltr' className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] italic opacity-40">
               {t('premium-home')}
               <span>
                 <ArrowRight2 size={16} />
               </span>
             </button>
-          </Link>
           <Link href={'/packing'}>
             <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
               {t('packing')}{' '}
@@ -82,13 +80,13 @@ export default function Home() {
             </span>
           </button>
           </Link>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
             {t('logistics')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
             {t('insurance')}
             <span>
               <ArrowRight2 size={16} />
@@ -102,14 +100,14 @@ export default function Home() {
             </span>
           </button>
           </Link>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
             {t('translate')}
 
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
             {t('contract')}
             <span>
               <ArrowRight2 size={16} />
@@ -242,10 +240,10 @@ export default function Home() {
             </RevealX>
           </span>
           <span className="col-span-full text-white flex gap-3 text-[12px] lg:col-span-1">
-            <div className="flex flex-col gap-5 lg:hidden">
+            <div className="flex flex-col gap-5 lg:hidden opacity-40">
               <RevealX head>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
+                  <span className="rounded-full p-2 overflow-hidden bg-white   ">
                     <TruckTime variant="Bulk" color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('logistics')}</p>
@@ -253,7 +251,7 @@ export default function Home() {
               </RevealX>
               <RevealX head>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
+                  <span className="rounded-full p-2 overflow-hidden bg-white   ">
                     <ClipboardText variant="Bulk" color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('insurance')}</p>
@@ -261,7 +259,7 @@ export default function Home() {
               </RevealX>
               <RevealX head>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
+                  <span className="rounded-full p-2 overflow-hidden bg-white   ">
                     <Translate variant="Bulk" color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('translate')}</p>
@@ -287,14 +285,12 @@ export default function Home() {
             </Reveal>
             <div className="flex flex-col gap-5 lg:hidden">
               <RevealX>
-                <Link href={'/supplier/signup'}>
-                  <div className="flex flex-col items-center justify-center">
-                    <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
+                  <div className="flex flex-col items-center justify-center opacity-40">
+                    <span className="rounded-full p-2 overflow-hidden bg-white   ">
                       <Diamonds variant="Bulk" color="#ff8a65" size={30} />
                     </span>
                     <p className="text-center mt-1">{t('premium-home')}</p>
                   </div>
-                </Link>
               </RevealX>
 
               <RevealX>
@@ -308,8 +304,8 @@ export default function Home() {
                 </Link>
               </RevealX>
               <RevealX>
-                <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
+                <div className="flex flex-col items-center justify-center opacity-40">
+                  <span className="rounded-full p-2 overflow-hidden bg-white   ">
                     <RecoveryConvert color="#ff8a65" size={30} />
                   </span>
                   <p className="text-center mt-1">{t('contract')}</p>
