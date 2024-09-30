@@ -47,7 +47,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col px-6 pt-10 bg-white rounded shadow">
+    <div className="flex flex-col px-6 pt-10 bg-white rounded shadow w-full">
       <div className='hidden lg:block'>
       {share && (
         <Modal
@@ -75,7 +75,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
         <span onClick={()=>setShare2(true)} className='border rounded p-3 absolute -left-0 -top-0 w-fit h-fit cursor-pointer lg:hidden'>
           <Share/>
         </span>
-        <div className="w-32 h-32  mx-auto">
+        <div className="w-32 h-32 ">
           <Image
             loader={myLoader}
             src={imageSrc}
