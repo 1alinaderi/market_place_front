@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import Balance from '@components/my-account/Balance';
 import { httpReauest } from 'src/api/api';
 import { useTranslation } from 'next-i18next';
+import { toast } from 'react-toastify';
 export default function setting ({baseData}) {
     const [isSeller, setIsSeller] = useState(false);
     const router = useRouter();
@@ -18,7 +19,6 @@ export default function setting ({baseData}) {
     async function getuserData(id: any) {
       const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
       setData(data.data);
-      console.log(data)
     }
     useEffect(() => {
       getuserData(baseData.cookies.seller?.id);
@@ -39,6 +39,21 @@ export default function setting ({baseData}) {
         document.documentElement.dir = 'ltr';
       }
     }, [router.locale]);
+
+
+    async function handleSubmit(e) {
+      e.preventDefault()
+      if (!newPassword) {
+        return toast.error("password is required")
+      }
+
+      await httpReauest("POST" , "/supplier/change_password" , {email : data?.email , password : newPassword} , {  'x-access-token': baseData?.cookies?.seller?.token}).then((res)=>{
+        if (res.status === 201) {
+          toast.success("Successfull")
+          router.push("/my-account")
+        }
+      })
+    }
   return (
     <>
       <Seo
@@ -55,13 +70,11 @@ export default function setting ({baseData}) {
             <div className="flex items-center gap-3">
               <input
                 className="lg:ml-5 shadow h-[42px] appearance-none border border-slate-300 rounded  py-2 px-3 text-gray-700  leading-tight rounded-r-none w-[200px] lg:w-[250px]"
-                type="text"
+                type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                
-                
               />
-             <button className='bg-red-500 text-white rounded-md px-6 py-2'>Submit</button>
+             <button onClick={handleSubmit} className='bg-red-500 text-white rounded-md px-6 py-2'>{t("t-submit")}</button>
             </div>
           </div>
         </div>
