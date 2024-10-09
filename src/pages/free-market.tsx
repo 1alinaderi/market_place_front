@@ -22,6 +22,7 @@ export default function ProductsFreeMarket() {
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState<boolean>(true);
   const [filter, setFilter] = useState(false);
+  const [count, setcount] = useState<number>(0);
   async function getIp() {
     const response = await fetch('https://geolocation-db.com/json/');
     const data = await response.json();
@@ -31,8 +32,9 @@ export default function ProductsFreeMarket() {
   }
   async function getAllProduct() {
     setLoading(true);
-    const response = await httpReauest('GET', '/prouduct/free', {}, {});
-    setProductData(response.data.data);
+    const response = await httpReauest('GET', '/prouduct/free?limit=10&page=1', {}, {});
+    setProductData(response.data.data.allProduct);
+    setcount(response.data.data.count);
     setLoading(false);
   }
   
@@ -87,7 +89,7 @@ export default function ProductsFreeMarket() {
             />
           </div>
 
-          <div className="w-full lg:ltr:-ml-4 lg:rtl:-mr-2 xl:ltr:-ml-8 xl:rtl:-mr-8 lg:-mt-1">
+          <div  className="w-full lg:ltr:-ml-4 lg:rtl:-mr-2 xl:ltr:-ml-8 xl:rtl:-mr-8 lg:-mt-1">
             <button
               onClick={() => setFilter(true)}
               className="bg-red-600 rounded py-2 px-5 mb-4 text-white flex items-center gap-1 lg:hidden"
@@ -95,7 +97,7 @@ export default function ProductsFreeMarket() {
               <p>{t("filters")}</p> <FaFilter />
             </button>
             {/* <SearchTopBar /> */}
-            <ProductGrid productData={productData} loading={loading} />
+            <ProductGrid count={count}   setProductData={setProductData} productData={productData} loading={loading} />
           </div>
         </Element>
       </Container>
