@@ -78,33 +78,33 @@ const ShopSidebarSmall: React.FC<ShopSidebarSmallProps> = ({ data }) => {
             data?.bio
           )}
         </Text>
-        <div className="flex items-center flex-wrap justify-center text-md -mx-1 pt-4 mt-0.5">
+        <div className="flex items-center flex-wrap justify-center text-md -mx-1  pt-4 mt-0.5">
           {data?.membership === 'Premium' && (
-            <div className="flex text-sm items-center text-green-500 font-bold">
-              <BsShieldFillCheck className="text-green-500 mr-2 " size={25} />{' '}
-              This Supplier Verifyed By Website
+            <div className="flex text-[16px] items-center text-green-500 font-bold mb-4">
+              <BsShieldFillCheck className="text-green-500 rtl:ml-2 ltr:mr-2 " size={25} />{' '}
+              {t("supplier-verified")}
             </div>
           )}
         </div>
         <Link href={"/suppliers/" + data?.name}>
-        <Button variant='formButton'>
-          {t("text-see-more")}
+        <Button variant='primary'>
+          <span className='text-[18px]'>{t("text-see-more")}</span>
         </Button>
         </Link>
       </div>
-      <div className="flex py-7 justify-center">
+      <div className="flex py-7 justify-center gap-2">
         <a  href={"mail:" + data?.email}>
          <div className="flex items-start justify-center">
-          <div className="w-10 shrink-0">
-            <BiEnvelope className="text-3xl text-white bg-blue-600 rounded-full p-1 " />
+          <div className="shrink-0 border p-1 rounded-full">
+            <BiEnvelope className="text-4xl text-white bg-blue-600 rounded-full p-1 " />
           </div>
         </div>
         </a>
         <a  href={"tel:" + data?.phone}>
 
         <div className="flex items-start justify-center">
-          <div className="w-10 shrink-0">
-            <IoCallOutline className="text-3xl text-white bg-green-600 rounded-full p-1" />
+          <div className="shrink-0 border p-1 rounded-full">
+            <IoCallOutline className="text-4xl text-white bg-green-600 rounded-full p-1" />
           </div>
         </div>
         </a>
@@ -113,8 +113,8 @@ const ShopSidebarSmall: React.FC<ShopSidebarSmallProps> = ({ data }) => {
         <a target='_blank' href={data?.website}>
 
           <div className="flex items-start justify-center">
-            <div className="w-10 shrink-0">
-              <BiWorld className="text-3xl text-white bg-blue-400 rounded-full p-1 " />
+            <div className="shrink-0 border p-1 rounded-full">
+              <BiWorld className="text-4xl text-white bg-blue-400 rounded-full p-1 " />
             </div>
           </div>
           </a>
@@ -123,8 +123,8 @@ const ShopSidebarSmall: React.FC<ShopSidebarSmallProps> = ({ data }) => {
         <a target='_blank' href={`https://instagram.com/${data?.instagram}`}>
 
         <div className="flex items-start justify-center">
-        <div className="w-10 shrink-0">
-        <Instagram size={32} className="text-3xl text-white bg-red-400 rounded-full p-1 " />
+        <div className="shrink-0 border p-1 rounded-full">
+        <Instagram size={32} className="text-4xl text-white bg-red-400 rounded-full p-1 " />
         </div>
         
         </div>

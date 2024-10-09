@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { FaChevronDown } from 'react-icons/fa';
 import { siteSettings } from '@settings/site-settings';
@@ -17,11 +17,14 @@ export default function LanguageSwitcherHeader({ justFa , mobile,small }:{justFa
   const [selectedItem, setSelectedItem] = useState(currentSelectedItem);
 
   function handleItemClick(values: any) {
+    console.log(values)
     setSelectedItem(values);
     router.push(asPath, undefined, {
       locale: values.value,
     });
   }
+
+  
 
   return (
     <Listbox value={selectedItem} onChange={handleItemClick}>

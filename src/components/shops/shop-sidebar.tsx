@@ -96,7 +96,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
         <div className="flex items-center flex-wrap justify-center text-md -mx-1 pt-4 mt-0.5">
             <div className="flex text-sm items-center text-green-500 font-bold gap-2">
               <BsShieldFillCheck className="text-green-500  " size={25} />{' '}
-              This Supplier Verifyed By Website
+              {t("supplier-verified")}
             </div>
         </div>
           )}

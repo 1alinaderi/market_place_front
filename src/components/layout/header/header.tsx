@@ -67,7 +67,6 @@ const Header: React.FC = () => {
       setMobile(true);
     }
     
-    console.log(window.innerWidth)
   }
   useEffect(() => {
     getcategory();
@@ -76,6 +75,7 @@ const Header: React.FC = () => {
   
   const [activeSearch, setActiveSearch] = useState(false);
   const [mobile , setMobile] =useState(true)
+
   return (
     <header
       id="siteHeader"
