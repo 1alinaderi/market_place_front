@@ -114,6 +114,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   const [category , setCategory] = useState()
+  const [subCategory , setsubCategory] = useState()
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
@@ -124,7 +125,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           {' '}
           <GoogleOAuthProvider clientId="74472575659-u08deub6ejrgjqied21q0ucikd0qjrgh.apps.googleusercontent.com">
             <ManagedUIContext>
-              <SearchContext.Provider value={{category , setCategory}}>
+              <SearchContext.Provider value={{category , setCategory,subCategory,setsubCategory}}>
               <CookiesProvider>
                 <>
                   <DefaultSeo />

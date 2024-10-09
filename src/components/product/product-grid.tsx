@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from 'react';
+import { useContext, useEffect, useState, type FC } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import Alert from '@components/ui/alert';
@@ -15,12 +15,15 @@ import { Product } from '@framework/types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { httpReauest } from 'src/api/api';
 import { useInView } from 'react-intersection-observer'
+import { SearchContext } from '@contexts/searchContext';
 
 interface ProductGridProps {
   className?: string;
+  category?: string;
   discount?: boolean;
   productData?:any;
   setProductData?:any;
+  setloading?:any;
   loading?:boolean;
   count?:number
 }
@@ -30,14 +33,18 @@ export const ProductGrid: FC<ProductGridProps> = ({
   discount,
   productData,
   setProductData,
-  count
+  count,
+  setloading,
+  loading
 }) => {
   const { t } = useTranslation('common');
   const { query } = useRouter();
   const error = {message: "product not found"}
   const [hasmore, sethasmore] = useState<boolean>(true);
-  const [loading, setloading] = useState<boolean>(true);
   const { ref, inView } = useInView()
+
+  const {category:filter_category,subCategory} = useContext(SearchContext)
+
 
   async function fetchData() {
     setloading(true)
@@ -45,7 +52,7 @@ export const ProductGrid: FC<ProductGridProps> = ({
     const page = productData.length / limit + 1;
     await httpReauest(
       "GET",
-      `/prouduct/free?page=${page}&limit=${limit}`,
+      `/prouduct/free?page=${page}&limit=${limit}${filter_category ? "&category=" + filter_category : ""}${subCategory ? "&subCategory=" + subCategory : ""}`,
       {},
       {}
     ).then(({ data }) => {
@@ -58,7 +65,9 @@ export const ProductGrid: FC<ProductGridProps> = ({
 
   useEffect(() => {
     if (inView) {
-      fetchData()
+      if (productData.length) {
+        fetchData()
+      }
     }
   }, [inView])
 

@@ -10,11 +10,12 @@ import { useTranslation } from 'next-i18next';
 import SearchTopBar from '@components/search/search-top-bar';
 import { Element } from 'react-scroll';
 import Seo from '@components/seo/seo';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FaFilter, FaSign, FaSignInAlt } from 'react-icons/fa';
 import Link from 'next/link';
 import Button from '@components/ui/button';
 import { httpReauest } from 'src/api/api';
+import { SearchContext } from '@contexts/searchContext';
 
 export default function ProductsFreeMarket() {
   const { t } = useTranslation('common');
@@ -30,12 +31,13 @@ export default function ProductsFreeMarket() {
       setShow(true);
     }
   }
+  const {category , subCategory} = useContext(SearchContext)
+
   async function getAllProduct() {
     setLoading(true);
-    const response = await httpReauest('GET', '/prouduct/free?limit=10&page=1', {}, {});
+    const response = await httpReauest('GET', `/prouduct/free?limit=10&page=1${category ? "&category=" + category : ""}${subCategory ? "&subCategory=" + subCategory : ""}`, {}, {});
     setProductData(response.data.data.allProduct);
     setcount(response.data.data.count);
-    setLoading(false);
   }
   
 
@@ -43,6 +45,10 @@ export default function ProductsFreeMarket() {
     getIp();
     getAllProduct();
   }, []);
+
+  useEffect(() => {
+    getAllProduct();
+  }, [category , subCategory]);
   return (
     <>
       <div
@@ -97,7 +103,7 @@ export default function ProductsFreeMarket() {
               <p>{t("filters")}</p> <FaFilter />
             </button>
             {/* <SearchTopBar /> */}
-            <ProductGrid count={count}   setProductData={setProductData} productData={productData} loading={loading} />
+            <ProductGrid count={count}  setloading={setLoading} setProductData={setProductData} productData={productData} loading={loading} />
           </div>
         </Element>
       </Container>

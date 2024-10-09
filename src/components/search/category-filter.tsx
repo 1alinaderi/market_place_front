@@ -26,7 +26,7 @@ export const CategoryFilter = ({
   const [id, setId] = useState('');
   const [subActive, setSubactive] = useState('');
 
-  const {category} = useContext(SearchContext)
+  const {category , setCategory , setsubCategory} = useContext(SearchContext)
   
   const router = useRouter();
   async function getMainCategory() {
@@ -77,9 +77,10 @@ export const CategoryFilter = ({
       setSelected(sub);
     }
   }
+  
   useEffect(() => {
     getMainCategory();
-  }, [category]);
+  }, []);
  
 
   const { displaySidebar, closeSidebar } = useUI();
@@ -115,8 +116,8 @@ export const CategoryFilter = ({
       </div>
     );
   }
-  
 
+  
   return (
     <div className="block bg-white">
       <div className="flex justify-between items-center ">

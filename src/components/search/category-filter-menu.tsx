@@ -2,11 +2,12 @@ import { useRouter } from 'next/router';
 import cn from 'classnames';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { useUI } from '@contexts/ui.context';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import Image from '@components/ui/image';
 import { useTranslation } from 'next-i18next';
 import { FaCheck, FaChevronDown } from 'react-icons/fa';
 import { httpReauest } from 'src/api/api';
+import { SearchContext } from '@contexts/searchContext';
 
 function checkIsActive(arr: any, item: string, subItems: string) {
   if (arr.includes(item)) {
@@ -34,6 +35,9 @@ function CategoryFilterMenuItem({
 }: any) {
   const { t } = useTranslation('common');
   const [idrouter, setIdrouter] = useState('');
+
+  const {category , setCategory , setsubCategory} = useContext(SearchContext)
+
 
   const router = useRouter();
   useEffect(() => {
@@ -72,7 +76,6 @@ function CategoryFilterMenuItem({
 
   async function onClick() {
     // setLoading(true);
-    
     if (mainMarket) {
       if (id === _id) {
         setSelected([]);
@@ -107,16 +110,13 @@ function CategoryFilterMenuItem({
         const response = await httpReauest('GET', '/prouduct/free', {}, {});
         setProductData(response.data.data);
         setId('');
+        setCategory(null)      
       } else {
         setSelected([]);
         setId(_id);
         const sub = subItems.filter((i) => i.category === _id);
         setSelected(sub);
-        const response = await httpReauest(
-          'GET',
-          `/prouduct/free?category=${_id}`
-        );
-        setProductData(response.data.data);
+        setCategory(_id)      
       }
     }
 
@@ -161,13 +161,16 @@ function CategoryFilterMenuItem({
           `/prouduct/free?category=${_id}`
         );
         setProductData(response.data.data);
+        setsubCategory(null)
+
       } else {
-        const response = await httpReauest(
-          'GET',
-          `/prouduct/free?category=${_id}&subCategory=${e._id}`
-        );
+        setsubCategory(e._id)
+        // const response = await httpReauest(
+        //   'GET',
+        //   `/prouduct/free?category=${_id}&subCategory=${e._id}`
+        // );
         setSubactive(e.name);
-        setProductData(response.data.data);
+        // setProductData(response.data.data);
       }
     }
     // setLoading(false);
