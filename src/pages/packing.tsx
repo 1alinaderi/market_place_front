@@ -9,6 +9,7 @@ import Container from '@components/ui/container';
 import SectionHeader from '@components/common/section-header';
 import Heading from '@components/ui/heading';
 
+
 export default function Packing() {
   return (
     <>
@@ -24,15 +25,15 @@ export default function Packing() {
               Saffron Packing
             </Heading>
             <img
-              src="/image/packing/1 (2).jpg"
+              src="https://server.wimehr.com/uploads/1 (2)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (3).jpg"
+              src="https://server.wimehr.com/uploads/1 (3)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (24).jpg"
+              src="https://server.wimehr.com/uploads/1 (24)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -41,19 +42,19 @@ export default function Packing() {
               Fig Packing
             </Heading>
             <img
-              src="/image/packing/1 (4).jpg"
+              src="https://server.wimehr.com/uploads/1 (4)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (5).jpg"
+              src="https://server.wimehr.com/uploads/1 (5)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (6).jpg"
+              src="https://server.wimehr.com/uploads/1 (6)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (7).jpg"
+              src="https://server.wimehr.com/uploads/1 (7)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -62,15 +63,15 @@ export default function Packing() {
               Nuts packing
             </Heading>
             <img
-              src="/image/packing/1 (8).jpg"
+              src="https://server.wimehr.com/uploads/1 (8)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (9).jpg"
+              src="https://server.wimehr.com/uploads/1 (9)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (10).jpg"
+              src="https://server.wimehr.com/uploads/1 (10)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -79,15 +80,15 @@ export default function Packing() {
               Liquids packing
             </Heading>
             <img
-              src="/image/packing/1 (11).jpg"
+              src="https://server.wimehr.com/uploads/1 (11)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (12).jpg"
+              src="https://server.wimehr.com/uploads/1 (12)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (13).jpg"
+              src="https://server.wimehr.com/uploads/1 (13)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -97,11 +98,11 @@ export default function Packing() {
               Watermelon packing
             </Heading>
             <img
-              src="/image/packing/1 (14).jpg"
+              src="https://server.wimehr.com/uploads/1 (14)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (15).jpg"
+              src="https://server.wimehr.com/uploads/1 (15)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -111,39 +112,39 @@ export default function Packing() {
               Pistachio packing
             </Heading>
             <img
-              src="/image/packing/1 (16).jpg"
+              src="https://server.wimehr.com/uploads/1 (16)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (17).jpg"
+              src="https://server.wimehr.com/uploads/1 (17)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (18).jpg"
+              src="https://server.wimehr.com/uploads/1 (18)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (19).jpg"
+              src="https://server.wimehr.com/uploads/1 (19)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (32).jpg"
+              src="https://server.wimehr.com/uploads/1 (32)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (33).jpg"
+              src="https://server.wimehr.com/uploads/1 (33)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (34).jpg"
+              src="https://server.wimehr.com/uploads/1 (34)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (35).jpg"
+              src="https://server.wimehr.com/uploads/1 (35)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (36).jpg"
+              src="https://server.wimehr.com/uploads/1 (36)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -152,19 +153,19 @@ export default function Packing() {
               Barbeery packing
             </Heading>
             <img
-              src="/image/packing/1 (20).jpg"
+              src="https://server.wimehr.com/uploads/1 (20)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (21).jpg"
+              src="https://server.wimehr.com/uploads/1 (21)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (22).jpg"
+              src="https://server.wimehr.com/uploads/1 (22)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (23).jpg"
+              src="https://server.wimehr.com/uploads/1 (23)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -174,15 +175,15 @@ export default function Packing() {
               Olive Oil packing
             </Heading>
             <img
-              src="/image/packing/1 (25).jpg"
+              src="https://server.wimehr.com/uploads/1 (25)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (26).jpg"
+              src="https://server.wimehr.com/uploads/1 (26)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (27).jpg"
+              src="https://server.wimehr.com/uploads/1 (27)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -192,19 +193,19 @@ export default function Packing() {
               Flower packing
             </Heading>
             <img
-              src="/image/packing/1 (28).jpg"
+              src="https://server.wimehr.com/uploads/1 (28)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (29).jpg"
+              src="https://server.wimehr.com/uploads/1 (29)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (30).jpg"
+              src="https://server.wimehr.com/uploads/1 (30)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (31).jpg"
+              src="https://server.wimehr.com/uploads/1 (31)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>
@@ -213,15 +214,15 @@ export default function Packing() {
               Jewelry packing
             </Heading>
             <img
-              src="/image/packing/1 (37).jpg"
+              src="https://server.wimehr.com/uploads/1 (37)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (38).jpg"
+              src="https://server.wimehr.com/uploads/1 (38)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
             <img
-              src="/image/packing/1 (39).jpg"
+              src="https://server.wimehr.com/uploads/1 (39)-min.jpg"
               className="md:w-[32%] w-[100%] rounded-2xl"
             />
           </div>

@@ -148,7 +148,7 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
       {isPopup === true && <CloseButton onClick={closeModal} />}
       <div className="flex w-full flex-col md:flex-row mx-auto overflow-hidden rounded-lg bg-brand-light">
         <div className="lg:w-[50%] xl:w-[45%] md:w-[50%] registration  md:block relative">
-        <video ref={videoRef} className='w-full ' loop  muted src="/video/sign.mp4"></video>
+        <video ref={videoRef} className='w-full ' loop  muted src="https://server.wimehr.com/uploads/sign.mp4"></video>
         </div>
         <div className="w-full xl:w-[55%] lg:w-[50%] md:w-[50%] py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md shadow-dropDown flex flex-col justify-center">
           <div className="text-center mb-6 pt-2.5">

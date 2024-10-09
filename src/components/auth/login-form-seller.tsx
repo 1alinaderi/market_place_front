@@ -133,7 +133,7 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
 
       <div className="flex flex-col md:flex-row mx-auto overflow-hidden rounded-lg bg-brand-light">
         <div className=" lg:w-[50%] xl:w-[45%] md:w-[50%] registration  md:block relative">
-          <video ref={videoRef} className='w-full ' loop  muted src="/video/sign.mp4"></video>
+          <video ref={videoRef} className='w-full ' loop  muted src="https://server.wimehr.com/uploads/sign.mp4"></video>
         </div>
         
         <div className="w-full xl:w-[55%] lg:w-[50%] md:w-[50%]   py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md flex flex-col justify-center">
