@@ -52,32 +52,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
       document.documentElement.dir = dir;
     
   }, [dir, router]);
-  useEffect(() => {
-    getIp();
-  }, []);
-
-  async function getIp() {
-    const response = await fetch("https://geolocation-db.com/json/");
-    const data = await response.json();
-    if (data.country_code === "IR") {
-      router.push(router.asPath, undefined, {
-        locale: "fa",
-      });
-    } else if (
-      data?.country_code === "SA" ||
-      data?.country_code === "IQ" ||
-      data?.country_code === "OM" ||
-      data?.country_code === "AE"
-    ) {
-      router.push(router.asPath, undefined, {
-        locale: "ar",
-      });
-    } else {
-      router.push(router.asPath, undefined, {
-        locale: "en",
-      });
-    }
-  }
+ 
 
   const Layout = (Component as any).Layout || Noop;
 

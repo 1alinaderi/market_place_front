@@ -10,6 +10,7 @@ export default function LanguageSwitcherHeader({ justFa , mobile,small }:{justFa
   const { t } = useTranslation('common');
   const options = justFa ? site_header.languageMenu2 : site_header.languageMenu;
   const router = useRouter();
+  const [stop ,setStop] = useState<boolean>(false)
   const { asPath, locale } = router;
   const currentSelectedItem = locale
     ? options.find((o) => o.value === locale)!
@@ -17,11 +18,57 @@ export default function LanguageSwitcherHeader({ justFa , mobile,small }:{justFa
   const [selectedItem, setSelectedItem] = useState(currentSelectedItem);
 
   function handleItemClick(values: any) {
-    console.log(values)
     setSelectedItem(values);
+    setStop(true)
     router.push(asPath, undefined, {
       locale: values.value,
     });
+  }
+
+  useEffect(() => {
+    const date = localStorage.getItem("date")
+    if (!date) {
+        localStorage.setItem("date" , new Date().toString())
+        getIp()
+    }else {
+      const nowtime = new Date()
+      const lasttime = new Date(date)
+      const timeDiff = nowtime.getTime() - lasttime.getTime();
+      const hoursDiff = timeDiff / (1000 * 3600);
+      if (hoursDiff > 3) {
+        localStorage.setItem("date" , new Date().toString())
+        getIp()
+      }
+    }
+    // پاکسازی رویداد هنگامUnmount
+  }, []);
+
+
+  // useEffect(() => {
+  //     getIp();
+  // }, []);
+
+  async function getIp() {
+    const response = await fetch("https://geolocation-db.com/json/");
+    const data = await response.json();
+    if (data.country_code === "IR") {
+      router.push(router.asPath, undefined, {
+        locale: "fa",
+      });
+    } else if (
+      data?.country_code === "SA" ||
+      data?.country_code === "IQ" ||
+      data?.country_code === "OM" ||
+      data?.country_code === "AE"
+    ) {
+      router.push(router.asPath, undefined, {
+        locale: "ar",
+      });
+    } else {
+      router.push(router.asPath, undefined, {
+        locale: "en",
+      });
+    }
   }
 
   
