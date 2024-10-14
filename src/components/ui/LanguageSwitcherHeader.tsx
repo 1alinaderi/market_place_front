@@ -62,7 +62,7 @@ export default function LanguageSwitcherHeader({ justFa , mobile,small }:{justFa
       data?.country_code === "AE"
     ) {
       router.push(router.asPath, undefined, {
-        locale: "ar",
+        locale: "en",
       });
     } else {
       router.push(router.asPath, undefined, {
