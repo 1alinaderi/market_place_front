@@ -4,6 +4,7 @@ import {
   SwiperOptions,
   Navigation,
   Thumbs,
+  Autoplay,
 } from '@components/ui/carousel/slider';
 import Image from '@components/ui/image';
 import { useRef, useState } from 'react';
@@ -54,7 +55,8 @@ const ThumbnailCarousel: React.FC<Props> = ({
         <Swiper
           id="productGallery"
           thumbs={{ swiper: thumbsSwiper }}
-          modules={[Navigation, Thumbs]}
+          modules={[Navigation, Thumbs , Autoplay]}
+          autoplay={{delay:4000}}
           navigation={{
             prevEl: prevRef.current!, // Assert non-null
             nextEl: nextRef.current!, // Assert non-null

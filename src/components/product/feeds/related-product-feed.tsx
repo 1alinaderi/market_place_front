@@ -22,7 +22,6 @@ const RelatedProductFeed: React.FC<RelatedProductsProps> = ({
     freeMarket
   });
 
-  console.log(data)
 
   return (
     <ProductsCarousel

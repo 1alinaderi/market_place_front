@@ -142,7 +142,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
         <div className="col-span-5 mb-6 overflow-hidden xl:col-span-6 md:mb-8 lg:mb-0">
           {data?.images?.length ? (
             <ThumbnailCarousel
-              gallery={data?.images}
+              gallery={[...data?.images , data?.image]}
               thumbnailClassName="xl:w-[700px] 2xl:w-[900px]"
               galleryClassName="xl:w-[150px] 2xl:w-[170px]"
             />
@@ -283,8 +283,6 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
         </div>
        <ProductDetailsTab baseData={baseData} data={data} />
        </div>
-
-       
       <RelatedProductFeed freeMarket={data?.freeMarket} category={data?.category?._id} uniqueKey="related-products" />
     </>
   );
