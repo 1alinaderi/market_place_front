@@ -98,7 +98,10 @@ const Search = React.forwardRef<HTMLDivElement, Props>(
                   variant={variant}
                 />
               ) : (
-                <button className='text-white' onFocus={() => enableInputFocus()}>
+                <button
+                  className="text-white"
+                  onFocus={() => enableInputFocus()}
+                >
                   <SearchIcon />
                 </button>
               ))}

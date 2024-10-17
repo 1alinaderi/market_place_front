@@ -48,7 +48,9 @@ export default function AccountNavMobile({
           <Listbox.Button className="relative flex items-center w-full p-4 border rounded cursor-pointer text-brand-dark bg-white shadow md:p-5 ltr:text-left rtl:text-right focus:outline-none border-border-base">
             {selectedItem?.icon}
             <span className="flex truncate items-center text-sm md:text-15px font-medium ltr:pl-2.5 rtl:pr-2.5 relative">
-              {t(selectedItem?.name) ? t(selectedItem?.name) : t("account-information")}
+              {t(selectedItem?.name)
+                ? t(selectedItem?.name)
+                : t('account-information')}
             </span>
             <span className="absolute inset-y-0 flex items-center pointer-events-none ltr:right-4 rtl:left-4 md:ltr:right-5 md:rtl:left-5">
               <FaChevronDown
@@ -100,7 +102,7 @@ export default function AccountNavMobile({
                   )}
                 </Listbox.Option>
               ))}
-              
+
               <button
                 className="flex items-center w-full px-4 py-3 text-sm cursor-pointer lg:text-15px text-brand-dark md:px-5 focus:outline-none"
                 onClick={() => logout()}

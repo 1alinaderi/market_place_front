@@ -24,47 +24,42 @@ import BlogOtherSection from '@components/hero/BlogOtherSection';
 
 export default function NewsPage() {
   const { t } = useTranslation('common');
-  const [productData , setProductData ] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [show , setShow] = useState<boolean>(false)
-  const [filter , setFilter] = useState(false)
-  const router = useRouter()
+  const [productData, setProductData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
+  const [filter, setFilter] = useState(false);
+  const router = useRouter();
   async function getIp() {
-    const response = await fetch('https://geolocation-db.com/json/')
+    const response = await fetch('https://geolocation-db.com/json/');
     const data = await response.json();
-    if (data.country_code === "IR") {
-      setShow(true)
+    if (data.country_code === 'IR') {
+      setShow(true);
     }
   }
   async function getAllProduct() {
-    setLoading(true)
-   const response = await httpReauest('GET', '/prouduct',{},{});
-   setProductData(response.data.data);
-   setLoading(false)
-  } 
+    setLoading(true);
+    const response = await httpReauest('GET', '/prouduct', {}, {});
+    setProductData(response.data.data);
+    setLoading(false);
+  }
 
-  useEffect(()=>{
-    
+  useEffect(() => {
     getIp();
-    getAllProduct()
-  },[])
+    getAllProduct();
+  }, []);
   return (
     <>
-      <Seo
-        title="خبر نامه"
-        path="news"
-      />
+      <Seo title="خبر نامه" path="news" />
       <Container>
-        <div className='my-10'>
-         <BlogImages />
+        <div className="my-10">
+          <BlogImages />
         </div>
         <div className="my-10">
-        <BlogBestSection/>
+          <BlogBestSection />
         </div>
         <div className="my-10">
-        <BlogOtherSection/>
+          <BlogOtherSection />
         </div>
-     
       </Container>
       {/* <DownloadApps /> */}
       <div>

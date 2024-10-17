@@ -2,8 +2,7 @@ export const faq = [
   {
     id: 1,
     title: 'faq-one-title',
-    content:
-      'faq-one-content',
+    content: 'faq-one-content',
   },
   {
     id: 2,

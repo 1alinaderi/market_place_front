@@ -42,7 +42,6 @@ const ShopsSingleDetailsSmall: React.FC = () => {
     return `${CDN_BASE_URL}${data?.logo}`;
   };
 
-
   return (
     <>
       <Seo
@@ -65,7 +64,7 @@ const ShopsSingleDetailsSmall: React.FC = () => {
         }}
       />
       <div className="flex items-center px-4 py-4 border-b lg:hidden md:px-6 border-border-base  bg-slate-100">
-      <ShopSidebar data={data} />
+        <ShopSidebar data={data} />
 
         {/* <div className="flex shrink-0">
           <Image
@@ -92,19 +91,19 @@ const ShopsSingleDetailsSmall: React.FC = () => {
           </button>
         </div> */}
       </div>
-      <Container className='bg-slate-100 pt-7 lg:pt-0'>
+      <Container className="bg-slate-100 pt-7 lg:pt-0">
         <Element
           name="grid"
           className="flex flex-col pb-16 lg:pt-8 lg:pb-20 xl:max-w-screen-xl 2xl:max-w-[1300px] mx-auto gap-5"
         >
           <div className="shrink-0 hidden lg:block  lg:top-[80px] category-mobile-sidebar">
-              <ShopSidebar data={data} />
+            <ShopSidebar data={data} />
           </div>
-          <div >
-           <SupplierSugestProducts name={data?._id}/>
+          <div>
+            <SupplierSugestProducts name={data?._id} />
           </div>
           <div className="w-full ">
-            <AllProductFeed name={data?._id} small/>
+            <AllProductFeed name={data?._id} small />
           </div>
         </Element>
       </Container>

@@ -7,11 +7,10 @@ import { ESFlag } from '@components/icons/language/ESFlag';
 import { httpReauest } from 'src/api/api';
 import { useEffect } from 'react';
 
-
 export const siteSettings = {
   name: 'ویمهر',
   description:
- "خوش آمدید به هاب تجاری آینده، مقصد نهایی شما برای درک بهتر مسیرهای شغلی و رشد حرفه‌ای در بخش توسعه صادرات. در پلتفرم ویمهر، ما به ارائه دانش و ابزارهایی که برای رسیدن به موفقیت در حیات حرفه‌ای و شخصی لازم دارید، متعهد هستیم.",
+    'خوش آمدید به هاب تجاری آینده، مقصد نهایی شما برای درک بهتر مسیرهای شغلی و رشد حرفه‌ای در بخش توسعه صادرات. در پلتفرم ویمهر، ما به ارائه دانش و ابزارهایی که برای رسیدن به موفقیت در حیات حرفه‌ای و شخصی لازم دارید، متعهد هستیم.',
   author: {
     name: 'Mahyar babazadeh',
     websiteUrl: 'https://mbabz.com/',
@@ -43,8 +42,6 @@ export const siteSettings = {
             path: '/supplier/signin',
             label: 'menu-sign-in',
           },
-
-         
         ],
       },
 

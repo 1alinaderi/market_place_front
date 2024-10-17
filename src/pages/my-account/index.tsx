@@ -13,34 +13,31 @@ export default function AccountDetailsPage({ baseData }) {
   const [isSeller, setIsSeller] = useState(false);
   const router = useRouter();
   const [agree, setAgree] = useState(false);
-  const [data, setData] = useState([])
- 
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     async function getuserData(id: any) {
       const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
       setData(data.data);
-      if(data?.data?.type){
-        setAgree(true)
-      }else{
-        setAgree(false)
+      if (data?.data?.type) {
+        setAgree(true);
+      } else {
+        setAgree(false);
       }
     }
-    if(baseData.cookies.seller?.id){
-       getuserData(baseData.cookies.seller?.id)
-    }else{
+    if (baseData.cookies.seller?.id) {
+      getuserData(baseData.cookies.seller?.id);
+    } else {
       if (baseData.cookies.user?.id) {
         setIsSeller(false);
         setAgree(true);
-      }else{
+      } else {
         router.push(`${window.location.origin}/signin`);
       }
-      
     }
-    
+
     if (baseData.cookies.seller?.id) {
       setIsSeller(true);
-     
     }
   }, [router.pathname]);
   // useEffect(() => {
@@ -52,10 +49,7 @@ export default function AccountDetailsPage({ baseData }) {
   // }, [router.locale]);
   return (
     <>
-      <Seo
-        title="داشبورد"
-        path="my-account/account-settings"
-      />
+      <Seo title="داشبورد" path="my-account/account-settings" />
       {agree ? (
         <AccountLayout isSeller={isSeller} baseData={baseData}>
           <AccountDetails isSeller={isSeller} baseData={baseData} />

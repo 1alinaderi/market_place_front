@@ -17,7 +17,7 @@ export default function LegalPage() {
         <Heading variant="titleLarge">
           {t('common:text-account-details-notice')}
         </Heading>
-        <table  className="flex flex-col mt-5 lg:text-sm text-xs w-full">
+        <table className="flex flex-col mt-5 lg:text-sm text-xs w-full">
           <tr>
             <th>{t('th-1')}</th>
             <td>{t('td-1')}</td>
@@ -64,8 +64,8 @@ export default function LegalPage() {
                 {t('legal-six-title')}
               </h2>
               <div className="text-brand-dark  text-sm leading-7 lg:text-14px lg:leading-loose">
-                <p className='opacity-70'>{t('legal-six-content')}</p>
-                <a className='underline' >
+                <p className="opacity-70">{t('legal-six-content')}</p>
+                <a className="underline">
                   <Link href={'/privacy'}>{t('privacy')}</Link>
                 </a>
               </div>
@@ -80,7 +80,9 @@ export default function LegalPage() {
                   <tr>
                     <th>{t('email')}:</th>
                     <td>
-                      <Link href={'mailto:WIMEHR@GMAIL.COM'}>WIMEHR@GMAIL.COM</Link>
+                      <Link href={'mailto:WIMEHR@GMAIL.COM'}>
+                        WIMEHR@GMAIL.COM
+                      </Link>
                     </td>
                   </tr>
                   <tr>

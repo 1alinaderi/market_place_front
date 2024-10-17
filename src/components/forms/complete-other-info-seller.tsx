@@ -6,18 +6,21 @@ import { FaPlus, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import dynamic from 'next/dynamic';
 import { httpReauest } from 'src/api/api';
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 import Loading from '@components/common/Loading';
 
-const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
-
+const CompleteOtherInfoSeller = ({ baseData, t, data }: any) => {
   const [image, setimage] = useState(null);
   const [video, setvideo] = useState(null);
   const [image1, setimage1] = useState(null);
-  const [preview, setpreview] = useState(data?.coverImage ? CDN_BASE_URL + data?.coverImage : null);
-  const [previewVideo, setpreviewVideo] = useState(data?.video ? CDN_BASE_URL + data?.video : null);
+  const [preview, setpreview] = useState(
+    data?.coverImage ? CDN_BASE_URL + data?.coverImage : null
+  );
+  const [previewVideo, setpreviewVideo] = useState(
+    data?.video ? CDN_BASE_URL + data?.video : null
+  );
   const [previewPay, setpreviewPay] = useState(null);
   const [imagePay, setimagePay] = useState(null);
   const [loading, setloading] = useState<boolean>(false);
@@ -63,8 +66,6 @@ const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
     }
   }, [imagePay]);
 
-  
-
   useEffect(() => {
     if (image1) {
       if (image1.size > 1031517) {
@@ -98,8 +99,8 @@ const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setloading(true)
-      
+    setloading(true);
+
     const formdata = new FormData();
     if (image) {
       formdata.append('cover', image, image?.name);
@@ -122,16 +123,15 @@ const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
     })
       .then((e) => {
         toast.success(e.data.message);
-        setloading(false)
+        setloading(false);
         setTimeout(() => {
           router.reload();
         }, 1000);
       })
       .catch((err) => {
-        toast.error(err?.response?.data?.message)
-        setloading(false)
+        toast.error(err?.response?.data?.message);
+        setloading(false);
       });
-  
   }
 
   const validateNationalId = (nationalId: string) => {
@@ -199,117 +199,126 @@ const CompleteOtherInfoSeller = ({ baseData, t , data } : any) => {
     <div>
       <form onSubmit={handleSubmit}>
         <div className="grid px-1 grid-cols-12   ">
-        <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('footer:link-instagram')} :
-                </Heading>
-                <input
-                  onChange={(e) => {
-                    setinstagram(e.target.value);
-                  }}
-                  value={instagram}
-                  type="text"
-                  className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
+            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+              {t('footer:link-instagram')} :
+            </Heading>
+            <input
+              onChange={(e) => {
+                setinstagram(e.target.value);
+              }}
+              value={instagram}
+              type="text"
+              className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </span>
+          <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
+            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+              {t('text-website')} :
+            </Heading>
+            <input
+              onChange={(e) => {
+                setwebsite(e.target.value);
+              }}
+              value={website}
+              type="text"
+              className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </span>
+          <span className="col-span-12 sm:col-span-12  my-1 sm:my-3 px-4">
+            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+              {t('cover')} :
+            </Heading>
+            <label className="cursor-pointer relative" htmlFor="addImage">
+              {preview ? (
+                <img
+                  src={preview ? preview : null}
+                  className="w-full h-[130px] lg:h-[160px] rounded object-cover"
                 />
-               
-              </span>
-              <span className="col-span-12 sm:col-span-6  my-1 sm:my-2 px-4">
-                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('text-website')} :
-                </Heading>
-                <input
-                  onChange={(e) => {
-                    setwebsite(e.target.value);
+              ) : (
+                <div className="w-full h-[130px] lg:h-[160px] rounded relative border">
+                  <FaPlus size={25} className="inset-0 absolute m-auto" />
+                </div>
+              )}
+            </label>
+            <input
+              onChange={(e) => {
+                setimage(e.target.files[0]);
+              }}
+              id="addImage"
+              className="hidden"
+              type={'file'}
+              accept="image/png, image/jpg, image/jpeg"
+            />
+          </span>
+          <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
+            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+              {t('intro-video')} :{' '}
+              {previewVideo && (
+                <FaTrash
+                  className="text-red-500"
+                  onClick={() => {
+                    setvideo(null);
+                    setpreviewVideo(null);
                   }}
-                  value={website}
-                  type="text"
-                  className="shadow h-[40px] appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 />
-               
-              </span>
-              <span className="col-span-12 sm:col-span-12  my-1 sm:my-3 px-4">
-                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('cover')} :
-                </Heading>
-                <label className="cursor-pointer relative" htmlFor="addImage">
-                  {preview ? (
-                    <img
-                      src={preview ? preview : null}
-                      className="w-full h-[130px] lg:h-[160px] rounded object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-[130px] lg:h-[160px] rounded relative border">
-                      <FaPlus size={25} className="inset-0 absolute m-auto" />
-                    </div>
-                  )}
-                </label>
-                <input
-                  onChange={(e) => {
-                    setimage(e.target.files[0]);
-                  }}
-                  id="addImage"
-                  className="hidden"
-                  type={'file'}
-                  accept="image/png, image/jpg, image/jpeg"
+              )}
+            </Heading>
+            <label className="cursor-pointer relative" htmlFor="addIVideo">
+              {previewVideo ? (
+                <video
+                  src={previewVideo ? previewVideo : null}
+                  controls
+                  className="w-full h-[140px] lg:h-[170px] rounded object-contain"
                 />
-              </span>
-              <span className="col-span-12 sm:col-span-6  my-1 sm:my-3 px-4">
-                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('intro-video')} : {previewVideo && <FaTrash className='text-red-500' onClick={()=>{setvideo(null);setpreviewVideo(null)}}/>}
-                </Heading>
-                <label className="cursor-pointer relative" htmlFor="addIVideo">
-                  {previewVideo ? (
-                    <video
-                      src={previewVideo ? previewVideo : null}
-                      controls
-                      className="w-full h-[140px] lg:h-[170px] rounded object-contain"
-                    />
-                  ) : (
-                    <div className="w-full h-[140px] lg:h-[170px] rounded relative border">
-                      <FaPlus size={25} className="inset-0 absolute m-auto" />
-                    </div>
-                  )}
-                </label>
-                <input
-                  onChange={(e) => {
-                    setvideo(e.target.files[0]);
-                  }}
-                  id="addIVideo"
-                  className="hidden"
-                  type={'file'}
-                  accept="video/*"
-                />
-              </span>
-              <span className="col-span-12 sm:col-span-12  my-1 sm:my-3 px-4">
-                <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
-                  {t('more-info')} :
-                </Heading>
-                
-                <ReactQuill
-                  value={text}
-                  modules={{
-                    toolbar: [
-                      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-                      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-                      ['blockquote', 'code-block'],
-                      ['link', 'image', 'video', 'formula'],
-                    
-                      [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-                      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-                      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-                                      
-                      [{ 'align': [] }],
-                    
-                    ],
-                  }}
-          
-                  onChange={(value)=>settext(value)}
-                  />
-              </span>
+              ) : (
+                <div className="w-full h-[140px] lg:h-[170px] rounded relative border">
+                  <FaPlus size={25} className="inset-0 absolute m-auto" />
+                </div>
+              )}
+            </label>
+            <input
+              onChange={(e) => {
+                setvideo(e.target.files[0]);
+              }}
+              id="addIVideo"
+              className="hidden"
+              type={'file'}
+              accept="video/*"
+            />
+          </span>
+          <span className="col-span-12 sm:col-span-12  my-1 sm:my-3 px-4">
+            <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
+              {t('more-info')} :
+            </Heading>
+
+            <ReactQuill
+              value={text}
+              modules={{
+                toolbar: [
+                  [{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
+                  ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                  ['blockquote', 'code-block'],
+                  ['link', 'image', 'video', 'formula'],
+
+                  [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+                  [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+                  [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
+
+                  [{ align: [] }],
+                ],
+              }}
+              onChange={(value) => settext(value)}
+            />
+          </span>
         </div>
 
         <div className="px-5 mt-6">
-          {loading ? <Loading/> :   <Button type='submit'>{t('t-submit')}</Button>}
+          {loading ? (
+            <Loading />
+          ) : (
+            <Button type="submit">{t('t-submit')}</Button>
+          )}
         </div>
       </form>
     </div>

@@ -15,10 +15,7 @@ export default function TermsPage() {
   const { t } = useTranslation('about');
   return (
     <>
-      <Seo
-        title="درباره ما"
-        path="about-us"
-      />
+      <Seo title="درباره ما" path="about-us" />
       {/* End of seo */}
       <div
         className="flex justify-center h-[250px] lg:h-96 2xl:h-[500px] w-full bg-cover bg-no-repeat bg-center"
@@ -29,7 +26,7 @@ export default function TermsPage() {
       <div className="py-8 lg:py-16 2xl:py-20">
         <Container>
           <div className="flex flex-col w-full mx-auto max-w-[1200px]">
-          {aboutSetting?.map((item) => (
+            {aboutSetting?.map((item) => (
               // @ts-ignore
               <div
                 key={item.title}
@@ -46,7 +43,6 @@ export default function TermsPage() {
                 />
               </div>
             ))}
-            
           </div>
         </Container>
       </div>

@@ -25,7 +25,6 @@ const PageContactHeroSection: React.FC<HeaderProps> = ({
           <h2 className="font-manrope font-extrabold text-xl leading-7 md:leading-snug lg:leading-snug sm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-snug text-brand-dark tracking-tight mb-2.5 md:ltr:pr-6 md:rtl:pl-6 lg:ltr:pr-36 lg:rtl:pl-36 3xl:ltr:pr-0 3xl:rtl:pl-0">
             {t(heroTitle)}
           </h2>
-        
         </div>
       </div>
     </div>

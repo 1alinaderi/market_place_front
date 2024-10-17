@@ -11,7 +11,7 @@ export const aboutSetting = [
   },
   {
     id: '3',
-    title: "about-three-title",
+    title: 'about-three-title',
     description: 'about-three-content',
   },
   {
@@ -20,5 +20,3 @@ export const aboutSetting = [
     description: 'about-four-content',
   },
 ];
-
-

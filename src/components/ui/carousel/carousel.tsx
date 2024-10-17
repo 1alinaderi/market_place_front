@@ -15,7 +15,6 @@ import { getDirection } from '@utils/get-direction';
 import cn from 'classnames';
 import { EffectFade } from 'swiper';
 
-
 import 'swiper/css/effect-fade';
 
 type CarouselPropsType = {
@@ -75,9 +74,9 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({
       }`}
     >
       <Swiper
-        modules={[Navigation, Autoplay, Pagination, Grid,EffectFade]}
-        effect={`${fade ? "fade" : "none"}`}
-        autoplay={autoplay ? {delay : 3000} : false}
+        modules={[Navigation, Autoplay, Pagination, Grid, EffectFade]}
+        effect={`${fade ? 'fade' : 'none'}`}
+        autoplay={autoplay ? { delay: 3000 } : false}
         breakpoints={breakpoints}
         dir={dir}
         pagination={pagination}

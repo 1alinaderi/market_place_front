@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Layout from '@components/layout/layout';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -11,7 +11,7 @@ import { FaPlus } from 'react-icons/fa';
 import { CDN_BASE_URL } from '@framework/utils/api-endpoints';
 
 const DonatePage = () => {
-  const [t] = useTranslation("common")
+  const [t] = useTranslation('common');
 
   const url = 'https://api.cryptocloud.plus/v2/invoice/create';
   const headers = new Headers({
@@ -20,7 +20,7 @@ const DonatePage = () => {
     'Content-Type': 'application/json',
   });
 
-  const router= useRouter()
+  const router = useRouter();
   const bodyfirst = {
     shop_id: '2Gt7Ur32pAyo7bgQ',
     amount: 10,
@@ -46,7 +46,7 @@ const DonatePage = () => {
         setPreviwImagePay();
       }
     }
-  }, [imagePay])
+  }, [imagePay]);
 
   function getAuth() {
     fetch(url, { method: 'POST', headers, body: JSON.stringify(bodyfirst) })
@@ -72,29 +72,24 @@ const DonatePage = () => {
     e.preventDefault();
     const formdata = new FormData();
     if (imagePay) {
-      formdata.append("file", imagePay, imagePay.name);
-      const res = await fetch(CDN_BASE_URL + "/news/upload", {
-        method: "POST",
+      formdata.append('file', imagePay, imagePay.name);
+      const res = await fetch(CDN_BASE_URL + '/news/upload', {
+        method: 'POST',
         body: formdata,
-      }).then(()=>{
-        toast.success("موفقیت آمیز")
-      })
-    }else {
-      toast.error("عکسی آپلود نشده")
+      }).then(() => {
+        toast.success('موفقیت آمیز');
+      });
+    } else {
+      toast.error('عکسی آپلود نشده');
     }
-
-   
   }
 
   return (
     <>
-     <Seo
-        title="اهدا"
-        path="donate"
-      />
-    <div className='bg-slate-100 py-8'>
-     <div className="lg:mx-[100px] lg:px-20 gap-3 lg:gap-5 mx-4 px-3 border border-slate-200 bg-white rounded-lg grid lg:grid-cols-2 shadow pb-5 ">
-     <h2 className="col-span-full text-center mt-8 font-bold text-xl text-black">
+      <Seo title="اهدا" path="donate" />
+      <div className="bg-slate-100 py-8">
+        <div className="lg:mx-[100px] lg:px-20 gap-3 lg:gap-5 mx-4 px-3 border border-slate-200 bg-white rounded-lg grid lg:grid-cols-2 shadow pb-5 ">
+          <h2 className="col-span-full text-center mt-8 font-bold text-xl text-black">
             {' '}
             {t('type-pay')}
           </h2>{' '}
@@ -104,7 +99,7 @@ const DonatePage = () => {
               <button
                 className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
                 onClick={getAuth}
-                type='button'
+                type="button"
               >
                 {t('crypto-pay')}
               </button>
@@ -128,8 +123,13 @@ const DonatePage = () => {
                   </div>
                 )}
               </label>
-              <input dir='ltr' value={"5022-2910-1917-7474"} disabled className='shadow border rounded p-2 mt-3 w-full'/>
-              <span >مهیار بابازاده</span>
+              <input
+                dir="ltr"
+                value={'5022-2910-1917-7474'}
+                disabled
+                className="shadow border rounded p-2 mt-3 w-full"
+              />
+              <span>مهیار بابازاده</span>
               <input
                 onChange={(e) => {
                   setimagePay(e.target.files[0]);
@@ -150,26 +150,25 @@ const DonatePage = () => {
               </button>
             </div>
           </form>
-    </div>
-    </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
 DonatePage.Layout = Layout;
 
-export default DonatePage
+export default DonatePage;
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    return {
-      props: {
-        ...(await serverSideTranslations(locale!, [
-          'common',
-          'forms',
-          'menu',
-          'faq',
-          'footer',
-        ])),
-      },
-    };
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, [
+        'common',
+        'forms',
+        'menu',
+        'faq',
+        'footer',
+      ])),
+    },
   };
-  
+};

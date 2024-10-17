@@ -66,15 +66,14 @@ const Header: React.FC = () => {
     } else {
       setMobile(true);
     }
-    
   }
   useEffect(() => {
     getcategory();
-    handleMobile()
+    handleMobile();
   }, []);
-  
+
   const [activeSearch, setActiveSearch] = useState(false);
-  const [mobile , setMobile] =useState(true)
+  const [mobile, setMobile] = useState(true);
 
   return (
     <header
@@ -97,8 +96,10 @@ const Header: React.FC = () => {
         <Container className="flex items-center  justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
           <Link href={'/'}>
             <div className="flex items-baseline cursor-pointer">
-              <img src='/logo.png' className='p-2 lg:p-0 max-w-[7rem] lg:w-[7rem] object-contain'/>
-             
+              <img
+                src="/logo.png"
+                className="p-2 lg:p-0 max-w-[7rem] lg:w-[7rem] object-contain"
+              />
             </div>
           </Link>
           {/* End of logo */}
@@ -110,7 +111,7 @@ const Header: React.FC = () => {
               </div>
             </>
           )}
-          
+
           <Search
             mobile={mobile}
             activeSearch={activeSearch}
@@ -118,8 +119,7 @@ const Header: React.FC = () => {
             searchId="top-bar-search"
             className=" lg:flex lg:max-w-[650px] px-1 md:px-6 2xl:max-w-[800px] lg:ltr:ml-7 lg:rtl:mr-7 lg:ltr:mr-5 lg:rtl:ml-5"
           />
-         
-          
+
           {!activeSearch && (
             <button
               aria-label="Menu"

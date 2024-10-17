@@ -7,21 +7,21 @@ interface RelatedProductsProps {
   className?: string;
   uniqueKey?: string;
   category?: any;
-  freeMarket?:boolean
+  freeMarket?: boolean;
 }
 
 const RelatedProductFeed: React.FC<RelatedProductsProps> = ({
   carouselBreakpoint,
   className,
   uniqueKey = 'related-product-popup',
-  category,freeMarket
+  category,
+  freeMarket,
 }) => {
   const { data, isLoading, error } = useRelatedProductsQuery({
     limit: 10,
     category,
-    freeMarket
+    freeMarket,
   });
-
 
   return (
     <ProductsCarousel

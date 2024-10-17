@@ -27,10 +27,10 @@ export default function AccountDetailsPage({ baseData }) {
 
   const router = useRouter();
 
-  const {t} = useTranslation("common")
+  const { t } = useTranslation('common');
 
   async function getSellerData(id: any) {
-    setloading(true)
+    setloading(true);
     const { data } = await httpReauest(
       'GET',
       '/supplier/prouducts/' + id,
@@ -38,16 +38,11 @@ export default function AccountDetailsPage({ baseData }) {
       {}
     );
     setData(data.data);
-    const res = await httpReauest(
-      'GET',
-      '/supplier/suggest/' + id,
-      {},
-      {}
-    );
-    setsuggested(res.data.data)
-    setloading(false)
+    const res = await httpReauest('GET', '/supplier/suggest/' + id, {}, {});
+    setsuggested(res.data.data);
+    setloading(false);
   }
-  
+
   useEffect(() => {
     if (!baseData.cookies.seller?.id) {
       router.push(`${window.location.origin}/sign`);
@@ -56,43 +51,43 @@ export default function AccountDetailsPage({ baseData }) {
     }
   }, [router.pathname]);
 
-
-
   function handleAdd(product) {
-    const isExist = suggested.find((item)=>item._id == product._id)
+    const isExist = suggested.find((item) => item._id == product._id);
     if (isExist) {
-      return toast.error("این محصول قبلا اضافه شده")
+      return toast.error('این محصول قبلا اضافه شده');
     }
-    setsuggested((cur)=>[...cur , product])
+    setsuggested((cur) => [...cur, product]);
   }
 
   function handleDelete(product) {
-    const isExist = suggested.filter((item)=>item._id !== product._id)
-  
-    setsuggested(isExist)
-  }
+    const isExist = suggested.filter((item) => item._id !== product._id);
 
- 
+    setsuggested(isExist);
+  }
 
   async function handleSubmit() {
     if (suggested.length) {
-      const offerProducts = []
-      suggested.map((item)=>offerProducts.push(item?._id))
+      const offerProducts = [];
+      suggested.map((item) => offerProducts.push(item?._id));
 
-      await httpReauest("POST" , "/supplier/suggest" ,  {offerProducts : offerProducts} , { 'x-access-token': baseData?.cookies?.seller?.token } ).then((res)=>{
-        if (res.status === 201) {
-          toast.success("موفقیت آمیز")
-        }
-      }).catch((err)=>toast.error(err?.response?.data?.message))
+      await httpReauest(
+        'POST',
+        '/supplier/suggest',
+        { offerProducts: offerProducts },
+        { 'x-access-token': baseData?.cookies?.seller?.token }
+      )
+        .then((res) => {
+          if (res.status === 201) {
+            toast.success('موفقیت آمیز');
+          }
+        })
+        .catch((err) => toast.error(err?.response?.data?.message));
     }
-    
   }
-
 
   if (loading) {
-    return <Loading/>
+    return <Loading />;
   }
-
 
   return (
     <>
@@ -101,57 +96,61 @@ export default function AccountDetailsPage({ baseData }) {
         description="Welcome to Future Business Hub, your ultimate destination for understanding career paths and professional growth in the export development sector. At WIMEHR platform, we are committed to providing the knowledge and tools necessary for success in both professional and personal life."
         path="my-account/all-product"
       />
-      <Modal open={show} onClose={()=>setshow(false)}>
-        <div className='bg-slate-100 p-3 w-full rounded shadow lg:min-w-[70vw]'>
-          <FaTimes onClick={()=>setshow(false)}/>
-          <div className='mt-2'>
-          <Heading >
-            برای اضافه کردن محصول روی آن کلیک کنید (برای ثبت شدن حتما روی دکمه تایید کلیک کنید)
-          </Heading>
-          <div className='border rounded mt-2 p-3 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4'>
-          <Heading className='col-span-full' variant='title'>
-           محصولات انتخاب شده:
-          </Heading>
-          {suggested?.length == 0 ? (
-            <Heading className='text-center'>{t("t-dont-product")}</Heading>
-          ) : (
-            suggested?.map((item) => {
-              return (
-                <ProductCardSelect
-                  key={item.id}
-                  product={item}
-                  handleAdd={handleAdd}
-                  handleDelete={handleDelete}
-                />
-              );
-            })
-          )}
-          <div className='col-span-full'>
-          <button onClick={handleSubmit} className=' bg-red-500 px-3 py-1 text-white text-[18px] font-bold rounded'>
-           تایید
-          </button>
-          </div>
-          </div>
-          <div
-            className={`grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
-           >
-              <Heading className='col-span-full' variant='title'>
-           محصولات شما:
-          </Heading>
-          {data?.length == 0 ? (
-            <Heading>{t("t-dont-product")}</Heading>
-          ) : (
-            data?.map((item) => {
-              return (
-                <ProductCardSelect
-                  key={item.id}
-                  product={item}
-                  handleAdd={handleAdd}
-                />
-              );
-            })
-          )}
-          </div>
+      <Modal open={show} onClose={() => setshow(false)}>
+        <div className="bg-slate-100 p-3 w-full rounded shadow lg:min-w-[70vw]">
+          <FaTimes onClick={() => setshow(false)} />
+          <div className="mt-2">
+            <Heading>
+              برای اضافه کردن محصول روی آن کلیک کنید (برای ثبت شدن حتما روی دکمه
+              تایید کلیک کنید)
+            </Heading>
+            <div className="border rounded mt-2 p-3 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4">
+              <Heading className="col-span-full" variant="title">
+                محصولات انتخاب شده:
+              </Heading>
+              {suggested?.length == 0 ? (
+                <Heading className="text-center">{t('t-dont-product')}</Heading>
+              ) : (
+                suggested?.map((item) => {
+                  return (
+                    <ProductCardSelect
+                      key={item.id}
+                      product={item}
+                      handleAdd={handleAdd}
+                      handleDelete={handleDelete}
+                    />
+                  );
+                })
+              )}
+              <div className="col-span-full">
+                <button
+                  onClick={handleSubmit}
+                  className=" bg-red-500 px-3 py-1 text-white text-[18px] font-bold rounded"
+                >
+                  تایید
+                </button>
+              </div>
+            </div>
+            <div
+              className={`grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
+            >
+              <Heading className="col-span-full" variant="title">
+                محصولات شما:
+              </Heading>
+              {data?.length == 0 ? (
+                <Heading>{t('t-dont-product')}</Heading>
+              ) : (
+                data?.map((item) => {
+                  return (
+                    <ProductCardSelect
+                      key={item.id}
+                      product={item}
+                      handleAdd={handleAdd}
+                    />
+                  );
+                })
+              )}
+            </div>
           </div>
         </div>
       </Modal>
@@ -159,36 +158,36 @@ export default function AccountDetailsPage({ baseData }) {
         isSeller={baseData?.cookies?.seller?.id ? true : false}
         baseData={baseData}
       >
-        <div className='border-b pb-4'>
-          <Heading className='mb-2 flex justify-between' variant='titleMedium'>
-            {t("text-suggest-supplier")}
-            <button onClick={()=>setshow(true)} className='bg-green-500 px-3 py-1 text-white text-[14px] rounded'>اضافه کردن</button>
+        <div className="border-b pb-4">
+          <Heading className="mb-2 flex justify-between" variant="titleMedium">
+            {t('text-suggest-supplier')}
+            <button
+              onClick={() => setshow(true)}
+              className="bg-green-500 px-3 py-1 text-white text-[14px] rounded"
+            >
+              اضافه کردن
+            </button>
           </Heading>
           <div
-          className={`grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
-        >
-          {suggested?.length == 0 ? (
-            <Heading className='text-center'>{t("t-dont-product")}</Heading>
-          ) : (
-            suggested?.map((item) => {
-              return (
-                <ProductCard
-                  key={item.id}
-                  product={item}
-                />
-              );
-            })
-          )}
+            className={`grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
+          >
+            {suggested?.length == 0 ? (
+              <Heading className="text-center">{t('t-dont-product')}</Heading>
+            ) : (
+              suggested?.map((item) => {
+                return <ProductCard key={item.id} product={item} />;
+              })
+            )}
           </div>
         </div>
         <div
           className={`grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
         >
-            <Heading className='mb-2 col-span-full' variant='titleMedium'>
-            {t("all-products")}
+          <Heading className="mb-2 col-span-full" variant="titleMedium">
+            {t('all-products')}
           </Heading>
           {data?.length == 0 ? (
-            <Heading>{t("t-dont-product")}</Heading>
+            <Heading>{t('t-dont-product')}</Heading>
           ) : (
             data?.map((item) => {
               return (

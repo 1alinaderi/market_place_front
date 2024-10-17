@@ -17,20 +17,19 @@ import BlogCard from '@components/cards/blog-card';
 interface NewsGridProps {
   className?: string;
   discount?: boolean;
-  productData?:any;
-  loading?:boolean
+  productData?: any;
+  loading?: boolean;
 }
 
 export const NewsGrid: FC<NewsGridProps> = ({
   className = '',
   discount,
   productData,
-  loading
+  loading,
 }) => {
   const { t } = useTranslation('common');
   const { query } = useRouter();
-  const error = {message: "product not found"}
-  
+  const error = { message: 'product not found' };
 
   // const {
   //   isFetching: isLoading,
@@ -55,19 +54,16 @@ export const NewsGrid: FC<NewsGridProps> = ({
           className
         )}
       >
-        {loading && (<ProductCardLoader/>)}
-        {  productData?.length  ? (
-          productData?.map((product: Product) => (
-            <BlogCard
-              key={`product--key-${product._id}`}
-              data={product}
-            />
-          ))
-        ) : null}
-        
+        {loading && <ProductCardLoader />}
+        {productData?.length
+          ? productData?.map((product: Product) => (
+              <BlogCard key={`product--key-${product._id}`} data={product} />
+            ))
+          : null}
+
         {/* end of error state */}
       </div>
-      {!productData?.length &&  (
+      {!productData?.length && (
         <div className="text-center w-full text-3xl text-black font-bold">
           No Item Founded
         </div>

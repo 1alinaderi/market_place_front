@@ -7,7 +7,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
   return (
     <div
       onClick={() => {
-        free ? onClose() : gotovip()
+        free ? onClose() : gotovip();
       }}
       className="cursor-pointer relative justify-between flex w-full max-w-[24rem] flex-col rounded-xl bg-gradient-to-tr from-yellow-500 via-orange-500 to-brand-danger bg-clip-border p-5 text-white shadow-cardHover shadow-black"
     >
@@ -46,7 +46,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-              {t("modal-p-1")}
+              {t('modal-p-1')}
             </p>
           </li>
           <li className="flex items-center gap-4">
@@ -68,7 +68,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-            {t("modal-p-2")}
+              {t('modal-p-2')}
             </p>
           </li>
           <li className="flex items-center gap-4">
@@ -90,7 +90,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-            {t("modal-p-3")}
+              {t('modal-p-3')}
             </p>
           </li>
           <li className="flex items-center gap-4">
@@ -112,7 +112,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
               </svg>
             </span>
             <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-            {t("modal-p-5")}
+              {t('modal-p-5')}
             </p>
           </li>
           {!free && (
@@ -135,7 +135,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
                 </svg>
               </span>
               <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-              {t("modal-p-6")}
+                {t('modal-p-6')}
               </p>
             </li>
           )}
@@ -149,7 +149,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
             data-ripple-dark="true"
             disabled
           >
-            {t("modal-p-7")}
+            {t('modal-p-7')}
           </button>
         ) : (
           <>
@@ -159,7 +159,7 @@ const MembershipCard = ({ free, onClose, gotovip }) => {
                 type="button"
                 data-ripple-dark="true"
               >
-               {t("modal-p-8")}
+                {t('modal-p-8')}
               </button>
             </Link>
           </>

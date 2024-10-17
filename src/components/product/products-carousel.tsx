@@ -81,7 +81,7 @@ const ProductsCarousel: React.FC<ProductsCarouselProps> = ({
       }
     >
       <div className="flex flex-wrap items-center justify-center mb-5 md:mb-6">
-        <SectionHeader sectionHeading={sectionHeading} className="mb-0"  />
+        <SectionHeader sectionHeading={sectionHeading} className="mb-0" />
       </div>
       {error ? (
         <div className="2xl:ltr:pr-10 2xl:rtl:pl-10">

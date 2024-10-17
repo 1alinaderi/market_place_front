@@ -17,13 +17,11 @@ import { toast } from 'react-toastify';
 export default function SignInPage({ baseData }) {
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState([]);
-  const router = useRouter()
+  const router = useRouter();
   // const googleLogin = useGoogleLogin({
   //   onSuccess: (codeResponse) => setUser(codeResponse),
   //   onError: (error) => console.log('Login Failed:', error),
   // });
-
-  
 
   // useEffect(() => {
   //   if (user) {
@@ -51,41 +49,45 @@ export default function SignInPage({ baseData }) {
       await httpReauest(
         'POST',
         '/supplier/sign/google',
-        { email: userObject.email, name: userObject.name  },
+        { email: userObject.email, name: userObject.name },
         {}
       )
         .then((e) => {
           toast.success(e.data.message);
-                baseData.handleLoginSeller({
-                  email: userObject.email,
-                  id: e.data.data._id,
-                  token: e.data.data.token,
-                });
-                router.push(`${window.location.origin}/my-account`);
+          baseData.handleLoginSeller({
+            email: userObject.email,
+            id: e.data.data._id,
+            token: e.data.data.token,
+          });
+          router.push(`${window.location.origin}/my-account`);
         })
         .catch((e) => {
           toast.error('Eroor');
         });
     }
   }
-  useEffect(()=>{
-   google?.accounts.id.initialize({
-    client_id:process.env.NEXT_PUBLIC_GOOGLE_ID,
-    callback: handlecallback
-   })
-   google?.accounts.id.renderButton(
-    document.getElementById("signUpDivS"),{
-      theme:"outline" , width:"100%" ,text: "Sign With Google",class: "custom-google-button",
-    }
-  )
-  },[])
+  useEffect(() => {
+    google?.accounts.id.initialize({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_ID,
+      callback: handlecallback,
+    });
+    google?.accounts.id.renderButton(document.getElementById('signUpDivS'), {
+      theme: 'outline',
+      width: '100%',
+      text: 'Sign With Google',
+      class: 'custom-google-button',
+    });
+  }, []);
   return (
     <>
-      <Seo
-        title="ثبت نام تامین کننده"
-        path="supplier/signup"
-      />
-      <Head><script src='https://accounts.google.com/gsi/client' async defer></script></Head>
+      <Seo title="ثبت نام تامین کننده" path="supplier/signup" />
+      <Head>
+        <script
+          src="https://accounts.google.com/gsi/client"
+          async
+          defer
+        ></script>
+      </Head>
       <Divider />
       <div className="flex items-center justify-center">
         <div className="px-4 py-16 lg:py-20 md:px-6 lg:px-8 2xl:px-10 w-full">
@@ -93,7 +95,6 @@ export default function SignInPage({ baseData }) {
             profile={profile}
             baseData={baseData}
             isPopup={false}
-            
             className="border rounded-lg border-border-base"
           />
         </div>

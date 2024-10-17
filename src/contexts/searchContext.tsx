@@ -1,8 +1,8 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext } from 'react';
 
 const initialState = {
-    category: "",
-    subCategory: "",
+  category: '',
+  subCategory: '',
 };
 
-export const SearchContext = createContext<any>(initialState)
+export const SearchContext = createContext<any>(initialState);

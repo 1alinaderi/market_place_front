@@ -34,7 +34,6 @@ const data = [
     name: 'text-email',
     description: 'WIMEHR@GMAIL.COM',
   },
- 
 ];
 const ContactInformation: FC = () => {
   const { t } = useTranslation('common');

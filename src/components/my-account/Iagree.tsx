@@ -16,23 +16,24 @@ const Iagree = ({ baseData, setAgree, mx }) => {
   async function getuserData(id: any) {
     const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
     setData(data.data);
-    console.log(data)
+    console.log(data);
   }
   useEffect(() => {
     getuserData(baseData.cookies.seller?.id);
-   
-    
   }, []);
-  console.log(baseData.cookies)
- async function handleAccept() {
+  console.log(baseData.cookies);
+  async function handleAccept() {
     if (typeofsell === '') {
       return;
     } else {
-      await httpReauest("POST","/supplier/type",{type: typeofsell,sellerId: baseData.cookies.seller?.id },{ 'x-access-token': baseData?.cookies?.seller?.token }).then(()=>{
+      await httpReauest(
+        'POST',
+        '/supplier/type',
+        { type: typeofsell, sellerId: baseData.cookies.seller?.id },
+        { 'x-access-token': baseData?.cookies?.seller?.token }
+      ).then(() => {
         setAgree(true);
-        
-      })
-      
+      });
     }
   }
   return (
@@ -98,24 +99,29 @@ const Iagree = ({ baseData, setAgree, mx }) => {
             </span>
           </div>
         </div>
-       
 
         <div className={`${mx ? 'hidden' : 'block'}`}>
-          <h5 className="mb-3 font-bold text-lg">
-            {t("type-of-sell")}
-          </h5>
+          <h5 className="mb-3 font-bold text-lg">{t('type-of-sell')}</h5>
           <div className="flex items-center gap-5 px-8">
             <button
               onClick={() => setTypeofsell('whole')}
-              className={`${typeofsell==="whole" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
+              className={`${
+                typeofsell === 'whole'
+                  ? 'font-bold border-2 border-slate-600'
+                  : 'border border-slate-300'
+              }  px-8 py-6 rounded duration-100`}
             >
-              {t("whole-saler")}
+              {t('whole-saler')}
             </button>
             <button
               onClick={() => setTypeofsell('retail')}
-              className={`${typeofsell==="retail" ? "font-bold border-2 border-slate-600" : "border border-slate-300"}  px-8 py-6 rounded duration-100`}
+              className={`${
+                typeofsell === 'retail'
+                  ? 'font-bold border-2 border-slate-600'
+                  : 'border border-slate-300'
+              }  px-8 py-6 rounded duration-100`}
             >
-              {t("retail-seller")}
+              {t('retail-seller')}
             </button>
           </div>
         </div>

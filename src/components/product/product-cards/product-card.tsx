@@ -61,8 +61,20 @@ const ProductCard: React.FC<ProductProps> = ({
   className,
   adminId,
 }) => {
-  const { name, image, desc, specialPrice, _id,desc_en,desc_ar,name_en,name_ar } = product ?? {};
-  const imageSrc = image ? `${CDN_BASE_URL}${image}` : "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png";
+  const {
+    name,
+    image,
+    desc,
+    specialPrice,
+    _id,
+    desc_en,
+    desc_ar,
+    name_en,
+    name_ar,
+  } = product ?? {};
+  const imageSrc = image
+    ? `${CDN_BASE_URL}${image}`
+    : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png';
   const myLoader = () => {
     return `${CDN_BASE_URL}${image}`;
   };
@@ -144,10 +156,13 @@ const ProductCard: React.FC<ProductProps> = ({
             )}
           </div>
           <h2 className="text-brand-dark text-13px sm:text-sm lg:text-[15px] font-bold leading-5 sm:leading-6 mb-1.5">
-            {router.locale === 'fa' && name} {router.locale === 'ar' && name_ar} {router.locale === 'en' && name_en}
+            {router.locale === 'fa' && name} {router.locale === 'ar' && name_ar}{' '}
+            {router.locale === 'en' && name_en}
           </h2>
           <div className="mt-2 text-13px sm:text-sm">
-            {router.locale === 'fa' && desc?.slice(0, 50)}{router.locale === 'en' && desc_en?.slice(0, 50)}{router.locale === 'ar' && desc_ar?.slice(0, 50)} ...
+            {router.locale === 'fa' && desc?.slice(0, 50)}
+            {router.locale === 'en' && desc_en?.slice(0, 50)}
+            {router.locale === 'ar' && desc_ar?.slice(0, 50)} ...
           </div>
           {adminId && (
             <div className="w-full flex justify-end pt-2">

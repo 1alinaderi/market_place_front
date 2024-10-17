@@ -39,7 +39,6 @@ export const dataBanner2 = [
   // },
 ];
 
-
 export const bannerGridTwo = [
   {
     id: 1,
@@ -110,4 +109,3 @@ export const bannerGridTwo = [
     },
   },
 ];
-

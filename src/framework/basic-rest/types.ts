@@ -25,7 +25,7 @@ export type QueryOptionsType = {
   category?: string;
   status?: string;
   limit?: number;
-  freeMarket?:boolean
+  freeMarket?: boolean;
 };
 
 export type QueryParamsType = {
@@ -121,10 +121,10 @@ export type Product = {
   freeMarket?: boolean;
   variations?: object;
   [key: string]: unknown;
-  owner : {
+  owner: {
     name: string;
     email: string;
-  }
+  };
 };
 export type OrderItem = {
   id: number | string;

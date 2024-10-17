@@ -12,7 +12,6 @@ import FreshVegetablesProductFeed from '@components/product/feeds/fresh-vegetabl
 import Simillarproducts from '@components/product/feeds/simillarproducts';
 
 export default function ProductPage({ baseData }) {
-
   return (
     <>
       <Divider />
@@ -20,7 +19,6 @@ export default function ProductPage({ baseData }) {
         <Container>
           <Breadcrumb />
           <ProductSingleDetails baseData={baseData} />
-          
         </Container>
       </div>
 

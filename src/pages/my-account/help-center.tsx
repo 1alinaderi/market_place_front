@@ -20,10 +20,7 @@ export default function HelpCenter({ baseData }) {
   }, [router.pathname]);
   return (
     <>
-      <Seo
-        title="مرکز کمک"
-        path="my-account/help-center"
-      />
+      <Seo title="مرکز کمک" path="my-account/help-center" />
       <AccountLayout isSeller={isSeller} baseData={baseData}>
         <Help />
       </AccountLayout>

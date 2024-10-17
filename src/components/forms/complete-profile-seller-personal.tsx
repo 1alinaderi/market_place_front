@@ -177,7 +177,6 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-       
         <div className="grid px-1 grid-cols-12   ">
           {step ? (
             <>
@@ -185,7 +184,10 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
                 <Heading className="mr-2 pb-2 whitespace-nowrap" variant="base">
                   {t('pay')} *:
                 </Heading>
-                <select className='shadow border rounded p-2 w-full mb-2 text-[14px] border-slate-300' dir='ltr'>
+                <select
+                  className="shadow border rounded p-2 w-full mb-2 text-[14px] border-slate-300"
+                  dir="ltr"
+                >
                   <option>6,000,000 IRR (min)</option>
                   <option>12,000,000 IRR</option>
                   <option>18,000,000 IRR</option>
@@ -205,8 +207,13 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
                     </div>
                   )}
                 </label>
-                <input dir='ltr' value={"5022-2910-1917-7474"} disabled className='shadow border rounded p-2 mt-3 w-full'/>
-                <span >مهیار بابازاده</span>
+                <input
+                  dir="ltr"
+                  value={'5022-2910-1917-7474'}
+                  disabled
+                  className="shadow border rounded p-2 mt-3 w-full"
+                />
+                <span>مهیار بابازاده</span>
                 <input
                   onChange={(e) => {
                     setimagePay(e.target.files[0]);
@@ -221,7 +228,7 @@ const CompleteProfileFormSellerPersonal = ({ baseData, t }) => {
                 <button
                   className="bg-blue-500 rounded-2xl px-4 py-2 text-white "
                   onClick={getAuth}
-                  type='button'
+                  type="button"
                 >
                   {t('crypto-pay')}
                 </button>

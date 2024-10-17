@@ -43,8 +43,12 @@ const ManagedModal: React.FC<ManagedModalProps> = ({ baseData }) => {
     <Modal open={isOpen} onClose={closeModal}>
       {view === 'LOGIN_VIEW' && <LoginForm baseData={baseData} />}
       {view === 'SIGN_UP_VIEW' && <SignUpForm baseData={baseData} />}
-      {view === 'FORGET_PASSWORD_SELLER' && <ForgetPasswordForm baseData={baseData} seller />}
-      {view === 'FORGET_PASSWORD_USER' && <ForgetPasswordForm baseData={baseData}  />}
+      {view === 'FORGET_PASSWORD_SELLER' && (
+        <ForgetPasswordForm baseData={baseData} seller />
+      )}
+      {view === 'FORGET_PASSWORD_USER' && (
+        <ForgetPasswordForm baseData={baseData} />
+      )}
       {view === 'PRODUCT_VIEW' && <ProductPopup />}
       {view === 'ADDRESS_VIEW_AND_EDIT' && <AddressPopup />}
       {view === 'PAYMENT' && <PaymentPopup />}

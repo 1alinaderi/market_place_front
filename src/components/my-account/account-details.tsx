@@ -87,14 +87,14 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
   async function getSellerData(id: any) {
     const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
 
-    const showmodal = localStorage.getItem("showmodal")
+    const showmodal = localStorage.getItem('showmodal');
 
     if (data?.data?.membership == 'Freemium' && !showmodal) {
       setopen(true);
     }
-    const isdont = localStorage.getItem("dontshow")
+    const isdont = localStorage.getItem('dontshow');
     if (data?.data?.phone && data?.data?.completeProfile && !isdont) {
-      setdontshow(true)
+      setdontshow(true);
     }
     setData(data.data);
   }
@@ -104,7 +104,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
 
   function onClose() {
     setopen(false);
-    localStorage.setItem("showmodal" , "false")
+    localStorage.setItem('showmodal', 'false');
   }
 
   function gotovip() {
@@ -112,8 +112,8 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
   }
 
   function handleDontshow() {
-    localStorage.setItem("dontshow" , "false")
-    setdontshow(false)
+    localStorage.setItem('dontshow', 'false');
+    setdontshow(false);
   }
   return (
     <div className="flex flex-col w-full">
@@ -129,7 +129,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               <CloseButton onClick={onClose} />
               <div className="flex mx-auto overflow-hidden rounded-lg bg-brand-light py-5 gap-4 justify-center flex-wrap">
                 <h1 className="w-full text-3xl py-3 text-center text-black font-semibold">
-                   {t('text-choose-membership')}
+                  {t('text-choose-membership')}
                 </h1>
                 <MembershipCard gotovip={gotovip} onClose={onClose} free />
                 <MembershipCard
@@ -140,15 +140,24 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </div>
           </Modal>
-          <small className='mb-2'>{t("manage-coins")}</small>
-          <div className='flex gap-2 items-center mb-3 flex-wrap lg:flex-nowrap'>
-            <Balance data={data}/>
-            {dontshow &&<div className='border w-full border-green-400 p-3 pb-4 rounded bg-green-200 text-green-700 font-bold relative'> <span onClick={handleDontshow} className='absolute rtl:left-1 top-1 ltr:right-1'><FaTimes/></span>{t("congragelation-text")}</div>}
+          <small className="mb-2">{t('manage-coins')}</small>
+          <div className="flex gap-2 items-center mb-3 flex-wrap lg:flex-nowrap">
+            <Balance data={data} />
+            {dontshow && (
+              <div className="border w-full border-green-400 p-3 pb-4 rounded bg-green-200 text-green-700 font-bold relative">
+                {' '}
+                <span
+                  onClick={handleDontshow}
+                  className="absolute rtl:left-1 top-1 ltr:right-1"
+                >
+                  <FaTimes />
+                </span>
+                {t('congragelation-text')}
+              </div>
+            )}
           </div>
-          <div
-            className="flex flex-col justify-center w-full mx-auto"
-          >
-                        {!data?.phone && (
+          <div className="flex flex-col justify-center w-full mx-auto">
+            {!data?.phone && (
               <div id="orders">
                 <Heading
                   variant="titleLarge"
@@ -170,18 +179,25 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
                     {t('t-compelete-profile')}
                   </div>
                 </Heading>
-                <div className='text-[12px] lg:text-[16px] lg:px-3 mb-4'>
-                  <h2 className='mb-5 text-black'>{t("profile-h")}</h2>
-                  <div className='grid md:grid-cols-2 grid-cols-1 gap-4 mb-5 '>
-                    <img className='md:h-[340px] rounded shadow w-full' src="/assets/images/img.jpg" alt="" />
-                    <img className='md:h-[340px] rounded shadow w-full'  src="/assets/images/img1.jpg" alt="" />
+                <div className="text-[12px] lg:text-[16px] lg:px-3 mb-4">
+                  <h2 className="mb-5 text-black">{t('profile-h')}</h2>
+                  <div className="grid md:grid-cols-2 grid-cols-1 gap-4 mb-5 ">
+                    <img
+                      className="md:h-[340px] rounded shadow w-full"
+                      src="/assets/images/img.jpg"
+                      alt=""
+                    />
+                    <img
+                      className="md:h-[340px] rounded shadow w-full"
+                      src="/assets/images/img1.jpg"
+                      alt=""
+                    />
                   </div>
-                  <p>{t("profile-p")}</p>
-                  <p>{t("profile-p-1")}</p>
-                  <p>{t("profile-p-2")}</p>
+                  <p>{t('profile-p')}</p>
+                  <p>{t('profile-p-1')}</p>
+                  <p>{t('profile-p-2')}</p>
                 </div>
                 <CompleteProfileFormSellerPersonal t={t} baseData={baseData} />
-                
               </div>
             )}
 
@@ -266,8 +282,6 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
               </div>
             </div>
 
-
-
             {/* {data?.bankCards?.length == 0 && (
           <div id="orders">
             <Heading
@@ -280,24 +294,26 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
           </div>
         )} */}
 
-          
-
-          {data?.completeProfile && (
-            <>
-            <Heading
-              variant="title"
-              className="pt-6 mb-5  md:pt-7 lg:pt-8"
-            >
-              <div className="flex items-center gap-3">
-                <FaCheckCircle className="text-green-500" />
-                {t('t-profile-us-complete')} 
-                <span className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 duration-150'><Link  href={"/my-account/create-product"}>{t("add-product")}</Link></span>
-              </div>
-              
-            </Heading>
-            <CompleteOtherInfoSeller data={data} t={t} baseData={baseData} />
-            </>
-          )}
+            {data?.completeProfile && (
+              <>
+                <Heading variant="title" className="pt-6 mb-5  md:pt-7 lg:pt-8">
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-green-500" />
+                    {t('t-profile-us-complete')}
+                    <span className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400 duration-150">
+                      <Link href={'/my-account/create-product'}>
+                        {t('add-product')}
+                      </Link>
+                    </span>
+                  </div>
+                </Heading>
+                <CompleteOtherInfoSeller
+                  data={data}
+                  t={t}
+                  baseData={baseData}
+                />
+              </>
+            )}
           </div>
         </>
       ) : (
@@ -381,7 +397,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
             >
               <div className="flex items-center gap-3">
                 <FaCheckCircle className="text-green-500" />
-                Your Profile is Complete 
+                Your Profile is Complete
               </div>
             </Heading>
           )}

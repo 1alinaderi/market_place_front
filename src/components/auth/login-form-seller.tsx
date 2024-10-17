@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
@@ -17,7 +17,6 @@ import { httpReauest } from 'src/api/api';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
 
 interface LoginFormProps {
   isPopup?: boolean;
@@ -38,7 +37,7 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
   const { closeModal, openModal } = useModalAction();
   const { mutate: login, isLoading } = useLoginMutation();
   const [remember, setRemember] = useState(false);
-  const videoRef = useRef()
+  const videoRef = useRef();
 
   const router = useRouter();
 
@@ -105,11 +104,11 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
       });
     closeModal();
   }
-  useEffect(()=>{
-    if(videoRef.current){
-      videoRef.current.play()
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play();
     }
-  },[])
+  }, []);
   useEffect(() => {
     if (baseData?.cookies?.seller?.id) {
       router.push(`${window.location.origin}/my-account`);
@@ -133,11 +132,16 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
 
       <div className="flex flex-col md:flex-row mx-auto overflow-hidden rounded-lg bg-brand-light">
         <div className=" lg:w-[50%] xl:w-[45%] md:w-[50%] registration  md:block relative">
-          <video ref={videoRef} className='w-full ' loop  muted src="https://server.wimehr.com/uploads/sign.mp4"></video>
+          <video
+            ref={videoRef}
+            className="w-full "
+            loop
+            muted
+            src="https://server.wimehr.com/uploads/sign.mp4"
+          ></video>
         </div>
-        
+
         <div className="w-full xl:w-[55%] lg:w-[50%] md:w-[50%]   py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md flex flex-col justify-center">
-          
           <div className="mb-6 text-center">
             <div onClick={closeModal}>
               <Logo />
@@ -206,7 +210,7 @@ const LoginFormSeller: React.FC<LoginFormProps> = ({
                 >
                   <FaGoogle className="mr-3" size={23} /> Sign With Google
                 </Button> */}
-                <div id='signInDivS'></div>
+                <div id="signInDivS"></div>
               </div>
               <div className="relative">
                 <Button

@@ -17,13 +17,13 @@ interface ProductFeedProps {
   element?: any;
   className?: string;
   name?: any;
-  small?: boolean
+  small?: boolean;
 }
 const AllProductFeed: FC<ProductFeedProps> = ({
   element,
   className = '',
   name,
-  small
+  small,
 }) => {
   const { t } = useTranslation('common');
 
@@ -50,7 +50,13 @@ const AllProductFeed: FC<ProductFeedProps> = ({
       {error ? (
         <Alert message={error?.message} />
       ) : (
-        <div className={small ? "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-3 3xl:grid-cols-4 md:gap-4 2xl:gap-5" : "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 md:gap-4 2xl:gap-5"}>
+        <div
+          className={
+            small
+              ? 'grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-3 3xl:grid-cols-4 md:gap-4 2xl:gap-5'
+              : 'grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 md:gap-4 2xl:gap-5'
+          }
+        >
           {isLoading && !data?.length ? (
             Array.from({ length: LIMITS.PRODUCTS_LIMITS }).map((_, idx) => (
               <ProductCardLoader

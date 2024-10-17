@@ -22,11 +22,9 @@ import CreateProductForm from '@components/forms/create-product';
 import CreateProductFreeForm from '@components/forms/create-product-free';
 
 export default function AccountDetailsPage({ baseData }) {
-
   const [data, setData] = useState(null);
   const [productType, setproductType] = useState();
-  const router = useRouter()
-
+  const router = useRouter();
 
   async function getSellerData(id: any) {
     const { data } = await httpReauest('GET', '/supplier/' + id, {}, {});
@@ -42,39 +40,46 @@ export default function AccountDetailsPage({ baseData }) {
     }
   }, [router.pathname]);
 
-  console.log(data?.membership == "Premium")
-
+  console.log(data?.membership == 'Premium');
 
   const { t } = useTranslation('common');
 
   return (
     <>
-      <Seo
-        title="ایجاد محصول"
-        path="my-account/create-product"
-      />
+      <Seo title="ایجاد محصول" path="my-account/create-product" />
       <AccountLayout
         isSeller={baseData?.cookies?.seller?.id ? true : false}
         baseData={baseData}
       >
         {data?.completeProfile ? (
-        <>
-        {data?.membership == "Premium" ? 
-        <>
-        {!productType ? (
           <>
-            <h5 className='w-full mb-2'>Product type?</h5>
-            <select onChange={(e)=>setproductType(e.target.value)}>
-              <option></option>
-              <option value={1}>{t('free-market')}</option>
-              <option value={2}>{t('sustainable')} {t('arch-and-art')}</option>
-            </select>
+            {data?.membership == 'Premium' ? (
+              <>
+                {!productType ? (
+                  <>
+                    <h5 className="w-full mb-2">Product type?</h5>
+                    <select onChange={(e) => setproductType(e.target.value)}>
+                      <option></option>
+                      <option value={1}>{t('free-market')}</option>
+                      <option value={2}>
+                        {t('sustainable')} {t('arch-and-art')}
+                      </option>
+                    </select>
+                  </>
+                ) : productType == 1 ? (
+                  <>
+                    <CreateProductFreeForm baseData={baseData} />
+                  </>
+                ) : productType == 2 ? (
+                  <>
+                    <CreateProductForm baseData={baseData} />
+                  </>
+                ) : null}
+              </>
+            ) : (
+              <CreateProductFreeForm baseData={baseData} />
+            )}
           </>
-        ) : productType == 1 ? <><CreateProductFreeForm baseData={baseData}/></> : productType == 2 ? <><CreateProductForm baseData={baseData}/></> : null}
-        
-        </> : 
-          <CreateProductFreeForm baseData={baseData}/>}
-        </>
         ) : (
           <Link href={'/my-account'}>{t('t-must-complete-profile')}</Link>
         )}

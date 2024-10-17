@@ -9,14 +9,10 @@ import Container from '@components/ui/container';
 import SectionHeader from '@components/common/section-header';
 import Heading from '@components/ui/heading';
 
-
 export default function Packing() {
   return (
     <>
-      <Seo
-        title="دسته بندی"
-        path="packing"
-      />
+      <Seo title="دسته بندی" path="packing" />
       <PageHeroSection heroTitle="Packing" className="faq-banner-area" />
       <Container>
         <div className="flex flex-wrap gap-3 max-w-3xl py-12 mx-auto 2xl:max-w-5xl md:py-20">

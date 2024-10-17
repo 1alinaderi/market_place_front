@@ -67,7 +67,12 @@
   width: 100%;
   margin-bottom: 15px;
 }
-.content-blog h1,h2,h3,h4,h5,h6 {
+.content-blog h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
 }
 
@@ -86,7 +91,7 @@
 }
 
 .content-blog p {
-  margin-top:15px;
+  margin-top: 15px;
 }
 
 /* for header one */
@@ -173,9 +178,9 @@ input:checked + .slider:before {
     @apply absolute top-0 h-full ltr:right-0 rtl:left-0;
     background-image: linear-gradient(
       to right,
-      rgba(241, 245 ,249, 0.2),
-      rgba(241, 245 ,249, 0.9),
-      rgba(241, 245 ,249, 1)
+      rgba(241, 245, 249, 0.2),
+      rgba(241, 245, 249, 0.9),
+      rgba(241, 245, 249, 1)
     );
     content: '';
     z-index: 5;
@@ -509,34 +514,26 @@ input:checked + .slider:before {
 
 @font-face {
   font-family: 'Nazanin';
-  src: url("../../../public/B-NAZANIN.TTF");
+  src: url('../../../public/B-NAZANIN.TTF');
 }
 
-
-.motionBorder::before{
-  content: "";
+.motionBorder::before {
+  content: '';
   height: 250%;
   width: 250%;
   position: absolute;
-  background-image: conic-gradient(
-    #fff 20deg,
-    transparent 120deg
-  );
-  left:-75%;
-  top:-75%;
+  background-image: conic-gradient(#fff 20deg, transparent 120deg);
+  left: -75%;
+  top: -75%;
   z-index: 0;
-  
-  animation:rotate 6s infinite  linear   ;
 
+  animation: rotate 6s infinite linear;
 }
 @keyframes rotate {
-  100%{
+  100% {
     transform: rotate(-360deg);
   }
 }
-
-
-
 
 @font-palette-values --Grays {
   font-family: Rocher;

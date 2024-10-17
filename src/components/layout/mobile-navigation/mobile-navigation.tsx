@@ -53,17 +53,17 @@ const BottomNavigation: React.FC = () => {
           <MenuIcon />
         </button>
         <Link href={ROUTES.HOME} className=" shrink-0 ">
-          <FaStoreAlt size={23}/>
+          <FaStoreAlt size={23} />
         </Link>
         <Link href={'/'} className="shrink-0">
           <span className="sr-only">{t('breadcrumb-home')}</span>
           <HomeIcon />
         </Link>
         {/* <CartButton hideLabel={true} iconClassName="text-opacity-100" /> */}
-        <Link href={"/supplier/signin"}>
+        <Link href={'/supplier/signin'}>
           <AuthMenu
             isAuthorized={isAuthorized}
-            href={"/supplier/signin"}
+            href={'/supplier/signin'}
             btnProps={{
               className: 'shrink-0 focus:outline-none',
               children: <UserIcon />,

@@ -31,13 +31,12 @@ function CategoryFilterMenuItem({
   setSubactive,
   subActive,
   news,
-  onClose
+  onClose,
 }: any) {
   const { t } = useTranslation('common');
   const [idrouter, setIdrouter] = useState('');
 
-  const {category , setCategory , setsubCategory} = useContext(SearchContext)
-
+  const { category, setCategory, setsubCategory } = useContext(SearchContext);
 
   const router = useRouter();
   useEffect(() => {
@@ -87,7 +86,12 @@ function CategoryFilterMenuItem({
         setId(_id);
         const sub = subItems.filter((i) => i.category === _id);
         setSelected(sub);
-        const response = await httpReauest('GET', `/prouduct?category=${_id}`,{},{});
+        const response = await httpReauest(
+          'GET',
+          `/prouduct?category=${_id}`,
+          {},
+          {}
+        );
         setProductData(response.data.data);
       }
     } else if (news) {
@@ -101,7 +105,12 @@ function CategoryFilterMenuItem({
         setId(_id);
         const sub = subItems.filter((i) => i.category === _id);
         setSelected(sub);
-        const response = await httpReauest('GET', `/news?category=${_id}`,{},{});
+        const response = await httpReauest(
+          'GET',
+          `/news?category=${_id}`,
+          {},
+          {}
+        );
         setProductData(response.data.data);
       }
     } else {
@@ -110,13 +119,13 @@ function CategoryFilterMenuItem({
         const response = await httpReauest('GET', '/prouduct/free', {}, {});
         setProductData(response.data.data);
         setId('');
-        setCategory(null)      
+        setCategory(null);
       } else {
         setSelected([]);
         setId(_id);
         const sub = subItems.filter((i) => i.category === _id);
         setSelected(sub);
-        setCategory(_id)      
+        setCategory(_id);
       }
     }
 
@@ -130,25 +139,39 @@ function CategoryFilterMenuItem({
     if (mainMarket) {
       if (subActive === e.name) {
         setSubactive('');
-        const response = await httpReauest('GET', `/prouduct?category=${_id}`,{},{});
+        const response = await httpReauest(
+          'GET',
+          `/prouduct?category=${_id}`,
+          {},
+          {}
+        );
         setProductData(response.data.data);
       } else {
         const response = await httpReauest(
           'GET',
-          `/prouduct?category=${_id}&subCategory=${e._id}`,{},{}
+          `/prouduct?category=${_id}&subCategory=${e._id}`,
+          {},
+          {}
         );
         setSubactive(e.name);
         setProductData(response.data.data);
       }
-    }else if(news){
+    } else if (news) {
       if (subActive === e.name) {
         setSubactive('');
-        const response = await httpReauest('GET', `/news?category=${_id}`,{},{});
+        const response = await httpReauest(
+          'GET',
+          `/news?category=${_id}`,
+          {},
+          {}
+        );
         setProductData(response.data.data);
       } else {
         const response = await httpReauest(
           'GET',
-          `/news?category=${_id}&subCategory=${e._id}`,{},{}
+          `/news?category=${_id}&subCategory=${e._id}`,
+          {},
+          {}
         );
         setSubactive(e.name);
         setProductData(response.data.data);
@@ -161,10 +184,9 @@ function CategoryFilterMenuItem({
           `/prouduct/free?category=${_id}`
         );
         setProductData(response.data.data);
-        setsubCategory(null)
-
+        setsubCategory(null);
       } else {
-        setsubCategory(e._id)
+        setsubCategory(e._id);
         // const response = await httpReauest(
         //   'GET',
         //   `/prouduct/free?category=${_id}&subCategory=${e._id}`
@@ -246,15 +268,14 @@ function CategoryFilterMenuItem({
         } overflow-hidden duration-300  `}
       >
         {selected?.map((e) => (
-          <div onClick={() => {
-                  handleSubcategory(e);
-                  onClose()
-                }} 
-                className="flex justify-between items-center py-2  px-5  text-slate-500 border-[1px] border-slate-50  hover:bg-slate-100">
-            <button
-              
-              className=" mx-3"
-            >
+          <div
+            onClick={() => {
+              handleSubcategory(e);
+              onClose();
+            }}
+            className="flex justify-between items-center py-2  px-5  text-slate-500 border-[1px] border-slate-50  hover:bg-slate-100"
+          >
+            <button className=" mx-3">
               {router.locale === 'en' && e?.name_en}{' '}
               {router.locale === 'fa' && e?.name}{' '}
               {router.locale === 'ar' && e?.name_ar}
@@ -286,7 +307,7 @@ function CategoryFilterMenu({
   subActive,
   setSubactive,
   news,
-  onClose
+  onClose,
 }: any) {
   return (
     <ul className={cn(className)}>

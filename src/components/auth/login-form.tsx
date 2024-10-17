@@ -86,7 +86,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
     // });
 
     await httpReauest('POST', '/user/login', { email, password }, {})
-      .then(async(e) => {
+      .then(async (e) => {
         toast.success(e.data.message);
         await baseData.handleLoginSeller(null);
         await baseData.handleLogin({
@@ -200,7 +200,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
                 >
                   <FaGoogle className="mr-3" size={23} /> Sign With Google
                 </Button> */}
-                <div id='signInDiv'></div>
+                <div id="signInDiv"></div>
               </div>
               <div className="relative">
                 <Button

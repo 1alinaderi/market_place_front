@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
@@ -42,7 +42,7 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
   const [code, setcode] = useState();
   const [usageType, setusageType] = useState<string>();
   const router = useRouter();
-  const videoRef = useRef()
+  const videoRef = useRef();
   const {
     register,
     handleSubmit,
@@ -105,11 +105,11 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
         toast.error(e.message);
       });
   }
-  useEffect(()=>{
+  useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play()
+      videoRef.current.play();
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     if (baseData?.cookies?.seller?.id) {
@@ -148,7 +148,13 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
       {isPopup === true && <CloseButton onClick={closeModal} />}
       <div className="flex w-full flex-col md:flex-row mx-auto overflow-hidden rounded-lg bg-brand-light">
         <div className="lg:w-[50%] xl:w-[45%] md:w-[50%] registration  md:block relative">
-        <video ref={videoRef} className='w-full ' loop  muted src="https://server.wimehr.com/uploads/sign.mp4"></video>
+          <video
+            ref={videoRef}
+            className="w-full "
+            loop
+            muted
+            src="https://server.wimehr.com/uploads/sign.mp4"
+          ></video>
         </div>
         <div className="w-full xl:w-[55%] lg:w-[50%] md:w-[50%] py-6 sm:py-10 px-4 sm:px-8 md:px-6 lg:px-8 xl:px-12 rounded-md shadow-dropDown flex flex-col justify-center">
           <div className="text-center mb-6 pt-2.5">
@@ -304,7 +310,7 @@ const SignUpSeller: React.FC<SignUpFormProps> = ({
                   >
                     <FaGoogle className="mr-3" size={23} /> Sign With Google
                   </Button> */}
-                  <div id='signUpDivS'></div>
+                  <div id="signUpDivS"></div>
                 </div>
 
                 <div className="relative">

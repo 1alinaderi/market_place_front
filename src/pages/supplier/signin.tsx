@@ -20,7 +20,7 @@ import Link from 'next/link';
 export default function SignInPage({ baseData }) {
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState([]);
-  const router = useRouter()
+  const router = useRouter();
   // const googleLogin = useGoogleLogin({
   //   onSuccess: (codeResponse) => setUser(codeResponse),
   //   onError: (error) => console.log('Login Failed:', error),
@@ -51,7 +51,7 @@ export default function SignInPage({ baseData }) {
       await httpReauest(
         'POST',
         '/supplier/sign/google',
-        { email: userObject.email, name: userObject.name  },
+        { email: userObject.email, name: userObject.name },
         {}
       )
         .then((e) => {
@@ -68,29 +68,41 @@ export default function SignInPage({ baseData }) {
         });
     }
   }
-  useEffect(()=>{
-   google.accounts.id.initialize({
-    client_id:process.env.NEXT_PUBLIC_GOOGLE_ID,
-    callback: handlecallback
-   })
-   google.accounts.id.renderButton(
-    document.getElementById("signInDivS"),{
-      theme:"outline" , width:"100%" ,text: "Sign With Google",class: "custom-google-button",
-    }
-  )
-  },[])
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_ID,
+      callback: handlecallback,
+    });
+    google.accounts.id.renderButton(document.getElementById('signInDivS'), {
+      theme: 'outline',
+      width: '100%',
+      text: 'Sign With Google',
+      class: 'custom-google-button',
+    });
+  }, []);
 
   return (
     <>
-      <Seo
-        title="ورود نام تامین کننده"
-        path="supplier/signin"
-      />
-      <Head><script src='https://accounts.google.com/gsi/client' async defer></script></Head>
+      <Seo title="ورود نام تامین کننده" path="supplier/signin" />
+      <Head>
+        <script
+          src="https://accounts.google.com/gsi/client"
+          async
+          defer
+        ></script>
+      </Head>
       <Divider />
       <div className="flex items-center justify-center">
         <div className="px-4 py-12 sm:py-16 lg:py-20 md:px-6 lg:px-8 2xl:px-10">
-        <div className='flex gap-3 items-center border p-2 mb-4 justify-between rounded font-bold'> برای ثبت نام نیاز به راهنمایی داری؟<Link href={"/guide"}><button className='text-[14px] text-white bg-red-500 rounded px-4 py-1'>راهنما</button></Link></div>
+          <div className="flex gap-3 items-center border p-2 mb-4 justify-between rounded font-bold">
+            {' '}
+            برای ثبت نام نیاز به راهنمایی داری؟
+            <Link href={'/guide'}>
+              <button className="text-[14px] text-white bg-red-500 rounded px-4 py-1">
+                راهنما
+              </button>
+            </Link>
+          </div>
           <LoginFormSeller
             // profile={profile}
             baseData={baseData}

@@ -28,7 +28,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
   baseData,
 }) => {
   const { t } = useTranslation();
-  const { query , reload } = useRouter();
+  const { query, reload } = useRouter();
 
   const {
     register,
@@ -37,7 +37,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
   } = useForm<ReviewFormValues>();
   const [rating_custom_icon, set_rating_custom_icon] = useState(1);
   async function onSubmit(values: ReviewFormValues) {
-
     await httpReauest(
       'POST',
       '/prouduct/review/' + query.slug,
@@ -46,7 +45,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
     )
       .then(() => {
         toast.success('SuccessFull');
-        reload()
+        reload();
       })
       .catch((e) => {
         toast.error(e.message);

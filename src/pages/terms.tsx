@@ -24,7 +24,7 @@ export default function TermsPage() {
         <Container>
           <div className="w-full xl:max-w-[1200px] mx-auto">
             <div className="text-brand-muted text-sm lg:text-15px leading-7 space-y-5 mb-4 lg:mb-6">
-               {t("terms-title")}
+              {t('terms-title')}
             </div>
             {termsAndServices?.map((item) => (
               // @ts-ignore
@@ -44,17 +44,13 @@ export default function TermsPage() {
               </div>
             ))}
             <div>
-              <span className='flex justify-start items-center gap-2 '>
-                <p className='font-bold'>{t("email")}:</p>
-                <Link href='mailto:wimehr@gmail.com'>
-                wimehr@gmail.com
-                </Link>
+              <span className="flex justify-start items-center gap-2 ">
+                <p className="font-bold">{t('email')}:</p>
+                <Link href="mailto:wimehr@gmail.com">wimehr@gmail.com</Link>
               </span>
-              <span className='flex justify-start items-center gap-2 '>
-              <p className='font-bold'>{t("phone")}:</p>
-                <Link href='tel:0096893548433'>
-                0096893548433
-                </Link>
+              <span className="flex justify-start items-center gap-2 ">
+                <p className="font-bold">{t('phone')}:</p>
+                <Link href="tel:0096893548433">0096893548433</Link>
               </span>
             </div>
           </div>

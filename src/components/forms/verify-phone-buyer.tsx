@@ -18,10 +18,14 @@ const VerifyPhoneBuyer = ({ baseData, t }) => {
   async function handleSubmit(e) {
     e.preventDefault();
     if (phone) {
-
-      await httpReauest('POST', '/supplier/profile/phone/accept', {phone : phone , code : code}, {
-        'x-access-token': baseData?.cookies?.seller?.token,
-      })
+      await httpReauest(
+        'POST',
+        '/supplier/profile/phone/accept',
+        { phone: phone, code: code },
+        {
+          'x-access-token': baseData?.cookies?.seller?.token,
+        }
+      )
         .then((e) => {
           toast.success(e.data.message);
           router.reload();
@@ -37,13 +41,16 @@ const VerifyPhoneBuyer = ({ baseData, t }) => {
   async function handleSubmitPhone(e) {
     e.preventDefault();
     if (phone && phone.length === 11) {
-
-
-      await httpReauest('POST', '/supplier/profile/phone', {phone : phone}, {
-        'x-access-token': baseData?.cookies?.seller?.token,
-      })
+      await httpReauest(
+        'POST',
+        '/supplier/profile/phone',
+        { phone: phone },
+        {
+          'x-access-token': baseData?.cookies?.seller?.token,
+        }
+      )
         .then((e) => {
-          setsendcode(true)
+          setsendcode(true);
         })
         .catch((e) => {
           toast.error(e.message);
@@ -69,7 +76,6 @@ const VerifyPhoneBuyer = ({ baseData, t }) => {
                 onChange={(e) => {
                   setcode(e.target.value);
                 }}
-              
                 className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </span>
@@ -89,18 +95,21 @@ const VerifyPhoneBuyer = ({ baseData, t }) => {
               </Heading>
 
               <input
-
-              dir='ltr'
+                dir="ltr"
                 onChange={(e) => {
                   setPhone(e.target.value);
                 }}
-                placeholder='0939*******'
+                placeholder="0939*******"
                 className="shadow h-10 appearance-none border border-slate-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </span>
           </div>
           <div className="px-5 mt-8">
-            <Button variant="formButton" type="button" onClick={handleSubmitPhone}>
+            <Button
+              variant="formButton"
+              type="button"
+              onClick={handleSubmitPhone}
+            >
               {t('t-submit')}
             </Button>
           </div>

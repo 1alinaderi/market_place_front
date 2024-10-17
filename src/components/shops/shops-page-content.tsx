@@ -12,7 +12,6 @@ const ShopsPageContent: React.FC = ({ admin }) => {
     limit: 9,
   });
 
-
   if (error) return <Alert message={error?.message} />;
 
   return (
@@ -23,7 +22,7 @@ const ShopsPageContent: React.FC = ({ admin }) => {
           : 'pt-10  lg:pt-12 xl:pt-14 pb-14 lg:pb-16 xl:pb-20 md:px-8 bg-slate-100'
       }`}
     >
-        <Container>
+      <Container>
         <Heading variant="titleLarge" className="mb-4 lg:mb-6">
           {t('text-all-shops')}
         </Heading>
@@ -38,8 +37,8 @@ const ShopsPageContent: React.FC = ({ admin }) => {
             <SupplierCard key={item.id} product={item} />
           ))}
         </div>
-        </Container>
-      </div>
+      </Container>
+    </div>
   );
 };
 

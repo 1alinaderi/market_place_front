@@ -41,18 +41,13 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   const dir = getDirection(router.locale);
   useEffect(() => {
-   
-     
-    
-      // if (router.locale == 'fa') {
-      //   router.push(router.asPath, router.asPath, { locale: 'en' });
-      // } else {
-      //   document.documentElement.dir = dir;
-      // }
-      document.documentElement.dir = dir;
-    
+    // if (router.locale == 'fa') {
+    //   router.push(router.asPath, router.asPath, { locale: 'en' });
+    // } else {
+    //   document.documentElement.dir = dir;
+    // }
+    document.documentElement.dir = dir;
   }, [dir, router]);
- 
 
   const Layout = (Component as any).Layout || Noop;
 
@@ -64,9 +59,6 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   function handleLoginSeller(user: any) {
     setCookie('seller', user, { path: '/' });
   }
-
-
- 
 
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -85,27 +77,28 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         }
       }
     }, 3000);
-    
   }, []);
 
-  const [category , setCategory] = useState()
-  const [subCategory , setsubCategory] = useState()
+  const [category, setCategory] = useState();
+  const [subCategory, setsubCategory] = useState();
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
-      <NextNProgress color="red"/>
+      <NextNProgress color="red" />
 
-        <audio ref={audio} src="/2.mp3" width="180" height="90" hidden />
-        <Hydrate state={pageProps.dehydratedState}>
-          {' '}
-          <GoogleOAuthProvider clientId="74472575659-u08deub6ejrgjqied21q0ucikd0qjrgh.apps.googleusercontent.com">
-            <ManagedUIContext>
-              <SearchContext.Provider value={{category , setCategory,subCategory,setsubCategory}}>
+      <audio ref={audio} src="/2.mp3" width="180" height="90" hidden />
+      <Hydrate state={pageProps.dehydratedState}>
+        {' '}
+        <GoogleOAuthProvider clientId="74472575659-u08deub6ejrgjqied21q0ucikd0qjrgh.apps.googleusercontent.com">
+          <ManagedUIContext>
+            <SearchContext.Provider
+              value={{ category, setCategory, subCategory, setsubCategory }}
+            >
               <CookiesProvider>
                 <>
                   <DefaultSeo />
-                
-                  {(router.pathname === '/' || router.pathname === '/') ? (
+
+                  {router.pathname === '/' || router.pathname === '/' ? (
                     <>
                       {isPlaying ? (
                         <MdMusicOff
@@ -167,14 +160,16 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
                     </Layout>
                   )}
                   <ToastContainer position="top-center" />
-                  <ManagedModal baseData={{ handleLogin, cookies ,handleLoginSeller}} />
+                  <ManagedModal
+                    baseData={{ handleLogin, cookies, handleLoginSeller }}
+                  />
                   <ManagedDrawer />
                 </>
               </CookiesProvider>
-              </SearchContext.Provider>
-            </ManagedUIContext>
-          </GoogleOAuthProvider>{' '}
-        </Hydrate>
+            </SearchContext.Provider>
+          </ManagedUIContext>
+        </GoogleOAuthProvider>{' '}
+      </Hydrate>
 
       {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>

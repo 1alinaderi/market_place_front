@@ -5,22 +5,21 @@ import { LIMITS } from '@framework/utils/limits';
 import { useEffect, useState } from 'react';
 import { httpReauest } from 'src/api/api';
 
-export default function SupplierSugestProducts({name} : {name? : string}) {
- 
-  const [isLoading , setIsLoading] = useState<boolean>(true)
-  const [data , setdata] = useState<any>()
-  const [error , seterror] = useState<any>()
+export default function SupplierSugestProducts({ name }: { name?: string }) {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [data, setdata] = useState<any>();
+  const [error, seterror] = useState<any>();
 
   async function getData() {
-    setIsLoading(true)
-    const res = await httpReauest("GET" , "/supplier/suggest/" + name , {} , {})
-    setdata(res.data.data)
-    setIsLoading(false)
+    setIsLoading(true);
+    const res = await httpReauest('GET', '/supplier/suggest/' + name, {}, {});
+    setdata(res.data.data);
+    setIsLoading(false);
   }
 
-  useEffect(()=>{
-    getData()
-  },[name])
+  useEffect(() => {
+    getData();
+  }, [name]);
 
   return (
     <ProductsCarousel

@@ -14,18 +14,18 @@ import { LIMITS } from '@framework/utils/limits';
 import { Product } from '@framework/types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { httpReauest } from 'src/api/api';
-import { useInView } from 'react-intersection-observer'
+import { useInView } from 'react-intersection-observer';
 import { SearchContext } from '@contexts/searchContext';
 
 interface ProductGridProps {
   className?: string;
   category?: string;
   discount?: boolean;
-  productData?:any;
-  setProductData?:any;
-  setloading?:any;
-  loading?:boolean;
-  count?:number
+  productData?: any;
+  setProductData?: any;
+  setloading?: any;
+  loading?: boolean;
+  count?: number;
 }
 
 export const ProductGrid: FC<ProductGridProps> = ({
@@ -35,24 +35,25 @@ export const ProductGrid: FC<ProductGridProps> = ({
   setProductData,
   count,
   setloading,
-  loading
+  loading,
 }) => {
   const { t } = useTranslation('common');
   const { query } = useRouter();
-  const error = {message: "product not found"}
+  const error = { message: 'product not found' };
   const [hasmore, sethasmore] = useState<boolean>(true);
-  const { ref, inView } = useInView()
+  const { ref, inView } = useInView();
 
-  const {category:filter_category,subCategory} = useContext(SearchContext)
-
+  const { category: filter_category, subCategory } = useContext(SearchContext);
 
   async function fetchData() {
-    setloading(true)
-    const limit = 10
+    setloading(true);
+    const limit = 10;
     const page = productData.length / limit + 1;
     await httpReauest(
-      "GET",
-      `/prouduct/free?page=${page}&limit=${limit}${filter_category ? "&category=" + filter_category : ""}${subCategory ? "&subCategory=" + subCategory : ""}`,
+      'GET',
+      `/prouduct/free?page=${page}&limit=${limit}${
+        filter_category ? '&category=' + filter_category : ''
+      }${subCategory ? '&subCategory=' + subCategory : ''}`,
       {},
       {}
     ).then(({ data }) => {
@@ -66,10 +67,10 @@ export const ProductGrid: FC<ProductGridProps> = ({
   useEffect(() => {
     if (inView) {
       if (productData.length) {
-        fetchData()
+        fetchData();
       }
     }
-  }, [inView])
+  }, [inView]);
 
   // const {
   //   isFetching: isLoading,
@@ -88,33 +89,31 @@ export const ProductGrid: FC<ProductGridProps> = ({
       <div className="shrink-0 text-brand-dark font-medium text-15px leading-4 md:ltr:mr-6 md:rtl:ml-6 hidden lg:block mt-0.5 pb-7">
         {count} {t('text-items-found')}
       </div>
-      <div 
-       style={{
+      <div
+        style={{
           display: 'flex',
           flexDirection: 'column-reverse',
-          overflow:"auto"
-       }}>
-      <div
-      
-        className={cn(
-          'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-3 md:gap-4 2xl:gap-5 h-fit',
-          className
-        )}
+          overflow: 'auto',
+        }}
       >
-        {productData?.length  ? (
-          productData?.map((product: Product) => (
-            <ProductCard
-            key={`product--key-${product._id}`}
-            product={product}
-            />
-          ))
-        ) : null}
-        {loading && (<div ref={ref}>Loading...</div>)}
-     
-      
+        <div
+          className={cn(
+            'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-3 md:gap-4 2xl:gap-5 h-fit',
+            className
+          )}
+        >
+          {productData?.length
+            ? productData?.map((product: Product) => (
+                <ProductCard
+                  key={`product--key-${product._id}`}
+                  product={product}
+                />
+              ))
+            : null}
+          {loading && <div ref={ref}>Loading...</div>}
+        </div>
       </div>
-      </div>
-      {!productData?.length &&  (
+      {!productData?.length && (
         <div className="text-center w-full text-3xl text-black font-bold">
           No Item Founded
         </div>

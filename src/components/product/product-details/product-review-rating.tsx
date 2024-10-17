@@ -39,16 +39,14 @@ const ProductReviewRating: FC = ({ data, baseData }) => {
     <div className="lg:flex justify-between">
       <div className="pt-2">
         {data?.length == 0 ? (
-          <Heading className="w-full">
-            {t('product-currently')}
-          </Heading>
+          <Heading className="w-full">{t('product-currently')}</Heading>
         ) : (
           data?.map((item, i) => (
             <ReviewCard item={item} key={`review-key-${i}`} />
           ))
         )}
       </div>
-     
+
       {baseData?.cookies?.user?.id ? (
         <ReviewForm
           baseData={baseData}
@@ -56,7 +54,7 @@ const ProductReviewRating: FC = ({ data, baseData }) => {
         />
       ) : (
         <div className="lg:w-[500px] xl:w-[540px] 2xl:w-[600px] 3xl:w-[730px]">
-          <Heading variant='titleLarge' className="w-full text-center pt-5">
+          <Heading variant="titleLarge" className="w-full text-center pt-5">
             {t('have-account')}
           </Heading>
           <div className="h-[200px] w-full flex justify-center items-center">

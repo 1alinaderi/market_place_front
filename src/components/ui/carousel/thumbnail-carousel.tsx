@@ -55,8 +55,8 @@ const ThumbnailCarousel: React.FC<Props> = ({
         <Swiper
           id="productGallery"
           thumbs={{ swiper: thumbsSwiper }}
-          modules={[Navigation, Thumbs , Autoplay]}
-          autoplay={{delay:4000}}
+          modules={[Navigation, Thumbs, Autoplay]}
+          autoplay={{ delay: 4000 }}
           navigation={{
             prevEl: prevRef.current!, // Assert non-null
             nextEl: nextRef.current!, // Assert non-null
@@ -69,7 +69,7 @@ const ThumbnailCarousel: React.FC<Props> = ({
               className="flex items-center justify-center"
             >
               <Image
-                src={CDN_BASE_URL +  item}
+                src={CDN_BASE_URL + item}
                 alt={`Product gallery ${item.id}`}
                 width={650}
                 height={590}
@@ -112,9 +112,9 @@ const ThumbnailCarousel: React.FC<Props> = ({
               className="flex items-center justify-center overflow-hidden transition border rounded cursor-pointer border-border-base hover:opacity-75"
             >
               <Image
-              src={CDN_BASE_URL +  item}
+                src={CDN_BASE_URL + item}
                 alt={`Product thumb gallery ${item.id}`}
-                className=' object-cover'
+                className=" object-cover"
                 width={170}
                 height={170}
               />

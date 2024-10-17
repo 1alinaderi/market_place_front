@@ -12,12 +12,9 @@ import Seo from '@components/seo/seo';
 export default function ContactUsPage() {
   return (
     <>
-      <Seo
-        title="ارتباط با ما"
-        path="contact-us"
-      />
-      <div dir='ltr'>
-      <PageContactHeroSection />
+      <Seo title="ارتباط با ما" path="contact-us" />
+      <div dir="ltr">
+        <PageContactHeroSection />
       </div>
       <Container>
         <div className="max-w-[1420px] mx-auto mb-1 lg:mb-14 xl:mb-16">

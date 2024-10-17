@@ -15,8 +15,11 @@ const SearchProduct: React.FC<SearchProductProps> = ({ item }) => {
       className="flex items-center justify-start w-full h-auto group"
     >
       <div className="relative flex w-12 h-12 overflow-hidden rounded-md cursor-pointer shrink-0 ltr:mr-4 rtl:ml-4">
-      
-        <img src={CDN_BASE_URL + item?.image} alt={item.name || 'Product Image'}  className="object-cover bg-fill-thumbnail h-[48px] w-[48px]"/>
+        <img
+          src={CDN_BASE_URL + item?.image}
+          alt={item.name || 'Product Image'}
+          className="object-cover bg-fill-thumbnail h-[48px] w-[48px]"
+        />
       </div>
       <div className="flex flex-col w-full overflow-hidden">
         <h3 className="truncate text-brand-dark text-15px">{item.name}</h3>

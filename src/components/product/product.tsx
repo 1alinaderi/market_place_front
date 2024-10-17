@@ -52,7 +52,6 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
 
   const { data, isLoading } = useProductQuery(slug as string);
 
-
   const { addItemToCart, isInCart, getItemFromCart, isInStock } = useCart();
   // const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
@@ -95,7 +94,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   }
   const item = generateCartItem(data!, selectedVariation);
   const outOfStock = isInCart(item.id) && !isInStock(item.id);
- 
+
   function addToWishlist() {
     // to show btn feedback while product wishlist
     setAddToWishlistLoader(true);
@@ -122,105 +121,109 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   };
 
   function showSupplierDetails() {
-    setshow(true)
+    setshow(true);
   }
 
   return (
     <>
-     <Seo
-      title={data?.name}
-      description={data?.desc}    
-      path={`products/${data?._id}`}
+      <Seo
+        title={data?.name}
+        description={data?.desc}
+        path={`products/${data?._id}`}
       />
-    <div className="pt-6 pb-2 md:pt-7">
-      <Modal open={show} onClose={()=>setshow(false)}>
-        <div className='w-full bg-white p-2 max-w-[400px]'>
-          <ShopSidebarSmall data={data?.owner}/>
-        </div>
-      </Modal>
-      <div className="grid-cols-10 lg:grid gap-7 2xl:gap-8">
-        <div className="col-span-5 mb-6 overflow-hidden xl:col-span-6 md:mb-8 lg:mb-0">
-          {data?.images?.length ? (
-            <ThumbnailCarousel
-              gallery={[...data?.images , data?.image]}
-              thumbnailClassName="xl:w-[700px] 2xl:w-[900px]"
-              galleryClassName="xl:w-[150px] 2xl:w-[170px]"
-            />
-          ) : (
-            <div className="flex items-center justify-center w-auto">
-              <Image
-                loader={myLoader}
-                src={imageSrc ?? '/product-placeholder.svg'}
-                alt={data?.name!}
-                width={900}
-                height={450}
-                className="object-contain"
+      <div className="pt-6 pb-2 md:pt-7">
+        <Modal open={show} onClose={() => setshow(false)}>
+          <div className="w-full bg-white p-2 max-w-[400px]">
+            <ShopSidebarSmall data={data?.owner} />
+          </div>
+        </Modal>
+        <div className="grid-cols-10 lg:grid gap-7 2xl:gap-8">
+          <div className="col-span-5 mb-6 overflow-hidden xl:col-span-6 md:mb-8 lg:mb-0">
+            {data?.images?.length ? (
+              <ThumbnailCarousel
+                gallery={[...data?.images, data?.image]}
+                thumbnailClassName="xl:w-[700px] 2xl:w-[900px]"
+                galleryClassName="xl:w-[150px] 2xl:w-[170px]"
               />
-            </div>
-          )}
-        </div>
-
-        <div className="flex flex-col col-span-5 shrink-0 xl:col-span-4 xl:ltr:pl-2 xl:rtl:pr-2">
-          <div className="pb-3 lg:pb-5">
-            <div className="md:mb-2.5 block -mt-1.5">
-              <h2 className="text-lg font-medium transition-colors duration-300 text-brand-dark md:text-xl xl:text-2xl">
-                {router.locale === 'fa' && data?.name}{router.locale === 'ar' && data?.name_ar}{router.locale === 'en' && data?.name_en}
-              </h2>
-            </div>
-            <div className="pt-2">{t("t-owner")} : {data?.owner?.name}</div>
-            {data?.rate ? (
-              // <StarRatingComponent
-              //   name="app"
-              //   starCount={5}
-              //   value={data?.rate}
-              //   starColor="#F3B81F"
-              //   emptyStarColor="#DFE6ED"
-              //   renderStarIconHalf={() => (
-              //     <BsStarHalf
-              //       color="#F3B81F"
-              //       className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3"
-              //     />
-              //   )}
-              //   renderStarIcon={() => (
-              //     <StarIcon className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3" />
-              //   )}
-              // />
-              <></>
             ) : (
-              <div className="pt-2">{t('no-rate')}</div>
+              <div className="flex items-center justify-center w-auto">
+                <Image
+                  loader={myLoader}
+                  src={imageSrc ?? '/product-placeholder.svg'}
+                  alt={data?.name!}
+                  width={900}
+                  height={450}
+                  className="object-contain"
+                />
+              </div>
             )}
+          </div>
 
-            {/* {data?.reviews?.length == 0 ? (
+          <div className="flex flex-col col-span-5 shrink-0 xl:col-span-4 xl:ltr:pl-2 xl:rtl:pr-2">
+            <div className="pb-3 lg:pb-5">
+              <div className="md:mb-2.5 block -mt-1.5">
+                <h2 className="text-lg font-medium transition-colors duration-300 text-brand-dark md:text-xl xl:text-2xl">
+                  {router.locale === 'fa' && data?.name}
+                  {router.locale === 'ar' && data?.name_ar}
+                  {router.locale === 'en' && data?.name_en}
+                </h2>
+              </div>
+              <div className="pt-2">
+                {t('t-owner')} : {data?.owner?.name}
+              </div>
+              {data?.rate ? (
+                // <StarRatingComponent
+                //   name="app"
+                //   starCount={5}
+                //   value={data?.rate}
+                //   starColor="#F3B81F"
+                //   emptyStarColor="#DFE6ED"
+                //   renderStarIconHalf={() => (
+                //     <BsStarHalf
+                //       color="#F3B81F"
+                //       className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3"
+                //     />
+                //   )}
+                //   renderStarIcon={() => (
+                //     <StarIcon className="w-4.5 lg:w-5 h-4.5 lg:h-5 mt-3" />
+                //   )}
+                // />
+                <></>
+              ) : (
+                <div className="pt-2">{t('no-rate')}</div>
+              )}
+
+              {/* {data?.reviews?.length == 0 ? (
               <div className="pt-2">No Reviews yet</div>
             ) : (
               <div className="pt-2">{data?.reviews?.length} Reviews</div>
             )} */}
 
-            {isEmpty(variations) && (
-              <div className="flex items-center mt-4">
-                {data?.specialPrice ? (
-                  <>
+              {isEmpty(variations) && (
+                <div className="flex items-center mt-4">
+                  {data?.specialPrice ? (
+                    <>
+                      <div className="text-brand-dark font-bold text-base md:text-xl xl:text-[22px]">
+                        {formatPrice({
+                          amount: data?.specialPrice,
+                          currencyCode: 'USD',
+                          locale: 'en',
+                        })}
+                      </div>
+                      <del className="text-sm text-opacity-50 md:text-15px ltr:pl-3 rtl:pr-3 text-brand-dark ">
+                        {price}
+                      </del>
+                    </>
+                  ) : (
                     <div className="text-brand-dark font-bold text-base md:text-xl xl:text-[22px]">
-                      {formatPrice({
-                        amount: data?.specialPrice,
-                        currencyCode: 'USD',
-                        locale: 'en',
-                      })}
-                    </div>
-                    <del className="text-sm text-opacity-50 md:text-15px ltr:pl-3 rtl:pr-3 text-brand-dark ">
                       {price}
-                    </del>
-                  </>
-                ) : (
-                  <div className="text-brand-dark font-bold text-base md:text-xl xl:text-[22px]">
-                    {price}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
 
-          {/* {Object.keys(variations).map((variation) => {
+            {/* {Object.keys(variations).map((variation) => {
             return (
               <ProductAttributes
                 key={`popup-attribute-key${variation}`}
@@ -231,7 +234,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
             );
           })} */}
 
-          {/* <div className="pb-2">
+            {/* <div className="pb-2">
            
 
              <>
@@ -247,8 +250,8 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
             </> 
           </div> */}
 
-          <div className="pt-1.5 lg:pt-3 xl:pt-4 space-y-2.5 md:space-y-3.5">
-            {/* <Counter
+            <div className="pt-1.5 lg:pt-3 xl:pt-4 space-y-2.5 md:space-y-3.5">
+              {/* <Counter
               variant="single"
               value={selectedQuantity}
               onIncrement={() => setSelectedQuantity((prev) => prev + 1)}
@@ -257,33 +260,37 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
               }
               disabled={selectedQuantity >= data?.balance}
             /> */}
-            <Button
-              onClick={showSupplierDetails}
-              className="w-full px-1.5"
-              disabled={!isSelected}
-              loading={addToCartLoader}
-            >
-              <CartIcon color="#ffffff" className="ltr:mr-3 rtl:ml-3" />
-              {t('text-add-to-cart')}
-            </Button>
-          </div>
-          {data?.tag && (
-            <ul className="pt-5 xl:pt-6">
-              <li className="relative inline-flex items-center justify-center text-sm md:text-15px text-brand-dark text-opacity-80 ltr:mr-2 rtl:ml-2 top-1">
-                <LabelIcon className="ltr:mr-2 rtl:ml-2" /> {t('text-tags')}:
-              </li>
-              {data?.tag?.map((item: any) => (
-                <li className="inline-block p-[3px]" key={`tag-${item.id}`}>
-                  <TagLabel data={item} />
+              <Button
+                onClick={showSupplierDetails}
+                className="w-full px-1.5"
+                disabled={!isSelected}
+                loading={addToCartLoader}
+              >
+                <CartIcon color="#ffffff" className="ltr:mr-3 rtl:ml-3" />
+                {t('text-add-to-cart')}
+              </Button>
+            </div>
+            {data?.tag && (
+              <ul className="pt-5 xl:pt-6">
+                <li className="relative inline-flex items-center justify-center text-sm md:text-15px text-brand-dark text-opacity-80 ltr:mr-2 rtl:ml-2 top-1">
+                  <LabelIcon className="ltr:mr-2 rtl:ml-2" /> {t('text-tags')}:
                 </li>
-              ))}
-            </ul>
-          )}
+                {data?.tag?.map((item: any) => (
+                  <li className="inline-block p-[3px]" key={`tag-${item.id}`}>
+                    <TagLabel data={item} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-        </div>
-       <ProductDetailsTab baseData={baseData} data={data} />
-       </div>
-      <RelatedProductFeed freeMarket={data?.freeMarket} category={data?.category?._id} uniqueKey="related-products" />
+        <ProductDetailsTab baseData={baseData} data={data} />
+      </div>
+      <RelatedProductFeed
+        freeMarket={data?.freeMarket}
+        category={data?.category?._id}
+        uniqueKey="related-products"
+      />
     </>
   );
 };

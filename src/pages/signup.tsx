@@ -13,11 +13,10 @@ import { useRouter } from 'next/router';
 import { httpReauest } from 'src/api/api';
 import { toast } from 'react-toastify';
 
-
 export default function SignInPage({ baseData }) {
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState([]);
-  const router =  useRouter()
+  const router = useRouter();
 
   // const googleLogin = useGoogleLogin({
   //   onSuccess: (codeResponse) => setUser(codeResponse),
@@ -42,9 +41,8 @@ export default function SignInPage({ baseData }) {
   //       .catch((err) => console.log(err));
   //   }
   // }, [user]);
-  
 
- async function handlecallback(response) {
+  async function handlecallback(response) {
     console.log(response.credential);
     const userObject = jwtDecode(response.credential);
     console.log(userObject);
@@ -53,7 +51,7 @@ export default function SignInPage({ baseData }) {
       await httpReauest(
         'POST',
         '/user/sign/google',
-        { email: userObject.email, name: userObject.name  },
+        { email: userObject.email, name: userObject.name },
         {}
       )
         .then((e) => {
@@ -70,25 +68,29 @@ export default function SignInPage({ baseData }) {
         });
     }
   }
-  useEffect(()=>{
-   google.accounts.id.initialize({
-    client_id:process.env.NEXT_PUBLIC_GOOGLE_ID,
-    callback: handlecallback
-   })
-   google.accounts.id.renderButton(
-    document.getElementById("signUpDiv"),{
-      theme:"outline" , width:380 ,text: "Sign With Google",class: "custom-google-button",
-    }
-  )
-  },[])
- 
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_ID,
+      callback: handlecallback,
+    });
+    google.accounts.id.renderButton(document.getElementById('signUpDiv'), {
+      theme: 'outline',
+      width: 380,
+      text: 'Sign With Google',
+      class: 'custom-google-button',
+    });
+  }, []);
+
   return (
     <>
-      <Seo
-        title="ثبت نام"
-        path="signup"
-      />
-      <Head><script src='https://accounts.google.com/gsi/client' async defer></script></Head>
+      <Seo title="ثبت نام" path="signup" />
+      <Head>
+        <script
+          src="https://accounts.google.com/gsi/client"
+          async
+          defer
+        ></script>
+      </Head>
       <Divider />
       <div className="flex items-center justify-center">
         <div className="px-4 py-16 lg:py-20 md:px-6 lg:px-8 2xl:px-10 w-full">

@@ -13,10 +13,7 @@ import { API_ENDPOINTS } from '@framework/utils/api-endpoints';
 export default function ShopsPage() {
   return (
     <>
-      <Seo
-        title="تامین کنندگان"
-        path="suplliers"
-      />
+      <Seo title="تامین کنندگان" path="suplliers" />
       <PageHeroSection
         heroTitle="menu:suppliers"
         backgroundThumbnail="/assets/images/shop-page-hero-bg.jpg"

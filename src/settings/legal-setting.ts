@@ -24,5 +24,4 @@ export const legalSetting = [
     title: 'legal-five-title',
     description: 'legal-five-content',
   },
- 
 ];

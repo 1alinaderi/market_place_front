@@ -13,43 +13,37 @@ import { httpReauest } from 'src/api/api';
 import { IoCloseOutline } from 'react-icons/io5';
 import { SearchContext } from '@contexts/searchContext';
 
-export const CategoryFilter = ({
-  setProductData,
-  mainMarket,
-  setFilter
-}) => {
+export const CategoryFilter = ({ setProductData, mainMarket, setFilter }) => {
   const { t } = useTranslation('common');
-  const [data,setData] = useState([])
+  const [data, setData] = useState([]);
   const [mainCategory, setMainCategory] = useState([]);
-  const [loading ,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState([]);
   const [id, setId] = useState('');
   const [subActive, setSubactive] = useState('');
 
-  const {category , setCategory , setsubCategory} = useContext(SearchContext)
-  
+  const { category, setCategory, setsubCategory } = useContext(SearchContext);
+
   const router = useRouter();
   async function getMainCategory() {
-    setLoading(true)
-    if (router.pathname === "/free-market") {
+    setLoading(true);
+    if (router.pathname === '/free-market') {
       const response = await httpReauest('GET', '/categorys/free', {}, {});
       setData(response.data.data);
-    }else {
+    } else {
       const response = await httpReauest('GET', '/categorys', {}, {});
       setMainCategory(response.data.data);
       if (category) {
         const id = category;
-        getQueryData(id,response.data.data)
+        getQueryData(id, response.data.data);
       }
     }
- 
-    setLoading(false)
-    
-  }
-  
 
-  async function getQueryData(id,data) {
-    if (router.pathname === "/free-market") {
+    setLoading(false);
+  }
+
+  async function getQueryData(id, data) {
+    if (router.pathname === '/free-market') {
       const response = await httpReauest(
         'GET',
         `/prouduct/free?category=${id}`,
@@ -58,11 +52,11 @@ export const CategoryFilter = ({
       );
       setProductData(response.data.data);
       setId(id);
-      
+
       const subItems = data?.subCategorys;
       const sub = subItems.filter((i) => i.category === id);
       setSelected(sub);
-    }else{
+    } else {
       const response = await httpReauest(
         'GET',
         `/prouduct?category=${id}`,
@@ -71,17 +65,16 @@ export const CategoryFilter = ({
       );
       setProductData(response.data.data);
       setId(id);
-      
+
       const subItems = data?.subCategorys;
       const sub = subItems.filter((i) => i.category === id);
       setSelected(sub);
     }
   }
-  
+
   useEffect(() => {
     getMainCategory();
   }, []);
- 
 
   const { displaySidebar, closeSidebar } = useUI();
 
@@ -117,7 +110,6 @@ export const CategoryFilter = ({
     );
   }
 
-  
   return (
     <div className="block bg-white">
       <div className="flex justify-between items-center ">

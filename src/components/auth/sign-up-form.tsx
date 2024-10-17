@@ -74,8 +74,6 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   //     });
   // }
 
-
-
   function handleSignIn() {
     return openModal('LOGIN_VIEW');
   }
@@ -260,7 +258,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                   >
                     <FaGoogle className="mr-3" size={23} /> Sign With Google
                   </Button> */}
-                  <div  id='signUpDiv'></div>
+                  <div id="signUpDiv"></div>
                 </div>
                 <div className="relative">
                   <Button

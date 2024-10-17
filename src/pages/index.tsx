@@ -34,16 +34,12 @@ import Seo from '@components/seo/seo';
 export default function Home() {
   const { t } = useTranslation('common');
 
-
   return (
     <div className="relative">
-      <Seo
-        title="هاب تجاری آینده"
-        path=""
-      />
+      <Seo title="هاب تجاری آینده" path="" />
       <div className="bg-[#11223a] overflow-hidden">
         <div
-        dir='ltr'
+          dir="ltr"
           style={{
             background:
               'linear-gradient(90deg, rgba(38,47,69,1) 0%, rgba(81,150,206,1) 20%, rgba(254,132,146,1) 40%, rgba(164,37,39,1) 60%, rgba(118,29,33,1) 80%, rgba(34,22,32,1) 100%)',
@@ -51,21 +47,30 @@ export default function Home() {
           className="lg:grid grid-cols-10 hidden justify-center items-center gap-4  relative  py-4  pr-20 pl-6 2xl:pl-20 2xl:pr-32 bg-[#08121f]"
         >
           <Link href={'/membership'}>
-            <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+            <button
+              dir="ltr"
+              className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]"
+            >
               {t('account-membership')}
               <span>
                 <ArrowRight2 size={16} />
               </span>
             </button>
           </Link>
-            <button dir='ltr' className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] italic opacity-40">
-              {t('premium-home')}
-              <span>
-                <ArrowRight2 size={16} />
-              </span>
-            </button>
+          <button
+            dir="ltr"
+            className="animation-text ml-3 flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] italic opacity-40"
+          >
+            {t('premium-home')}
+            <span>
+              <ArrowRight2 size={16} />
+            </span>
+          </button>
           <Link href={'/packing'}>
-            <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
+            <button
+              dir="ltr"
+              className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]"
+            >
               {t('packing')}{' '}
               <span>
                 <ArrowRight2 size={16} />
@@ -73,41 +78,59 @@ export default function Home() {
             </button>
           </Link>
           <Link href={'/donate'}>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
-            {t('donate')}
-            <span>
-              <ArrowRight2 size={16} />
-            </span>
-          </button>
+            <button
+              dir="ltr"
+              className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]"
+            >
+              {t('donate')}
+              <span>
+                <ArrowRight2 size={16} />
+              </span>
+            </button>
           </Link>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
+          <button
+            dir="ltr"
+            className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40"
+          >
             {t('logistics')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
+          <button
+            dir="ltr"
+            className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40"
+          >
             {t('insurance')}
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <Link href={"/news"}>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]">
-            {t('news')}
-            <span>
-              <ArrowRight2 size={16} />
-            </span>
-          </button>
+          <Link href={'/news'}>
+            <button
+              dir="ltr"
+              className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100]"
+            >
+              {t('news')}
+              <span>
+                <ArrowRight2 size={16} />
+              </span>
+            </button>
           </Link>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
+          <button
+            dir="ltr"
+            className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40"
+          >
             {t('translate')}
 
             <span>
               <ArrowRight2 size={16} />
             </span>
           </button>
-          <button dir='ltr' className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40">
+          <button
+            dir="ltr"
+            className="animation-text flex items-center gap-1  text-[#FFF] md:text-[13px]  xl:text-[17px] font-[100] opacity-40"
+          >
             {t('contract')}
             <span>
               <ArrowRight2 size={16} />
@@ -205,14 +228,13 @@ export default function Home() {
           <span className="col-span-full lg:hidden flex justify-between items-center text-white text-[12px]">
             <RevealX>
               <Link href="/donate">
-              <div className="flex flex-col items-center justify-center">
-                <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
-                  <Gift variant="Bulk" color="#ff8a65" size={30} />
-                </span>
-                <p className="text-center mt-1">{t('donate')}</p>
-              </div>
+                <div className="flex flex-col items-center justify-center">
+                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
+                    <Gift variant="Bulk" color="#ff8a65" size={30} />
+                  </span>
+                  <p className="text-center mt-1">{t('donate')}</p>
+                </div>
               </Link>
-
             </RevealX>
 
             <div>
@@ -285,22 +307,22 @@ export default function Home() {
             </Reveal>
             <div className="flex flex-col gap-5 lg:hidden">
               <RevealX>
-                  <div className="flex flex-col items-center justify-center opacity-40">
-                    <span className="rounded-full p-2 overflow-hidden bg-white   ">
-                      <Diamonds variant="Bulk" color="#ff8a65" size={30} />
-                    </span>
-                    <p className="text-center mt-1">{t('premium-home')}</p>
-                  </div>
+                <div className="flex flex-col items-center justify-center opacity-40">
+                  <span className="rounded-full p-2 overflow-hidden bg-white   ">
+                    <Diamonds variant="Bulk" color="#ff8a65" size={30} />
+                  </span>
+                  <p className="text-center mt-1">{t('premium-home')}</p>
+                </div>
               </RevealX>
 
               <RevealX>
-                <Link href={"/news"}>
-                <div className="flex flex-col items-center justify-center">
-                  <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
-                    <FaNetworkWired color="#ff8a65" size={30} />
-                  </span>
-                  <p className="text-center mt-1">{t('news')}</p>
-                </div>
+                <Link href={'/news'}>
+                  <div className="flex flex-col items-center justify-center">
+                    <span className="rounded-full p-2 overflow-hidden bg-white duration_hover  ">
+                      <FaNetworkWired color="#ff8a65" size={30} />
+                    </span>
+                    <p className="text-center mt-1">{t('news')}</p>
+                  </div>
                 </Link>
               </RevealX>
               <RevealX>
@@ -322,7 +344,6 @@ export default function Home() {
                 alt=""
               />
               <p className=" absolute bottom-2 lg:bottom-5 ltr:left-3 rtl:right-3 ltr:lg:left-8 rtl:lg:right-6 text-[18px] lg:text-[22px] xl:text-[28px] italic text-[#fff] z-20">
-                
                 {t('friendly-brands')}
               </p>
             </div>

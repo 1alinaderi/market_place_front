@@ -39,8 +39,8 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
   const descriptionHandel = () => {
     return setDescriptionState(true);
   };
-  const [share , setShare] = useState<boolean>(false)
-  const [share2 , setShare2] = useState<boolean>(false)
+  const [share, setShare] = useState<boolean>(false);
+  const [share2, setShare2] = useState<boolean>(false);
   const imageSrc = `${CDN_BASE_URL}${data?.logo}`;
   const myLoader = () => {
     return `${CDN_BASE_URL}${data?.logo}`;
@@ -48,32 +48,37 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
 
   return (
     <div className="flex flex-col px-6 pt-10 bg-white rounded shadow w-full">
-      <div className='hidden lg:block'>
-      {share && (
-        <Modal
-          open={share}
-          onClose={() => setShare(false)}
-          variant='center'
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          
-        >
-            <ShareModal desktop url={shareUrl} setShare={setShare}/>
-        </Modal>
-      )}
+      <div className="hidden lg:block">
+        {share && (
+          <Modal
+            open={share}
+            onClose={() => setShare(false)}
+            variant="center"
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <ShareModal desktop url={shareUrl} setShare={setShare} />
+          </Modal>
+        )}
       </div>
-      <div className='lg:hidden'>
-      {share2 && <ShareModal desktop={false} url={shareUrl} setShare={setShare2}/>}
+      <div className="lg:hidden">
+        {share2 && (
+          <ShareModal desktop={false} url={shareUrl} setShare={setShare2} />
+        )}
       </div>
-    
-            
 
       <div className="w-full px-5 pb-8 text-center border-b border-gray-base sm:px-8 lg:px-0  flex lg:flex-row flex-col gap-5 items-center relative">
-        <span onClick={()=>setShare(true)} className='border rounded p-3 absolute left-0 top-0 w-fit h-fit cursor-pointer hidden lg:block'>
-          <Share/>
+        <span
+          onClick={() => setShare(true)}
+          className="border rounded p-3 absolute left-0 top-0 w-fit h-fit cursor-pointer hidden lg:block"
+        >
+          <Share />
         </span>
-        <span onClick={()=>setShare2(true)} className='border rounded p-3 absolute -left-0 -top-0 w-fit h-fit cursor-pointer lg:hidden'>
-          <Share/>
+        <span
+          onClick={() => setShare2(true)}
+          className="border rounded p-3 absolute -left-0 -top-0 w-fit h-fit cursor-pointer lg:hidden"
+        >
+          <Share />
         </span>
         <div className="w-32 h-32 ">
           <Image
@@ -85,37 +90,45 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             className="rounded-full object-contain bg-slate-50"
           />
         </div>
-        <div className='flex flex-col items-start '>
-        <Heading variant="titleLarge" className=" mb-1.5">
-          {data?.name}
-        </Heading>
-        <Text variant="medium" className='text-left rtl:text-right'>
+        <div className="flex flex-col items-start ">
+          <Heading variant="titleLarge" className=" mb-1.5">
+            {data?.name}
+          </Heading>
+          <Text variant="medium" className="text-left rtl:text-right">
             {data?.bio}
-        </Text>
+          </Text>
           {data?.membership === 'Premium' && (
-        <div className="flex items-center flex-wrap justify-center text-md -mx-1 pt-4 mt-0.5">
-            <div className="flex text-sm items-center text-green-500 font-bold gap-2">
-              <BsShieldFillCheck className="text-green-500  " size={25} />{' '}
-              {t("supplier-verified")}
+            <div className="flex items-center flex-wrap justify-center text-md -mx-1 pt-4 mt-0.5">
+              <div className="flex text-sm items-center text-green-500 font-bold gap-2">
+                <BsShieldFillCheck className="text-green-500  " size={25} />{' '}
+                {t('supplier-verified')}
+              </div>
             </div>
-        </div>
           )}
         </div>
       </div>
       <div className="py-7  border-b">
         {data?.video && (
-           <div>
-           <Heading className='text-center mb-2' variant='titleLarge'>{t("intro-video")}</Heading>
-           <video src={CDN_BASE_URL + data?.video} className='w-full lg:w-2/3 mx-auto rounded' controls/>
-         </div>
+          <div>
+            <Heading className="text-center mb-2" variant="titleLarge">
+              {t('intro-video')}
+            </Heading>
+            <video
+              src={CDN_BASE_URL + data?.video}
+              className="w-full lg:w-2/3 mx-auto rounded"
+              controls
+            />
+          </div>
         )}
-       {data?.content && (
-        <div className='mt-4' dangerouslySetInnerHTML={{__html:data?.content}}/>
-       )}
+        {data?.content && (
+          <div
+            className="mt-4"
+            dangerouslySetInnerHTML={{ __html: data?.content }}
+          />
+        )}
       </div>
       <div className="py-7 grid lg:grid-cols-2 items-center gap-3">
-        
-      <a href={'mail:' + data?.email} className="flex items-start">
+        <a href={'mail:' + data?.email} className="flex items-start">
           <div className="w-10 shrink-0">
             <BiEnvelope className="text-2xl text-brand-muted text-opacity-60" />
           </div>
@@ -138,33 +151,35 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
           </div>
         </a>
         {data?.website && (
-
-        <a target='_blank' href={data?.website} className="flex items-start">
-          <div className="w-10 shrink-0">
-            <BiWorld className="text-2xl text-brand-muted text-opacity-60" />
-          </div>
-          <div className="-mt-1 flex items-center gap-1">
-            <h4 className=" font-medium text-brand-dark text-15px">
-              {t('text-website')}:
-            </h4>
-            <Text>{data?.website}</Text>
-          </div>
-        </a>
+          <a target="_blank" href={data?.website} className="flex items-start">
+            <div className="w-10 shrink-0">
+              <BiWorld className="text-2xl text-brand-muted text-opacity-60" />
+            </div>
+            <div className="-mt-1 flex items-center gap-1">
+              <h4 className=" font-medium text-brand-dark text-15px">
+                {t('text-website')}:
+              </h4>
+              <Text>{data?.website}</Text>
+            </div>
+          </a>
         )}
-         {data?.instagram && (
-
-<a target='_blank' href={`https://instagram.com/${data?.instagram}`} className="flex items-start">
-  <div className="w-10 shrink-0">
-    <Instagram className="text-2xl text-brand-muted text-opacity-60" />
-  </div>
-  <div className="-mt-1 flex items-center gap-1">
-    <h4 className=" font-medium text-brand-dark text-15px">
-      {t('footer:link-instagram')}:
-    </h4>
-    <Text>{data?.instagram}</Text>
-  </div>
-</a>
-)}
+        {data?.instagram && (
+          <a
+            target="_blank"
+            href={`https://instagram.com/${data?.instagram}`}
+            className="flex items-start"
+          >
+            <div className="w-10 shrink-0">
+              <Instagram className="text-2xl text-brand-muted text-opacity-60" />
+            </div>
+            <div className="-mt-1 flex items-center gap-1">
+              <h4 className=" font-medium text-brand-dark text-15px">
+                {t('footer:link-instagram')}:
+              </h4>
+              <Text>{data?.instagram}</Text>
+            </div>
+          </a>
+        )}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ interface SeoProps extends NextSeoProps {
   article?: any;
 }
 
-const Seo = ({ title, description, path ,article}: SeoProps) => {
+const Seo = ({ title, description, path, article }: SeoProps) => {
   return (
     <NextSeo
       title={title}
