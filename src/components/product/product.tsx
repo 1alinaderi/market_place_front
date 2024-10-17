@@ -283,6 +283,8 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
         </div>
        <ProductDetailsTab baseData={baseData} data={data} />
        </div>
+
+       
       <RelatedProductFeed freeMarket={data?.freeMarket} category={data?.category?._id} uniqueKey="related-products" />
     </>
   );

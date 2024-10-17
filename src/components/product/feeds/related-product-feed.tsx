@@ -17,10 +17,12 @@ const RelatedProductFeed: React.FC<RelatedProductsProps> = ({
   category,freeMarket
 }) => {
   const { data, isLoading, error } = useRelatedProductsQuery({
-    limit: LIMITS.RELATED_PRODUCTS_LIMITS,
+    limit: 10,
     category,
     freeMarket
   });
+
+  console.log(data)
 
   return (
     <ProductsCarousel
