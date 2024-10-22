@@ -34,7 +34,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
     query: { slug },
   } = useRouter();
   const [descriptionState, setDescriptionState] = useState(Boolean(false));
-  const shareUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${ROUTES.SHOPS}/${slug}`;
+  const shareUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${ROUTES.SUPPLIERS}/${slug}`;
   const { t } = useTranslation('common');
   const descriptionHandel = () => {
     return setDescriptionState(true);
