@@ -24,6 +24,7 @@ export type QueryOptionsType = {
   text?: string;
   category?: string;
   status?: string;
+  sort?: string;
   limit?: number;
   freeMarket?: boolean;
 };
