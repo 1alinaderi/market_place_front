@@ -6,10 +6,10 @@ import { useMostVistedFreeMarketProductsQuery } from '@framework/product/get-all
 export default function FreeMarketMostVisted() {
   const { data, isLoading, error } = useMostVistedFreeMarketProductsQuery({
     limit: LIMITS.FRESH_VEGETABLES_PRODUCTS_LIMITS,
-    sort: "-visted",
+    sort: '-visted',
   });
 
-  console.log(data)
+  console.log(data);
   return (
     <ProductsCarousel
       sectionHeading="text-free-market-most-visted"

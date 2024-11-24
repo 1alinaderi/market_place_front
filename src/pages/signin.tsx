@@ -92,7 +92,7 @@ export default function SignInPage({ baseData }) {
       </Head>
       <Divider />
       <div className="flex items-center justify-center">
-        <div className="px-4 py-12 sm:py-16 lg:py-20 md:px-6 lg:px-8 2xl:px-10">
+        <div className="px-4 py-12 sm:py-16 lg:py-20 md:px-6 lg:px-8 2xl:px-10 w-full sm:w-fit">
           <LoginForm
             // profile={profile}
             // googleLogin={googleLogin}

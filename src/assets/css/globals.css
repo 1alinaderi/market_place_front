@@ -50,7 +50,87 @@
     outline: 0px solid !important;
   }
 }
+.overflow-y-scroll {
+  scrollbar-color: #000 #fff;
+  scrollbar-width: thin;
+}
 
+.blur_bg2 {
+  background-image: url('../../../public/blur2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.blur_bg2::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #530505c2;
+}
+
+.blur_bg {
+  background-image: url('../../../public/blur.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.blur_bg::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #530505af;
+}
+
+.slider_bg {
+  background-image: url('../../../public/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
+.slider_bg::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: rgb(11, 27, 49);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 27, 49, 1) 3%,
+    rgba(11, 27, 49, 0.4206057422969187) 68%,
+    rgba(64, 35, 59, 0) 100%
+  );
+}
+
+.video-cover video {
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar {
+  width: 3px;
+  left: -1%;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+  background: #000;
+}
 /* Header Menu */
 #siteHeader.is-scrolling .innerSticky {
   @apply top-0 transition duration-200 ease-in-out shadow-header;
@@ -103,7 +183,7 @@ h6 {
 }
 .headerMenu .menuItem:hover > .subMenu {
   visibility: visible;
-  top: calc(100% + 2px);
+  top: calc(95%);
 }
 .header-one .headerMenu .menuItem:hover > .subMenu {
   top: calc(100% + 10px);
@@ -185,6 +265,13 @@ input:checked + .slider:before {
     content: '';
     z-index: 5;
   }
+}
+
+[dir='rtl'] .after-item-opacity:after {
+  transform: rotate(-180deg);
+}
+[dir='ltr'] .after-item-opacity:after {
+  transform: rotate(0);
 }
 .overlay {
   background-color: rgba(0, 0, 0, 0.35);

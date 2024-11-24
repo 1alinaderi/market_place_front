@@ -28,7 +28,7 @@ import { LIMITS } from '@framework/utils/limits';
 
 export default function Home() {
   return (
-    <div className="bg-slate-100">
+    <div>
       <Seo title="معماری پایدار و هنر" path="sustainable-arch" />
       <Container>
         <BannerGridTwo

@@ -109,16 +109,16 @@ const ProductCard: React.FC<ProductProps> = ({
     openModal('PRODUCT_VIEW', product);
   }
   return (
-    <Link href={`/products/${product?._id}`}>
+    <Link href={`/products/${product?.url}`}>
       <article
         className={cn(
-          'flex flex-col group overflow-hidden rounded-md cursor-pointer transition-all duration-300 shadow-card hover:shadow-cardHover relative h-full bg-white',
+          'flex flex-col group overflow-hidden  cursor-pointer transition-all duration-300 lg:min-w-[230px] lg:max-w-[230px] min-w-[150px] max-w-[400px] relative h-full bg-white',
           className
         )}
         title={name}
       >
         <div className="relative shrink-0">
-          <div className="flex overflow-hidden max-w-[230px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
+          <div className="flex overflow-hidden lg:min-w-[230px] lg:max-w-[230px] min-w-[150px] max-w-[400px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
             <Image
               loader={myLoader}
               src={imageSrc ?? productPlaceholder}
@@ -126,7 +126,7 @@ const ProductCard: React.FC<ProductProps> = ({
               width={230}
               height={200}
               quality={100}
-              className="object-cover "
+              className="object-cover rounded-md"
             />
           </div>
           <div className="w-full h-full absolute top-0 pt-2.5 md:pt-3.5 px-3 md:px-4 lg:px-[18px] z-10 -mx-0.5 sm:-mx-1">
@@ -138,28 +138,28 @@ const ProductCard: React.FC<ProductProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-col px-3 md:px-4 lg:px-[18px] pb-5 lg:pb-6 lg:pt-1.5 h-full">
-          <div className="mb-1 lg:mb-1.5 -mx-1">
-            {specialPrice ? (
-              <>
-                <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand">
-                  ${specialPrice}
-                </span>
-                <del className="mx-1 text-sm text-brand-dark text-opacity-70">
-                  {price}
-                </del>
-              </>
-            ) : (
-              <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand">
-                {price}
-              </span>
-            )}
-          </div>
+        <div className="flex flex-col  pb-5 lg:pb-6 lg:pt-1.5 h-full">
           <h2 className="text-brand-dark text-13px sm:text-sm lg:text-[15px] font-bold leading-5 sm:leading-6 mb-1.5">
             {router.locale === 'fa' && name} {router.locale === 'ar' && name_ar}{' '}
             {router.locale === 'en' && name_en}
           </h2>
-          <div className="mt-2 text-13px sm:text-sm">
+          <div className="-mx-1">
+            {specialPrice ? (
+              <>
+                <span className="inline-block mx-1 text-[18px] font-semibold text-brand">
+                  ${specialPrice}
+                </span>
+                <del className="mx-1 text-[18px] text-brand-dark text-opacity-70">
+                  {price}
+                </del>
+              </>
+            ) : (
+              <span className="inline-block mx-1 text-[18px] font-semibold  text-brand">
+                {price}
+              </span>
+            )}
+          </div>
+          <div className="mt-1 text-13px sm:text-sm">
             {router.locale === 'fa' && desc?.slice(0, 50)}
             {router.locale === 'en' && desc_en?.slice(0, 50)}
             {router.locale === 'ar' && desc_ar?.slice(0, 50)} ...

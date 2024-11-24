@@ -14,7 +14,7 @@ export const fetchRelatedProducts = async ({ queryKey }: any) => {
     const { data } = await http.get(
       `${API_ENDPOINTS.RELATED_PRODUCTS}?category=${queryKey[1].category}&limit=${queryKey[1].limit}`
     );
-    return data.data?.allProduct;
+    return data.data;
   }
 };
 export const useRelatedProductsQuery = (options: QueryOptionsType) => {

@@ -5,10 +5,14 @@ import { useQuery } from 'react-query';
 
 export const fetchMostVistedFreeMarketProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const { data } = await http.get(`${API_ENDPOINTS.FREEMARKET}?sort=-vist&limit=15`);
+  const { data } = await http.get(
+    `${API_ENDPOINTS.FREEMARKET}?sort=-vist&limit=15`
+  );
   return data.data.allProduct as Product[];
 };
-export const useMostVistedFreeMarketProductsQuery = (options: QueryOptionsType) => {
+export const useMostVistedFreeMarketProductsQuery = (
+  options: QueryOptionsType
+) => {
   return useQuery<Product[], Error>(
     [API_ENDPOINTS.FREEMARKET, options],
     fetchMostVistedFreeMarketProducts

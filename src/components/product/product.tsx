@@ -32,7 +32,7 @@ import RelatedProductFeed from './feeds/related-product-feed';
 import Seo from '@components/seo/seo';
 import ShopSidebarSmall from '@components/shops/shops-sidebar-small';
 
-const ProductSingleDetails: React.FC = ({ baseData }) => {
+const ProductSingleDetails:React.FC<{baseData : any , data : any}> = ({ baseData , data }) => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const {
@@ -41,25 +41,12 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
 
   const { width } = useWindowSize();
 
-  useEffect(() => {
-    fetch(
-      process.env.NEXT_PUBLIC_REST_API_ENDPOINT +
-        API_ENDPOINTS.ADDVISIT +
-        '/' +
-        slug
-    );
-  }, []);
+ 
 
-  const { data, isLoading } = useProductQuery(slug as string);
 
-  const { addItemToCart, isInCart, getItemFromCart, isInStock } = useCart();
-  // const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
-  const [favorite, setFavorite] = useState<boolean>(false);
   const [show, setshow] = useState(false);
   const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
-  const [addToWishlistLoader, setAddToWishlistLoader] =
-    useState<boolean>(false);
   const [shareButtonStatus, setShareButtonStatus] = useState<boolean>(false);
   const productUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${ROUTES.PRODUCT}/${router.query.slug}`;
   const { price, basePrice, discount } = usePrice(
@@ -73,7 +60,7 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
   const handleChange = () => {
     setShareButtonStatus(!shareButtonStatus);
   };
-  if (isLoading) return <p>Loading...</p>;
+  
   const variations = getVariations(data?.variations);
 
   const isSelected = !isEmpty(variations)
@@ -91,28 +78,6 @@ const ProductSingleDetails: React.FC = ({ baseData }) => {
         Object.values(attributes).sort()
       )
     );
-  }
-  const item = generateCartItem(data!, selectedVariation);
-  const outOfStock = isInCart(item.id) && !isInStock(item.id);
-
-  function addToWishlist() {
-    // to show btn feedback while product wishlist
-    setAddToWishlistLoader(true);
-    setFavorite(!favorite);
-    const toastStatus: string =
-      favorite === true ? t('text-remove-favorite') : t('text-added-favorite');
-    setTimeout(() => {
-      setAddToWishlistLoader(false);
-    }, 1500);
-    toast(toastStatus, {
-      progressClassName: 'fancy-progress-bar',
-      position: width! > 768 ? 'bottom-right' : 'top-right',
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
   }
 
   const imageSrc = `${CDN_BASE_URL}${data?.image}`;

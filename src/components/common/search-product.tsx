@@ -11,7 +11,7 @@ type SearchProductProps = {
 const SearchProduct: React.FC<SearchProductProps> = ({ item }) => {
   return (
     <Link
-      href={`${ROUTES.PRODUCT}/${item?._id}`}
+      href={`${ROUTES.PRODUCT}/${item?.url}`}
       className="flex items-center justify-start w-full h-auto group"
     >
       <div className="relative flex w-12 h-12 overflow-hidden rounded-md cursor-pointer shrink-0 ltr:mr-4 rtl:ml-4">

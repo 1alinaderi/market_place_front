@@ -32,7 +32,7 @@ const BottomNavigation: React.FC = () => {
     isAuthorized,
   } = useUI();
   const { openModal } = useModalAction();
-  const { locale } = useRouter();
+  const { locale , pathname} = useRouter();
   const dir = getDirection(locale);
   const contentWrapperCSS = dir === 'ltr' ? { left: 0 } : { right: 0 };
   function handleLogin() {
@@ -52,21 +52,17 @@ const BottomNavigation: React.FC = () => {
         >
           <MenuIcon />
         </button>
-        <Link href={ROUTES.HOME} className=" shrink-0 ">
-          <FaStoreAlt size={23} />
-        </Link>
-        <Link href={'/'} className="shrink-0">
-          <span className="sr-only">{t('breadcrumb-home')}</span>
-          <HomeIcon />
+        <Link href={'/'} className="shrink-0 flex flex-col items-center justify-center">
+          <HomeIcon color={pathname == "/"? "red" :'#666'}/>
         </Link>
         {/* <CartButton hideLabel={true} iconClassName="text-opacity-100" /> */}
-        <Link href={'/supplier/signin'}>
+        <Link href={'/signin'}>
           <AuthMenu
             isAuthorized={isAuthorized}
-            href={'/supplier/signin'}
+            href={'/signin'}
             btnProps={{
               className: 'shrink-0 focus:outline-none',
-              children: <UserIcon />,
+              children: <UserIcon color={pathname == "/signin" || pathname == "/signup" || pathname == "/my-account" ? "red" :'#666'}/>,
             }}
           >
             <UserIcon />

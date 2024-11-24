@@ -26,19 +26,19 @@ interface ProductsCarouselProps {
 
 const breakpoints = {
   '1921': {
-    slidesPerView: 6,
+    slidesPerView: 7,
   },
   '1680': {
-    slidesPerView: 6,
+    slidesPerView: 7,
   },
   '1536': {
-    slidesPerView: 6,
+    slidesPerView: 7,
   },
   '1280': {
-    slidesPerView: 5,
+    slidesPerView: 6,
   },
   '1024': {
-    slidesPerView: 4,
+    slidesPerView: 5,
   },
   '640': {
     slidesPerView: 3,

@@ -13,8 +13,8 @@ type Props = {
   className?: string;
   searchId?: string;
   variant?: 'border' | 'fill';
-  setActiveSearch?;
-  activeSearch?;
+  setActiveSearch?: any;
+  activeSearch?: any;
   mobile?: boolean;
 };
 

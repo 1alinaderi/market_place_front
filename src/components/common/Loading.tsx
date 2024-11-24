@@ -2,8 +2,8 @@ import React from 'react';
 
 const Loading = () => {
   return (
-    <div className="w-full row justify-center">
-      <div role="status">
+    <div className="w-full flex justify-center">
+      <span role="status">
         <svg
           aria-hidden="true"
           className="w-8 h-8 text-gray-200 animate-spin fill-[red]"
@@ -21,7 +21,7 @@ const Loading = () => {
           />
         </svg>
         <span className="sr-only">Loading...</span>
-      </div>
+      </span>
     </div>
   );
 };

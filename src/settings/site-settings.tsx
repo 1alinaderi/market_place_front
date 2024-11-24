@@ -28,25 +28,7 @@ export const siteSettings = {
   site_header: {
     menu: [
       {
-        id: 2,
-        path: '/suppliers/',
-        label: 'suppliers',
-        subMenu: [
-          {
-            id: 1,
-            path: '/suppliers/',
-            label: 'all-suppliers',
-          },
-          {
-            id: 2,
-            path: '/supplier/signin',
-            label: 'menu-sign-in',
-          },
-        ],
-      },
-
-      {
-        id: 3,
+        id: 1,
         path: '/about-us',
         label: 'about',
         subMenu: [
@@ -55,13 +37,22 @@ export const siteSettings = {
             path: '/about-us',
             label: 'about-us',
           },
-
           {
             id: 2,
             path: '/contact-us',
             label: 'menu-contact-us',
           },
         ],
+      },
+      {
+        id: 2,
+        path: '/suppliers/',
+        label: 'all-suppliers',
+      },
+      {
+        id: 3,
+        path: '/supplier/signin',
+        label: 'menu-sign-in',
       },
       {
         id: 4,

@@ -22,6 +22,7 @@ import Link from 'next/link';
 import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
 import { httpReauest } from 'src/api/api';
 import { useStateList } from 'react-use';
+import Button from '@components/ui/button';
 const AuthMenu = dynamic(() => import('./auth-menu'), { ssr: false });
 const CartButton = dynamic(() => import('@components/cart/cart-button'), {
   ssr: false,
@@ -32,6 +33,7 @@ const { site_header } = siteSettings;
 
 const Header: React.FC = () => {
   const { t } = useTranslation('common');
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const {
     displaySearch,
     displayMobileSearch,
@@ -42,7 +44,7 @@ const Header: React.FC = () => {
   const { openModal } = useModalAction();
   const siteHeaderRef = useRef() as DivElementRef;
   const siteSearchRef = useRef() as DivElementRef;
-  addActiveScroll(siteHeaderRef, 40);
+  addActiveScroll(siteHeaderRef, 40, setIsScrolled);
   useOnClickOutside(siteSearchRef, () => closeSearch());
   function handleLogin() {
     openModal('LOGIN_VIEW');
@@ -55,10 +57,14 @@ const Header: React.FC = () => {
     return openSidebar();
   }
   const [menuData, setMenuData] = useState([]);
+  const [freeCategory, setfreeCategory] = useState([]);
   async function getcategory() {
     const response = await httpReauest('GET', '/categorys', {}, {});
-    const category = response.data.data.categorys;
+    const response2 = await httpReauest('GET', '/categorys/free', {}, {});
+    const category = response.data.data;
+    const category2 = response2.data.data;
     setMenuData(category);
+    setfreeCategory(category2);
   }
   function handleMobile() {
     if (window.innerWidth >= 1024) {
@@ -72,7 +78,7 @@ const Header: React.FC = () => {
     handleMobile();
   }, []);
 
-  const [activeSearch, setActiveSearch] = useState(false);
+  const [activeSearch, setActiveSearch] = useState<boolean>(false);
   const [mobile, setMobile] = useState(true);
 
   return (
@@ -84,43 +90,39 @@ const Header: React.FC = () => {
         displayMobileSearch && 'active-mobile-search'
       )}
     >
-      <div
-        dir="ltr"
-        className="z-20 bg-1d3557 w-screen transition-all duration-200 ease-in-out innerSticky lg:w-full body-font bg-fill-secondary"
-      >
+      <div className="z-20 bg-1d3557 w-screen transition-all duration-200 ease-in-out innerSticky lg:w-full body-font bg-fill-secondary">
         <Search
           searchId="mobile-search"
           className="top-bar-search  lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-1"
         />
         {/* End of Mobile search */}
-        <Container className="flex items-center  justify-center md:justify-between h-20 py-3 top-bar lg:h-auto">
+        <Container className="flex items-center  justify-center md:justify-between h-20 py-3  top-bar lg:h-auto">
           <Link href={'/'}>
             <div className="flex items-baseline cursor-pointer">
               <img
                 src="/logo.png"
-                className="p-2 lg:p-0 max-w-[7rem] lg:w-[7rem] object-contain"
+                className=" lg:p-0 max-w-[6rem] lg:w-[7rem] object-contain"
               />
             </div>
           </Link>
           {/* End of logo */}
 
-          {!activeSearch && (
+          {/* {!activeSearch && (
             <>
               <div className="lg:hidden mx-2">
                 <LanguageSwitcherHeader justFa={true} />
               </div>
             </>
-          )}
+          )} */}
 
           <Search
-            mobile={mobile}
             activeSearch={activeSearch}
             setActiveSearch={setActiveSearch}
             searchId="top-bar-search"
-            className=" lg:flex lg:max-w-[650px] px-1 md:px-6 2xl:max-w-[800px] lg:ltr:ml-7 lg:rtl:mr-7 lg:ltr:mr-5 lg:rtl:ml-5"
+            className=" lg:flex lg:max-w-[650px] px-1 md:px-6 2xl:max-w-[800px] w-full "
           />
 
-          {!activeSearch && (
+          {/* {!activeSearch && (
             <button
               aria-label="Menu"
               onClick={handleMobileMenu}
@@ -128,12 +130,10 @@ const Header: React.FC = () => {
             >
               <MenuIcon />
             </button>
-          )}
-          <div></div>
+          )} */}
           {/* End of search */}
 
-          <div className="flex shrink-0 -mx-2.5 xl:-mx-3.5">
-            <div className="xl:mx-3.5 mx-2.5"></div>
+          <div className="lg:flex gap-2 shrink-0 -mx-2.5 xl:-mx-3.5 hidden ">
             {/* <CartButton className="hidden lg:flex mx-2.5 xl:mx-3.5" /> */}
             <Link href={'/signin'}>
               <div className="items-center hidden lg:flex shrink-0 mx-2.5 xl:mx-3.5">
@@ -150,6 +150,15 @@ const Header: React.FC = () => {
                 </AuthMenu>
               </div>
             </Link>
+            <Link href={'/signup'}>
+              <Button
+                style={{ padding: '10px 20px', height: 'fit-content' }}
+                variant="formButton"
+                className="hidden lg:inline"
+              >
+                {t('footer:Sgin-Up')}
+              </Button>
+            </Link>
           </div>
           {/* End of auth & lang */}
         </Container>
@@ -158,43 +167,43 @@ const Header: React.FC = () => {
         <div className="hidden navbar bg-1d3557 lg:block">
           <Container className="flex items-center justify-between lg:px-6 2xl:px-10">
             {/* <Logo className="w-[0] transition-all duration-200 ease-in-out opacity-0 navbar-logo  p-3" /> */}
-            <div className="w-[0] cursor-pointer lg:ml-3 transition-all duration-200 ease-in-out opacity-0 navbar-logo">
+            <div className="w-[0] cursor-pointer  transition-all duration-200 ease-in-out opacity-0 navbar-logo">
               <Link href={'/'}>
                 <div className="flex items-baseline cursor-pointer">
-                  <h1 className="text-yellow-600  lg:text-[30px] text-[20px] font-bold">
-                    W
-                  </h1>
-                  <span className="text-[#fff] lg:text-2xl font-bold   ">
-                    IMEHR
-                  </span>
+                  <img
+                    src="/logo.png"
+                    className="p-2 lg:p-0  lg:w-[6rem] object-contain"
+                  />
                 </div>
               </Link>
             </div>
             {/* End of logo */}
-
-            <HeaderMenu
-              data={site_header.menu}
-              categorys={menuData}
-              row={true}
-              className="flex transition-all duration-200 ease-in-out xl:gap-3 gap-2"
-            />
-            <LanguageSwitcherHeader justFa={true} />
-            {/* End of main menu */}
-
-            {displaySearch && (
-              <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full px-4 sticky-search">
+            {!isScrolled && (
+              <HeaderMenu
+                data={site_header.menu}
+                categorys={menuData}
+                freeCategorys={freeCategory}
+                row={true}
+                className="flex transition-all duration-200 ease-in-out xl:gap-3 gap-2"
+              />
+            )}
+            {(displaySearch || isScrolled) && (
+              <div className=" flex items-center justify-center  px-4 sticky-search">
                 <Search
                   ref={siteSearchRef}
-                  className="max-w-[780px] xl:max-w-[830px] 2xl:max-w-[1000px]"
+                  setActiveSearch={setActiveSearch}
+                  activeSearch={activeSearch}
+                  className="min-w-[600px] max-w-[600px] xl:max-w-[730px]"
                 />
               </div>
             )}
-            {/* End of conditional search  */}
+            <div className="flex items-center ">
+              <LanguageSwitcherHeader justFa={true} />
 
-            <div className="flex items-center ltr:ml-auto rtl:mr-auto shrink-0">
-              {/* <Delivery /> */}
-              <div className="flex items-center w-0 py-4 overflow-hidden transition-all duration-200 ease-in-out opacity-0 navbar-right">
-                {/* <button
+              <div className="flex items-center  pl-2  shrink-0 ">
+                {/* <Delivery /> */}
+                <div className="flex items-center w-0 gap-2 py-4 overflow-hidden transition-all duration-200 ease-in-out opacity-0 navbar-right">
+                  {/* <button
                   type="button"
                   aria-label="Search Toggle"
                   onClick={() => openSearch()}
@@ -204,26 +213,39 @@ const Header: React.FC = () => {
                   <SearchIcon className="w-[22px] h-[22px] text-white " />
                 </button> */}
 
-                {/* 
+                  {/* 
                 <CartButton /> */}
 
-                <Link href={'/signin'}>
-                  <div className="flex items-center shrink-0 mx-0 xl:mx-1">
-                    <UserIcon className="text-white" />
-                    <AuthMenu
-                      isAuthorized={isAuthorized}
-                      href={ROUTES.ACCOUNT}
-                      btnProps={{
-                        children: t('text-sign-in'),
-                        // onClick: handleLogin,
-                      }}
+                  <Link href={'/signin'}>
+                    <div className="flex items-center shrink-0 mx-0 xl:mx-1">
+                      <UserIcon className="text-white" />
+                      <AuthMenu
+                        isAuthorized={isAuthorized}
+                        href={ROUTES.ACCOUNT}
+                        btnProps={{
+                          children: t('text-sign-in'),
+                          // onClick: handleLogin,
+                        }}
+                      >
+                        {t('text-account')}
+                      </AuthMenu>
+                    </div>
+                  </Link>
+                  <Link href={'/signup'}>
+                    <Button
+                      style={{ padding: '10px 20px', height: 'fit-content' }}
+                      variant="formButton"
                     >
-                      {t('text-account')}
-                    </AuthMenu>
-                  </div>
-                </Link>
+                      {t('footer:Sgin-Up')}
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
+
+            {/* End of main menu */}
+
+            {/* End of conditional search  */}
           </Container>
         </div>
         {/* End of menu part */}

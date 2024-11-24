@@ -53,7 +53,9 @@ const ForgetPasswordForm = ({ baseData, seller }) => {
           setInputEmail(values.email);
           console.log(baseData);
         }
-      });
+      }).catch((err)=>{
+        toast.error(err?.response?.data?.message)
+      })
     } else {
       await httpReauest(
         'POST',
@@ -66,7 +68,9 @@ const ForgetPasswordForm = ({ baseData, seller }) => {
           setInputEmail(values.email);
           console.log(baseData);
         }
-      });
+      }).catch((err)=>{
+        toast.error(err?.response?.data?.message)
+      })
     }
   }
   async function onSubmit1(e) {

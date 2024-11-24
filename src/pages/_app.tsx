@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { ManagedUIContext } from '@contexts/ui.context';
 import ManagedModal from '@components/common/modal/managed-modal';
 import ManagedDrawer from '@components/common/drawer/managed-drawer';
-import { useEffect, useRef, useState } from 'react';
+import { Ref, useEffect, useRef, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ToastContainer } from 'react-toastify';
@@ -60,9 +60,9 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
     setCookie('seller', user, { path: '/' });
   }
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-  const audio = useRef();
+  const audio = useRef<HTMLAudioElement>();
 
   // const [audio] = useState(typeof Audio !== 'undefined' && new Audio('/1.mp3'));
 
@@ -70,9 +70,11 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
     setTimeout(() => {
       if (router.pathname === '/') {
         if (!isPlaying) {
-          audio.current.play();
-          if (!audio.current.paused) {
-            setIsPlaying(true);
+          if (audio.current) {
+            audio.current.play();
+            if (!audio.current.paused) {
+              setIsPlaying(true);
+            }
           }
         }
       }
@@ -97,68 +99,40 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
               <CookiesProvider>
                 <>
                   <DefaultSeo />
-
-                  {router.pathname === '/' || router.pathname === '/' ? (
-                    <>
-                      {isPlaying ? (
-                        <MdMusicOff
-                          onClick={() => {
-                            audio.current.pause();
-                            setIsPlaying(false);
-                          }}
-                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[5%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
-                        />
-                      ) : (
-                        <MdMusicNote
-                          onClick={() => {
+                  <Layout pageProps={pageProps}>
+                    {isPlaying ? (
+                      <MdMusicOff
+                        onClick={() => {
+                          if (audio.current.paused) {
                             audio.current.play();
                             setIsPlaying(true);
-                          }}
-                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[5%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
-                        />
-                      )}
-                      <Component
-                        {...pageProps}
-                        key={router.route}
-                        baseData={{ handleLogin, cookies, handleLoginSeller }}
+                          } else {
+                            audio.current.pause();
+                            setIsPlaying(false);
+                          }
+                        }}
+                        className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
                       />
-                    </>
-                  ) : (
-                    <Layout pageProps={pageProps}>
-                      {isPlaying ? (
-                        <MdMusicOff
-                          onClick={() => {
-                            if (audio.current.paused) {
-                              audio.current.play();
-                              setIsPlaying(true);
-                            } else {
-                              audio.current.pause();
-                              setIsPlaying(false);
-                            }
-                          }}
-                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
-                        />
-                      ) : (
-                        <MdMusicNote
-                          onClick={() => {
-                            if (audio.current.paused) {
-                              audio.current.play();
-                              setIsPlaying(true);
-                            } else {
-                              audio.current.pause();
-                              setIsPlaying(false);
-                            }
-                          }}
-                          className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
-                        />
-                      )}
-                      <Component
-                        {...pageProps}
-                        key={router.route}
-                        baseData={{ handleLogin, cookies, handleLoginSeller }}
+                    ) : (
+                      <MdMusicNote
+                        onClick={() => {
+                          if (audio.current.paused) {
+                            audio.current.play();
+                            setIsPlaying(true);
+                          } else {
+                            audio.current.pause();
+                            setIsPlaying(false);
+                          }
+                        }}
+                        className="fixed text-black p-2 border-black bg-orange-200  border-2 rounded-full bottom-[8%] md:bottom-[5%] right-[3%] text-5xl z-10 cursor-pointer"
                       />
-                    </Layout>
-                  )}
+                    )}
+                    <Component
+                      {...pageProps}
+                      key={router.route}
+                      baseData={{ handleLogin, cookies, handleLoginSeller }}
+                    />
+                  </Layout>
                   <ToastContainer position="top-center" />
                   <ManagedModal
                     baseData={{ handleLogin, cookies, handleLoginSeller }}
@@ -170,7 +144,6 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           </ManagedUIContext>
         </GoogleOAuthProvider>{' '}
       </Hydrate>
-
       {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );

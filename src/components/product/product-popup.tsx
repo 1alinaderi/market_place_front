@@ -73,8 +73,8 @@ export default function ProductPopup() {
     currencyCode: 'USD',
   });
   const variations = getVariations(data.variations);
-  const { _id, image, name, unit, desc, gallery, tag, quantity } = data;
-  const productUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${ROUTES.PRODUCT}/${_id}`;
+  const { _id, image, name, unit, desc, gallery, tag, quantity , url} = data;
+  const productUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${ROUTES.PRODUCT}/${url}`;
   const handleChange = () => {
     setShareButtonStatus(!shareButtonStatus);
   };

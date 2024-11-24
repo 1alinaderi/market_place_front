@@ -12,7 +12,6 @@ import {
 } from '@framework/product/get-all-products';
 import { LIMITS } from '@framework/utils/limits';
 import { Product } from '@framework/types';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { httpReauest } from 'src/api/api';
 import { useInView } from 'react-intersection-observer';
 import { SearchContext } from '@contexts/searchContext';
