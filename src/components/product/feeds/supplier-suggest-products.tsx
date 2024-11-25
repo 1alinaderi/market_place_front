@@ -4,11 +4,16 @@ import { ROUTES } from '@utils/routes';
 import { LIMITS } from '@framework/utils/limits';
 import { useEffect, useState } from 'react';
 import { httpReauest } from 'src/api/api';
+import ProductCard from '../product-cards/product-card';
+import Heading from '@components/ui/heading';
+import { useTranslation } from 'next-i18next';
+import SectionHeader from '@components/common/section-header';
 
 export default function SupplierSugestProducts({ name }: { name?: string }) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setdata] = useState<any>();
   const [error, seterror] = useState<any>();
+  const [t] = useTranslation("common")
 
   async function getData() {
     setIsLoading(true);
@@ -22,15 +27,12 @@ export default function SupplierSugestProducts({ name }: { name?: string }) {
   }, [name]);
 
   return (
-    <ProductsCarousel
-      sectionHeading="text-suggest-supplier"
-      categorySlug={ROUTES.PRODUCTS}
-      products={data}
-      loading={isLoading}
-      error={error?.message}
-      limit={LIMITS.FRESH_VEGETABLES_PRODUCTS_LIMITS}
-      uniqueKey="fresh-vegetable"
-      type={true}
-    />
+    <>
+    <SectionHeader sectionHeading="text-suggest-supplier" className="mb-6 text-center" />
+    <div className='flex gap-5 overflow-x-scroll'>
+       {data?.map((item:any)=><ProductCard product={item}/>)}
+    </div>
+    </>
+    
   );
 }

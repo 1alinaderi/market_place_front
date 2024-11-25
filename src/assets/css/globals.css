@@ -55,6 +55,12 @@
   scrollbar-width: thin;
 }
 
+.overflow-x-scroll {
+  scrollbar-color: #000 #fff;
+  scrollbar-width: thin;
+}
+
+
 .blur_bg2 {
   background-image: url('../../../public/blur2.jpg');
   background-repeat: no-repeat;
@@ -129,6 +135,19 @@
 }
 
 .overflow-y-scroll::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+.overflow-x-scroll::-webkit-scrollbar {
+  width: 3px;
+  left: -1%;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-thumb {
   background: #000;
 }
 /* Header Menu */

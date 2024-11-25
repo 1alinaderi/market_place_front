@@ -83,7 +83,7 @@ const LandingDesktop = () => {
             </span>
           </div>
         </div>
-        <div className="flex flex-wrap gap-8 mt-8">
+        <div className="flex flex-wrap gap-6 mt-8">
           <Link href={'/packing'}>
             <span className="border-2 cursor-pointer p-2 rounded-full gap-1 flex flex-col items-center justify-center text-center w-[140px] h-[140px] hover:border-red-500 ">
               <Box size={32} />
@@ -120,8 +120,29 @@ const LandingDesktop = () => {
               <span>{t('account-membership')}</span>
             </span>
           </Link>
+          <a target="_blank" href={'https://urameta.net'}>
+            <span className="border-2 cursor-pointer p-2 rounded-full gap-1 flex flex-col items-center justify-center text-center w-[140px] h-[140px] hover:border-red-500 ">
+              <img src='https://urameta.net/logo.png' className='w-12'/>
+              <span>Urameta</span>
+            </span>
+          </a>
         </div>
       </div>
+   
+      <div className="blur_bg2 mb-10">
+        <div className="py-32  md:px-6 lg:px-16 2xl:px-24 z-10 relative flex justify-center items-center flex-col">
+          <span className="p-8 relative  text-white  flex flex-col items-center justify-center gap-5 w-[50%]">
+            <h3 className="text-[45px] text-white   text-center">
+              {t('text-ready-get-started')}
+            </h3>
+            <Link href={'/signup'}>
+              <Button className="w-fit">{t('menu:menu-sign-up')}</Button>
+            </Link>
+          </span>
+        </div>
+      </div>
+      <FreshVegetablesProductFeed />
+      <FreeMarketMostVisted />
       <div className="blur_bg mb-10">
         <div className="py-24  md:px-6 lg:px-16 2xl:px-24 z-10 relative flex justify-center items-center flex-col">
           <h3 className="text-[45px] text-white w-[60%]  text-center">
@@ -134,24 +155,10 @@ const LandingDesktop = () => {
               <span className="text-green-200">Verifyed</span>
             </span>
             <p>{t('verifyed-desc')}</p>
-            <Link href={'/guide'}>
+            <Link href={'/membership'}>
               <Button className="w-fit" variant="border">
                 {t('text-learn-more')}
               </Button>
-            </Link>
-          </span>
-        </div>
-      </div>
-      <FreshVegetablesProductFeed />
-      <FreeMarketMostVisted />
-      <div className="blur_bg2 mb-10">
-        <div className="py-32  md:px-6 lg:px-16 2xl:px-24 z-10 relative flex justify-center items-center flex-col">
-          <span className="p-8 relative  text-white  flex flex-col items-center justify-center gap-5 w-[50%]">
-            <h3 className="text-[45px] text-white   text-center">
-              {t('text-ready-get-started')}
-            </h3>
-            <Link href={'/signup'}>
-              <Button className="w-fit">{t('menu:menu-sign-up')}</Button>
             </Link>
           </span>
         </div>

@@ -23,24 +23,12 @@ import { ROUTES } from '@utils/routes';
 import FreshVegetablesProductFeed from '@components/product/feeds/fresh-vegetables-product-feed';
 import SupplierSugestProducts from '@components/product/feeds/supplier-suggest-products';
 
-const ShopsSingleDetailsSmall: React.FC = () => {
-  const {
-    query: { slug },
-  } = useRouter();
-  const { t } = useTranslation('common');
-  const { data, isLoading } = useSupplierQuery(slug as string);
+const ShopsSingleDetailsSmall: React.FC<{data:any}> = ({data}) => {
   const { openShop, displayShop, closeShop } = useUI();
   const { width } = useWindowSize();
   const { locale } = useRouter();
   const dir = getDirection(locale);
   const contentWrapperCSS = dir === 'ltr' ? { left: 0 } : { right: 0 };
-
-  if (isLoading) return <p>Loading...</p>;
-
-  const imageSrc = `${CDN_BASE_URL}${data?.logo}`;
-  const myLoader = () => {
-    return `${CDN_BASE_URL}${data?.logo}`;
-  };
 
   return (
     <>
@@ -91,7 +79,7 @@ const ShopsSingleDetailsSmall: React.FC = () => {
           </button>
         </div> */}
       </div>
-      <Container className="bg-slate-100 pt-7 lg:pt-0">
+      <Container className="pt-7 lg:pt-0">
         <Element
           name="grid"
           className="flex flex-col pb-16 lg:pt-8 lg:pb-20 xl:max-w-screen-xl 2xl:max-w-[1300px] mx-auto gap-5"
@@ -99,7 +87,7 @@ const ShopsSingleDetailsSmall: React.FC = () => {
           <div className="shrink-0 hidden lg:block  lg:top-[80px] category-mobile-sidebar">
             <ShopSidebar data={data} />
           </div>
-          <div>
+          <div className='py-5'>
             <SupplierSugestProducts name={data?._id} />
           </div>
           <div className="w-full ">

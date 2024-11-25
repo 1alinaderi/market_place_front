@@ -135,7 +135,7 @@ export default function AccountDetailsPage({ baseData }) {
               className={`grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 md:gap-3 lg:gap-3 xl:gap-4 pt-4`}
             >
               <Heading className="col-span-full" variant="title">
-                محصولات شما:
+               {t("account-see-product")}
               </Heading>
               {data?.length == 0 ? (
                 <Heading>{t('t-dont-product')}</Heading>

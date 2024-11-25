@@ -39,13 +39,7 @@ const AllProductFeed: FC<ProductFeedProps> = ({
     <div className={cn(className)}>
       <div className="flex items-center justify-between pb-0.5 mb-4 lg:mb-5 xl:mb-6">
         <SectionHeader sectionHeading="all-products" className="mb-0" />
-        <div
-          className="lg:hidden transition-all text-brand -mt-1.5 font-semibold text-sm md:text-15px hover:text-brand-dark"
-          role="button"
-          onClick={handleCategoryPopup}
-        >
-          {t('text-categories')}
-        </div>
+        
       </div>
       {error ? (
         <Alert message={error?.message} />
@@ -53,8 +47,8 @@ const AllProductFeed: FC<ProductFeedProps> = ({
         <div
           className={
             small
-              ? 'grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-3 3xl:grid-cols-4 md:gap-4 2xl:gap-5'
-              : 'grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 md:gap-4 2xl:gap-5'
+              ? 'grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-5 md:gap-3 2xl:gap-3'
+              : 'grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 md:gap-3 2xl:gap-3'
           }
         >
           {isLoading && !data?.length ? (

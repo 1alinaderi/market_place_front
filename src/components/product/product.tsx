@@ -96,7 +96,7 @@ const ProductSingleDetails:React.FC<{baseData : any , data : any}> = ({ baseData
         description={data?.desc}
         path={`products/${data?._id}`}
       />
-      <div className="pt-6 pb-2 md:pt-7">
+      <div className="mt-10 pb-2 md:pt-7">
         <Modal open={show} onClose={() => setshow(false)}>
           <div className="w-full bg-white p-2 max-w-[400px]">
             <ShopSidebarSmall data={data?.owner} />
@@ -115,7 +115,7 @@ const ProductSingleDetails:React.FC<{baseData : any , data : any}> = ({ baseData
                 <Image
                   loader={myLoader}
                   src={imageSrc ?? '/product-placeholder.svg'}
-                  alt={data?.name!}
+                  alt={data?.name}
                   width={900}
                   height={450}
                   className="object-contain"

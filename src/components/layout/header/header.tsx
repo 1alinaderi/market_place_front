@@ -23,6 +23,7 @@ import LanguageSwitcherHeader from '@components/ui/LanguageSwitcherHeader';
 import { httpReauest } from 'src/api/api';
 import { useStateList } from 'react-use';
 import Button from '@components/ui/button';
+import { SearchNormal, SearchNormal1 } from 'iconsax-react';
 const AuthMenu = dynamic(() => import('./auth-menu'), { ssr: false });
 const CartButton = dynamic(() => import('@components/cart/cart-button'), {
   ssr: false,
@@ -96,7 +97,7 @@ const Header: React.FC = () => {
           className="top-bar-search  lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-1"
         />
         {/* End of Mobile search */}
-        <Container className="flex items-center  justify-center md:justify-between h-20 py-3  top-bar lg:h-auto">
+        <Container className="flex items-center  justify-between h-20 py-3  top-bar lg:h-auto">
           <Link href={'/'}>
             <div className="flex items-baseline cursor-pointer">
               <img
@@ -107,20 +108,26 @@ const Header: React.FC = () => {
           </Link>
           {/* End of logo */}
 
-          {/* {!activeSearch && (
+          {!activeSearch && (
             <>
               <div className="lg:hidden mx-2">
                 <LanguageSwitcherHeader justFa={true} />
               </div>
             </>
-          )} */}
-
+          )}
+        {(activeSearch || !mobile) &&
           <Search
             activeSearch={activeSearch}
             setActiveSearch={setActiveSearch}
             searchId="top-bar-search"
-            className=" lg:flex lg:max-w-[650px] px-1 md:px-6 2xl:max-w-[800px] w-full "
+            className="lg:flex lg:max-w-[650px] px-1 md:px-6 2xl:max-w-[800px] w-full "
           />
+          }
+          {!activeSearch && (
+          <span className='lg:hidden'>
+          <SearchIcon onClick={()=>setActiveSearch(true)} size={30} color='#fff'/>
+          </span>
+          )}
 
           {/* {!activeSearch && (
             <button
