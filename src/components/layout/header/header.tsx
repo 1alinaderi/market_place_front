@@ -24,6 +24,7 @@ import { httpReauest } from 'src/api/api';
 import { useStateList } from 'react-use';
 import Button from '@components/ui/button';
 import { SearchNormal, SearchNormal1 } from 'iconsax-react';
+import { useRouter } from 'next/router';
 const AuthMenu = dynamic(() => import('./auth-menu'), { ssr: false });
 const CartButton = dynamic(() => import('@components/cart/cart-button'), {
   ssr: false,
@@ -57,6 +58,7 @@ const Header: React.FC = () => {
   function handleMobileMenu() {
     return openSidebar();
   }
+  const {pathname} = useRouter()
   const [menuData, setMenuData] = useState([]);
   const [freeCategory, setfreeCategory] = useState([]);
   async function getcategory() {
@@ -115,7 +117,7 @@ const Header: React.FC = () => {
               </div>
             </>
           )}
-        {(activeSearch || !mobile) &&
+         {((activeSearch || !mobile) && (pathname !== "/" || mobile)) &&
           <Search
             activeSearch={activeSearch}
             setActiveSearch={setActiveSearch}

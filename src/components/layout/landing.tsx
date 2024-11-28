@@ -1,22 +1,29 @@
+import Search from '@components/common/search';
 import FreeMarketMostVisted from '@components/product/feeds/free-market-most-visted';
 import FreshVegetablesProductFeed from '@components/product/feeds/fresh-vegetables-product-feed';
 import Button from '@components/ui/button';
 import { Box, Crown, DiscountShape, Gift } from 'iconsax-react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { BiNews } from 'react-icons/bi';
 import { BsShieldFillCheck } from 'react-icons/bs';
 import { RiCustomerService2Line } from 'react-icons/ri';
 
 const LandingDesktop = () => {
   const [t] = useTranslation('common');
+  const [activeSearch , setActiveSearch] = useState<boolean>(false)
 
   return (
     <>
       <div className="w-full h-[70vh] slider_bg relative">
         <div className="absolute ltr:left-[6%] rtl:right-[6%] top-[35%] -translate-y-1/2 z-10 w-[50%]">
           <h2 className="text-[45px] text-white">{t('welcome-text')}</h2>
+          <div className='my-8'>
+          <Search
+            className="lg:flex lg:max-w-[650px] 2xl:max-w-[800px] w-full "
+          />
+          </div>
           <div className="flex gap-2 mt-3">
             <Button>
               <Link href={'/supplier/signup'}>{t('menu:menu-sign-in')}</Link>

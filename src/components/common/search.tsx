@@ -55,11 +55,16 @@ const Search = React.forwardRef<HTMLDivElement, Props>(
       setInputFocus(false);
       closeMobileSearch();
       closeSearch();
-      setActiveSearch(false);
+      if(typeof activeSearch != "undefined"){
+        setActiveSearch(false);
+      }
     }
     function enableInputFocus() {
-      setInputFocus(true);
-      setActiveSearch(true);
+      if(typeof activeSearch != "undefined"){
+        setInputFocus(true);
+        setActiveSearch(true);
+      }
+    
     }
 
     return (

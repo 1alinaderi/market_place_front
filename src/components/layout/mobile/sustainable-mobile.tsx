@@ -1,9 +1,11 @@
 import Loading from '@components/common/Loading';
 import ProductCard from '@components/product/product-cards/product-card';
+import Button from '@components/ui/button';
 import { Box, Category, Category2, UserSearch } from 'iconsax-react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { BiNews } from 'react-icons/bi';
 import { useInView } from 'react-intersection-observer';
 import { httpReauest } from 'src/api/api';
 
@@ -70,6 +72,12 @@ const SustainableMobile = () => {
               <Category2 size={32} />
             </span>
           </Link>
+          <Link href={'/news'}>
+            <span className="bg-orange-600 text-[14px] p-3 gap-3 rounded-[8px] flex items-center justify-between min-w-[154px] text-white">
+              {t('common:news')}
+              <BiNews size={32} />
+            </span>
+          </Link>
           <Link href={'/packing'}>
             <span className="bg-blue-800 text-[14px] p-3 gap-3 rounded-[8px] flex items-center justify-between min-w-[154px] text-white">
               {t('packing')}
@@ -84,6 +92,7 @@ const SustainableMobile = () => {
           </Link>
         </div>
       </div>
+    
       <div className="mt-7">
         <h3>{t('text-new-arrival')}</h3>
         <div className="flex gap-3 mt-3 overflow-x-scroll">
@@ -92,6 +101,18 @@ const SustainableMobile = () => {
           ) : (
             <Loading />
           )}
+        </div>
+      </div>
+      <div className="blur_bg2 mt-7 ">
+        <div className="py-6 z-10 relative flex justify-center items-center flex-col rounded-lg">
+          <span className="p-8 relative  text-white  flex flex-col items-center justify-center gap-5">
+            <h3 className="text-[30px] text-white   text-center">
+              {t('text-ready-get-started')}
+            </h3>
+            <Link href={'/supplier/signup'}>
+              <Button className="w-fit">{t('menu:menu-sign-in')}</Button>
+            </Link>
+          </span>
         </div>
       </div>
       <div className="mt-3">
