@@ -1,11 +1,12 @@
 import Loading from '@components/common/Loading';
 import ProductCard from '@components/product/product-cards/product-card';
 import Button from '@components/ui/button';
-import { Box, Category, Category2, UserSearch } from 'iconsax-react';
+import { Box, Category, Category2, Crown, UserSearch } from 'iconsax-react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { BiNews } from 'react-icons/bi';
+import { BsShieldFillCheck } from 'react-icons/bs';
 import { useInView } from 'react-intersection-observer';
 import { httpReauest } from 'src/api/api';
 
@@ -72,6 +73,12 @@ const SustainableMobile = () => {
               <Category2 size={32} />
             </span>
           </Link>
+          <Link href={'/membership'}>
+            <span className="bg-emerald-500 text-[14px] p-3 gap-3 rounded-[8px] flex items-center justify-between min-w-[154px] text-white">
+              {t('common:account-membership')}
+              <Crown size={32} />
+            </span>
+          </Link>
           <Link href={'/news'}>
             <span className="bg-orange-600 text-[14px] p-3 gap-3 rounded-[8px] flex items-center justify-between min-w-[154px] text-white">
               {t('common:news')}
@@ -126,7 +133,30 @@ const SustainableMobile = () => {
         </div>
       </div>
       <div className="mt-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {productData?.map((item: any) => (
+        {productData?.slice(0,4)?.map((item: any) => (
+          <ProductCard product={item} />
+        ))}
+      <div className="blur_bg col-span-full rounded">
+        <div className="py-6 px-4 z-10 relative flex justify-center items-center flex-col">
+          <h3 className="text-[20px] text-white w-[60%]  text-center">
+            {t('trade-with-confedince')}
+          </h3>
+          <span className="p-3 text-[14px] relative bg-white/10 text-white backdrop-blur-3xl rounded-[12px] mt-10 flex flex-col gap-5 w-[100%]">
+            {t('enscure-production')}
+            <span className="flex items-end gap-1">
+              <BsShieldFillCheck className="text-green-600" size={30} />
+              <span className="text-green-200">Verifyed</span>
+            </span>
+            <p>{t('verifyed-desc')}</p>
+            <Link href={'/membership'}>
+              <Button className="w-fit" variant="border">
+                {t('text-learn-more')}
+              </Button>
+            </Link>
+          </span>
+      </div>
+      </div>
+      {productData?.slice(4)?.map((item: any) => (
           <ProductCard product={item} />
         ))}
         {loading && <div ref={ref}>Loading...</div>}
