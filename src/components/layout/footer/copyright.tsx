@@ -25,10 +25,27 @@ const Copyright: React.FC<CopyrightProps> = ({ payment }) => {
               className="transition-colors duration-200 ease-in-out text-brand-dark hover:text-brand"
               href={siteSettings.author.websiteUrl}
             >
-              © 2023 name of site
+              © 2025 Wimehr
             </a>
           </p>
-
+          <ul className="flex flex-wrap justify-center items-center -mb-1.5 md:mb-0 mx-auto md:mx-0 pt-3.5 md:pt-0">
+          
+            <a
+              href="https://sirir.ir/"
+              target="_blank"
+              rel="noreferrer"
+              dir="ltr"
+              className="flex gap-1 items-center transition-colors duration-200 ease-in-out text-brand-dark hover:text-brand"
+            >
+              Powered By{" "}
+              <img
+                src="https://sirir.ir/logo.png"
+                className="w-8 object-contain items-center mb-1"
+                alt="Sirir logo"
+              />
+              Sirir
+            </a>
+            </ul>
           {/* {payment && (
             <ul className="flex flex-wrap justify-center items-center -mb-1.5 md:mb-0 mx-auto md:mx-0 pt-3.5 md:pt-0">
               {payment?.map((item) => (
